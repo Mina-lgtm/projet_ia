@@ -8,7 +8,7 @@ Projet IA conteneurise avec FastAPI, scikit-learn et Docker.
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 uvicorn app.main:app --reload --port 8001
 ```
 
