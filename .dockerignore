@@ -6,4 +6,8 @@ __pycache__
 .ruff_cache
 .env
 .git
+models/
+logs/
+notebooks/
+docs/
 README.md

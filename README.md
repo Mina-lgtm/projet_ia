@@ -1,12 +1,19 @@
 # Examen IA
 
-Projet IA conteneurise avec FastAPI, scikit-learn et Docker.
+Projet IA de planification de voyages.
 
-Documentation descriptive : `docs/etat_projet.md`
+La phase d'industrialisation a ete archivee temporairement afin de continuer a
+enrichir le notebook final.
 
-Objectif 1 - identification du dataset : `docs/objectif_1_dataset.md`
+## Documents principaux
 
-Plan de documentation : `docs/plan_documentation.md`
+- Documentation descriptive : `docs/etat_projet.md`
+- Objectif 1 - identification du dataset : `docs/objectif_1_dataset.md`
+- Synthese finale pre/post-voyage : `docs/synthese_finale_pre_post_voyage.md`
+- Notebook final propre : `notebooks/00_notebook_final_pre_post_voyage.ipynb`
+- Experiences de modelisation : `docs/experiences_modelisation.md`
+- Archive industrialisation : `docs/archive_industrialisation.md`
+- Plan de documentation : `docs/plan_documentation.md`
 
 ## Environnement local
 
@@ -15,10 +22,7 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 pip install -r requirements-dev.txt
-uvicorn app.main:app --reload --port 8001
 ```
-
-API locale : http://localhost:8001/docs
 
 ## Notebook Jupyter
 
@@ -27,13 +31,25 @@ API locale : http://localhost:8001/docs
 jupyter lab
 ```
 
-Notebook de demarrage : `notebooks/01_exploration.ipynb`
+Notebook final recommande :
 
-Si le kernel Jupyter se ferme pendant les imports, arrete temporairement Docker
-pour liberer de la memoire :
+```text
+notebooks/00_notebook_final_pre_post_voyage.ipynb
+```
+
+## API minimale
+
+Une API FastAPI minimale est conservee uniquement pour garder le socle Docker
+fonctionnel pendant la finalisation du notebook.
 
 ```powershell
-docker compose stop
+uvicorn app.main:app --reload --port 8001
+```
+
+URL :
+
+```text
+http://localhost:8001/health
 ```
 
 ## Docker
@@ -42,12 +58,13 @@ docker compose stop
 docker compose up --build
 ```
 
-API Docker : http://localhost:8001/docs
+API Docker :
 
-## Exemple de prediction
-
-```powershell
-curl -X POST http://localhost:8001/predict `
-  -H "Content-Type: application/json" `
-  -d "{\"features\":[5.1,3.5,1.4,0.2]}"
+```text
+http://localhost:8001/health
 ```
+
+## Tests
+
+Les tests d'industrialisation ont ete retires temporairement avec l'API modele.
+Ils pourront etre restaures quand le notebook final sera fige.

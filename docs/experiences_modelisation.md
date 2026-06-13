@@ -1,4 +1,12 @@
-# Documentation des experiences de modelisation
+﻿# Documentation des experiences de modelisation
+
+Note : la version consolidee et executee pour passer a l'etape suivante se
+trouve dans `notebooks/00_notebook_final_pre_post_voyage.ipynb`. La synthese
+associee est disponible dans `docs/synthese_finale_pre_post_voyage.md`.
+
+Mise a jour : certaines features ont ete retirees du modele final pour
+simplifier les entrees et limiter les redondances. La liste et les nouveaux
+scores sont documentes dans `docs/synthese_finale_pre_post_voyage.md`.
 
 ## 1. Objectif du document
 
@@ -72,9 +80,9 @@ partir d'informations futures. Ces variables restent utiles pour une analyse
 retrospective ou pour des modeles secondaires, mais pas comme entrees du modele
 principal de prediction de satisfaction avant depart.
 
-## 4. Preparation commune des donnees
+## 4. Preparation des donnees
 
-Avant la modelisation, les deux notebooks appliquent une preparation commune :
+Avant la modelisation, les notebooks appliquent une preparation des donnees :
 
 1. chargement du dataset brut ;
 2. verification des incoherences metier ;
@@ -710,50 +718,308 @@ analyse retrospective et a une logique d'amelioration continue.
 ### Variables utilisees
 
 Contrairement au modele pre-voyage, cette experience inclut les variables
-observees pendant ou apres le sejour :
+operationnelles observees pendant ou apres le sejour :
 
 | Variable | Role dans l'objectif post-voyage |
 | --- | --- |
 | `imprevus` | Decrire l'evenement reel survenu pendant le sejour |
 | `reorganisation_necessaire` | Mesurer si le sejour a necessite une adaptation operationnelle |
 | `respect_budget` | Indiquer si le budget a ete respecte |
-| `sentiment_retour` | Resumer le ressenti client a partir du commentaire |
-| `retour_client_vide` | Identifier l'absence de commentaire exploitable |
 
-Le texte brut `retour_client` n'est pas donne directement au modele. Il est
-transforme en indicateurs simples afin de conserver une experience legere et
-explicable.
+Pour eviter la fuite de donnees, le modele post-voyage principal exclut
+`retour_client` et toutes les variables derivees directement du commentaire
+client. Le commentaire est tres proche de la cible `satisfaction_client` : il
+exprime souvent directement la satisfaction ou l'insatisfaction.
 
-### Premier resultat
+Les variables ajoutees pour ameliorer le modele sans fuite sont donc des
+indicateurs operationnels :
 
-Le premier test post-voyage utilise 1418 lignes et 27 variables d'entree :
+| Variable | Role |
+| --- | --- |
+| `imprevu_present` | Indiquer si un imprevu a ete observe |
+| `imprevu_transport` | Identifier les incidents de transport |
+| `imprevu_meteo` | Identifier les incidents meteo |
+| `budget_non_respecte` | Identifier un depassement budgetaire |
+| `reorganisation_apres_imprevu` | Croiser imprevu et besoin de reorganisation |
+| `imprevu_sans_reorganisation` | Detecter les imprevus non reamenages |
+| `budget_depasse_et_reorganisation` | Croiser depassement budgetaire et reorganisation |
+| `imprevu_et_budget_depasse` | Croiser imprevu et depassement budgetaire |
+| `score_risque_operationnel` | Resumer le niveau de risque operationnel |
+| `sejour_operationnel_complexe` | Identifier les sejours operationnellement complexes |
+| `budget_tendu` | Identifier les sejours ou le vol pese fortement dans le budget |
+| `gravite_imprevu` | Ordonner les imprevus selon leur niveau de gravite |
+| `annulation_et_reorganisation` | Identifier les annulations ayant necessite une reorganisation |
+| `retard_et_budget_non_respecte` | Croiser retard de vol et depassement budgetaire |
+| `imprevu_transport_et_sejour_court` | Identifier les trajets perturbes sur sejours courts |
+| `budget_tendu_et_hebergement_luxe` | Croiser budget tendu et hebergement haut de gamme |
+
+### Extension NLP avec spaCy et Transformers
+
+Une extension NLP est ajoutee dans le notebook post-voyage afin d'exploiter plus
+finement `retour_client`.
+
+Elle combine deux approches :
+
+- `spaCy` avec `fr_core_news_sm` pour les traitements linguistiques classiques ;
+- un pipeline `transformers` avec
+  `nlptown/bert-base-multilingual-uncased-sentiment` pour l'analyse de
+  sentiment.
+
+Cette extension est optionnelle car elle necessite des dependances plus lourdes
+que le pipeline scikit-learn classique :
+
+```powershell
+pip install -r requirements-nlp.txt
+python -m spacy download fr_core_news_sm
+```
+
+Le modele `fr_core_news_sm` est retenu pour limiter la consommation memoire. Le modele `fr_core_news_lg` charge des vecteurs volumineux et peut provoquer un `MemoryError` sur une machine avec 4 Go de RAM.
+
+Le notebook applique six etapes NLP :
+
+1. tokenisation ;
+2. suppression des stop words ;
+3. lemmatisation ;
+4. extraction des adjectifs et noms par POS tagging ;
+5. detection d'entites nommees ;
+6. analyse de sentiment.
+
+Les colonnes textuelles ou sous forme de listes sont conservees pour l'analyse
+qualitative, mais elles ne sont pas injectees directement dans `X`. Le modele
+utilise uniquement des variables numeriques derivees :
+
+| Variable | Role |
+| --- | --- |
+| `score_avis` | Score de sentiment negatif, neutre ou positif |
+| `sentiment_avis` | Encodage numerique du sentiment |
+| `nb_tokens` | Longueur du commentaire en tokens |
+| `nb_mots_utiles` | Nombre de mots conserves apres suppression des stop words |
+| `nb_mots_cles` | Nombre de noms et adjectifs detectes |
+| `nb_entites` | Nombre d'entites nommees detectees |
+
+Cette approche capte une partie du ressenti client tout en restant plus legere
+qu'un stockage complet d'embeddings.
+
+Comme `retour_client` est tres proche de la cible de satisfaction, cette
+extension NLP est consideree comme une analyse exploratoire separee. Elle est
+utile pour comprendre les retours clients, mais elle n'est pas retenue dans le
+modele post-voyage principal sans fuite.
+
+Remarque : le modele `nlptown/bert-base-multilingual-uncased-sentiment` n'est
+pas CamemBERT au sens strict. C'est un modele BERT multilingue specialise pour
+l'analyse de sentiment, utilisable sur des avis en francais.
+
+### Resultat sans fuite directe depuis le texte client
+
+Le test post-voyage utilise 1418 lignes et 31 variables d'entree apres
+suppression des interactions operationnelles redondantes :
 
 | Type de variable | Nombre |
 | --- | ---: |
-| Numeriques | 20 |
+| Numeriques | 24 |
 | Categorielles | 7 |
-| Total | 27 |
+| Total | 31 |
 
-Les premiers resultats obtenus sont :
+Les resultats obtenus avec les variables operationnelles, sans `retour_client`,
+sont :
 
 | Modele | Accuracy | Balanced accuracy | Macro F1 |
 | --- | ---: | ---: | ---: |
-| `RandomForest` | 0.4331 | 0.4327 | 0.4222 |
-| `LogisticRegression` | 0.3979 | 0.4057 | 0.3983 |
-| `ExtraTrees` | 0.3521 | 0.3646 | 0.3537 |
+| `RandomForest_optimise_sans_fuite` | 0.3204 | 0.3300 | 0.3075 |
+| `ExtraTrees` | 0.2641 | 0.2808 | 0.2573 |
+| `RandomForest` | 0.2711 | 0.2687 | 0.2536 |
+| `LogisticRegression` | 0.2465 | 0.2526 | 0.2390 |
 | `Dummy_majority` | 0.2887 | 0.2000 | 0.0896 |
+
+L'optimisation de `RandomForest` ameliore le modele 5 classes, mais le meilleur
+score reste modeste avec `macro_f1 = 0.3075`.
+
+### Cible post-voyage en 3 classes
+
+Une seconde experience sans fuite regroupe la satisfaction en trois niveaux :
+
+```text
+0 = insatisfait : notes 1 et 2
+1 = neutre : note 3
+2 = satisfait : notes 4 et 5
+```
+
+Cette formulation reduit l'ambiguite entre les notes proches.
+
+| Modele | Accuracy | Balanced accuracy | Macro F1 |
+| --- | ---: | ---: | ---: |
+| `RandomForest_3_classes` | 0.4577 | 0.4032 | 0.3938 |
+| `ExtraTrees_3_classes` | 0.4190 | 0.3759 | 0.3730 |
+| `LogisticRegression_3_classes` | 0.3627 | 0.3619 | 0.3537 |
+| `Dummy_majority_3_classes` | 0.4683 | 0.3333 | 0.2126 |
+
+La cible 3 classes donne un meilleur `macro_f1` que la prediction exacte des 5
+notes. Elle est donc plus pertinente pour une lecture metier sans fuite.
+
+### Test SMOTE sur la cible 3 classes
+
+Une experience `SMOTE` a ete ajoutee pour verifier si le desequilibre des
+classes explique les performances limitees. Le sur-echantillonnage est applique
+uniquement sur le jeu d'entrainement, dans un pipeline `imblearn`, afin de ne pas
+modifier le jeu de test.
+
+Distribution du jeu d'entrainement avant `SMOTE` :
+
+| Classe | Signification | Nombre | Pourcentage |
+| --- | --- | ---: | ---: |
+| 0 | notes 1-2, insatisfait | 530 | 46.74 |
+| 1 | note 3, neutre | 273 | 24.07 |
+| 2 | notes 4-5, satisfait | 331 | 29.19 |
+
+Resultats compares :
+
+| Modele | Accuracy | Balanced accuracy | Macro F1 |
+| --- | ---: | ---: | ---: |
+| `RandomForest_3_classes` | 0.4577 | 0.4032 | 0.3938 |
+| `ExtraTrees_3_classes_SMOTE` | 0.4437 | 0.3863 | 0.3766 |
+| `ExtraTrees_3_classes` | 0.4190 | 0.3759 | 0.3730 |
+| `RandomForest_3_classes_SMOTE` | 0.4472 | 0.3870 | 0.3700 |
+| `LogisticRegression_3_classes_SMOTE` | 0.3697 | 0.3669 | 0.3593 |
+| `LogisticRegression_3_classes` | 0.3627 | 0.3619 | 0.3537 |
+| `Dummy_majority_3_classes` | 0.4683 | 0.3333 | 0.2126 |
+
+Interpretation :
+
+- `SMOTE` n'ameliore pas le meilleur modele ;
+- le meilleur score reste `RandomForest_3_classes` sans `SMOTE` avec
+  `macro_f1 = 0.3938` ;
+- `SMOTE` apporte un gain faible sur `LogisticRegression` et `ExtraTrees`, mais
+  ce gain ne depasse pas le meilleur modele sans augmentation ;
+- pour `RandomForest`, `SMOTE` degrade le score de `0.3938` a `0.3700`.
+
+Conclusion : `SMOTE` n'est pas retenu pour le modele final. Le desequilibre des
+classes n'est pas la cause principale des performances limitees ; la limite
+vient plutot du manque de signal explicatif robuste dans les variables
+disponibles.
+
+### Optimisation ciblee de RandomForest
+
+Apres le test `SMOTE`, une optimisation plus poussee de `RandomForest` a ete
+testee sur la cible 3 classes avec les parametres suivants :
+
+```text
+n_estimators = 500
+max_depth = 10
+min_samples_leaf = 5
+min_samples_split = 10
+random_state = 42
+```
+
+Le parametre `class_weight="balanced"` est conserve afin de rester coherent avec
+l'objectif `macro_f1`, sensible aux classes minoritaires.
+
+Resultats compares :
+
+| Modele | Accuracy | Balanced accuracy | Macro F1 |
+| --- | ---: | ---: | ---: |
+| `RandomForest_3_classes` | 0.4577 | 0.4032 | 0.3938 |
+| `RandomForest_3_classes_optimise_500` | 0.4401 | 0.3922 | 0.3854 |
+| `ExtraTrees_3_classes_SMOTE` | 0.4437 | 0.3863 | 0.3766 |
+| `ExtraTrees_3_classes` | 0.4190 | 0.3759 | 0.3730 |
+| `RandomForest_3_classes_SMOTE` | 0.4472 | 0.3870 | 0.3700 |
+| `LogisticRegression_3_classes_SMOTE` | 0.3697 | 0.3669 | 0.3593 |
+| `LogisticRegression_3_classes` | 0.3627 | 0.3619 | 0.3537 |
+| `Dummy_majority_3_classes` | 0.4683 | 0.3333 | 0.2126 |
+
+Interpretation :
+
+- l'optimisation plus poussee n'ameliore pas le meilleur score ;
+- le `macro_f1` passe de `0.3938` a `0.3854` ;
+- la regularisation par `min_samples_leaf = 5` et `min_samples_split = 10`
+  stabilise probablement le modele, mais reduit sa capacite a capter certains
+  signaux utiles ;
+- le meilleur modele reste donc `RandomForest_3_classes` dans sa version
+  initiale.
+
+Conclusion : cette optimisation n'est pas retenue comme modele final. Elle
+confirme que le gain ne vient pas d'un simple reglage d'hyperparametres.
+
+### Test XGBoost optimise manuellement
+
+Une experience `XGBoost` a ete ajoutee avec une configuration manuelle plus
+regularisee :
+
+```text
+n_estimators = 500
+max_depth = 4
+learning_rate = 0.03
+subsample = 0.8
+colsample_bytree = 0.8
+random_state = 42
+```
+
+Ce test utilise le meme pipeline de pretraitement que les autres modeles
+scikit-learn : imputation, standardisation des variables numeriques et encodage
+One-Hot des variables categorielles.
+
+Resultats compares :
+
+| Modele | Accuracy | Balanced accuracy | Macro F1 |
+| --- | ---: | ---: | ---: |
+| `RandomForest_3_classes` | 0.4577 | 0.4032 | 0.3938 |
+| `RandomForest_3_classes_optimise_500` | 0.4401 | 0.3922 | 0.3854 |
+| `ExtraTrees_3_classes_SMOTE` | 0.4437 | 0.3863 | 0.3766 |
+| `ExtraTrees_3_classes` | 0.4190 | 0.3759 | 0.3730 |
+| `RandomForest_3_classes_SMOTE` | 0.4472 | 0.3870 | 0.3700 |
+| `LogisticRegression_3_classes_SMOTE` | 0.3697 | 0.3669 | 0.3593 |
+| `LogisticRegression_3_classes` | 0.3627 | 0.3619 | 0.3537 |
+| `XGBoost_3_classes_optimise` | 0.4261 | 0.3629 | 0.3496 |
+| `Dummy_majority_3_classes` | 0.4683 | 0.3333 | 0.2126 |
+
+Interpretation :
+
+- `XGBoost` n'ameliore pas le meilleur modele ;
+- le `macro_f1` obtenu est `0.3496`, inferieur au `RandomForest_3_classes` ;
+- l'accuracy reste correcte, mais le score equilibre est insuffisant pour les
+  classes minoritaires ;
+- ce resultat confirme que l'utilisation d'un algorithme plus avance ne suffit
+  pas si le signal explicatif reste limite.
+
+Conclusion : `XGBoost_3_classes_optimise` n'est pas retenu comme modele final.
+
+### Tests complementaires a executer
+
+Pour ameliorer le modele sans fuite de donnees, le notebook ajoute plusieurs
+controles complementaires :
+
+- matrice de confusion pour identifier les classes les plus confondues ;
+- rapport de classification pour comparer precision, rappel et F1 par classe ;
+- importance des variables pour verifier si le modele s'appuie sur des signaux
+  metier pertinents ;
+- selection automatique des variables pour tester si certaines variables
+  ajoutent du bruit ;
+- validation croisee pour verifier la stabilite du score sur plusieurs
+  decoupages.
+
+Ces tests ne garantissent pas une hausse du score. Ils servent surtout a
+determiner si le plafond actuel vient d'un manque de signal, d'un exces de
+bruit, d'une cible encore trop ambigue ou d'une instabilite du decoupage
+train/test.
+
 
 ### Interpretation
 
-Les performances progressent nettement par rapport au modele pre-voyage. Le
-meilleur `macro_f1` passe de `0.2402` avec l'objectif pre-voyage enrichi a
-`0.4222` avec l'objectif post-voyage.
+Les performances du modele 5 classes restent faibles. L'ajout de variables
+operationnelles supplementaires ne suffit pas a obtenir un modele robuste sur
+les cinq notes de satisfaction.
 
-Cette amelioration confirme l'hypothese issue de la Mutual Information : les
-variables post-voyage contiennent davantage de signal pour expliquer la
-satisfaction client. En particulier, les imprevus, le respect du budget, la
-reorganisation du sejour et le ressenti client sont plus proches de
-l'experience reellement vecue par le client.
+En revanche, le regroupement en trois classes ameliore la lisibilite et la
+performance : le meilleur `macro_f1` atteint `0.3938` avec
+`RandomForest_3_classes`.
+
+Cette amelioration confirme que le probleme initial est trop fin pour les
+donnees disponibles. Les variables operationnelles apportent un signal partiel,
+mais elles ne permettent pas de predire finement une note exacte de 1 a 5.
+
+L'experience NLP montre des scores beaucoup plus eleves, mais cette performance
+vient du commentaire client, qui agit comme un proxy direct du ressenti. Pour
+eviter la fuite de donnees, cette version NLP est conservee comme analyse
+qualitative et non comme modele principal.
 
 Cette experience ne remplace pas le modele pre-voyage. Elle repond a un autre
 besoin metier :
@@ -764,13 +1030,15 @@ besoin metier :
 - alimenter les futures donnees disponibles avant depart ;
 - renforcer la boucle d'amelioration continue.
 
-La conclusion est donc double :
+La conclusion est donc la suivante :
 
 - le modele pre-voyage reste le modele conforme au cas d'usage de planification,
   mais ses performances sont limitees par le manque de signal ;
-- le modele post-voyage est plus performant, mais il doit etre presente comme
-  un modele explicatif retrospectif, non comme un outil de prediction avant
-  depart.
+- le modele post-voyage sans fuite sur 5 classes reste limite ;
+- la cible post-voyage en 3 classes est plus pertinente et devient la meilleure
+  piste sans fuite de donnees ;
+- le modele NLP explique mieux la satisfaction, mais il exploite une information
+  trop proche de la cible pour etre retenu comme modele principal sans fuite.
 
 ## 22. Recommandations pour la suite
 
@@ -785,3 +1053,13 @@ Les prochaines ameliorations prioritaires sont :
 7. valider avec le metier si la cible `satisfaction_client` est suffisamment
    fiable ;
 8. tester des modeles plus adaptes apres enrichissement reel des donnees.
+
+
+
+
+les variables post-voyage apportent un signal rÃ©el pour expliquer satisfaction_client. Câ€™est cohÃ©rent : les imprÃ©vus, la rÃ©organisation, le respect du budget et le retour client sont plus directement liÃ©s Ã  lâ€™expÃ©rience vÃ©cue.
+Limite
+Le score reste autour de 0.40, donc le modÃ¨le nâ€™est pas excellent. Il explique mieux la satisfaction quâ€™en prÃ©-voyage, mais il ne suffit pas encore pour une dÃ©cision automatique fiable.
+Phrase documentation
+Les rÃ©sultats post-voyage sont supÃ©rieurs Ã  la baseline et aux modÃ¨les prÃ©-voyage, ce qui confirme que les variables observÃ©es pendant ou aprÃ¨s le sÃ©jour contiennent davantage de signal pour expliquer la satisfaction client. Le meilleur modÃ¨le est RandomForest avec un macro_f1 de 0.4029. Toutefois, les performances restent modÃ©rÃ©es, ce qui indique que dâ€™autres facteurs non prÃ©sents dans le dataset influencent probablement la satisfaction.
+
