@@ -8,4 +8,6 @@ __pycache__/
 models/
 logs/
 mlruns/
+mlartifacts/
+mlflow.db*
 .ipynb_checkpoints/

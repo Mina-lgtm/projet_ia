@@ -64,7 +64,30 @@ API Docker :
 http://localhost:8001/health
 ```
 
+## CI/CD et versioning
+
+Le projet utilise Git et GitHub pour versionner le code, la documentation, le
+dataset synthetique et les notebooks.
+
+Un workflow GitHub Actions est defini dans `.github/workflows/ci-cd.yml`. A
+chaque push ou pull request vers `main`, il :
+
+- installe les dependances ;
+- valide la syntaxe Python ;
+- execute les tests API ;
+- verifie la structure et la syntaxe des cellules code du notebook final ;
+- construit l'image Docker.
+
+Ce workflow met en place une livraison continue minimale : le projet est
+automatiquement verifie et packagé sous forme d'image Docker. Le deploiement
+vers un environnement distant reste volontairement non active tant que le
+notebook final et le pipeline modele ne sont pas figes.
+
 ## Tests
 
-Les tests d'industrialisation ont ete retires temporairement avec l'API modele.
-Ils pourront etre restaures quand le notebook final sera fige.
+```powershell
+pytest -q
+```
+
+Les tests actuels verifient le socle API minimal. Les tests du pipeline modele
+seront ajoutes lorsque l'industrialisation sera restauree.
