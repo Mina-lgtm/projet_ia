@@ -1040,7 +1040,110 @@ La conclusion est donc la suivante :
 - le modele NLP explique mieux la satisfaction, mais il exploite une information
   trop proche de la cible pour etre retenu comme modele principal sans fuite.
 
-## 22. Recommandations pour la suite
+## 22. Experience SMOTE extreme : 20 000 lignes ajoutees
+
+Objectif :
+
+Verifier si une augmentation artificielle massive du jeu d'entrainement peut
+ameliorer les performances des modeles pre-voyage et post-voyage.
+
+Cette experience est volontairement extreme. Elle ne vise pas a definir une
+strategie de production, mais a tester l'hypothese suivante :
+
+> les faibles performances viennent-elles principalement d'un manque de volume
+> dans les classes minoritaires ?
+
+La methode appliquee est la suivante :
+
+- cible regroupee en 3 classes ;
+- `SMOTE` applique uniquement sur le jeu d'entrainement ;
+- jeu de test conserve intact ;
+- ajout exact de `20 000` lignes synthetiques ;
+- comparaison avec les meilleurs modeles sans SMOTE.
+
+### Volume genere
+
+Avant SMOTE, le jeu d'entrainement contient `870` lignes.
+Apres SMOTE extreme, il contient `20 870` lignes.
+
+| Classe | Lignes avant SMOTE | Lignes apres SMOTE | Lignes ajoutees |
+| --- | ---: | ---: | ---: |
+| 0 | 403 | 6957 | 6554 |
+| 1 | 210 | 6957 | 6747 |
+| 2 | 257 | 6956 | 6699 |
+
+SMOTE ajoute donc `20 000` lignes synthetiques au total.
+
+### Resultats pre-voyage
+
+| Modele | Accuracy | Balanced accuracy | Macro F1 |
+| --- | ---: | ---: | ---: |
+| `LogisticRegression_pre_SMOTE_20000` | 0.3486 | 0.3518 | 0.3421 |
+| `RandomForest_pre_SMOTE_20000` | 0.3761 | 0.3332 | 0.3280 |
+| `ExtraTrees_pre_SMOTE_20000` | 0.3440 | 0.3269 | 0.3266 |
+
+Reference sans SMOTE :
+
+| Modele | Macro F1 |
+| --- | ---: |
+| `ExtraTrees_pre` | 0.3687 |
+
+Interpretation :
+
+- l'augmentation massive degrade le meilleur score pre-voyage ;
+- le meilleur modele avec SMOTE extreme obtient `macro_f1 = 0.3421`, contre
+  `0.3687` sans SMOTE ;
+- le probleme pre-voyage ne vient donc pas principalement du volume de donnees
+  ou du desequilibre de classes ;
+- les variables disponibles avant depart contiennent peu de signal predictif.
+
+Decision :
+
+`SMOTE +20 000` n'est pas retenu pour le modele pre-voyage.
+
+### Resultats post-voyage
+
+| Modele | Accuracy | Balanced accuracy | Macro F1 |
+| --- | ---: | ---: | ---: |
+| `RandomForest_SMOTE_20000` | 0.4954 | 0.4447 | 0.4389 |
+| `LogisticRegression_SMOTE_20000` | 0.4495 | 0.4428 | 0.4369 |
+| `ExtraTrees_SMOTE_20000` | 0.4725 | 0.4339 | 0.4348 |
+
+References sans SMOTE extreme :
+
+| Modele | Macro F1 |
+| --- | ---: |
+| `LogisticRegression_3_classes` | 0.4392 |
+| `RandomForest_3_classes_optimise_500` | 0.4702 |
+
+Interpretation :
+
+- l'augmentation massive n'ameliore pas le meilleur modele simple post-voyage ;
+- elle reste inferieure au meilleur test complementaire ;
+- SMOTE cree davantage d'exemples, mais ne cree pas de nouveau signal metier ;
+- une forte augmentation artificielle peut ajouter du bruit et ne garantit pas
+  une meilleure generalisation.
+
+Decision :
+
+`SMOTE +20 000` n'est pas retenu pour le modele post-voyage.
+
+### Conclusion de l'experience
+
+L'experience confirme que les limites de performance ne sont pas uniquement
+liees au volume de donnees ou au desequilibre des classes.
+
+Le levier prioritaire n'est donc pas l'augmentation artificielle massive, mais
+l'enrichissement avec des variables metier plus informatives :
+
+- qualite reelle des hotels ;
+- duree et complexite reelles des vols ;
+- meteo observee pendant le sejour ;
+- historique client ;
+- indicateurs de qualite de service ;
+- donnees operationnelles plus fines.
+
+## 23. Recommandations pour la suite
 
 Les prochaines ameliorations prioritaires sont :
 
