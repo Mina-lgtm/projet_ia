@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #172033; }
+      .subtitle { font: 400 15px Arial, sans-serif; fill: #4a5568; }
+      .box-title { font: 700 16px Arial, sans-serif; fill: #172033; }
+      .box-text { font: 400 13px Arial, sans-serif; fill: #344054; }
+      .small { font: 400 12px Arial, sans-serif; fill: #475467; }
+      .box { fill: #f8fafc; stroke: #98a2b3; stroke-width: 1.5; rx: 14; }
+      .main { fill: #eef6ff; stroke: #2e90fa; }
+      .track { fill: #f0fdf4; stroke: #16a34a; }
+      .risk { fill: #fff7ed; stroke: #f97316; }
+      .deploy { fill: #f5f3ff; stroke: #7c3aed; }
+      .arrow { stroke: #344054; stroke-width: 2.2; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke-dasharray: 7 6; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#344054" />
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#ffffff" />
+  <text x="60" y="52" class="title">Architecture d’industrialisation — projet IA voyages</text>
+  <text x="60" y="80" class="subtitle">Du dataset au déploiement contrôlé : entraînement reproductible, traçabilité, monitoring et réentraînement.</text>
+
+  <!-- Main vertical flow -->
+  <rect x="80" y="125" width="260" height="82" class="box main" />
+  <text x="105" y="154" class="box-title">1. Données</text>
+  <text x="105" y="179" class="box-text">CSV synthétique dans data/</text>
+  <text x="105" y="198" class="box-text">Sources externes futures possibles</text>
+
+  <rect x="80" y="250" width="260" height="88" class="box main" />
+  <text x="105" y="279" class="box-title">2. Validation & nettoyage</text>
+  <text x="105" y="304" class="box-text">Schéma, valeurs manquantes</text>
+  <text x="105" y="323" class="box-text">Outliers, incohérences métier</text>
+
+  <rect x="80" y="382" width="260" height="92" class="box main" />
+  <text x="105" y="411" class="box-title">3. Split train / test</text>
+  <text x="105" y="436" class="box-text">Séparation avant imputation,</text>
+  <text x="105" y="455" class="box-text">encodage, scaling et SMOTE</text>
+
+  <rect x="80" y="520" width="260" height="95" class="box main" />
+  <text x="105" y="549" class="box-title">4. Pipeline ML</text>
+  <text x="105" y="574" class="box-text">ColumnTransformer + Pipeline</text>
+  <text x="105" y="593" class="box-text">Modèle pré-voyage / post-voyage</text>
+
+  <path d="M210 207 L210 247" class="arrow" />
+  <path d="M210 338 L210 379" class="arrow" />
+  <path d="M210 474 L210 517" class="arrow" />
+
+  <!-- Tracking side -->
+  <rect x="430" y="250" width="270" height="88" class="box track" />
+  <text x="455" y="279" class="box-title">Traçabilité MLflow</text>
+  <text x="455" y="304" class="box-text">Paramètres, métriques, runs</text>
+  <text x="455" y="323" class="box-text">Artefacts et version modèle</text>
+
+  <rect x="430" y="382" width="270" height="92" class="box risk" />
+  <text x="455" y="411" class="box-title">Éco-conception</text>
+  <text x="455" y="436" class="box-text">Mesure CodeCarbon</text>
+  <text x="455" y="455" class="box-text">Coût environnemental documenté</text>
+
+  <path d="M340 565 C385 565, 385 294, 427 294" class="arrow dashed" />
+  <path d="M340 570 C385 570, 385 428, 427 428" class="arrow dashed" />
+
+  <!-- Export and deployment -->
+  <rect x="790" y="125" width="290" height="82" class="box deploy" />
+  <text x="815" y="154" class="box-title">5. Export modèle</text>
+  <text x="815" y="179" class="box-text">models/*.pkl + metadata JSON</text>
+  <text x="815" y="198" class="box-text">Version Git + run MLflow</text>
+
+  <rect x="790" y="250" width="290" height="88" class="box deploy" />
+  <text x="815" y="279" class="box-title">6. API FastAPI</text>
+  <text x="815" y="304" class="box-text">/health puis /predict</text>
+  <text x="815" y="323" class="box-text">Validation Pydantic des entrées</text>
+
+  <rect x="790" y="382" width="290" height="92" class="box deploy" />
+  <text x="815" y="411" class="box-title">7. Docker & CI/CD</text>
+  <text x="815" y="436" class="box-text">Build reproductible local</text>
+  <text x="815" y="455" class="box-text">Tests, syntaxe, notebook, API</text>
+
+  <rect x="790" y="520" width="290" height="95" class="box risk" />
+  <text x="815" y="549" class="box-title">8. Monitoring</text>
+  <text x="815" y="574" class="box-text">Performance, dérive, biais</text>
+  <text x="815" y="593" class="box-text">Logs prédictions et alertes</text>
+
+  <path d="M340 568 C520 568, 610 166, 787 166" class="arrow" />
+  <path d="M935 207 L935 247" class="arrow" />
+  <path d="M935 338 L935 379" class="arrow" />
+  <path d="M935 474 L935 517" class="arrow" />
+
+  <!-- Retraining loop -->
+  <path d="M790 580 C625 700, 330 700, 210 618" class="arrow dashed" />
+  <text x="430" y="696" class="small">Boucle de réentraînement contrôlé si dérive, baisse de performance ou nouvelles données annotées</text>
+
+  <!-- Governance band -->
+  <rect x="80" y="655" width="1000" height="50" class="box" />
+  <text x="105" y="685" class="box-title">Gouvernance :</text>
+  <text x="215" y="685" class="box-text">Model Card, Datasheet, RGPD, supervision humaine, documentation des limites et validation métier</text>
+</svg>

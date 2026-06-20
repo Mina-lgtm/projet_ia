@@ -27,7 +27,7 @@ jobs:
 
       - name: Validate Python package
         run: |
-          python -m compileall app tests
+          python -m compileall app tests train.py
 
       - name: Run API tests
         run: |

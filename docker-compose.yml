@@ -6,4 +6,7 @@ services:
       - "8001:8000"
     environment:
       - PYTHONUNBUFFERED=1
+    volumes:
+      - ./models:/app/models:ro
+      - ./logs:/app/logs
     restart: unless-stopped
