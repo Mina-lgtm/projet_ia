@@ -1,0 +1,1400 @@
+﻿trip_id,client_type,budget_total,destination,saison,duree_jours,type_hebergement,prix_vol,meteo_prevue,activite_principale,satisfaction_client,imprevus,reorganisation_necessaire,respect_budget,retour_client
+1,solo,5548.9,dubaï,automne,3,hôtel,1320.77,ensoleillé,plage,3,annulation,1,0,séjour mitigé.
+2,business,3288.27,rome,printemps,12,hôtel,1524.09,variable,randonnée,4,aucun,0,1,excellent séjour.
+3,senior,13347.18,bali,printemps,16,villa,881.94,ensoleillé,plage,5,météo,1,1,excellent séjour.
+4,couple,7049.42,sydney,automne,17,appartement,844.39,nuageux,randonnée,3,météo,1,1,séjour mitigé.
+5,solo,7612.92,paris,hiver,7,hôtel,1081.24,pluie,gastronomie,2,retard_vol,1,1,séjour mitigé.
+6,famille,9378.46,new york,printemps,12,hôtel,1762.66,nuageux,gastronomie,5,météo,1,1,excellent séjour.
+7,business,7486.54,lisbonne,été,5,villa,1033.07,nuageux,business,5,météo,1,1,excellent séjour.
+9,couple,9414.0,paris,hiver,17,appartement,1156.59,pluie,gastronomie,2,annulation,1,0,séjour mitigé.
+11,senior,12845.33,bali,automne,21,resort,466.0,variable,business,5,retard_vol,1,1,excellent séjour.
+12,senior,10106.42,paris,hiver,4,appartement,1281.23,nuageux,plage,2,retard_vol,1,0,séjour mitigé.
+13,famille,8515.12,new york,automne,10,villa,1204.4,nuageux,plage,1,météo,1,1,séjour mitigé.
+14,solo,7607.9,sydney,printemps,19,hôtel,820.22,ensoleillé,randonnée,2,annulation,1,1,séjour mitigé.
+15,business,12985.57,new york,été,9,hôtel,1631.27,pluie,randonnée,4,retard_vol,1,1,excellent séjour.
+16,solo,6125.88,rome,automne,21,appartement,1211.76,nuageux,business,1,aucun,0,0,séjour mitigé.
+17,senior,8193.32,new york,hiver,17,appartement,1494.6,pluie,business,2,aucun,0,1,séjour mitigé.
+19,famille,12221.95,rome,printemps,4,villa,1206.0,variable,culture,2,aucun,0,1,séjour mitigé.
+20,business,10416.72,tokyo,printemps,5,appartement,529.64,ensoleillé,plage,3,annulation,1,1,séjour mitigé.
+21,famille,8186.44,bali,automne,20,appartement,1236.69,variable,business,2,aucun,0,1,séjour mitigé.
+22,solo,10407.99,rome,automne,5,appartement,1617.2,pluie,plage,5,retard_vol,1,0,excellent séjour.
+23,famille,10261.51,lisbonne,hiver,16,resort,1194.54,ensoleillé,plage,1,bagages,1,0,séjour mitigé.
+24,solo,13391.63,dubaï,automne,3,villa,1648.46,pluie,business,5,météo,1,1,excellent séjour.
+25,famille,5884.06,tokyo,hiver,14,villa,427.89,pluie,culture,1,aucun,0,0,séjour mitigé.
+26,couple,954.98,lisbonne,hiver,8,villa,776.88,variable,business,1,retard_vol,1,1,séjour mitigé.
+27,senior,14732.22,lisbonne,été,15,resort,631.15,variable,plage,5,bagages,1,1,excellent séjour.
+28,business,10572.54,lisbonne,été,21,resort,606.79,ensoleillé,culture,5,bagages,1,0,excellent séjour.
+29,solo,14826.2,bali,automne,21,villa,1357.46,nuageux,gastronomie,2,retard_vol,1,0,séjour mitigé.
+30,business,2403.24,dubaï,été,8,appartement,1727.18,variable,culture,4,météo,1,0,excellent séjour.
+31,couple,1497.43,lisbonne,printemps,9,hôtel,1185.28,variable,culture,2,météo,1,0,séjour mitigé.
+32,senior,14400.28,new york,automne,20,villa,343.17,pluie,gastronomie,1,retard_vol,1,1,séjour mitigé.
+33,famille,11390.91,dubaï,printemps,21,resort,134.0,variable,randonnée,1,bagages,1,0,séjour mitigé.
+34,couple,4132.88,rome,été,7,villa,1348.67,ensoleillé,randonnée,2,météo,1,0,séjour mitigé.
+35,business,7427.8,bali,hiver,10,villa,1602.58,variable,gastronomie,1,retard_vol,1,1,séjour mitigé.
+36,couple,8629.37,paris,printemps,4,villa,1796.66,nuageux,culture,2,météo,1,0,séjour mitigé.
+37,couple,9354.51,sydney,été,12,villa,1795.83,ensoleillé,gastronomie,3,bagages,1,1,séjour mitigé.
+38,business,13023.12,new york,printemps,13,hôtel,165.31,ensoleillé,plage,5,aucun,0,0,excellent séjour.
+39,senior,853.14,lisbonne,été,6,appartement,577.9,pluie,randonnée,1,retard_vol,1,1,séjour mitigé.
+40,senior,5736.58,dubaï,automne,17,villa,164.47,nuageux,culture,5,aucun,0,0,excellent séjour.
+41,business,5227.96,tokyo,été,16,appartement,851.56,pluie,culture,2,bagages,1,0,séjour mitigé.
+42,business,5142.1,tokyo,été,15,appartement,954.2,ensoleillé,randonnée,5,bagages,1,1,excellent séjour.
+43,solo,13696.57,new york,printemps,10,hôtel,348.33,ensoleillé,business,2,annulation,1,1,séjour mitigé.
+44,solo,13525.7,rome,hiver,3,villa,595.68,nuageux,culture,5,annulation,1,1,excellent séjour.
+45,business,4100.91,tokyo,été,14,appartement,750.07,ensoleillé,culture,3,aucun,0,0,séjour mitigé.
+46,senior,10110.99,paris,été,14,hôtel,1163.0,nuageux,culture,4,météo,1,0,excellent séjour.
+47,famille,11526.28,sydney,été,15,villa,1541.26,nuageux,randonnée,1,bagages,1,0,séjour mitigé.
+48,couple,9297.44,lisbonne,hiver,11,villa,1085.6,ensoleillé,business,5,aucun,0,0,excellent séjour.
+49,business,10193.15,new york,printemps,7,resort,307.18,ensoleillé,randonnée,5,retard_vol,1,1,excellent séjour.
+50,couple,13659.38,paris,printemps,21,appartement,1366.22,ensoleillé,gastronomie,4,aucun,0,0,excellent séjour.
+51,couple,6298.38,new york,été,7,villa,1191.79,ensoleillé,randonnée,2,retard_vol,1,1,séjour mitigé.
+52,couple,11568.18,paris,printemps,15,appartement,1196.77,variable,randonnée,2,bagages,1,0,séjour mitigé.
+53,business,1535.43,sydney,automne,3,appartement,1308.71,pluie,business,4,météo,1,1,excellent séjour.
+54,business,2101.65,rome,printemps,5,appartement,1572.69,pluie,business,1,météo,1,1,séjour mitigé.
+55,solo,4271.55,dubaï,automne,9,villa,1274.38,variable,randonnée,2,retard_vol,1,0,séjour mitigé.
+56,couple,6164.98,rome,hiver,15,appartement,1235.25,nuageux,gastronomie,2,bagages,1,1,séjour mitigé.
+57,business,2661.97,sydney,hiver,5,villa,1475.38,nuageux,culture,2,retard_vol,1,1,séjour mitigé.
+58,senior,6102.08,lisbonne,printemps,12,villa,1009.15,nuageux,plage,2,météo,1,0,séjour mitigé.
+59,business,4646.58,lisbonne,hiver,7,villa,841.25,nuageux,gastronomie,2,météo,1,0,séjour mitigé.
+60,solo,14936.62,new york,été,15,resort,1199.42,ensoleillé,culture,3,météo,1,0,séjour mitigé.
+61,couple,10432.85,new york,printemps,12,resort,1032.05,nuageux,gastronomie,4,retard_vol,1,1,excellent séjour.
+62,senior,7891.24,rome,été,16,resort,1190.78,ensoleillé,culture,2,météo,1,0,séjour mitigé.
+63,couple,4858.33,rome,hiver,10,resort,1326.68,variable,gastronomie,2,retard_vol,1,1,séjour mitigé.
+64,famille,4903.8,lisbonne,été,8,villa,645.25,ensoleillé,plage,3,météo,0,1,séjour mitigé.
+65,business,1652.62,rome,printemps,4,appartement,948.98,pluie,culture,1,retard_vol,1,1,séjour mitigé.
+66,couple,9703.95,lisbonne,automne,15,villa,828.65,variable,plage,2,bagages,1,1,séjour mitigé.
+67,business,1590.34,rome,automne,3,appartement,1085.72,ensoleillé,business,4,météo,0,0,excellent séjour.
+68,famille,8401.42,new york,automne,10,resort,1161.43,ensoleillé,plage,2,météo,1,0,séjour mitigé.
+69,senior,12479.47,bali,printemps,17,hôtel,1068.25,variable,culture,2,retard_vol,1,0,séjour mitigé.
+70,couple,3835.27,tokyo,été,12,villa,591.17,ensoleillé,randonnée,2,retard_vol,0,1,séjour mitigé.
+71,couple,11292.57,paris,automne,13,appartement,1490.79,nuageux,plage,3,retard_vol,1,1,séjour mitigé.
+72,solo,2187.78,sydney,hiver,4,appartement,1152.43,variable,business,3,météo,0,1,séjour mitigé.
+73,famille,12406.78,lisbonne,été,20,appartement,914.14,ensoleillé,gastronomie,1,retard_vol,0,0,séjour mitigé.
+74,famille,7327.12,rome,hiver,18,appartement,1006.62,pluie,culture,2,retard_vol,1,0,séjour mitigé.
+75,famille,5316.27,tokyo,été,13,hôtel,688.82,ensoleillé,plage,3,météo,1,1,séjour mitigé.
+76,couple,11518.82,new york,hiver,15,resort,1127.6,nuageux,gastronomie,3,retard_vol,1,1,séjour mitigé.
+77,senior,3963.36,tokyo,hiver,10,hôtel,620.57,nuageux,culture,4,retard_vol,1,0,excellent séjour.
+78,business,4004.78,new york,printemps,4,resort,1171.66,variable,culture,3,aucun,0,0,séjour mitigé.
+80,solo,2648.94,tokyo,hiver,8,villa,717.25,nuageux,randonnée,2,bagages,0,1,séjour mitigé.
+81,couple,7913.09,sydney,été,13,appartement,1085.17,variable,culture,2,retard_vol,1,1,séjour mitigé.
+82,senior,12784.87,new york,hiver,15,hôtel,1417.32,variable,gastronomie,3,météo,0,0,séjour mitigé.
+83,senior,11425.81,new york,hiver,15,villa,1106.9,nuageux,culture,5,aucun,0,1,excellent séjour.
+84,famille,14419.35,paris,automne,15,hôtel,1028.22,nuageux,plage,3,bagages,1,1,séjour mitigé.
+85,couple,12035.15,bali,hiver,15,villa,1389.27,pluie,culture,2,aucun,0,0,séjour mitigé.
+86,business,5372.11,new york,été,6,appartement,906.04,variable,business,2,annulation,1,0,séjour mitigé.
+87,business,1647.76,dubaï,hiver,3,hôtel,1362.15,pluie,culture,1,retard_vol,0,0,séjour mitigé.
+88,business,4113.67,lisbonne,automne,7,appartement,638.96,ensoleillé,culture,3,bagages,1,0,séjour mitigé.
+89,senior,5746.63,lisbonne,été,10,hôtel,724.68,ensoleillé,gastronomie,2,météo,1,0,séjour mitigé.
+90,famille,11511.49,new york,été,13,hôtel,1141.9,variable,plage,4,aucun,0,1,excellent séjour.
+91,famille,17274.55,paris,printemps,20,resort,1357.49,ensoleillé,culture,3,annulation,0,1,séjour mitigé.
+92,couple,5581.32,bali,printemps,7,appartement,1268.48,variable,culture,4,retard_vol,0,0,excellent séjour.
+93,famille,14646.06,paris,hiver,16,appartement,1200.91,pluie,culture,2,météo,1,1,séjour mitigé.
+94,solo,9807.66,bali,automne,16,resort,1180.83,pluie,gastronomie,1,bagages,1,0,séjour mitigé.
+95,famille,9233.03,new york,été,10,villa,863.16,ensoleillé,plage,3,météo,1,0,séjour mitigé.
+96,senior,16132.5,new york,printemps,18,hôtel,989.39,pluie,culture,4,météo,1,0,excellent séjour.
+97,solo,8825.17,sydney,été,13,hôtel,1110.41,variable,plage,4,bagages,1,0,excellent séjour.
+98,senior,6880.7,lisbonne,automne,12,villa,1048.48,pluie,culture,2,aucun,0,1,séjour mitigé.
+99,business,4849.39,new york,automne,5,appartement,1166.32,ensoleillé,culture,2,retard_vol,1,0,séjour mitigé.
+100,famille,9636.33,rome,automne,19,appartement,941.65,pluie,plage,3,météo,1,1,séjour mitigé.
+101,solo,2721.2,tokyo,printemps,8,appartement,786.53,ensoleillé,plage,2,météo,1,0,séjour mitigé.
+102,senior,6521.95,lisbonne,été,11,villa,852.7,variable,culture,4,aucun,0,1,excellent séjour.
+103,senior,3858.48,rome,été,8,hôtel,1150.22,ensoleillé,gastronomie,2,annulation,1,1,séjour mitigé.
+104,couple,3156.94,bali,printemps,5,hôtel,1350.16,variable,culture,2,bagages,1,1,séjour mitigé.
+105,famille,3968.49,dubaï,printemps,8,resort,1525.03,ensoleillé,culture,4,aucun,0,1,excellent séjour.
+106,senior,9116.45,lisbonne,été,17,hôtel,1031.39,ensoleillé,plage,2,météo,1,0,séjour mitigé.
+107,couple,9210.9,bali,automne,11,villa,1081.01,pluie,culture,3,météo,1,1,séjour mitigé.
+108,solo,9727.07,new york,été,12,villa,1057.71,ensoleillé,culture,3,retard_vol,1,1,séjour mitigé.
+109,solo,7725.61,dubaï,hiver,16,hôtel,1386.4,nuageux,gastronomie,2,météo,1,1,séjour mitigé.
+110,business,6503.22,new york,printemps,7,hôtel,1271.45,ensoleillé,business,2,météo,0,0,séjour mitigé.
+111,couple,9247.46,new york,été,10,hôtel,1029.43,variable,plage,1,météo,1,0,séjour mitigé.
+112,senior,5950.06,tokyo,printemps,19,hôtel,729.18,ensoleillé,gastronomie,2,annulation,1,0,séjour mitigé.
+113,business,2027.7,lisbonne,automne,3,hôtel,754.79,nuageux,business,2,aucun,0,0,séjour mitigé.
+114,solo,4470.21,rome,hiver,10,resort,1050.5,ensoleillé,plage,3,annulation,1,1,séjour mitigé.
+115,couple,5452.0,lisbonne,été,8,appartement,1015.27,pluie,culture,1,météo,1,0,séjour mitigé.
+116,couple,4980.55,paris,été,5,appartement,1470.74,ensoleillé,gastronomie,3,retard_vol,1,0,séjour mitigé.
+117,famille,5022.84,rome,printemps,13,villa,1266.39,ensoleillé,randonnée,2,météo,0,0,séjour mitigé.
+118,senior,7174.02,rome,été,18,villa,1472.93,ensoleillé,plage,2,retard_vol,1,0,séjour mitigé.
+119,couple,3851.98,lisbonne,automne,7,resort,954.07,nuageux,culture,4,aucun,0,1,excellent séjour.
+120,famille,7345.11,bali,printemps,9,appartement,1117.02,variable,culture,2,annulation,1,1,séjour mitigé.
+121,senior,4523.67,lisbonne,printemps,9,villa,954.03,pluie,culture,2,aucun,0,1,séjour mitigé.
+122,famille,8902.57,dubaï,hiver,14,resort,1625.48,pluie,plage,2,retard_vol,1,0,séjour mitigé.
+123,business,2830.29,dubaï,hiver,6,villa,1313.67,pluie,business,2,aucun,0,1,séjour mitigé.
+124,solo,3806.16,dubaï,été,6,villa,1630.75,nuageux,randonnée,2,météo,1,1,séjour mitigé.
+125,solo,7191.19,new york,hiver,8,hôtel,673.3,pluie,culture,2,aucun,0,1,séjour mitigé.
+126,famille,6772.07,rome,automne,14,villa,1438.05,pluie,plage,2,météo,0,1,séjour mitigé.
+127,business,1153.38,tokyo,printemps,3,resort,759.86,pluie,culture,2,annulation,0,1,séjour mitigé.
+128,business,1775.0,rome,printemps,4,appartement,1222.8,nuageux,business,3,aucun,0,1,séjour mitigé.
+129,solo,3844.61,bali,été,6,hôtel,1253.71,nuageux,culture,4,aucun,0,0,excellent séjour.
+130,solo,4161.07,tokyo,hiver,11,resort,526.45,pluie,business,3,bagages,0,0,séjour mitigé.
+131,solo,9094.75,bali,été,12,villa,1195.94,ensoleillé,plage,4,aucun,0,1,excellent séjour.
+132,couple,7349.93,sydney,automne,13,villa,1256.72,nuageux,gastronomie,4,annulation,1,1,excellent séjour.
+133,solo,6846.09,lisbonne,été,12,villa,1105.59,ensoleillé,randonnée,2,annulation,1,0,séjour mitigé.
+134,business,3289.6,lisbonne,automne,5,villa,834.62,pluie,business,2,annulation,1,1,séjour mitigé.
+135,famille,6146.55,lisbonne,automne,10,resort,795.23,ensoleillé,plage,2,météo,1,0,séjour mitigé.
+138,business,1762.44,lisbonne,été,3,appartement,949.6,variable,business,3,météo,1,0,séjour mitigé.
+139,famille,6470.99,paris,automne,7,villa,1125.0,pluie,culture,1,retard_vol,1,0,séjour mitigé.
+140,couple,11363.43,new york,été,14,appartement,1194.54,variable,culture,3,retard_vol,1,0,séjour mitigé.
+141,business,3677.84,dubaï,hiver,7,hôtel,1340.0,pluie,business,1,météo,1,1,séjour mitigé.
+142,solo,3258.31,dubaï,automne,6,hôtel,1512.67,pluie,plage,1,météo,1,0,séjour mitigé.
+143,business,2077.29,sydney,printemps,3,appartement,1067.21,pluie,gastronomie,2,aucun,0,1,séjour mitigé.
+144,business,6064.07,paris,été,6,villa,1162.05,ensoleillé,culture,5,aucun,0,1,excellent séjour.
+145,famille,11349.78,bali,printemps,17,appartement,1163.95,ensoleillé,culture,2,météo,0,0,séjour mitigé.
+146,business,2363.7,new york,printemps,3,villa,865.66,ensoleillé,business,2,bagages,1,1,séjour mitigé.
+147,senior,5676.82,bali,printemps,8,resort,1291.62,variable,plage,2,météo,1,1,séjour mitigé.
+148,business,2350.61,paris,automne,3,villa,1269.97,variable,business,1,retard_vol,1,1,séjour mitigé.
+149,solo,3164.44,rome,été,8,villa,1281.2,ensoleillé,culture,4,aucun,0,1,excellent séjour.
+150,senior,10825.46,lisbonne,automne,18,villa,873.13,nuageux,plage,1,retard_vol,1,0,séjour mitigé.
+151,business,2743.64,rome,hiver,7,appartement,1008.42,nuageux,business,3,aucun,0,1,séjour mitigé.
+152,famille,13042.36,bali,été,19,villa,1158.66,ensoleillé,plage,3,annulation,0,0,séjour mitigé.
+153,business,6376.53,new york,été,7,villa,1052.13,variable,business,2,annulation,1,1,séjour mitigé.
+154,senior,5562.37,tokyo,printemps,16,villa,659.81,nuageux,culture,4,aucun,0,1,excellent séjour.
+155,solo,3914.75,new york,automne,4,villa,1082.32,variable,plage,2,bagages,1,0,séjour mitigé.
+156,couple,9204.41,bali,hiver,11,resort,1311.64,nuageux,plage,3,retard_vol,0,1,séjour mitigé.
+157,famille,5397.67,new york,printemps,7,villa,1422.96,ensoleillé,culture,2,retard_vol,1,1,séjour mitigé.
+158,solo,11885.49,paris,printemps,14,villa,1254.12,variable,randonnée,3,aucun,0,0,séjour mitigé.
+159,business,4675.19,new york,printemps,5,villa,1152.0,ensoleillé,business,3,météo,1,1,séjour mitigé.
+160,solo,13129.94,new york,printemps,15,resort,1096.76,nuageux,plage,4,retard_vol,1,1,excellent séjour.
+161,solo,4695.78,bali,été,6,villa,880.75,ensoleillé,gastronomie,3,retard_vol,1,0,séjour mitigé.
+162,couple,5446.62,paris,été,6,hôtel,1217.25,variable,gastronomie,2,météo,1,1,séjour mitigé.
+163,solo,5669.13,rome,printemps,11,villa,1291.78,variable,business,2,bagages,1,1,séjour mitigé.
+164,solo,7942.62,bali,printemps,12,appartement,1693.63,nuageux,gastronomie,2,météo,0,0,séjour mitigé.
+165,business,1955.48,tokyo,hiver,5,villa,728.43,pluie,business,3,retard_vol,0,1,séjour mitigé.
+166,famille,6612.44,sydney,automne,13,appartement,1246.78,nuageux,gastronomie,3,aucun,0,0,séjour mitigé.
+167,senior,18143.54,new york,automne,20,appartement,1103.37,variable,gastronomie,2,retard_vol,1,0,séjour mitigé.
+168,business,3538.41,sydney,printemps,6,villa,983.72,variable,business,1,météo,1,0,séjour mitigé.
+169,famille,13213.41,paris,été,15,appartement,1431.61,variable,plage,3,météo,1,0,séjour mitigé.
+170,couple,7366.67,lisbonne,hiver,12,appartement,1007.05,variable,randonnée,1,aucun,0,0,séjour mitigé.
+171,senior,9424.19,lisbonne,printemps,17,villa,1012.35,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+172,famille,4738.51,lisbonne,été,9,villa,781.53,variable,plage,2,météo,0,1,séjour mitigé.
+173,famille,18559.78,paris,été,19,appartement,1479.27,ensoleillé,randonnée,2,météo,1,1,séjour mitigé.
+174,solo,5823.37,lisbonne,hiver,9,resort,714.68,nuageux,culture,3,retard_vol,1,0,séjour mitigé.
+175,senior,6575.46,paris,automne,8,villa,1329.7,nuageux,culture,3,bagages,1,1,séjour mitigé.
+176,famille,15031.71,paris,automne,17,resort,1623.66,ensoleillé,plage,4,retard_vol,1,0,excellent séjour.
+177,business,3209.58,paris,printemps,3,villa,1040.53,variable,business,4,aucun,0,1,excellent séjour.
+178,solo,3803.55,lisbonne,été,6,appartement,828.1,ensoleillé,plage,2,météo,1,1,séjour mitigé.
+179,solo,6597.05,rome,automne,13,villa,1299.35,ensoleillé,culture,2,météo,0,1,séjour mitigé.
+180,business,2590.03,dubaï,hiver,5,hôtel,1221.02,ensoleillé,business,5,aucun,0,1,excellent séjour.
+181,business,2404.76,lisbonne,été,4,hôtel,694.48,ensoleillé,business,3,aucun,0,1,séjour mitigé.
+182,famille,13423.77,new york,automne,18,hôtel,1120.56,pluie,randonnée,2,bagages,1,0,séjour mitigé.
+183,senior,12549.06,lisbonne,hiver,19,appartement,760.77,nuageux,plage,2,retard_vol,1,0,séjour mitigé.
+184,business,4318.02,sydney,été,7,resort,1277.56,nuageux,business,2,retard_vol,1,1,séjour mitigé.
+185,couple,5994.86,new york,hiver,6,villa,956.18,nuageux,gastronomie,3,aucun,0,1,séjour mitigé.
+186,famille,6716.87,bali,été,10,hôtel,1524.21,ensoleillé,culture,3,retard_vol,1,0,séjour mitigé.
+187,senior,2784.56,rome,été,7,villa,1129.81,ensoleillé,culture,4,aucun,0,0,excellent séjour.
+188,solo,6071.22,lisbonne,printemps,12,appartement,861.26,variable,plage,3,météo,1,1,séjour mitigé.
+189,solo,3697.96,tokyo,été,9,resort,841.6,variable,plage,2,météo,0,1,séjour mitigé.
+190,business,2653.23,lisbonne,automne,4,villa,737.89,pluie,business,2,aucun,0,1,séjour mitigé.
+191,famille,10065.01,lisbonne,hiver,18,appartement,935.85,nuageux,plage,2,retard_vol,1,1,séjour mitigé.
+192,couple,4316.91,tokyo,printemps,13,villa,897.14,nuageux,culture,1,bagages,1,0,séjour mitigé.
+193,couple,6312.11,paris,été,6,hôtel,927.44,nuageux,culture,2,météo,0,1,séjour mitigé.
+194,solo,11233.31,paris,hiver,13,villa,1255.96,ensoleillé,culture,3,bagages,1,0,séjour mitigé.
+195,famille,17582.15,paris,printemps,18,resort,1269.76,ensoleillé,culture,2,aucun,0,0,séjour mitigé.
+196,business,4388.17,lisbonne,automne,7,hôtel,1011.1,pluie,plage,2,retard_vol,1,1,séjour mitigé.
+197,solo,5160.1,rome,automne,13,resort,1042.68,ensoleillé,randonnée,3,météo,1,1,séjour mitigé.
+198,couple,5700.76,rome,été,12,villa,1026.64,ensoleillé,gastronomie,1,bagages,1,0,séjour mitigé.
+199,solo,7368.9,paris,été,8,hôtel,1317.8,variable,randonnée,3,retard_vol,0,0,séjour mitigé.
+200,solo,8602.49,paris,printemps,10,hôtel,1276.56,nuageux,gastronomie,2,aucun,0,0,séjour mitigé.
+201,solo,6413.73,lisbonne,été,12,villa,938.98,ensoleillé,plage,2,bagages,0,1,séjour mitigé.
+202,business,6004.1,new york,automne,6,villa,1166.79,variable,business,3,retard_vol,0,1,séjour mitigé.
+203,couple,3703.4,rome,hiver,9,villa,1149.63,pluie,gastronomie,1,retard_vol,0,0,séjour mitigé.
+204,famille,14265.14,lisbonne,hiver,21,resort,936.5,variable,plage,1,annulation,0,0,séjour mitigé.
+205,couple,6110.25,new york,hiver,8,appartement,1157.91,nuageux,culture,3,annulation,1,0,séjour mitigé.
+206,solo,9652.1,bali,printemps,15,villa,1104.18,pluie,gastronomie,3,bagages,0,0,séjour mitigé.
+207,couple,5028.61,new york,printemps,6,resort,1419.56,ensoleillé,gastronomie,2,météo,1,1,séjour mitigé.
+208,couple,8077.98,paris,été,9,hôtel,1308.98,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+209,solo,6875.06,new york,hiver,8,appartement,910.95,pluie,business,3,aucun,0,0,séjour mitigé.
+210,famille,14210.02,bali,hiver,20,villa,1358.48,pluie,randonnée,2,météo,1,0,séjour mitigé.
+211,business,6892.27,paris,automne,7,appartement,1043.44,nuageux,culture,3,aucun,0,0,séjour mitigé.
+212,solo,9393.44,new york,été,10,appartement,1240.1,ensoleillé,culture,3,bagages,0,1,séjour mitigé.
+213,couple,4322.38,new york,automne,5,appartement,1301.91,nuageux,gastronomie,1,annulation,1,1,séjour mitigé.
+214,couple,6919.32,bali,hiver,9,resort,1084.45,pluie,gastronomie,3,aucun,0,1,séjour mitigé.
+215,solo,12184.85,new york,automne,12,villa,1269.43,ensoleillé,gastronomie,2,bagages,1,1,séjour mitigé.
+216,solo,3004.57,rome,automne,6,villa,1359.48,ensoleillé,randonnée,3,météo,1,1,séjour mitigé.
+218,senior,9242.19,new york,hiver,10,hôtel,1424.72,ensoleillé,culture,1,retard_vol,1,1,séjour mitigé.
+219,senior,3363.81,rome,automne,7,appartement,1233.09,pluie,gastronomie,2,météo,1,0,séjour mitigé.
+220,couple,9850.44,lisbonne,automne,15,appartement,802.66,nuageux,culture,5,aucun,0,1,excellent séjour.
+221,famille,11912.94,paris,hiver,15,appartement,1059.05,pluie,plage,2,aucun,0,1,séjour mitigé.
+222,senior,15034.39,new york,automne,16,appartement,973.42,ensoleillé,culture,3,bagages,1,0,séjour mitigé.
+223,solo,3871.28,sydney,été,7,resort,1179.03,ensoleillé,business,4,retard_vol,1,0,excellent séjour.
+224,couple,9581.84,bali,automne,12,appartement,1299.97,nuageux,culture,2,aucun,0,0,séjour mitigé.
+225,business,1947.7,rome,été,4,hôtel,1333.35,ensoleillé,business,2,retard_vol,1,1,séjour mitigé.
+226,couple,6859.35,rome,printemps,14,villa,1439.06,pluie,culture,2,retard_vol,1,1,séjour mitigé.
+227,business,5548.86,paris,été,7,resort,1224.5,pluie,business,1,bagages,1,0,séjour mitigé.
+228,business,2350.57,dubaï,été,4,villa,1608.74,ensoleillé,business,2,retard_vol,1,0,séjour mitigé.
+229,business,6931.21,paris,été,7,hôtel,1173.6,ensoleillé,business,1,retard_vol,0,1,séjour mitigé.
+230,famille,14196.85,paris,été,16,appartement,1720.77,nuageux,plage,5,aucun,0,1,excellent séjour.
+232,senior,7907.27,paris,hiver,8,resort,1064.98,variable,culture,4,annulation,1,0,excellent séjour.
+233,senior,7928.13,rome,printemps,17,villa,1074.57,nuageux,culture,2,annulation,1,0,séjour mitigé.
+234,business,5756.26,new york,été,6,hôtel,1189.42,ensoleillé,business,3,bagages,1,0,séjour mitigé.
+235,solo,4771.64,new york,été,5,villa,1071.97,variable,business,5,aucun,0,1,excellent séjour.
+236,couple,5359.13,lisbonne,hiver,10,villa,1001.9,nuageux,culture,4,aucun,0,1,excellent séjour.
+237,senior,9650.2,new york,automne,12,villa,1187.88,nuageux,culture,4,aucun,0,1,excellent séjour.
+238,couple,5124.98,lisbonne,été,9,appartement,895.09,ensoleillé,gastronomie,2,météo,1,0,séjour mitigé.
+239,famille,6551.13,rome,automne,17,appartement,1117.6,nuageux,plage,2,retard_vol,1,1,séjour mitigé.
+240,business,3133.87,rome,été,6,appartement,989.32,ensoleillé,business,5,aucun,0,1,excellent séjour.
+241,solo,5692.93,rome,hiver,14,resort,1194.47,pluie,culture,4,annulation,0,1,excellent séjour.
+242,solo,6894.66,dubaï,automne,13,hôtel,1490.44,nuageux,plage,4,bagages,1,0,excellent séjour.
+243,business,4857.6,bali,été,6,resort,1276.41,ensoleillé,culture,1,météo,1,0,séjour mitigé.
+244,solo,4375.6,rome,été,10,hôtel,1040.99,ensoleillé,business,5,aucun,0,1,excellent séjour.
+245,couple,11005.31,bali,automne,16,appartement,1268.82,pluie,plage,4,retard_vol,1,0,excellent séjour.
+246,senior,11453.97,lisbonne,printemps,19,appartement,957.28,variable,culture,2,retard_vol,1,0,séjour mitigé.
+247,senior,9556.14,paris,automne,12,resort,1060.09,pluie,culture,2,annulation,1,0,séjour mitigé.
+248,solo,7202.77,bali,automne,9,appartement,1265.21,pluie,randonnée,3,météo,0,1,séjour mitigé.
+249,senior,8614.91,new york,hiver,10,appartement,1118.83,nuageux,culture,1,aucun,0,0,séjour mitigé.
+250,couple,4392.71,lisbonne,printemps,7,appartement,749.82,ensoleillé,plage,3,aucun,0,0,séjour mitigé.
+251,couple,3045.04,lisbonne,été,5,villa,953.54,nuageux,culture,3,retard_vol,1,0,séjour mitigé.
+252,couple,5032.05,bali,printemps,8,resort,1340.72,ensoleillé,randonnée,2,météo,1,1,séjour mitigé.
+253,couple,10393.9,paris,automne,11,appartement,1420.66,variable,randonnée,2,annulation,1,1,séjour mitigé.
+254,solo,3673.68,new york,automne,4,appartement,1284.47,nuageux,culture,3,retard_vol,1,1,séjour mitigé.
+255,solo,12382.66,new york,printemps,16,hôtel,879.94,variable,plage,3,retard_vol,1,1,séjour mitigé.
+256,couple,15204.62,new york,été,16,appartement,953.12,pluie,culture,2,bagages,1,1,séjour mitigé.
+257,senior,10888.35,dubaï,été,20,resort,1422.81,ensoleillé,culture,2,bagages,1,0,séjour mitigé.
+258,senior,18482.53,paris,automne,18,appartement,1316.3,pluie,gastronomie,2,bagages,1,0,séjour mitigé.
+259,couple,7409.89,new york,hiver,8,villa,1194.84,pluie,gastronomie,3,annulation,0,1,séjour mitigé.
+260,famille,4986.61,sydney,hiver,9,hôtel,1789.24,pluie,plage,1,aucun,0,0,séjour mitigé.
+261,couple,2569.41,dubaï,automne,5,appartement,1433.87,ensoleillé,plage,4,retard_vol,1,0,excellent séjour.
+262,solo,14657.13,new york,printemps,15,villa,1298.08,nuageux,randonnée,4,retard_vol,1,0,excellent séjour.
+264,solo,10942.97,new york,hiver,11,appartement,1217.52,variable,culture,3,annulation,1,0,séjour mitigé.
+265,famille,6518.69,new york,automne,8,appartement,1056.7,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+266,senior,7435.62,new york,automne,9,appartement,1235.42,pluie,culture,3,météo,0,1,séjour mitigé.
+267,couple,7923.06,rome,été,16,villa,1131.81,ensoleillé,gastronomie,4,météo,1,0,excellent séjour.
+268,business,3598.19,paris,été,4,appartement,1178.7,variable,business,1,météo,0,0,séjour mitigé.
+269,business,3968.59,bali,printemps,6,villa,1146.65,ensoleillé,plage,2,retard_vol,1,0,séjour mitigé.
+270,famille,17049.17,new york,hiver,21,villa,1122.77,nuageux,culture,4,bagages,0,1,excellent séjour.
+271,couple,10635.34,new york,automne,13,villa,1494.25,ensoleillé,plage,4,aucun,0,1,excellent séjour.
+272,couple,15979.85,new york,automne,16,villa,798.49,pluie,plage,2,météo,1,0,séjour mitigé.
+273,senior,9443.89,bali,automne,13,villa,1363.99,pluie,plage,2,météo,0,1,séjour mitigé.
+274,solo,7089.12,dubaï,hiver,14,appartement,1001.27,pluie,culture,1,annulation,0,1,séjour mitigé.
+275,couple,10816.57,new york,printemps,14,hôtel,1030.63,variable,randonnée,3,retard_vol,1,0,séjour mitigé.
+276,senior,15648.94,new york,été,19,resort,1290.32,variable,culture,2,annulation,1,1,séjour mitigé.
+277,famille,7642.41,dubaï,automne,15,appartement,1333.5,pluie,culture,3,aucun,0,1,séjour mitigé.
+278,business,3192.19,paris,été,3,villa,1024.55,ensoleillé,business,4,météo,1,0,excellent séjour.
+279,senior,8078.63,lisbonne,automne,13,resort,807.88,nuageux,plage,2,météo,1,1,séjour mitigé.
+280,business,2802.24,lisbonne,hiver,5,hôtel,997.23,pluie,business,3,aucun,0,1,séjour mitigé.
+281,solo,10773.37,lisbonne,hiver,16,hôtel,805.83,ensoleillé,culture,3,météo,1,1,séjour mitigé.
+282,senior,16752.02,new york,automne,19,appartement,1145.16,variable,gastronomie,1,météo,1,1,séjour mitigé.
+283,famille,11510.06,dubaï,été,21,villa,1329.8,nuageux,culture,2,annulation,1,0,séjour mitigé.
+284,couple,2587.9,lisbonne,printemps,4,appartement,816.52,nuageux,plage,2,aucun,0,0,séjour mitigé.
+285,solo,13078.02,new york,été,16,hôtel,1465.84,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+286,solo,3270.04,lisbonne,hiver,5,villa,991.03,nuageux,gastronomie,2,météo,1,1,séjour mitigé.
+287,solo,7561.84,paris,printemps,8,hôtel,850.87,variable,business,1,bagages,1,0,séjour mitigé.
+288,senior,17321.01,new york,été,19,resort,1140.17,ensoleillé,plage,4,aucun,0,1,excellent séjour.
+289,senior,20262.0,new york,été,21,appartement,999.05,nuageux,culture,1,bagages,0,1,séjour mitigé.
+290,famille,7596.48,lisbonne,printemps,14,villa,1020.69,ensoleillé,plage,3,météo,1,0,séjour mitigé.
+291,solo,5699.54,rome,automne,12,appartement,1128.03,nuageux,culture,4,aucun,0,0,excellent séjour.
+292,couple,13102.7,new york,automne,15,villa,1090.06,pluie,culture,2,annulation,1,1,séjour mitigé.
+293,business,957.94,tokyo,printemps,3,hôtel,806.89,ensoleillé,business,2,retard_vol,1,1,séjour mitigé.
+294,couple,12919.72,bali,printemps,16,resort,1397.29,variable,gastronomie,2,aucun,0,0,séjour mitigé.
+295,senior,4487.75,dubaï,hiver,7,hôtel,1082.97,pluie,gastronomie,4,météo,0,0,excellent séjour.
+296,couple,3989.38,new york,été,4,villa,1053.5,ensoleillé,culture,3,météo,1,1,séjour mitigé.
+297,famille,2481.72,tokyo,automne,7,villa,696.63,variable,plage,3,météo,1,1,séjour mitigé.
+298,senior,12880.87,paris,automne,12,villa,1102.35,nuageux,plage,4,bagages,1,0,excellent séjour.
+299,senior,5637.91,sydney,printemps,10,hôtel,1508.71,pluie,culture,3,retard_vol,1,1,séjour mitigé.
+300,couple,4132.56,tokyo,printemps,13,villa,795.63,ensoleillé,gastronomie,1,annulation,0,0,séjour mitigé.
+301,senior,4395.24,rome,hiver,9,appartement,1038.08,variable,plage,2,retard_vol,1,1,séjour mitigé.
+302,senior,10535.82,lisbonne,printemps,18,villa,1029.57,variable,gastronomie,1,annulation,1,1,séjour mitigé.
+303,couple,4113.13,tokyo,printemps,14,villa,988.83,ensoleillé,gastronomie,2,météo,1,1,séjour mitigé.
+304,famille,19608.71,new york,été,21,resort,1280.92,ensoleillé,gastronomie,3,annulation,1,1,séjour mitigé.
+305,solo,6444.64,new york,automne,7,appartement,856.37,pluie,gastronomie,2,retard_vol,1,1,séjour mitigé.
+306,couple,1966.78,lisbonne,été,4,appartement,839.24,ensoleillé,randonnée,1,météo,1,1,séjour mitigé.
+307,famille,6061.36,rome,automne,14,resort,1523.5,nuageux,culture,3,aucun,0,1,séjour mitigé.
+308,solo,5573.66,rome,hiver,13,villa,1144.32,ensoleillé,randonnée,2,météo,0,0,séjour mitigé.
+309,couple,3196.59,tokyo,hiver,10,resort,800.0,nuageux,gastronomie,3,retard_vol,1,1,séjour mitigé.
+310,business,5767.34,paris,automne,7,hôtel,1364.12,pluie,business,3,bagages,0,0,séjour mitigé.
+311,business,3303.59,lisbonne,hiver,6,villa,779.15,ensoleillé,business,1,retard_vol,0,0,séjour mitigé.
+312,couple,11215.85,paris,hiver,12,appartement,1211.2,ensoleillé,gastronomie,1,retard_vol,1,1,séjour mitigé.
+313,couple,3508.2,bali,hiver,5,appartement,742.01,pluie,plage,3,aucun,0,1,séjour mitigé.
+314,business,3376.55,rome,été,7,hôtel,1083.5,ensoleillé,business,2,annulation,1,1,séjour mitigé.
+315,solo,4079.61,rome,printemps,8,villa,1231.71,ensoleillé,randonnée,2,météo,0,1,séjour mitigé.
+316,senior,7658.46,rome,automne,17,villa,1040.6,pluie,plage,1,aucun,0,1,séjour mitigé.
+317,senior,10156.05,new york,printemps,13,villa,1380.74,pluie,plage,2,météo,0,0,séjour mitigé.
+318,solo,2984.92,tokyo,printemps,8,appartement,589.16,ensoleillé,culture,2,annulation,1,1,séjour mitigé.
+319,famille,6767.81,lisbonne,printemps,12,villa,845.24,pluie,randonnée,4,météo,1,1,excellent séjour.
+320,famille,6496.33,dubaï,printemps,11,appartement,1346.67,ensoleillé,randonnée,1,annulation,1,1,séjour mitigé.
+321,senior,5580.01,rome,printemps,11,hôtel,1556.99,pluie,culture,2,annulation,1,1,séjour mitigé.
+322,couple,2335.83,dubaï,printemps,4,appartement,1036.3,ensoleillé,gastronomie,3,aucun,0,1,séjour mitigé.
+323,business,2669.27,sydney,printemps,5,villa,1400.94,pluie,culture,3,météo,0,0,séjour mitigé.
+324,senior,17958.5,paris,printemps,17,villa,1223.99,variable,culture,4,aucun,0,1,excellent séjour.
+325,famille,13058.41,bali,automne,18,villa,1054.62,pluie,randonnée,3,retard_vol,0,0,séjour mitigé.
+326,business,4959.45,new york,été,5,hôtel,1186.03,ensoleillé,gastronomie,2,annulation,1,0,séjour mitigé.
+327,famille,7241.43,lisbonne,hiver,12,villa,932.0,pluie,randonnée,3,bagages,1,0,séjour mitigé.
+328,couple,2660.0,tokyo,automne,8,appartement,682.54,ensoleillé,plage,4,annulation,0,0,excellent séjour.
+329,business,875.85,tokyo,été,3,appartement,757.92,variable,business,1,retard_vol,1,1,séjour mitigé.
+330,senior,3899.8,lisbonne,printemps,8,villa,852.67,ensoleillé,culture,5,aucun,0,1,excellent séjour.
+331,famille,4423.77,bali,automne,7,hôtel,1257.75,pluie,plage,1,aucun,0,1,séjour mitigé.
+332,senior,7132.8,rome,automne,18,appartement,1407.37,pluie,culture,3,retard_vol,1,0,séjour mitigé.
+333,business,1086.42,tokyo,hiver,3,villa,928.51,ensoleillé,business,3,bagages,1,1,séjour mitigé.
+334,business,2741.94,tokyo,été,7,appartement,610.8,ensoleillé,business,2,météo,1,1,séjour mitigé.
+335,business,1912.11,rome,printemps,4,hôtel,1689.83,ensoleillé,business,1,retard_vol,1,1,séjour mitigé.
+336,senior,7645.12,new york,printemps,8,villa,784.38,pluie,culture,2,retard_vol,0,0,séjour mitigé.
+337,solo,5252.17,new york,printemps,7,hôtel,1083.9,ensoleillé,plage,2,météo,1,1,séjour mitigé.
+338,famille,12866.99,bali,été,18,villa,1345.82,ensoleillé,plage,3,aucun,0,1,séjour mitigé.
+339,solo,11400.5,bali,automne,15,villa,1288.81,ensoleillé,plage,4,météo,0,1,excellent séjour.
+340,solo,6258.78,bali,automne,9,villa,1121.18,pluie,business,3,météo,1,0,séjour mitigé.
+341,senior,6073.45,new york,printemps,7,resort,1074.52,pluie,culture,3,annulation,1,0,séjour mitigé.
+342,senior,16903.37,paris,hiver,21,hôtel,1131.74,variable,culture,2,annulation,1,1,séjour mitigé.
+343,solo,10029.21,dubaï,printemps,16,hôtel,1204.01,pluie,plage,3,annulation,1,0,séjour mitigé.
+344,solo,8590.28,bali,automne,14,hôtel,1394.29,pluie,gastronomie,3,annulation,1,0,séjour mitigé.
+345,famille,5004.1,tokyo,été,14,villa,790.24,ensoleillé,plage,1,retard_vol,0,1,séjour mitigé.
+346,solo,8818.28,paris,été,11,appartement,1095.09,ensoleillé,culture,1,retard_vol,1,1,séjour mitigé.
+347,business,4385.53,paris,printemps,5,resort,1387.03,ensoleillé,business,3,aucun,0,0,séjour mitigé.
+348,solo,10266.88,bali,printemps,15,appartement,1293.7,pluie,plage,2,météo,0,0,séjour mitigé.
+349,couple,3056.02,dubaï,été,6,appartement,1481.81,nuageux,randonnée,5,aucun,0,1,excellent séjour.
+350,business,1810.16,tokyo,été,5,villa,820.91,ensoleillé,gastronomie,3,bagages,1,0,séjour mitigé.
+351,famille,14989.12,new york,automne,15,hôtel,971.23,pluie,culture,3,retard_vol,0,0,séjour mitigé.
+352,business,5398.62,bali,été,7,appartement,1132.77,ensoleillé,culture,2,retard_vol,1,1,séjour mitigé.
+353,solo,10088.19,bali,été,13,hôtel,1375.32,variable,plage,2,annulation,1,0,séjour mitigé.
+354,couple,6432.61,rome,automne,14,villa,1397.43,variable,business,3,météo,1,0,séjour mitigé.
+355,couple,15562.54,paris,hiver,15,appartement,1218.28,ensoleillé,gastronomie,1,aucun,0,0,séjour mitigé.
+356,business,2439.88,dubaï,été,4,resort,1344.01,variable,business,2,météo,1,1,séjour mitigé.
+357,solo,12210.62,paris,printemps,12,resort,1456.33,pluie,randonnée,3,météo,1,0,séjour mitigé.
+358,famille,10930.83,lisbonne,hiver,17,villa,824.67,nuageux,plage,4,retard_vol,0,0,excellent séjour.
+359,senior,8194.01,dubaï,printemps,15,hôtel,1429.16,variable,gastronomie,4,météo,1,0,excellent séjour.
+360,senior,9045.33,new york,été,11,appartement,1075.51,ensoleillé,gastronomie,1,aucun,0,0,séjour mitigé.
+361,solo,9691.58,new york,hiver,13,hôtel,1072.93,pluie,gastronomie,4,retard_vol,1,0,excellent séjour.
+362,couple,8271.15,bali,été,12,appartement,1440.52,ensoleillé,plage,4,aucun,0,1,excellent séjour.
+363,famille,2811.22,tokyo,hiver,7,villa,842.94,pluie,plage,3,retard_vol,1,1,séjour mitigé.
+365,business,3343.64,paris,hiver,4,resort,1461.43,ensoleillé,business,3,retard_vol,1,0,séjour mitigé.
+366,senior,10312.73,rome,hiver,21,resort,1284.25,ensoleillé,gastronomie,2,annulation,1,1,séjour mitigé.
+367,business,6007.64,new york,printemps,7,villa,1222.61,pluie,gastronomie,2,aucun,0,1,séjour mitigé.
+368,business,3001.11,new york,printemps,3,hôtel,1057.53,ensoleillé,culture,2,météo,1,1,séjour mitigé.
+369,business,4707.8,bali,automne,6,hôtel,1296.82,nuageux,business,2,météo,0,0,séjour mitigé.
+370,couple,8173.73,rome,hiver,16,resort,1255.22,nuageux,business,2,météo,1,1,séjour mitigé.
+371,solo,6816.09,paris,été,7,hôtel,1239.9,pluie,culture,2,aucun,0,1,séjour mitigé.
+372,senior,8748.66,rome,été,19,appartement,1394.5,ensoleillé,gastronomie,3,annulation,1,0,séjour mitigé.
+373,solo,3477.35,rome,printemps,9,villa,1123.09,ensoleillé,plage,4,aucun,0,1,excellent séjour.
+374,couple,6601.36,dubaï,été,13,appartement,1735.3,ensoleillé,culture,2,météo,1,1,séjour mitigé.
+375,famille,15880.63,new york,printemps,21,appartement,941.78,ensoleillé,randonnée,2,retard_vol,1,0,séjour mitigé.
+376,senior,6340.29,tokyo,été,18,resort,613.46,ensoleillé,culture,2,météo,1,1,séjour mitigé.
+377,couple,4061.74,tokyo,printemps,12,resort,880.37,ensoleillé,randonnée,3,météo,1,0,séjour mitigé.
+378,business,4818.13,paris,été,5,appartement,1367.24,variable,culture,2,bagages,1,1,séjour mitigé.
+379,business,2415.1,sydney,printemps,4,hôtel,1304.49,ensoleillé,business,1,météo,1,1,séjour mitigé.
+380,business,1822.63,tokyo,automne,6,resort,820.77,ensoleillé,business,2,retard_vol,1,0,séjour mitigé.
+381,senior,12126.22,paris,printemps,13,appartement,1219.87,variable,gastronomie,2,bagages,0,1,séjour mitigé.
+382,solo,3508.79,tokyo,automne,11,resort,649.12,nuageux,gastronomie,3,aucun,0,1,séjour mitigé.
+383,business,3683.46,paris,hiver,4,appartement,1236.01,pluie,business,2,retard_vol,1,0,séjour mitigé.
+384,solo,4804.52,new york,printemps,6,appartement,996.49,variable,randonnée,2,météo,0,1,séjour mitigé.
+385,couple,12099.92,new york,printemps,14,hôtel,1271.38,nuageux,plage,2,retard_vol,1,1,séjour mitigé.
+386,business,6389.41,paris,printemps,7,appartement,1195.16,variable,culture,4,aucun,0,1,excellent séjour.
+387,business,3605.06,rome,hiver,7,hôtel,1121.69,ensoleillé,business,2,météo,0,0,séjour mitigé.
+388,senior,19262.78,new york,printemps,21,appartement,1055.68,pluie,plage,1,bagages,1,0,séjour mitigé.
+389,couple,8080.75,rome,hiver,16,hôtel,1359.51,pluie,gastronomie,2,annulation,1,0,séjour mitigé.
+390,senior,6177.64,tokyo,été,16,resort,686.65,ensoleillé,culture,1,retard_vol,1,0,séjour mitigé.
+391,couple,5065.55,dubaï,automne,9,villa,1157.88,pluie,randonnée,4,météo,1,0,excellent séjour.
+392,solo,5076.0,rome,printemps,12,appartement,1327.01,variable,randonnée,3,météo,1,1,séjour mitigé.
+393,famille,8544.16,dubaï,printemps,14,hôtel,1369.3,nuageux,plage,3,retard_vol,1,0,séjour mitigé.
+394,business,1617.74,lisbonne,printemps,3,hôtel,836.16,ensoleillé,business,3,météo,1,1,séjour mitigé.
+395,famille,6319.31,lisbonne,printemps,11,hôtel,841.03,ensoleillé,gastronomie,3,retard_vol,1,1,séjour mitigé.
+397,solo,3605.5,dubaï,automne,7,appartement,1033.88,variable,plage,2,météo,0,0,séjour mitigé.
+398,famille,4538.66,rome,printemps,10,appartement,1009.94,ensoleillé,plage,2,météo,1,0,séjour mitigé.
+399,business,6632.61,paris,été,7,hôtel,1090.41,ensoleillé,business,4,annulation,1,0,excellent séjour.
+400,solo,2508.05,lisbonne,printemps,4,appartement,876.0,variable,culture,2,météo,1,0,séjour mitigé.
+401,couple,5103.08,dubaï,été,8,villa,1382.37,variable,gastronomie,3,météo,1,1,séjour mitigé.
+402,solo,3819.38,sydney,printemps,7,appartement,1456.8,variable,randonnée,3,annulation,1,1,séjour mitigé.
+403,business,5205.13,new york,hiver,6,appartement,1251.84,ensoleillé,business,4,météo,1,0,excellent séjour.
+404,famille,5659.77,tokyo,automne,19,resort,732.08,nuageux,plage,2,retard_vol,1,0,séjour mitigé.
+405,couple,3729.53,lisbonne,printemps,6,appartement,902.39,variable,culture,2,météo,1,1,séjour mitigé.
+406,famille,4489.48,rome,été,11,appartement,1087.7,variable,plage,3,retard_vol,1,0,séjour mitigé.
+407,solo,11560.81,new york,été,13,hôtel,1106.07,nuageux,randonnée,3,bagages,1,0,séjour mitigé.
+408,senior,8370.35,lisbonne,été,13,appartement,865.79,pluie,plage,2,retard_vol,1,1,séjour mitigé.
+409,solo,4236.71,dubaï,été,8,appartement,1384.71,variable,culture,4,aucun,0,1,excellent séjour.
+410,business,6694.38,new york,hiver,7,villa,971.52,nuageux,business,2,météo,1,1,séjour mitigé.
+411,senior,4430.77,tokyo,automne,11,appartement,808.5,ensoleillé,plage,2,retard_vol,1,1,séjour mitigé.
+412,famille,9655.5,new york,automne,12,villa,1364.16,nuageux,plage,2,retard_vol,0,1,séjour mitigé.
+413,couple,3940.96,sydney,automne,6,hôtel,1173.37,nuageux,plage,2,aucun,0,0,séjour mitigé.
+414,business,1671.46,sydney,automne,3,villa,1264.7,pluie,culture,3,météo,1,1,séjour mitigé.
+415,solo,6030.66,rome,automne,14,villa,1412.74,pluie,plage,2,météo,0,0,séjour mitigé.
+416,famille,5701.19,sydney,printemps,9,resort,1121.04,ensoleillé,plage,2,retard_vol,1,0,séjour mitigé.
+417,couple,4795.89,rome,automne,12,villa,1323.25,nuageux,culture,5,aucun,0,1,excellent séjour.
+419,solo,4765.44,paris,automne,6,hôtel,1240.02,pluie,gastronomie,3,météo,1,0,séjour mitigé.
+420,couple,6939.67,dubaï,été,14,hôtel,1167.62,nuageux,culture,3,bagages,1,1,séjour mitigé.
+421,solo,2058.48,dubaï,été,4,villa,1325.63,pluie,plage,1,annulation,1,1,séjour mitigé.
+422,business,5757.92,new york,été,6,villa,1192.0,variable,gastronomie,4,retard_vol,0,1,excellent séjour.
+423,business,3619.35,bali,été,6,villa,1505.88,nuageux,business,2,aucun,0,0,séjour mitigé.
+424,famille,4486.98,rome,hiver,10,appartement,1464.43,ensoleillé,culture,2,annulation,1,0,séjour mitigé.
+425,couple,8871.71,new york,hiver,12,villa,1467.38,nuageux,plage,4,aucun,0,1,excellent séjour.
+426,solo,12444.69,new york,printemps,13,villa,981.48,pluie,plage,2,météo,1,1,séjour mitigé.
+427,business,5808.18,new york,été,7,villa,1254.28,pluie,culture,1,météo,1,1,séjour mitigé.
+428,couple,6750.35,rome,printemps,14,hôtel,1315.42,pluie,culture,3,météo,1,1,séjour mitigé.
+429,couple,9905.5,lisbonne,automne,15,appartement,1202.23,pluie,culture,1,aucun,0,1,séjour mitigé.
+430,couple,5883.48,lisbonne,hiver,12,appartement,795.25,pluie,randonnée,2,météo,1,0,séjour mitigé.
+431,senior,6692.56,dubaï,automne,13,villa,1154.41,variable,gastronomie,1,météo,1,1,séjour mitigé.
+432,couple,5363.78,new york,hiver,6,resort,1009.43,pluie,culture,2,météo,1,0,séjour mitigé.
+433,senior,8306.45,rome,automne,16,hôtel,872.36,nuageux,plage,3,retard_vol,1,0,séjour mitigé.
+434,solo,7256.75,bali,hiver,9,hôtel,1139.16,pluie,randonnée,2,bagages,1,1,séjour mitigé.
+435,business,1965.75,rome,automne,4,appartement,1134.44,nuageux,business,3,météo,1,1,séjour mitigé.
+436,solo,3432.83,lisbonne,printemps,5,villa,925.39,variable,culture,2,météo,1,1,séjour mitigé.
+437,famille,8739.18,rome,automne,19,appartement,1345.84,variable,plage,3,météo,1,1,séjour mitigé.
+438,solo,2188.04,lisbonne,hiver,4,hôtel,1159.66,variable,randonnée,3,annulation,1,1,séjour mitigé.
+439,business,1513.49,tokyo,printemps,5,resort,857.0,ensoleillé,business,2,retard_vol,1,1,séjour mitigé.
+440,famille,5362.25,rome,été,11,villa,1169.43,ensoleillé,gastronomie,3,bagages,1,0,séjour mitigé.
+441,senior,16259.62,paris,hiver,16,appartement,1057.42,pluie,plage,3,aucun,0,0,séjour mitigé.
+442,solo,10620.33,sydney,été,16,villa,1280.84,variable,randonnée,1,météo,1,1,séjour mitigé.
+443,couple,6637.07,new york,automne,7,villa,889.5,variable,business,2,annulation,1,0,séjour mitigé.
+444,senior,12226.8,new york,automne,14,appartement,1413.85,nuageux,culture,1,météo,1,0,séjour mitigé.
+445,couple,4008.89,lisbonne,printemps,7,appartement,1065.08,nuageux,plage,3,aucun,0,1,séjour mitigé.
+446,solo,6164.17,lisbonne,été,9,appartement,841.29,ensoleillé,culture,1,retard_vol,1,1,séjour mitigé.
+447,senior,8960.66,rome,automne,19,hôtel,951.24,nuageux,gastronomie,2,météo,0,1,séjour mitigé.
+448,solo,7304.26,bali,automne,11,villa,1487.84,nuageux,plage,1,retard_vol,1,1,séjour mitigé.
+449,senior,15833.3,new york,printemps,17,appartement,1090.09,variable,culture,4,météo,1,1,excellent séjour.
+450,business,2524.74,dubaï,printemps,5,resort,1566.0,variable,culture,1,retard_vol,0,1,séjour mitigé.
+451,solo,1776.93,tokyo,automne,6,villa,570.68,ensoleillé,randonnée,2,retard_vol,1,0,séjour mitigé.
+452,senior,11589.04,new york,printemps,12,appartement,1009.43,variable,plage,3,retard_vol,0,0,séjour mitigé.
+453,senior,10354.45,new york,printemps,11,villa,1110.02,variable,culture,3,météo,1,0,séjour mitigé.
+454,senior,6685.92,lisbonne,printemps,13,resort,911.35,nuageux,culture,3,météo,0,0,séjour mitigé.
+455,solo,3409.77,dubaï,automne,6,appartement,1231.61,ensoleillé,gastronomie,2,retard_vol,1,1,séjour mitigé.
+456,senior,3952.58,rome,hiver,9,hôtel,1399.82,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+457,famille,3753.86,rome,printemps,8,villa,1075.2,variable,gastronomie,2,retard_vol,1,0,séjour mitigé.
+458,business,3910.98,new york,printemps,4,appartement,1085.46,ensoleillé,culture,3,aucun,0,1,séjour mitigé.
+459,business,3253.28,bali,été,5,resort,1259.01,ensoleillé,business,2,météo,0,1,séjour mitigé.
+460,couple,4184.53,dubaï,hiver,7,appartement,1422.69,ensoleillé,randonnée,2,bagages,0,1,séjour mitigé.
+461,couple,2600.47,dubaï,printemps,4,appartement,1461.75,ensoleillé,gastronomie,3,météo,1,0,séjour mitigé.
+462,couple,3438.82,paris,printemps,4,villa,1015.95,ensoleillé,gastronomie,4,bagages,1,1,excellent séjour.
+463,senior,6866.47,tokyo,automne,17,appartement,577.47,variable,culture,2,bagages,1,0,séjour mitigé.
+464,solo,13756.2,new york,printemps,15,resort,1321.72,pluie,plage,3,aucun,0,0,séjour mitigé.
+465,business,1924.11,dubaï,printemps,3,appartement,1386.61,variable,culture,3,retard_vol,1,1,séjour mitigé.
+466,famille,7800.48,paris,printemps,9,villa,1084.9,variable,randonnée,2,météo,0,0,séjour mitigé.
+467,business,1069.79,tokyo,hiver,3,appartement,924.59,pluie,business,2,bagages,0,1,séjour mitigé.
+468,couple,3254.21,lisbonne,automne,5,appartement,920.68,nuageux,plage,1,retard_vol,1,1,séjour mitigé.
+469,solo,11024.66,new york,été,13,hôtel,1305.35,ensoleillé,gastronomie,3,météo,1,1,séjour mitigé.
+470,senior,9112.95,paris,printemps,9,resort,1234.49,pluie,culture,3,météo,0,1,séjour mitigé.
+471,senior,4960.68,tokyo,été,14,villa,981.93,variable,culture,1,retard_vol,1,0,séjour mitigé.
+472,senior,7589.91,dubaï,hiver,14,hôtel,1668.53,nuageux,gastronomie,2,retard_vol,1,0,séjour mitigé.
+473,couple,6918.84,sydney,printemps,11,appartement,1148.28,ensoleillé,culture,1,météo,0,0,séjour mitigé.
+475,solo,8888.29,bali,automne,12,appartement,1356.41,variable,plage,1,aucun,0,0,séjour mitigé.
+476,senior,9625.08,sydney,automne,14,hôtel,1437.71,pluie,culture,3,retard_vol,1,0,séjour mitigé.
+477,solo,5456.62,bali,hiver,8,appartement,1057.69,nuageux,plage,1,retard_vol,1,0,séjour mitigé.
+478,business,2176.79,tokyo,automne,6,appartement,827.26,variable,business,3,aucun,0,0,séjour mitigé.
+479,solo,9683.09,new york,automne,11,resort,1285.24,pluie,gastronomie,1,météo,1,1,séjour mitigé.
+480,business,5905.36,new york,automne,6,resort,816.54,nuageux,business,3,retard_vol,1,1,séjour mitigé.
+481,business,2107.18,sydney,automne,4,villa,981.11,nuageux,business,3,bagages,1,1,séjour mitigé.
+482,famille,3390.79,rome,hiver,8,appartement,888.62,nuageux,plage,1,retard_vol,1,0,séjour mitigé.
+483,solo,2310.61,rome,automne,5,villa,1228.48,nuageux,plage,2,annulation,1,1,séjour mitigé.
+484,solo,7730.67,sydney,hiver,13,villa,1321.21,pluie,randonnée,3,aucun,0,1,séjour mitigé.
+485,business,3426.63,new york,automne,4,hôtel,1359.1,ensoleillé,business,1,retard_vol,1,1,séjour mitigé.
+486,senior,15032.23,bali,été,21,hôtel,1250.43,ensoleillé,culture,3,annulation,1,1,séjour mitigé.
+487,couple,5546.6,rome,été,13,villa,1592.96,ensoleillé,plage,2,annulation,1,0,séjour mitigé.
+488,business,3378.77,new york,automne,4,villa,879.54,nuageux,business,2,retard_vol,1,0,séjour mitigé.
+489,business,3044.53,rome,automne,7,appartement,953.11,pluie,business,2,annulation,0,1,séjour mitigé.
+490,senior,9812.6,lisbonne,printemps,15,hôtel,897.43,variable,gastronomie,2,bagages,1,1,séjour mitigé.
+492,famille,2556.7,tokyo,printemps,7,hôtel,746.39,ensoleillé,culture,5,aucun,0,1,excellent séjour.
+493,solo,7512.09,bali,printemps,10,hôtel,853.17,nuageux,business,3,retard_vol,0,0,séjour mitigé.
+494,business,1185.76,tokyo,hiver,3,hôtel,740.04,ensoleillé,business,2,bagages,1,1,séjour mitigé.
+495,solo,6704.63,lisbonne,automne,12,villa,727.9,nuageux,plage,3,bagages,1,1,séjour mitigé.
+496,business,2996.07,new york,printemps,4,hôtel,1220.57,ensoleillé,business,2,annulation,1,0,séjour mitigé.
+498,senior,12492.51,dubaï,été,21,appartement,1134.57,ensoleillé,plage,3,retard_vol,1,1,séjour mitigé.
+500,senior,5572.07,rome,été,12,appartement,1076.81,ensoleillé,culture,4,annulation,1,1,excellent séjour.
+501,solo,11242.41,new york,printemps,13,hôtel,1098.72,pluie,randonnée,4,météo,1,1,excellent séjour.
+502,senior,4623.75,dubaï,automne,8,villa,1510.0,nuageux,gastronomie,5,aucun,0,1,excellent séjour.
+503,couple,4893.94,tokyo,printemps,14,appartement,639.17,pluie,plage,2,retard_vol,0,0,séjour mitigé.
+504,business,3682.73,new york,hiver,4,hôtel,1193.01,ensoleillé,business,2,aucun,0,0,séjour mitigé.
+505,famille,18923.2,new york,été,20,villa,1020.93,ensoleillé,plage,2,aucun,0,0,séjour mitigé.
+507,solo,5178.53,tokyo,printemps,14,hôtel,738.03,variable,plage,3,météo,1,1,séjour mitigé.
+508,senior,9262.06,paris,été,12,hôtel,1032.34,pluie,culture,2,météo,1,1,séjour mitigé.
+509,senior,7193.07,lisbonne,printemps,11,villa,829.82,variable,culture,3,retard_vol,1,0,séjour mitigé.
+510,business,2287.1,tokyo,été,7,hôtel,615.3,ensoleillé,business,2,météo,1,0,séjour mitigé.
+511,famille,11809.88,bali,printemps,17,hôtel,1601.15,variable,plage,4,bagages,1,1,excellent séjour.
+512,solo,3712.04,lisbonne,automne,7,appartement,909.76,nuageux,plage,3,bagages,0,0,séjour mitigé.
+513,business,3620.22,new york,printemps,5,hôtel,992.73,variable,business,1,retard_vol,1,1,séjour mitigé.
+514,solo,9658.24,lisbonne,été,15,resort,934.02,ensoleillé,culture,4,bagages,1,0,excellent séjour.
+515,senior,12939.66,lisbonne,printemps,21,resort,889.73,variable,plage,2,annulation,0,1,séjour mitigé.
+516,famille,8216.27,bali,automne,10,villa,1195.7,nuageux,plage,1,retard_vol,1,0,séjour mitigé.
+517,couple,5313.67,bali,été,7,villa,1350.62,pluie,plage,3,bagages,0,1,séjour mitigé.
+518,famille,11071.98,new york,automne,12,hôtel,1235.18,nuageux,plage,3,bagages,1,1,séjour mitigé.
+519,business,2895.0,paris,hiver,3,hôtel,1124.86,nuageux,business,1,annulation,1,1,séjour mitigé.
+520,couple,1520.72,tokyo,hiver,5,appartement,685.28,pluie,randonnée,2,bagages,1,1,séjour mitigé.
+521,senior,11773.96,lisbonne,hiver,18,hôtel,867.64,pluie,plage,2,météo,1,0,séjour mitigé.
+522,solo,8972.34,new york,été,10,villa,726.17,ensoleillé,plage,3,météo,1,1,séjour mitigé.
+523,solo,4940.56,new york,hiver,5,villa,857.06,pluie,plage,3,retard_vol,0,1,séjour mitigé.
+524,senior,7016.84,rome,printemps,15,appartement,1542.7,variable,culture,1,retard_vol,1,0,séjour mitigé.
+525,senior,6473.16,rome,automne,15,villa,1596.1,nuageux,gastronomie,2,météo,1,0,séjour mitigé.
+526,senior,5555.13,dubaï,été,10,villa,1271.43,ensoleillé,plage,1,annulation,0,1,séjour mitigé.
+527,solo,6741.87,rome,été,13,hôtel,1390.93,variable,plage,2,bagages,1,1,séjour mitigé.
+528,business,2232.92,tokyo,printemps,7,appartement,785.09,ensoleillé,culture,2,annulation,1,1,séjour mitigé.
+529,solo,2595.37,rome,hiver,5,appartement,1871.46,nuageux,gastronomie,1,météo,1,1,séjour mitigé.
+530,senior,4821.55,dubaï,hiver,10,villa,1542.58,pluie,gastronomie,3,météo,1,1,séjour mitigé.
+531,business,3074.71,rome,été,7,resort,1255.65,ensoleillé,business,2,météo,0,0,séjour mitigé.
+532,couple,6050.95,lisbonne,été,10,hôtel,775.26,ensoleillé,culture,1,annulation,1,1,séjour mitigé.
+533,famille,17696.76,new york,automne,19,appartement,841.88,pluie,plage,1,bagages,1,1,séjour mitigé.
+534,senior,5521.47,dubaï,automne,10,villa,1361.08,nuageux,gastronomie,3,météo,1,1,séjour mitigé.
+535,senior,17301.27,new york,automne,19,villa,983.31,variable,culture,3,annulation,1,0,séjour mitigé.
+536,solo,4895.13,dubaï,automne,8,appartement,1039.0,nuageux,gastronomie,3,retard_vol,1,0,séjour mitigé.
+537,senior,12511.44,new york,hiver,17,appartement,1001.58,pluie,culture,3,aucun,0,1,séjour mitigé.
+538,couple,7533.95,bali,été,9,villa,1036.06,ensoleillé,culture,2,retard_vol,1,1,séjour mitigé.
+539,solo,4030.94,rome,printemps,8,villa,1604.2,variable,culture,3,retard_vol,1,1,séjour mitigé.
+540,famille,9830.59,lisbonne,automne,17,resort,1024.65,variable,plage,2,annulation,0,1,séjour mitigé.
+541,famille,13149.86,new york,été,18,villa,1107.82,ensoleillé,plage,4,annulation,1,1,excellent séjour.
+542,couple,2462.77,lisbonne,printemps,4,villa,1105.87,variable,plage,3,annulation,1,1,séjour mitigé.
+543,solo,9882.54,paris,printemps,12,appartement,1236.3,variable,plage,4,bagages,1,1,excellent séjour.
+544,senior,10893.54,new york,automne,14,resort,965.86,pluie,culture,4,retard_vol,1,1,excellent séjour.
+545,senior,11214.38,new york,été,12,appartement,1362.56,ensoleillé,culture,1,météo,0,0,séjour mitigé.
+546,solo,2988.23,sydney,automne,5,resort,1289.25,pluie,culture,3,météo,1,1,séjour mitigé.
+547,famille,6701.94,rome,printemps,14,resort,1081.03,nuageux,randonnée,4,annulation,1,0,excellent séjour.
+549,couple,15709.49,paris,été,16,villa,1061.6,ensoleillé,culture,3,aucun,0,1,séjour mitigé.
+550,solo,12421.27,paris,hiver,14,appartement,968.62,pluie,gastronomie,4,aucun,0,1,excellent séjour.
+551,famille,13170.51,new york,printemps,14,hôtel,1263.24,ensoleillé,culture,2,météo,1,0,séjour mitigé.
+552,senior,11805.49,paris,été,11,appartement,1572.14,nuageux,plage,2,météo,1,0,séjour mitigé.
+553,famille,10526.82,lisbonne,printemps,18,appartement,715.12,nuageux,plage,2,aucun,0,0,séjour mitigé.
+554,couple,11469.99,bali,été,16,villa,1341.12,ensoleillé,business,2,bagages,0,0,séjour mitigé.
+555,couple,2648.7,dubaï,été,5,hôtel,1191.87,ensoleillé,business,2,retard_vol,1,1,séjour mitigé.
+556,senior,6179.13,sydney,hiver,12,appartement,1105.67,nuageux,plage,1,météo,0,1,séjour mitigé.
+557,business,2027.75,rome,automne,5,villa,1166.46,nuageux,business,2,météo,1,0,séjour mitigé.
+558,business,2149.78,rome,automne,5,villa,1114.3,variable,business,2,retard_vol,1,1,séjour mitigé.
+559,senior,5484.9,lisbonne,hiver,9,villa,911.56,pluie,plage,2,annulation,1,0,séjour mitigé.
+560,couple,8479.56,bali,été,11,resort,1082.55,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+561,couple,4258.3,sydney,été,8,villa,1241.22,nuageux,plage,1,bagages,1,1,séjour mitigé.
+562,business,1401.86,dubaï,printemps,3,villa,1310.82,ensoleillé,business,2,météo,1,0,séjour mitigé.
+563,famille,6946.53,new york,automne,7,hôtel,1069.4,variable,gastronomie,1,météo,1,1,séjour mitigé.
+564,famille,7288.2,sydney,hiver,12,villa,1030.44,ensoleillé,randonnée,3,retard_vol,0,1,séjour mitigé.
+565,couple,3010.15,dubaï,hiver,6,resort,1206.5,nuageux,business,2,météo,1,0,séjour mitigé.
+566,couple,3834.48,lisbonne,hiver,6,hôtel,1007.52,variable,culture,4,aucun,0,1,excellent séjour.
+567,couple,8235.7,lisbonne,automne,15,villa,972.97,nuageux,plage,2,retard_vol,1,0,séjour mitigé.
+568,solo,1464.6,tokyo,été,5,resort,640.08,nuageux,gastronomie,4,aucun,0,1,excellent séjour.
+569,couple,6467.05,dubaï,été,10,appartement,1340.45,ensoleillé,plage,2,annulation,0,1,séjour mitigé.
+570,couple,5593.3,sydney,été,10,hôtel,1327.27,ensoleillé,randonnée,2,retard_vol,1,0,séjour mitigé.
+571,couple,10165.47,paris,automne,11,appartement,916.08,nuageux,culture,1,météo,0,1,séjour mitigé.
+572,senior,2562.07,tokyo,automne,7,resort,811.2,pluie,gastronomie,3,météo,1,1,séjour mitigé.
+573,senior,10276.07,bali,été,17,appartement,1113.77,ensoleillé,gastronomie,3,retard_vol,0,0,séjour mitigé.
+574,business,3283.51,lisbonne,hiver,6,appartement,982.43,pluie,business,1,bagages,1,0,séjour mitigé.
+575,senior,8803.53,lisbonne,été,17,appartement,801.37,ensoleillé,gastronomie,2,retard_vol,1,1,séjour mitigé.
+576,solo,4218.36,dubaï,printemps,8,villa,963.19,variable,plage,3,bagages,1,0,séjour mitigé.
+577,solo,7351.2,new york,automne,9,appartement,838.37,nuageux,plage,3,météo,1,1,séjour mitigé.
+578,business,2409.74,new york,automne,3,appartement,1117.15,ensoleillé,business,4,annulation,1,0,excellent séjour.
+579,solo,9923.9,lisbonne,printemps,16,appartement,940.23,ensoleillé,plage,4,bagages,1,1,excellent séjour.
+580,business,1950.58,dubaï,hiver,3,hôtel,1141.61,nuageux,business,3,météo,1,1,séjour mitigé.
+581,business,1665.29,tokyo,été,5,villa,821.92,ensoleillé,business,4,aucun,0,1,excellent séjour.
+582,solo,4953.47,dubaï,automne,10,appartement,991.6,pluie,culture,3,bagages,1,1,séjour mitigé.
+583,couple,7611.86,rome,hiver,15,resort,1267.53,pluie,randonnée,3,bagages,0,0,séjour mitigé.
+585,solo,2357.68,tokyo,printemps,8,hôtel,676.73,variable,plage,2,météo,1,0,séjour mitigé.
+586,famille,5217.96,lisbonne,hiver,10,villa,911.41,pluie,plage,2,retard_vol,0,0,séjour mitigé.
+587,business,2603.82,tokyo,été,7,villa,653.26,ensoleillé,gastronomie,3,annulation,1,0,séjour mitigé.
+588,famille,7794.61,rome,printemps,15,resort,1206.37,ensoleillé,randonnée,2,annulation,0,1,séjour mitigé.
+589,business,4385.52,bali,automne,7,hôtel,1423.36,variable,culture,2,météo,1,1,séjour mitigé.
+590,famille,18195.86,new york,automne,18,resort,1013.17,nuageux,culture,2,retard_vol,0,0,séjour mitigé.
+591,senior,7859.36,tokyo,été,21,appartement,844.09,nuageux,gastronomie,2,annulation,1,0,séjour mitigé.
+592,solo,8071.07,sydney,automne,16,hôtel,990.69,pluie,plage,4,aucun,0,0,excellent séjour.
+593,solo,5479.19,sydney,printemps,8,villa,1287.62,pluie,gastronomie,1,retard_vol,1,0,séjour mitigé.
+594,famille,5622.33,tokyo,hiver,14,hôtel,912.26,variable,plage,4,aucun,0,1,excellent séjour.
+595,business,4305.53,lisbonne,printemps,7,hôtel,569.46,ensoleillé,business,1,météo,1,0,séjour mitigé.
+596,solo,2921.53,dubaï,automne,5,villa,1162.89,nuageux,randonnée,2,bagages,1,1,séjour mitigé.
+597,famille,5126.22,lisbonne,hiver,9,villa,983.31,nuageux,randonnée,4,météo,0,1,excellent séjour.
+598,famille,9388.89,rome,hiver,21,appartement,1241.22,nuageux,plage,1,météo,0,1,séjour mitigé.
+599,couple,9126.76,paris,été,9,villa,1290.15,ensoleillé,plage,2,retard_vol,0,0,séjour mitigé.
+600,business,2341.89,rome,hiver,5,villa,1164.23,nuageux,business,3,bagages,1,0,séjour mitigé.
+601,solo,4929.65,lisbonne,été,8,resort,916.73,ensoleillé,plage,3,retard_vol,1,1,séjour mitigé.
+602,famille,7191.93,lisbonne,été,13,hôtel,883.84,variable,plage,4,météo,0,1,excellent séjour.
+603,famille,12693.61,sydney,printemps,18,hôtel,1401.77,variable,culture,5,aucun,0,1,excellent séjour.
+604,business,5291.2,new york,été,6,resort,1151.48,nuageux,business,3,aucun,0,1,séjour mitigé.
+605,business,1913.8,tokyo,hiver,5,resort,788.05,pluie,culture,3,retard_vol,1,1,séjour mitigé.
+606,solo,3251.57,sydney,printemps,6,appartement,1119.13,nuageux,randonnée,4,aucun,0,1,excellent séjour.
+607,business,3935.97,lisbonne,été,6,villa,838.78,ensoleillé,culture,1,retard_vol,1,0,séjour mitigé.
+608,famille,7948.75,rome,été,15,hôtel,1197.15,ensoleillé,culture,1,météo,1,1,séjour mitigé.
+609,famille,3492.27,rome,automne,8,resort,1355.96,nuageux,culture,3,retard_vol,0,0,séjour mitigé.
+610,business,6076.83,new york,hiver,6,appartement,1039.11,variable,business,2,météo,0,0,séjour mitigé.
+611,senior,12542.46,bali,hiver,16,villa,1290.44,ensoleillé,plage,1,bagages,1,0,séjour mitigé.
+612,solo,4196.41,rome,printemps,10,villa,1678.76,pluie,plage,1,bagages,1,0,séjour mitigé.
+613,couple,4212.65,lisbonne,hiver,8,resort,1023.23,nuageux,plage,4,aucun,0,1,excellent séjour.
+614,couple,7430.72,new york,automne,9,appartement,1054.91,pluie,culture,3,météo,1,1,séjour mitigé.
+615,business,3827.04,lisbonne,printemps,7,villa,1068.04,ensoleillé,business,2,bagages,1,0,séjour mitigé.
+616,solo,7427.22,lisbonne,printemps,12,villa,849.58,variable,plage,2,météo,1,0,séjour mitigé.
+617,business,6280.99,paris,été,6,villa,848.49,ensoleillé,business,2,météo,1,1,séjour mitigé.
+618,senior,12090.52,dubaï,été,21,resort,1121.05,ensoleillé,culture,2,bagages,1,0,séjour mitigé.
+619,business,5640.77,new york,été,6,appartement,797.9,ensoleillé,business,3,bagages,0,1,séjour mitigé.
+620,senior,9615.94,sydney,printemps,19,villa,1129.93,variable,culture,2,météo,0,0,séjour mitigé.
+621,couple,6848.66,dubaï,automne,14,hôtel,1324.42,pluie,plage,4,bagages,1,1,excellent séjour.
+622,senior,3477.19,lisbonne,automne,7,hôtel,1132.55,pluie,culture,3,bagages,1,1,séjour mitigé.
+623,famille,5647.67,tokyo,printemps,16,hôtel,786.85,nuageux,plage,4,aucun,0,0,excellent séjour.
+624,famille,3080.6,rome,été,7,appartement,1238.14,ensoleillé,plage,4,annulation,1,1,excellent séjour.
+625,solo,4581.01,dubaï,été,8,hôtel,1485.09,ensoleillé,culture,3,retard_vol,0,0,séjour mitigé.
+626,senior,11628.08,lisbonne,hiver,18,hôtel,604.82,variable,plage,3,bagages,0,0,séjour mitigé.
+627,solo,4332.66,bali,printemps,6,villa,1280.4,variable,culture,4,annulation,1,1,excellent séjour.
+628,solo,2653.03,rome,printemps,6,hôtel,1428.25,pluie,plage,2,météo,1,0,séjour mitigé.
+629,solo,2430.41,lisbonne,automne,4,hôtel,704.26,pluie,gastronomie,4,annulation,1,1,excellent séjour.
+630,senior,4954.15,sydney,printemps,8,hôtel,1397.47,ensoleillé,plage,1,météo,1,0,séjour mitigé.
+631,business,3903.9,lisbonne,printemps,6,hôtel,950.92,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+632,senior,13282.52,new york,hiver,14,villa,1040.06,nuageux,culture,3,aucun,0,1,séjour mitigé.
+633,senior,11841.01,lisbonne,été,19,appartement,990.87,pluie,plage,3,aucun,0,0,séjour mitigé.
+634,senior,12115.17,paris,été,12,villa,1638.37,pluie,culture,4,météo,1,0,excellent séjour.
+635,business,4388.31,dubaï,printemps,7,resort,1356.8,ensoleillé,culture,2,retard_vol,1,0,séjour mitigé.
+636,senior,3473.75,tokyo,printemps,9,hôtel,778.0,ensoleillé,culture,3,retard_vol,1,0,séjour mitigé.
+637,senior,6498.91,lisbonne,été,11,villa,842.62,ensoleillé,culture,2,annulation,1,0,séjour mitigé.
+638,solo,2528.35,lisbonne,printemps,4,villa,789.61,pluie,plage,1,bagages,1,0,séjour mitigé.
+639,solo,1848.2,dubaï,automne,4,hôtel,1485.27,ensoleillé,culture,3,retard_vol,1,1,séjour mitigé.
+640,couple,8540.72,dubaï,hiver,14,appartement,1151.17,nuageux,culture,3,aucun,0,0,séjour mitigé.
+641,couple,5738.32,rome,automne,13,villa,1293.96,variable,culture,2,météo,1,1,séjour mitigé.
+642,business,3261.57,rome,été,7,appartement,1188.49,ensoleillé,culture,3,annulation,0,0,séjour mitigé.
+643,famille,7320.83,bali,automne,9,villa,1325.54,nuageux,plage,2,bagages,1,1,séjour mitigé.
+644,senior,4089.23,sydney,automne,8,appartement,1252.53,pluie,culture,4,retard_vol,1,1,excellent séjour.
+646,business,4691.88,new york,automne,5,appartement,1024.3,ensoleillé,culture,2,retard_vol,1,0,séjour mitigé.
+647,couple,8486.3,lisbonne,automne,15,villa,868.34,variable,randonnée,3,météo,0,0,séjour mitigé.
+649,couple,7734.28,bali,hiver,12,villa,1154.27,nuageux,plage,2,annulation,1,1,séjour mitigé.
+650,senior,7665.19,tokyo,automne,19,appartement,792.52,nuageux,gastronomie,1,retard_vol,1,1,séjour mitigé.
+651,couple,3386.48,lisbonne,été,5,appartement,1007.73,ensoleillé,plage,4,météo,1,0,excellent séjour.
+652,business,1854.62,dubaï,automne,3,villa,1138.07,pluie,business,3,aucun,0,1,séjour mitigé.
+653,couple,4923.31,lisbonne,printemps,10,resort,1023.02,variable,culture,1,météo,0,0,séjour mitigé.
+654,couple,12731.65,paris,été,16,appartement,1470.63,variable,culture,5,aucun,0,1,excellent séjour.
+655,solo,8052.77,sydney,printemps,12,resort,1266.8,nuageux,randonnée,3,météo,1,0,séjour mitigé.
+656,business,4561.01,new york,hiver,5,appartement,1421.4,ensoleillé,business,3,aucun,0,1,séjour mitigé.
+657,senior,13615.08,paris,automne,13,hôtel,1080.27,variable,gastronomie,3,annulation,1,1,séjour mitigé.
+658,famille,10382.0,sydney,printemps,19,hôtel,970.13,variable,culture,4,aucun,0,0,excellent séjour.
+659,business,1945.28,sydney,printemps,3,resort,874.57,ensoleillé,business,3,annulation,1,0,séjour mitigé.
+660,couple,12641.91,new york,été,14,appartement,1358.05,ensoleillé,business,5,aucun,0,1,excellent séjour.
+662,solo,6337.25,dubaï,été,11,resort,1309.76,ensoleillé,culture,3,retard_vol,0,1,séjour mitigé.
+663,business,1851.9,rome,automne,4,appartement,1333.98,variable,business,1,retard_vol,1,1,séjour mitigé.
+664,solo,12915.63,paris,été,12,hôtel,1015.79,ensoleillé,gastronomie,3,météo,1,0,séjour mitigé.
+665,famille,17346.05,new york,automne,17,resort,1516.06,nuageux,gastronomie,4,aucun,0,1,excellent séjour.
+666,solo,4779.71,bali,hiver,7,villa,1260.66,variable,culture,4,aucun,0,0,excellent séjour.
+667,business,1865.41,dubaï,hiver,4,villa,1342.44,pluie,business,3,retard_vol,1,1,séjour mitigé.
+668,famille,5413.31,tokyo,été,14,villa,831.73,ensoleillé,plage,3,aucun,0,0,séjour mitigé.
+669,senior,4741.56,dubaï,printemps,8,resort,1416.07,nuageux,culture,3,annulation,1,0,séjour mitigé.
+670,business,2398.51,paris,automne,3,hôtel,1263.16,pluie,business,2,aucun,0,0,séjour mitigé.
+671,couple,14802.98,new york,automne,16,appartement,977.64,pluie,plage,2,retard_vol,1,1,séjour mitigé.
+672,business,5601.16,new york,printemps,7,hôtel,1187.59,variable,business,2,retard_vol,1,1,séjour mitigé.
+673,solo,5870.61,bali,été,8,appartement,1585.81,ensoleillé,randonnée,3,retard_vol,1,1,séjour mitigé.
+674,solo,9528.4,sydney,automne,14,hôtel,1433.55,nuageux,culture,2,bagages,1,1,séjour mitigé.
+675,famille,12579.87,bali,automne,17,appartement,1532.23,variable,culture,2,bagages,1,1,séjour mitigé.
+676,business,2197.47,tokyo,hiver,6,villa,692.55,pluie,business,4,météo,1,1,excellent séjour.
+677,solo,3811.78,bali,été,6,hôtel,1053.11,ensoleillé,plage,4,retard_vol,1,1,excellent séjour.
+679,famille,11176.71,new york,printemps,13,appartement,1118.42,pluie,plage,1,météo,1,1,séjour mitigé.
+680,couple,6474.73,bali,printemps,10,resort,1439.67,variable,plage,2,bagages,1,1,séjour mitigé.
+681,famille,6620.82,rome,été,16,appartement,955.21,nuageux,plage,1,météo,1,0,séjour mitigé.
+682,couple,13953.56,paris,automne,15,villa,1502.51,pluie,randonnée,2,météo,1,0,séjour mitigé.
+683,couple,5426.77,lisbonne,automne,9,appartement,883.53,pluie,business,3,aucun,0,1,séjour mitigé.
+684,business,1614.52,tokyo,automne,4,appartement,702.04,nuageux,culture,1,retard_vol,1,1,séjour mitigé.
+685,business,4012.31,lisbonne,automne,7,villa,767.59,pluie,business,2,aucun,0,1,séjour mitigé.
+686,business,1931.94,lisbonne,été,3,villa,680.33,ensoleillé,culture,1,retard_vol,1,0,séjour mitigé.
+687,business,2025.29,rome,été,5,villa,1438.29,variable,culture,3,bagages,1,0,séjour mitigé.
+688,senior,17055.57,paris,été,19,villa,1235.56,nuageux,gastronomie,4,aucun,0,1,excellent séjour.
+689,couple,7366.61,bali,été,10,villa,997.4,variable,plage,2,retard_vol,0,1,séjour mitigé.
+690,business,2164.06,tokyo,automne,6,villa,604.36,pluie,business,1,aucun,0,1,séjour mitigé.
+691,senior,4255.38,tokyo,automne,13,appartement,712.29,variable,gastronomie,1,retard_vol,1,0,séjour mitigé.
+692,business,4940.24,sydney,hiver,7,appartement,1491.45,nuageux,business,2,annulation,1,1,séjour mitigé.
+693,business,4660.36,new york,printemps,6,appartement,1065.96,variable,business,1,retard_vol,1,0,séjour mitigé.
+694,business,1414.4,tokyo,automne,4,villa,580.95,variable,business,2,météo,0,1,séjour mitigé.
+695,business,5899.23,new york,automne,6,hôtel,1068.27,pluie,gastronomie,3,météo,0,1,séjour mitigé.
+696,business,3257.38,paris,automne,4,appartement,1172.12,variable,business,3,météo,1,1,séjour mitigé.
+697,couple,4418.01,tokyo,hiver,11,appartement,450.04,pluie,plage,3,retard_vol,0,1,séjour mitigé.
+698,solo,4006.7,tokyo,hiver,10,villa,743.96,ensoleillé,randonnée,2,retard_vol,1,1,séjour mitigé.
+699,famille,5367.28,rome,hiver,11,resort,1235.87,nuageux,culture,2,météo,0,0,séjour mitigé.
+700,senior,15183.22,new york,automne,19,villa,1224.98,variable,culture,3,aucun,0,1,séjour mitigé.
+701,senior,11408.99,bali,automne,18,appartement,1579.68,nuageux,plage,2,bagages,1,0,séjour mitigé.
+702,business,2786.94,dubaï,printemps,6,villa,1543.96,pluie,culture,2,météo,1,1,séjour mitigé.
+703,solo,13857.65,new york,printemps,14,villa,1064.41,ensoleillé,plage,1,bagages,1,0,séjour mitigé.
+704,couple,10788.84,paris,printemps,14,resort,1019.27,variable,culture,4,météo,1,0,excellent séjour.
+705,solo,3853.46,rome,été,10,villa,1774.38,ensoleillé,gastronomie,3,retard_vol,1,0,séjour mitigé.
+706,senior,11009.47,bali,été,15,villa,1247.68,ensoleillé,plage,2,météo,1,0,séjour mitigé.
+707,solo,7260.96,new york,automne,9,villa,1111.47,nuageux,plage,3,retard_vol,1,0,séjour mitigé.
+708,solo,3117.6,bali,automne,5,hôtel,1232.21,variable,gastronomie,2,météo,1,1,séjour mitigé.
+709,famille,6146.22,bali,été,9,appartement,1273.44,nuageux,plage,2,retard_vol,1,0,séjour mitigé.
+710,couple,1958.78,rome,printemps,4,villa,1252.49,ensoleillé,gastronomie,1,aucun,0,0,séjour mitigé.
+711,solo,3109.39,rome,été,7,appartement,1170.05,ensoleillé,randonnée,2,annulation,1,0,séjour mitigé.
+712,senior,10692.67,new york,printemps,13,appartement,1018.17,variable,culture,4,bagages,1,1,excellent séjour.
+713,senior,8513.49,rome,printemps,18,villa,1273.93,pluie,gastronomie,4,météo,1,1,excellent séjour.
+714,business,2206.96,sydney,hiver,4,villa,1095.59,nuageux,culture,2,annulation,1,1,séjour mitigé.
+715,senior,5089.5,rome,été,10,villa,1143.33,ensoleillé,plage,2,météo,0,1,séjour mitigé.
+716,solo,7318.39,lisbonne,automne,13,hôtel,919.42,variable,gastronomie,4,météo,1,0,excellent séjour.
+717,couple,6936.73,new york,printemps,8,appartement,1066.73,variable,plage,1,retard_vol,1,1,séjour mitigé.
+718,famille,18234.37,new york,hiver,18,hôtel,1359.37,nuageux,gastronomie,3,annulation,1,1,séjour mitigé.
+719,couple,3347.33,lisbonne,été,5,appartement,545.12,ensoleillé,plage,2,météo,1,0,séjour mitigé.
+720,senior,11123.17,dubaï,printemps,21,appartement,1537.01,variable,culture,3,annulation,1,0,séjour mitigé.
+721,business,3092.24,paris,hiver,4,villa,1450.54,nuageux,gastronomie,4,bagages,1,0,excellent séjour.
+722,solo,11859.19,paris,hiver,12,resort,842.03,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+723,couple,9998.76,bali,printemps,15,resort,1173.12,variable,randonnée,3,bagages,1,1,séjour mitigé.
+724,business,2826.76,new york,automne,3,villa,1047.35,variable,business,3,retard_vol,1,1,séjour mitigé.
+725,business,3004.29,rome,hiver,6,appartement,1009.93,pluie,business,3,bagages,0,1,séjour mitigé.
+726,solo,4654.13,tokyo,été,14,villa,662.56,ensoleillé,culture,5,aucun,0,1,excellent séjour.
+727,business,2879.28,new york,printemps,3,hôtel,924.38,pluie,business,4,météo,1,1,excellent séjour.
+728,solo,8775.75,lisbonne,printemps,13,appartement,1142.84,variable,gastronomie,1,bagages,1,0,séjour mitigé.
+729,solo,4175.03,rome,été,11,resort,1459.9,ensoleillé,gastronomie,4,annulation,1,1,excellent séjour.
+730,senior,8977.5,rome,automne,17,appartement,1524.39,pluie,culture,1,météo,0,0,séjour mitigé.
+731,solo,8643.68,new york,hiver,9,hôtel,1229.22,pluie,culture,4,bagages,0,1,excellent séjour.
+732,couple,2798.96,dubaï,printemps,5,hôtel,1097.09,variable,plage,2,météo,0,0,séjour mitigé.
+733,business,5135.96,bali,automne,7,resort,1139.39,pluie,culture,4,aucun,0,1,excellent séjour.
+734,senior,5526.25,new york,hiver,7,villa,1190.57,variable,plage,3,bagages,1,1,séjour mitigé.
+735,business,5713.06,new york,automne,6,villa,905.82,variable,culture,2,annulation,1,0,séjour mitigé.
+736,senior,11424.16,bali,automne,17,hôtel,1368.95,ensoleillé,plage,2,météo,1,1,séjour mitigé.
+737,business,2062.5,sydney,printemps,4,hôtel,1149.83,nuageux,business,4,météo,0,0,excellent séjour.
+738,solo,10516.82,lisbonne,printemps,16,villa,854.09,ensoleillé,plage,2,météo,0,1,séjour mitigé.
+739,business,2873.79,dubaï,été,5,villa,1461.62,variable,culture,1,retard_vol,0,1,séjour mitigé.
+740,famille,12297.56,dubaï,automne,20,villa,1408.79,nuageux,gastronomie,3,météo,1,1,séjour mitigé.
+741,famille,11084.04,rome,printemps,21,resort,1210.9,variable,culture,5,aucun,0,1,excellent séjour.
+742,couple,4349.43,rome,printemps,9,hôtel,1502.84,variable,culture,4,aucun,0,1,excellent séjour.
+743,business,1902.3,bali,printemps,3,hôtel,1036.15,pluie,business,1,météo,1,0,séjour mitigé.
+744,business,2436.69,bali,printemps,3,appartement,1350.95,pluie,business,3,bagages,0,1,séjour mitigé.
+745,business,5403.8,new york,automne,6,villa,1207.83,nuageux,gastronomie,2,retard_vol,1,0,séjour mitigé.
+746,business,3490.01,rome,automne,7,resort,1220.77,variable,business,3,retard_vol,1,0,séjour mitigé.
+747,couple,4644.64,rome,printemps,9,villa,1342.84,variable,plage,4,retard_vol,1,1,excellent séjour.
+749,senior,2698.24,rome,hiver,7,appartement,1457.66,ensoleillé,gastronomie,3,retard_vol,1,0,séjour mitigé.
+750,couple,11170.85,bali,été,14,resort,1202.39,ensoleillé,plage,2,retard_vol,1,1,séjour mitigé.
+751,business,,paris,printemps,17,villa,1050.81,nuageux,business,2,aucun,0,1,de nombreux problèmes rencontrés.
+752,solo,12092.48,tokyo,printemps,11,villa,974.76,pluie,culture,1,retard_vol,1,1,très mauvaise expérience.
+753,senior,11596.27,new york,printemps,10,appartement,942.65,nuageux,plage,1,météo,1,1,de nombreux problèmes rencontrés.
+754,business,,tokyo,été,5,appartement,1208.84,pluie,culture,3,annulation,0,1,dans l'ensemble satisfaisant.
+755,famille,5462.92,rome,été,10,villa,1022.04,variable,plage,1,météo,0,1,de nombreux problèmes rencontrés.
+756,senior,6718.36,tokyo,printemps,10,appartement,996.39,nuageux,culture,2,météo,1,1,de nombreux problèmes rencontrés.
+757,business,6682.55,tokyo,printemps,3,villa,759.94,variable,culture,5,météo,1,1,"parfait, rien à redire."
+758,business,10080.68,rome,automne,7,appartement,1138.81,variable,plage,5,aucun,1,1,"très satisfait, je recommande."
+759,famille,13191.08,dubaï,hiver,8,hôtel,1069.43,ensoleillé,plage,5,bagages,0,1,une expérience inoubliable.
+760,solo,8409.1,bali,printemps,12,villa,,nuageux,culture,1,aucun,0,1,très mauvaise expérience.
+761,solo,14890.71,new york,été,12,hôtel,1171.27,pluie,randonnée,4,bagages,0,1,"parfait, rien à redire."
+762,senior,,new york,hiver,7,hôtel,1318.46,variable,business,4,météo,1,1,une expérience inoubliable.
+763,business,5976.82,lisbonne,hiver,12,appartement,1306.02,nuageux,culture,1,aucun,0,1,je ne recommande pas.
+764,senior,10267.02,rome,hiver,9,villa,1266.13,ensoleillé,,5,météo,1,1,très bon rapport qualité-prix.
+765,solo,13805.76,rome,automne,3,,1053.5,pluie,randonnée,3,aucun,0,1,"quelques imprévus, globalement bien."
+767,solo,11711.92,tokyo,hiver,15,hôtel,838.23,pluie,business,1,retard_vol,1,1,
+768,famille,,bali,hiver,3,villa,959.03,nuageux,plage,4,météo,1,1,très bon rapport qualité-prix.
+769,senior,6049.86,dubaï,hiver,10,,1123.27,pluie,randonnée,1,retard_vol,1,1,de nombreux problèmes rencontrés.
+770,business,9247.86,rome,été,18,hôtel,907.28,variable,plage,4,retard_vol,1,1,excellent séjour.
+771,business,13676.81,paris,printemps,6,resort,1143.74,pluie,gastronomie,4,bagages,0,1,très bon rapport qualité-prix.
+773,senior,8757.58,dubaï,été,3,villa,672.85,pluie,gastronomie,2,retard_vol,1,1,très mauvaise expérience.
+774,senior,7131.34,lisbonne,automne,18,villa,1337.6,variable,culture,1,annulation,1,1,je ne recommande pas.
+775,business,5601.29,dubaï,hiver,9,villa,990.86,,randonnée,1,aucun,0,1,je ne recommande pas.
+776,couple,6269.95,new york,automne,10,hôtel,893.67,ensoleillé,plage,1,météo,1,1,très mauvaise expérience.
+777,solo,7470.31,dubaï,été,17,resort,824.85,pluie,randonnée,4,retard_vol,1,1,une expérience inoubliable.
+778,famille,13854.82,dubaï,hiver,13,appartement,,ensoleillé,business,5,aucun,0,1,"très satisfait, je recommande."
+780,business,7136.24,new york,automne,7,resort,1009.98,pluie,gastronomie,5,bagages,0,1,excellent séjour.
+781,business,3433.07,dubaï,printemps,12,resort,1060.23,nuageux,culture,5,aucun,0,1,"très satisfait, je recommande."
+782,senior,9814.89,bali,automne,7,hôtel,1405.2,ensoleillé,plage,1,annulation,1,1,très mauvaise expérience.
+783,couple,12437.18,new york,printemps,3,appartement,632.8,nuageux,plage,4,bagages,0,1,"parfait, rien à redire."
+784,solo,,new york,été,10,villa,1645.12,pluie,plage,1,météo,0,1,très mauvaise expérience.
+785,solo,7744.37,new york,automne,3,hôtel,1773.02,ensoleillé,business,4,retard_vol,1,1,"parfait, rien à redire."
+786,couple,9240.95,paris,printemps,18,appartement,392.7,ensoleillé,culture,2,bagages,0,1,de nombreux problèmes rencontrés.
+787,famille,,new york,automne,11,villa,1091.87,variable,culture,1,bagages,0,1,très mauvaise expérience.
+788,solo,9054.03,lisbonne,printemps,5,villa,925.32,pluie,plage,3,aucun,0,1,séjour mitigé.
+789,couple,8190.54,rome,automne,6,villa,1047.04,ensoleillé,plage,4,aucun,0,1,
+790,business,,bali,été,3,appartement,1005.87,ensoleillé,culture,4,retard_vol,1,1,très bon rapport qualité-prix.
+791,solo,7479.7,paris,printemps,4,villa,1335.55,variable,gastronomie,3,météo,0,1,"quelques imprévus, globalement bien."
+792,senior,8747.05,paris,printemps,15,resort,1087.83,pluie,business,1,météo,0,1,très mauvaise expérience.
+793,business,5737.39,lisbonne,printemps,21,resort,873.88,pluie,culture,5,aucun,0,1,"très satisfait, je recommande."
+794,couple,5945.77,new york,hiver,14,hôtel,1071.85,ensoleillé,gastronomie,5,aucun,0,1,très bon rapport qualité-prix.
+795,senior,13811.5,bali,hiver,9,appartement,1255.96,ensoleillé,culture,2,retard_vol,1,1,très mauvaise expérience.
+796,business,17858.35,bali,printemps,8,appartement,800.76,ensoleillé,business,3,retard_vol,1,1,dans l'ensemble satisfaisant.
+797,solo,2065.58,lisbonne,hiver,5,resort,676.81,pluie,gastronomie,4,retard_vol,1,1,"très satisfait, je recommande."
+798,couple,1843.29,rome,hiver,20,villa,1652.06,ensoleillé,culture,1,annulation,1,0,
+799,business,3062.85,dubaï,été,9,resort,945.83,ensoleillé,business,1,météo,1,1,déçu par l'organisation.
+800,famille,6507.33,bali,été,20,resort,1081.19,pluie,plage,1,météo,1,1,je ne recommande pas.
+803,business,7617.97,paris,automne,7,resort,1593.11,nuageux,culture,4,aucun,1,1,très bon rapport qualité-prix.
+804,business,9057.73,dubaï,été,7,appartement,1273.42,nuageux,,5,aucun,0,1,"parfait, rien à redire."
+805,business,4132.12,rome,hiver,10,resort,711.08,nuageux,,2,aucun,0,1,
+806,business,5939.21,dubaï,hiver,10,villa,747.05,ensoleillé,gastronomie,4,aucun,0,1,très bon rapport qualité-prix.
+807,solo,6842.94,dubaï,été,21,villa,1011.08,nuageux,culture,1,retard_vol,0,1,de nombreux problèmes rencontrés.
+809,famille,28000.0,paris,été,11,appartement,656.52,pluie,plage,4,bagages,0,1,excellent séjour.
+810,famille,2399.6,dubaï,automne,13,villa,,variable,randonnée,4,annulation,1,0,"parfait, rien à redire."
+811,business,10006.41,lisbonne,hiver,10,villa,826.87,variable,culture,4,retard_vol,1,1,"parfait, rien à redire."
+816,solo,9599.41,new york,automne,12,appartement,787.84,ensoleillé,gastronomie,4,météo,0,1,
+818,couple,11864.15,paris,été,17,hôtel,984.48,pluie,plage,5,météo,1,1,"très satisfait, je recommande."
+820,solo,10326.05,new york,printemps,10,appartement,,variable,gastronomie,2,annulation,1,1,de nombreux problèmes rencontrés.
+821,couple,3339.45,bali,hiver,4,appartement,993.18,ensoleillé,plage,2,annulation,1,1,très mauvaise expérience.
+822,solo,11155.28,lisbonne,été,7,,1030.86,ensoleillé,business,3,retard_vol,0,1,dans l'ensemble satisfaisant.
+823,senior,19865.72,rome,printemps,9,appartement,1372.51,nuageux,culture,2,retard_vol,0,1,très mauvaise expérience.
+825,famille,28000.0,lisbonne,automne,8,hôtel,1582.99,ensoleillé,business,3,retard_vol,1,1,séjour mitigé.
+828,business,6089.88,paris,printemps,3,villa,35.0,ensoleillé,culture,5,météo,1,1,très bon rapport qualité-prix.
+829,solo,7447.54,new york,automne,9,villa,1117.73,pluie,culture,1,bagages,0,1,très mauvaise expérience.
+830,business,3246.26,paris,printemps,3,,986.63,nuageux,randonnée,5,retard_vol,1,1,"très satisfait, je recommande."
+831,business,10072.7,dubaï,été,5,villa,1025.88,pluie,plage,1,météo,1,1,je ne recommande pas.
+833,senior,11932.76,lisbonne,printemps,3,appartement,1519.95,variable,culture,3,météo,1,1,séjour correct mais perfectible.
+834,couple,5273.08,lisbonne,été,12,resort,1437.06,ensoleillé,culture,3,météo,1,1,"quelques imprévus, globalement bien."
+835,famille,1265.55,new york,été,14,appartement,1009.5,nuageux,culture,3,météo,1,0,"quelques imprévus, globalement bien."
+837,business,6652.34,new york,automne,8,resort,908.4,variable,plage,1,retard_vol,0,1,je ne recommande pas.
+838,solo,14619.4,lisbonne,automne,13,appartement,852.26,nuageux,gastronomie,5,aucun,0,1,
+839,couple,11850.95,new york,printemps,6,resort,810.79,pluie,culture,4,annulation,0,1,"très satisfait, je recommande."
+840,solo,3704.28,lisbonne,été,6,hôtel,1000.73,ensoleillé,business,4,météo,1,1,
+841,famille,6581.15,rome,hiver,16,hôtel,1184.89,ensoleillé,business,1,retard_vol,0,1,à éviter.
+842,business,7412.27,new york,automne,14,hôtel,605.63,ensoleillé,business,1,retard_vol,1,1,très mauvaise expérience.
+843,solo,13081.11,dubaï,été,13,villa,1105.58,pluie,business,2,retard_vol,0,1,je ne recommande pas.
+844,solo,8688.95,rome,printemps,15,appartement,,ensoleillé,business,2,retard_vol,1,1,très mauvaise expérience.
+845,couple,7635.16,rome,hiver,3,villa,1418.67,pluie,gastronomie,4,bagages,0,1,"très satisfait, je recommande."
+846,business,6117.69,lisbonne,automne,17,villa,961.17,ensoleillé,plage,5,retard_vol,1,1,"très satisfait, je recommande."
+847,solo,6720.05,tokyo,printemps,12,hôtel,743.64,variable,plage,2,retard_vol,0,1,très mauvaise expérience.
+848,famille,12186.72,rome,été,15,hôtel,35.0,variable,gastronomie,3,retard_vol,1,1,séjour mitigé.
+849,famille,6938.95,bali,hiver,12,villa,496.93,ensoleillé,,1,météo,0,1,très mauvaise expérience.
+850,senior,5330.58,tokyo,automne,10,resort,1415.52,,plage,4,météo,1,1,"parfait, rien à redire."
+851,senior,4646.78,new york,hiver,9,villa,1060.76,ensoleillé,business,1,météo,1,1,déçu par l'organisation.
+852,business,4690.11,lisbonne,printemps,12,hôtel,,variable,plage,4,météo,1,1,une expérience inoubliable.
+853,couple,1267.94,lisbonne,automne,8,villa,655.17,ensoleillé,,2,météo,0,0,très mauvaise expérience.
+854,senior,3896.99,new york,automne,14,villa,1364.06,pluie,culture,3,météo,1,0,peut mieux faire sur la logistique.
+855,business,12968.63,dubaï,printemps,3,resort,,nuageux,culture,1,aucun,1,1,de nombreux problèmes rencontrés.
+856,business,6090.58,bali,été,7,resort,1029.28,variable,culture,3,aucun,1,1,dans l'ensemble satisfaisant.
+857,solo,9765.6,lisbonne,automne,20,villa,750.88,nuageux,randonnée,5,annulation,1,1,"très satisfait, je recommande."
+860,senior,6273.1,lisbonne,été,5,appartement,1596.41,ensoleillé,business,3,aucun,0,1,peut mieux faire sur la logistique.
+861,solo,4981.87,lisbonne,automne,12,resort,1388.16,variable,randonnée,3,météo,1,1,peut mieux faire sur la logistique.
+862,couple,7653.99,bali,été,6,villa,958.84,ensoleillé,plage,5,aucun,0,1,une expérience inoubliable.
+863,couple,4923.84,dubaï,automne,9,villa,848.96,nuageux,culture,1,aucun,0,1,de nombreux problèmes rencontrés.
+865,couple,10644.35,bali,hiver,6,villa,1512.82,pluie,gastronomie,5,bagages,0,1,excellent séjour.
+866,senior,7904.33,bali,automne,14,,909.45,pluie,culture,5,météo,0,1,très bon rapport qualité-prix.
+867,business,5657.56,rome,automne,14,hôtel,1514.7,ensoleillé,,2,retard_vol,1,1,je ne recommande pas.
+868,business,,new york,automne,15,appartement,1258.72,nuageux,culture,2,météo,1,0,
+870,business,7827.18,new york,printemps,21,hôtel,1035.76,nuageux,randonnée,4,météo,1,1,une expérience inoubliable.
+871,business,13432.62,rome,automne,15,hôtel,1295.06,nuageux,plage,3,météo,1,1,dans l'ensemble satisfaisant.
+872,business,7743.57,lisbonne,hiver,12,appartement,1113.85,ensoleillé,randonnée,1,aucun,0,1,très mauvaise expérience.
+874,solo,7832.12,lisbonne,printemps,9,hôtel,,ensoleillé,gastronomie,2,aucun,0,1,je ne recommande pas.
+875,famille,6708.81,paris,été,17,appartement,1079.42,nuageux,plage,5,bagages,0,1,très bon rapport qualité-prix.
+876,solo,10409.55,new york,automne,18,villa,,ensoleillé,plage,3,aucun,0,1,dans l'ensemble satisfaisant.
+877,couple,9371.56,lisbonne,printemps,17,appartement,1278.75,variable,culture,2,aucun,0,1,de nombreux problèmes rencontrés.
+878,famille,500.0,bali,printemps,14,hôtel,50.0,pluie,plage,1,aucun,0,0,à éviter.
+879,famille,9123.51,rome,été,4,hôtel,1249.03,ensoleillé,culture,1,aucun,0,1,à éviter.
+880,business,2875.96,bali,été,12,appartement,,pluie,,5,météo,1,1,très bon rapport qualité-prix.
+881,couple,1188.75,bali,printemps,4,appartement,793.96,variable,gastronomie,2,retard_vol,0,0,déçu par l'organisation.
+882,senior,6163.7,tokyo,été,3,villa,1583.0,ensoleillé,business,5,aucun,0,1,excellent séjour.
+883,business,,bali,automne,11,appartement,1532.49,,plage,4,retard_vol,1,1,"très satisfait, je recommande."
+884,couple,500.0,bali,été,13,villa,35.0,,plage,1,météo,1,0,très mauvaise expérience.
+885,business,9766.26,new york,printemps,14,,1014.07,ensoleillé,,2,bagages,0,1,déçu par l'organisation.
+886,famille,10003.31,paris,printemps,12,appartement,1037.51,pluie,culture,5,aucun,0,1,excellent séjour.
+887,senior,7113.5,bali,printemps,13,appartement,1488.46,variable,business,3,bagages,0,1,séjour correct mais perfectible.
+889,business,2973.19,rome,hiver,9,resort,948.47,pluie,culture,3,bagages,0,1,dans l'ensemble satisfaisant.
+890,famille,11062.61,rome,été,3,villa,1619.76,ensoleillé,gastronomie,4,aucun,0,1,une expérience inoubliable.
+891,solo,41000.0,rome,printemps,3,villa,1105.22,pluie,randonnée,5,aucun,0,0,une expérience inoubliable.
+892,solo,11218.07,paris,automne,14,hôtel,1591.94,,plage,4,retard_vol,1,1,"très satisfait, je recommande."
+893,senior,6257.59,new york,printemps,6,appartement,743.23,nuageux,business,4,retard_vol,1,1,une expérience inoubliable.
+894,solo,6537.4,paris,hiver,14,hôtel,1256.87,ensoleillé,plage,2,retard_vol,0,1,très mauvaise expérience.
+895,solo,500.0,bali,automne,15,hôtel,,pluie,business,2,bagages,0,0,je ne recommande pas.
+896,couple,6332.15,lisbonne,automne,7,,1125.97,,culture,1,retard_vol,1,1,à éviter.
+897,couple,9399.2,lisbonne,printemps,13,,1047.25,ensoleillé,culture,4,aucun,0,1,"parfait, rien à redire."
+898,solo,1532.92,rome,printemps,7,villa,805.04,ensoleillé,culture,1,météo,1,0,de nombreux problèmes rencontrés.
+899,solo,,bali,hiver,3,villa,1408.07,ensoleillé,,5,aucun,0,1,une expérience inoubliable.
+900,famille,7283.08,tokyo,été,11,villa,911.61,pluie,plage,4,aucun,0,1,très bon rapport qualité-prix.
+901,senior,4327.09,lisbonne,été,8,resort,1092.59,,,5,aucun,0,1,très bon rapport qualité-prix.
+902,senior,10371.75,sydney,printemps,8,resort,787.15,variable,culture,4,annulation,1,1,"parfait, rien à redire."
+904,solo,8322.51,rome,été,3,hôtel,1427.51,variable,plage,3,retard_vol,0,1,dans l'ensemble satisfaisant.
+905,famille,13456.8,tokyo,automne,12,villa,,variable,plage,3,météo,1,1,séjour mitigé.
+906,business,12732.73,lisbonne,été,5,appartement,808.69,ensoleillé,,2,retard_vol,0,1,je ne recommande pas.
+907,couple,8496.48,lisbonne,été,14,resort,1529.62,pluie,plage,1,annulation,1,1,de nombreux problèmes rencontrés.
+908,business,5707.02,paris,hiver,11,villa,,ensoleillé,plage,1,bagages,0,1,à éviter.
+909,business,4359.17,new york,printemps,12,appartement,821.81,nuageux,business,3,retard_vol,1,1,dans l'ensemble satisfaisant.
+910,business,5702.0,rome,printemps,5,hôtel,645.75,variable,randonnée,4,annulation,1,1,excellent séjour.
+911,famille,9117.72,dubaï,automne,6,hôtel,944.88,pluie,business,1,aucun,1,1,déçu par l'organisation.
+912,senior,3667.58,lisbonne,automne,15,appartement,728.16,variable,business,2,météo,0,1,déçu par l'organisation.
+913,couple,9979.45,tokyo,automne,35,villa,951.08,nuageux,plage,4,bagages,0,1,"très satisfait, je recommande."
+914,famille,15529.17,paris,automne,12,hôtel,1317.5,nuageux,culture,4,météo,0,1,excellent séjour.
+915,solo,6674.36,new york,automne,5,villa,1017.39,nuageux,culture,4,météo,1,1,très bon rapport qualité-prix.
+916,solo,1500.71,tokyo,automne,12,,1213.33,ensoleillé,culture,4,aucun,1,0,très bon rapport qualité-prix.
+917,senior,1499.3,sydney,hiver,21,villa,924.15,ensoleillé,plage,1,retard_vol,0,0,
+918,senior,10056.67,bali,hiver,10,resort,1135.47,nuageux,plage,1,retard_vol,1,1,à éviter.
+919,couple,6682.98,lisbonne,printemps,17,hôtel,1632.8,ensoleillé,plage,2,retard_vol,1,1,déçu par l'organisation.
+920,senior,10461.14,bali,été,6,villa,1024.61,variable,culture,1,météo,1,1,très mauvaise expérience.
+921,couple,4771.32,rome,hiver,10,,1221.03,ensoleillé,business,2,météo,1,1,de nombreux problèmes rencontrés.
+922,solo,10274.74,bali,automne,13,appartement,698.44,ensoleillé,culture,2,bagages,0,1,déçu par l'organisation.
+923,couple,6285.42,paris,été,12,villa,1525.39,pluie,culture,5,aucun,1,1,
+924,senior,3969.08,bali,été,6,hôtel,990.11,ensoleillé,business,2,aucun,0,1,à éviter.
+925,couple,5306.37,new york,hiver,6,villa,1399.54,variable,,5,aucun,0,1,très bon rapport qualité-prix.
+926,famille,2095.08,rome,printemps,15,villa,1084.99,,plage,4,retard_vol,0,0,excellent séjour.
+927,solo,14949.08,rome,hiver,16,villa,,ensoleillé,business,3,retard_vol,1,1,dans l'ensemble satisfaisant.
+929,senior,9523.97,paris,été,19,villa,996.75,,plage,5,aucun,0,1,"parfait, rien à redire."
+930,business,4758.27,lisbonne,automne,11,appartement,,pluie,gastronomie,2,bagages,0,1,déçu par l'organisation.
+931,senior,2680.52,lisbonne,printemps,8,villa,914.59,variable,business,2,retard_vol,1,1,à éviter.
+932,senior,5980.53,paris,printemps,17,villa,1326.49,pluie,plage,3,retard_vol,0,1,séjour mitigé.
+933,solo,11366.21,dubaï,printemps,13,villa,1013.42,pluie,gastronomie,5,retard_vol,1,1,une expérience inoubliable.
+934,couple,4823.37,dubaï,automne,5,resort,1211.68,ensoleillé,,1,aucun,0,1,très mauvaise expérience.
+935,business,3412.27,lisbonne,automne,5,hôtel,994.19,pluie,plage,3,météo,1,1,dans l'ensemble satisfaisant.
+936,business,7551.14,bali,printemps,12,resort,1131.39,variable,plage,2,météo,1,1,déçu par l'organisation.
+937,solo,8937.06,bali,automne,9,appartement,829.98,pluie,culture,2,météo,1,1,de nombreux problèmes rencontrés.
+938,famille,13551.25,tokyo,hiver,10,appartement,,pluie,business,3,retard_vol,1,1,séjour correct mais perfectible.
+939,business,8351.03,lisbonne,automne,15,appartement,1129.84,nuageux,plage,2,météo,0,1,je ne recommande pas.
+940,couple,9521.87,dubaï,hiver,14,appartement,973.24,pluie,randonnée,4,aucun,0,1,"parfait, rien à redire."
+941,senior,9825.56,new york,printemps,17,villa,1103.25,variable,plage,5,aucun,0,1,excellent séjour.
+942,couple,2272.74,rome,automne,3,villa,1153.91,ensoleillé,plage,5,aucun,0,0,une expérience inoubliable.
+943,famille,3037.92,dubaï,hiver,11,resort,952.82,ensoleillé,culture,2,aucun,0,1,
+944,senior,2551.56,lisbonne,printemps,13,villa,1083.49,nuageux,culture,1,retard_vol,1,0,très mauvaise expérience.
+945,famille,1550.12,tokyo,printemps,3,villa,848.51,nuageux,culture,4,aucun,0,0,une expérience inoubliable.
+946,couple,10132.89,new york,printemps,7,appartement,1746.66,pluie,gastronomie,3,bagages,0,1,dans l'ensemble satisfaisant.
+947,business,8094.06,tokyo,été,6,,1401.84,,culture,4,aucun,0,1,excellent séjour.
+948,senior,7244.69,new york,automne,10,villa,1191.19,nuageux,plage,3,aucun,0,1,dans l'ensemble satisfaisant.
+950,couple,15215.79,dubaï,printemps,20,villa,587.56,pluie,business,5,météo,1,1,très bon rapport qualité-prix.
+952,senior,15201.01,tokyo,printemps,13,villa,1010.99,pluie,business,4,bagages,0,1,une expérience inoubliable.
+953,solo,1077.76,bali,printemps,13,resort,748.54,pluie,business,4,bagages,0,0,excellent séjour.
+954,famille,3646.77,bali,hiver,12,appartement,1054.59,,culture,4,retard_vol,1,1,une expérience inoubliable.
+956,couple,8384.81,bali,automne,11,villa,1364.67,nuageux,gastronomie,1,retard_vol,1,1,à éviter.
+957,famille,2481.53,paris,automne,18,hôtel,812.95,pluie,plage,4,bagages,0,1,une expérience inoubliable.
+958,business,2595.52,tokyo,été,15,appartement,1225.1,,plage,3,bagages,0,0,séjour correct mais perfectible.
+959,famille,1387.28,rome,été,5,villa,1121.86,ensoleillé,plage,4,aucun,0,0,très bon rapport qualité-prix.
+960,solo,10059.85,bali,été,14,resort,1211.13,nuageux,plage,4,météo,1,1,excellent séjour.
+961,business,9794.04,sydney,été,14,villa,978.7,variable,randonnée,3,météo,0,1,"quelques imprévus, globalement bien."
+962,business,14233.74,rome,printemps,11,appartement,1488.68,pluie,culture,2,aucun,0,1,de nombreux problèmes rencontrés.
+963,couple,4157.86,new york,hiver,16,villa,1090.26,ensoleillé,culture,3,aucun,1,1,dans l'ensemble satisfaisant.
+965,business,1722.82,new york,automne,11,,906.18,ensoleillé,plage,4,météo,1,0,très bon rapport qualité-prix.
+966,business,5572.45,rome,été,11,villa,1317.08,pluie,culture,3,aucun,0,1,"quelques imprévus, globalement bien."
+967,famille,4830.98,bali,automne,3,resort,1102.01,variable,randonnée,3,météo,1,1,séjour mitigé.
+968,famille,8797.59,new york,hiver,9,appartement,1030.17,pluie,plage,5,aucun,0,1,excellent séjour.
+969,senior,11026.67,new york,été,7,appartement,1287.46,pluie,randonnée,2,météo,1,1,de nombreux problèmes rencontrés.
+970,solo,10921.96,rome,printemps,4,villa,1037.82,nuageux,randonnée,2,aucun,0,1,très mauvaise expérience.
+971,couple,3524.1,tokyo,printemps,17,hôtel,404.59,nuageux,randonnée,4,bagages,0,1,une expérience inoubliable.
+972,solo,10951.82,new york,hiver,12,resort,297.15,variable,culture,5,aucun,0,1,très bon rapport qualité-prix.
+973,business,6746.16,bali,hiver,10,villa,1459.01,pluie,culture,3,retard_vol,1,1,dans l'ensemble satisfaisant.
+974,senior,5614.58,new york,automne,7,appartement,1447.71,nuageux,culture,3,aucun,0,1,peut mieux faire sur la logistique.
+975,couple,4065.86,paris,printemps,11,appartement,1623.81,nuageux,plage,2,aucun,0,0,de nombreux problèmes rencontrés.
+976,senior,4665.22,bali,été,15,hôtel,1113.3,ensoleillé,culture,3,aucun,0,1,"quelques imprévus, globalement bien."
+977,famille,13952.49,sydney,été,6,resort,771.57,ensoleillé,culture,1,aucun,0,1,à éviter.
+978,solo,,rome,printemps,10,villa,1005.55,ensoleillé,,4,aucun,0,1,une expérience inoubliable.
+979,business,,new york,été,14,hôtel,1121.06,nuageux,culture,2,météo,1,1,à éviter.
+980,famille,5866.1,tokyo,hiver,3,appartement,848.11,variable,gastronomie,2,retard_vol,1,1,je ne recommande pas.
+981,famille,16791.08,bali,automne,10,villa,1559.82,nuageux,gastronomie,4,aucun,0,1,"parfait, rien à redire."
+982,solo,12188.41,lisbonne,automne,8,hôtel,1718.19,ensoleillé,plage,5,météo,1,1,très bon rapport qualité-prix.
+983,senior,4015.24,bali,automne,9,villa,1246.18,ensoleillé,gastronomie,2,retard_vol,1,1,très mauvaise expérience.
+984,business,5820.24,rome,été,7,resort,1115.09,nuageux,plage,5,météo,1,1,"très satisfait, je recommande."
+985,senior,6059.74,lisbonne,hiver,11,villa,770.95,variable,plage,3,météo,1,1,peut mieux faire sur la logistique.
+986,business,7512.45,dubaï,automne,20,villa,1532.44,nuageux,,5,aucun,0,1,"très satisfait, je recommande."
+987,solo,4095.25,dubaï,printemps,8,villa,1138.45,pluie,business,2,météo,1,1,très mauvaise expérience.
+988,business,8694.19,paris,hiver,11,hôtel,1040.5,variable,randonnée,5,météo,1,1,excellent séjour.
+989,famille,12781.72,rome,printemps,20,appartement,1246.95,ensoleillé,randonnée,4,bagages,0,1,très bon rapport qualité-prix.
+990,famille,1624.82,new york,automne,7,villa,961.03,pluie,randonnée,4,bagages,0,0,très bon rapport qualité-prix.
+991,senior,2373.06,rome,été,19,resort,,variable,business,3,bagages,0,0,séjour correct mais perfectible.
+992,business,4974.94,rome,automne,10,resort,731.42,nuageux,culture,3,météo,1,1,séjour mitigé.
+993,couple,5161.97,sydney,automne,19,hôtel,1409.34,ensoleillé,business,3,aucun,0,1,séjour correct mais perfectible.
+994,solo,14985.81,bali,printemps,14,villa,1090.02,,randonnée,5,aucun,1,1,"très satisfait, je recommande."
+995,business,10964.89,paris,automne,11,villa,1428.56,variable,plage,4,météo,1,1,"très satisfait, je recommande."
+996,senior,10733.4,paris,printemps,10,appartement,1064.1,nuageux,culture,1,aucun,0,1,je ne recommande pas.
+997,business,5857.55,tokyo,été,7,,1081.5,pluie,randonnée,4,aucun,0,1,très bon rapport qualité-prix.
+998,solo,5769.01,new york,hiver,10,appartement,,ensoleillé,culture,5,météo,0,1,"parfait, rien à redire."
+1000,solo,10077.54,rome,printemps,10,appartement,883.27,nuageux,gastronomie,4,aucun,0,1,excellent séjour.
+1001,business,8904.91,rome,hiver,8,appartement,987.64,ensoleillé,business,2,retard_vol,1,1,à éviter.
+1002,senior,12111.71,new york,printemps,9,hôtel,1118.28,pluie,culture,4,météo,1,1,"très satisfait, je recommande."
+1003,solo,6073.51,bali,hiver,15,villa,1150.49,variable,randonnée,3,annulation,1,1,peut mieux faire sur la logistique.
+1004,couple,6352.06,new york,hiver,16,villa,660.77,variable,gastronomie,2,météo,1,1,déçu par l'organisation.
+1005,couple,7609.96,lisbonne,été,7,resort,1056.14,ensoleillé,plage,2,retard_vol,0,1,de nombreux problèmes rencontrés.
+1006,business,10521.91,new york,printemps,7,appartement,1331.12,ensoleillé,culture,3,aucun,0,1,peut mieux faire sur la logistique.
+1008,famille,9893.25,lisbonne,printemps,18,villa,1057.77,variable,randonnée,2,aucun,0,1,de nombreux problèmes rencontrés.
+1009,famille,6841.32,paris,été,16,villa,,nuageux,culture,2,aucun,0,1,je ne recommande pas.
+1010,business,2653.46,lisbonne,printemps,4,villa,1084.24,pluie,plage,2,retard_vol,1,0,à éviter.
+1011,famille,,new york,été,9,resort,841.82,nuageux,plage,3,météo,0,0,"quelques imprévus, globalement bien."
+1012,senior,6373.47,new york,été,5,hôtel,,nuageux,culture,4,aucun,0,1,"très satisfait, je recommande."
+1013,couple,12764.07,lisbonne,été,9,hôtel,1384.41,ensoleillé,plage,5,bagages,0,1,excellent séjour.
+1014,famille,13679.68,new york,automne,18,hôtel,836.28,ensoleillé,gastronomie,3,aucun,0,1,dans l'ensemble satisfaisant.
+1015,senior,8357.59,tokyo,printemps,3,hôtel,1017.64,ensoleillé,randonnée,2,retard_vol,1,1,déçu par l'organisation.
+1016,couple,14838.73,bali,hiver,3,hôtel,747.72,variable,plage,1,retard_vol,1,1,de nombreux problèmes rencontrés.
+1017,couple,6750.78,new york,été,6,villa,1370.29,,plage,2,aucun,1,1,déçu par l'organisation.
+1018,couple,10769.63,new york,automne,11,hôtel,1093.25,ensoleillé,culture,3,météo,1,1,séjour mitigé.
+1019,famille,5103.73,rome,hiver,13,hôtel,890.15,pluie,,2,aucun,0,1,de nombreux problèmes rencontrés.
+1020,famille,4848.11,dubaï,printemps,12,villa,1142.73,ensoleillé,plage,2,retard_vol,1,1,très mauvaise expérience.
+1021,famille,,new york,automne,16,appartement,795.44,ensoleillé,business,4,météo,1,1,une expérience inoubliable.
+1024,business,4335.65,tokyo,été,8,villa,832.1,pluie,culture,1,bagages,0,1,déçu par l'organisation.
+1025,business,3691.0,paris,été,14,appartement,1481.77,variable,culture,2,annulation,1,0,déçu par l'organisation.
+1026,solo,2163.99,paris,printemps,3,appartement,921.52,ensoleillé,business,3,bagages,0,0,peut mieux faire sur la logistique.
+1027,couple,6099.61,tokyo,automne,10,,1242.95,variable,gastronomie,5,retard_vol,1,1,"très satisfait, je recommande."
+1028,solo,14037.93,paris,printemps,11,appartement,893.87,variable,culture,1,retard_vol,1,1,déçu par l'organisation.
+1029,senior,15370.3,bali,automne,16,resort,1321.56,variable,randonnée,1,météo,1,1,je ne recommande pas.
+1031,famille,5494.16,bali,été,10,hôtel,1128.51,pluie,culture,5,aucun,0,1,très bon rapport qualité-prix.
+1032,couple,2751.4,lisbonne,été,4,villa,1132.16,pluie,plage,3,météo,1,0,séjour mitigé.
+1033,couple,10910.95,lisbonne,été,12,resort,1741.85,pluie,randonnée,5,retard_vol,1,1,"très satisfait, je recommande."
+1034,couple,8080.12,new york,automne,14,hôtel,1286.95,ensoleillé,plage,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1035,solo,4356.08,lisbonne,printemps,16,resort,959.1,variable,plage,1,aucun,0,1,déçu par l'organisation.
+1036,solo,7216.76,lisbonne,été,7,villa,1301.59,pluie,culture,3,météo,1,1,"quelques imprévus, globalement bien."
+1037,famille,4998.09,bali,printemps,15,resort,1691.03,variable,culture,4,météo,0,1,"parfait, rien à redire."
+1038,solo,13435.87,dubaï,printemps,17,villa,681.26,nuageux,gastronomie,3,annulation,1,1,séjour correct mais perfectible.
+1039,solo,9130.43,rome,printemps,3,villa,892.21,ensoleillé,plage,1,météo,1,1,à éviter.
+1040,famille,9626.07,dubaï,hiver,13,hôtel,1054.51,,gastronomie,1,annulation,0,1,je ne recommande pas.
+1042,famille,6654.57,paris,été,9,resort,1028.82,nuageux,culture,2,annulation,1,1,de nombreux problèmes rencontrés.
+1043,senior,41000.0,bali,été,4,hôtel,768.47,nuageux,culture,3,aucun,0,1,dans l'ensemble satisfaisant.
+1044,famille,12273.6,lisbonne,été,15,villa,1494.26,ensoleillé,,2,bagages,0,1,de nombreux problèmes rencontrés.
+1046,senior,41000.0,rome,printemps,9,resort,1064.34,nuageux,business,4,météo,0,1,"parfait, rien à redire."
+1047,senior,2077.07,rome,printemps,10,appartement,1398.28,variable,culture,1,météo,0,0,très mauvaise expérience.
+1049,business,,lisbonne,automne,7,appartement,855.52,ensoleillé,gastronomie,2,météo,1,1,à éviter.
+1050,business,3826.71,dubaï,printemps,6,appartement,756.55,ensoleillé,plage,4,retard_vol,1,1,excellent séjour.
+1051,business,7061.79,tokyo,été,10,appartement,1056.36,nuageux,business,4,bagages,0,1,excellent séjour.
+1053,solo,2547.27,paris,printemps,21,hôtel,1173.0,pluie,,2,retard_vol,1,0,à éviter.
+1054,solo,7071.01,tokyo,hiver,3,villa,,variable,business,2,météo,1,1,à éviter.
+1055,senior,,sydney,printemps,11,villa,1335.89,ensoleillé,culture,1,annulation,1,1,à éviter.
+1056,solo,,dubaï,été,4,villa,1148.97,pluie,plage,1,annulation,1,0,
+1057,solo,5386.42,tokyo,automne,15,hôtel,1168.88,ensoleillé,plage,4,météo,1,1,très bon rapport qualité-prix.
+1058,business,10997.07,new york,printemps,5,appartement,,ensoleillé,plage,1,bagages,0,1,je ne recommande pas.
+1059,couple,1068.84,tokyo,été,7,appartement,1000.67,nuageux,culture,1,météo,1,0,je ne recommande pas.
+1060,famille,7848.52,new york,été,7,hôtel,923.48,ensoleillé,plage,3,annulation,1,1,séjour correct mais perfectible.
+1061,solo,7190.14,new york,automne,10,resort,971.2,pluie,business,2,bagages,0,1,très mauvaise expérience.
+1062,solo,,dubaï,été,12,appartement,1066.4,pluie,business,5,retard_vol,1,1,"très satisfait, je recommande."
+1063,couple,5995.63,new york,printemps,12,villa,1093.62,pluie,culture,5,aucun,0,1,excellent séjour.
+1064,solo,6231.76,lisbonne,été,10,resort,895.37,nuageux,culture,4,aucun,1,1,"très satisfait, je recommande."
+1065,solo,10372.91,tokyo,printemps,3,villa,575.81,pluie,randonnée,3,aucun,0,1,séjour mitigé.
+1066,couple,1573.51,paris,automne,14,appartement,967.67,nuageux,,2,annulation,0,0,de nombreux problèmes rencontrés.
+1067,solo,6032.96,rome,printemps,10,villa,1214.43,ensoleillé,culture,3,météo,0,1,"quelques imprévus, globalement bien."
+1068,business,5085.61,new york,été,16,appartement,1154.52,ensoleillé,plage,1,retard_vol,1,1,de nombreux problèmes rencontrés.
+1069,couple,6363.63,new york,hiver,6,appartement,1439.48,pluie,plage,3,aucun,0,1,peut mieux faire sur la logistique.
+1071,senior,9159.49,dubaï,automne,10,villa,1321.5,ensoleillé,plage,2,météo,1,1,très mauvaise expérience.
+1072,solo,3903.82,bali,été,16,appartement,1488.52,pluie,gastronomie,1,retard_vol,0,0,déçu par l'organisation.
+1073,couple,7475.44,new york,printemps,11,appartement,1323.5,pluie,culture,3,météo,0,1,"quelques imprévus, globalement bien."
+1074,solo,12936.44,dubaï,automne,9,appartement,1576.25,variable,culture,2,aucun,0,1,très mauvaise expérience.
+1075,senior,3570.27,tokyo,automne,6,villa,1614.03,nuageux,culture,5,aucun,0,0,"très satisfait, je recommande."
+1076,business,7509.6,tokyo,printemps,19,hôtel,1372.91,pluie,business,5,météo,1,1,excellent séjour.
+1077,business,6144.79,rome,été,5,appartement,1307.31,pluie,gastronomie,5,retard_vol,1,1,"très satisfait, je recommande."
+1078,solo,6669.84,tokyo,été,6,appartement,1063.0,variable,business,1,retard_vol,1,1,très mauvaise expérience.
+1080,couple,12615.02,lisbonne,printemps,3,appartement,1027.46,variable,plage,1,météo,1,1,déçu par l'organisation.
+1081,business,3800.26,new york,printemps,16,appartement,1284.5,ensoleillé,business,2,météo,1,1,très mauvaise expérience.
+1082,couple,11063.17,bali,automne,13,villa,924.95,variable,randonnée,2,météo,0,1,déçu par l'organisation.
+1083,business,4417.37,dubaï,automne,14,appartement,1066.78,ensoleillé,plage,5,retard_vol,1,1,une expérience inoubliable.
+1084,senior,4400.71,dubaï,automne,13,hôtel,486.81,ensoleillé,plage,4,météo,1,1,"parfait, rien à redire."
+1085,famille,11817.74,bali,automne,9,hôtel,1579.79,,randonnée,1,retard_vol,1,1,déçu par l'organisation.
+1086,business,10933.33,sydney,automne,5,hôtel,,nuageux,,1,bagages,0,1,de nombreux problèmes rencontrés.
+1087,famille,7765.76,paris,automne,9,hôtel,1240.1,nuageux,gastronomie,4,retard_vol,1,1,très bon rapport qualité-prix.
+1088,business,9994.48,paris,automne,5,appartement,1508.69,ensoleillé,business,3,retard_vol,0,1,
+1089,famille,5759.98,rome,été,12,villa,1198.48,nuageux,randonnée,5,aucun,0,1,une expérience inoubliable.
+1090,senior,6890.24,rome,printemps,14,villa,1505.08,nuageux,gastronomie,3,aucun,0,1,séjour mitigé.
+1091,famille,4255.01,lisbonne,printemps,17,hôtel,,pluie,randonnée,2,aucun,0,1,déçu par l'organisation.
+1092,senior,10571.0,tokyo,été,12,appartement,1760.5,variable,business,1,annulation,0,1,à éviter.
+1093,business,4126.77,bali,printemps,15,hôtel,1409.35,pluie,plage,3,annulation,1,1,"quelques imprévus, globalement bien."
+1094,business,12915.12,tokyo,printemps,8,villa,1174.07,ensoleillé,plage,3,aucun,0,1,séjour mitigé.
+1095,business,5649.92,tokyo,été,8,hôtel,1499.92,ensoleillé,,1,aucun,1,1,je ne recommande pas.
+1096,business,7006.73,bali,printemps,12,appartement,804.81,variable,culture,5,météo,1,1,"parfait, rien à redire."
+1097,senior,9984.71,rome,printemps,8,resort,1040.65,ensoleillé,culture,2,retard_vol,0,1,de nombreux problèmes rencontrés.
+1098,couple,7020.27,new york,automne,11,appartement,1505.06,nuageux,culture,1,retard_vol,1,1,à éviter.
+1099,business,5722.24,rome,automne,5,appartement,617.63,variable,culture,3,retard_vol,0,1,séjour correct mais perfectible.
+1100,famille,6802.89,dubaï,hiver,5,villa,,variable,gastronomie,4,bagages,0,1,très bon rapport qualité-prix.
+1101,business,10529.66,rome,hiver,13,resort,1260.62,nuageux,plage,1,météo,1,1,de nombreux problèmes rencontrés.
+1102,couple,4250.05,dubaï,printemps,14,villa,1645.75,pluie,plage,2,retard_vol,0,0,à éviter.
+1104,solo,6965.5,rome,automne,13,villa,1549.38,pluie,randonnée,1,météo,1,1,déçu par l'organisation.
+1105,solo,10411.74,paris,hiver,7,villa,968.06,ensoleillé,gastronomie,1,bagages,0,1,déçu par l'organisation.
+1106,solo,6521.22,lisbonne,automne,10,villa,998.2,ensoleillé,randonnée,4,aucun,0,1,"parfait, rien à redire."
+1107,business,14218.68,tokyo,hiver,17,resort,,pluie,culture,3,retard_vol,1,1,"quelques imprévus, globalement bien."
+1108,business,6292.52,new york,printemps,14,resort,826.46,ensoleillé,gastronomie,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1109,solo,5965.18,paris,automne,14,resort,1226.14,pluie,culture,4,bagages,0,1,très bon rapport qualité-prix.
+1110,business,6234.06,bali,hiver,19,resort,819.9,nuageux,culture,2,retard_vol,1,1,déçu par l'organisation.
+1111,senior,1612.67,new york,hiver,6,appartement,1316.4,variable,randonnée,3,météo,0,0,peut mieux faire sur la logistique.
+1112,famille,2741.84,lisbonne,printemps,5,villa,940.33,variable,randonnée,4,annulation,1,1,une expérience inoubliable.
+1113,famille,4783.29,bali,été,6,villa,792.91,,culture,3,annulation,1,1,peut mieux faire sur la logistique.
+1114,famille,11505.94,dubaï,automne,9,appartement,976.55,pluie,culture,5,retard_vol,1,1,très bon rapport qualité-prix.
+1115,business,6790.37,new york,automne,3,appartement,1208.24,ensoleillé,randonnée,1,annulation,1,1,très mauvaise expérience.
+1116,solo,4968.95,rome,hiver,9,villa,1043.67,nuageux,randonnée,4,aucun,0,1,excellent séjour.
+1117,business,11871.84,bali,hiver,7,villa,1127.17,ensoleillé,culture,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1118,business,13181.45,rome,automne,14,hôtel,1304.58,variable,culture,3,bagages,0,1,"quelques imprévus, globalement bien."
+1119,couple,11988.21,tokyo,printemps,12,appartement,1408.09,variable,plage,1,météo,1,1,déçu par l'organisation.
+1120,senior,3482.63,new york,automne,7,villa,1034.89,variable,gastronomie,3,météo,1,1,dans l'ensemble satisfaisant.
+1121,business,4926.17,tokyo,été,13,resort,838.15,variable,business,5,bagages,0,1,"très satisfait, je recommande."
+1122,couple,14240.61,rome,hiver,14,appartement,1138.39,variable,plage,3,annulation,1,1,séjour correct mais perfectible.
+1123,solo,7896.76,dubaï,automne,6,villa,1244.13,ensoleillé,business,1,bagages,0,1,de nombreux problèmes rencontrés.
+1124,couple,5844.39,new york,hiver,7,villa,726.53,variable,plage,2,météo,0,1,à éviter.
+1125,couple,9821.82,new york,printemps,3,villa,879.32,pluie,gastronomie,3,bagages,0,1,peut mieux faire sur la logistique.
+1126,famille,10987.44,new york,été,4,villa,925.26,nuageux,gastronomie,5,aucun,0,1,très bon rapport qualité-prix.
+1128,solo,7809.22,dubaï,été,10,resort,914.04,nuageux,business,5,météo,0,1,excellent séjour.
+1129,solo,10661.74,tokyo,été,5,appartement,1307.49,ensoleillé,gastronomie,4,annulation,1,1,"très satisfait, je recommande."
+1130,business,2243.4,bali,automne,7,appartement,687.82,ensoleillé,business,2,bagages,0,1,déçu par l'organisation.
+1131,solo,6973.8,rome,automne,4,appartement,694.64,ensoleillé,randonnée,1,retard_vol,0,1,je ne recommande pas.
+1132,senior,2428.55,new york,été,11,appartement,1028.52,nuageux,business,4,retard_vol,0,0,"très satisfait, je recommande."
+1133,business,2956.24,new york,hiver,12,appartement,1070.93,variable,business,3,aucun,0,0,dans l'ensemble satisfaisant.
+1134,solo,4652.45,bali,été,12,villa,,pluie,culture,5,retard_vol,1,1,"très satisfait, je recommande."
+1135,solo,8848.7,lisbonne,automne,10,resort,955.39,nuageux,plage,5,retard_vol,1,1,"très satisfait, je recommande."
+1137,business,4308.28,paris,printemps,7,hôtel,1012.6,,culture,1,retard_vol,1,1,je ne recommande pas.
+1138,senior,7131.97,dubaï,printemps,8,hôtel,1158.7,ensoleillé,business,5,annulation,1,1,excellent séjour.
+1139,famille,2297.15,tokyo,hiver,8,villa,940.7,variable,gastronomie,3,aucun,1,0,peut mieux faire sur la logistique.
+1140,senior,8653.79,lisbonne,été,10,appartement,1514.06,ensoleillé,,1,annulation,1,1,de nombreux problèmes rencontrés.
+1141,business,11488.01,rome,printemps,17,resort,1248.84,pluie,plage,3,météo,1,1,séjour mitigé.
+1142,famille,6604.49,bali,automne,14,villa,901.69,pluie,culture,1,retard_vol,1,1,je ne recommande pas.
+1143,business,6106.51,tokyo,automne,5,appartement,1143.33,pluie,business,3,aucun,0,1,séjour mitigé.
+1144,business,8430.46,bali,automne,13,hôtel,1151.24,variable,plage,2,météo,1,1,à éviter.
+1146,solo,9089.52,new york,printemps,6,hôtel,3800.0,variable,business,3,météo,1,1,"quelques imprévus, globalement bien."
+1147,senior,19437.01,rome,automne,14,appartement,,pluie,plage,5,aucun,0,1,"très satisfait, je recommande."
+1148,couple,6429.12,new york,automne,9,resort,1129.22,variable,plage,2,retard_vol,1,1,je ne recommande pas.
+1149,solo,6443.45,lisbonne,été,3,hôtel,1517.74,,culture,4,météo,1,1,"parfait, rien à redire."
+1150,solo,,sydney,automne,12,hôtel,1463.96,variable,culture,5,météo,0,1,"très satisfait, je recommande."
+1151,couple,13561.27,new york,hiver,11,appartement,1170.79,variable,plage,4,météo,1,1,très bon rapport qualité-prix.
+1152,senior,10857.02,bali,automne,9,hôtel,1047.71,nuageux,business,2,retard_vol,1,1,à éviter.
+1154,famille,9196.75,lisbonne,hiver,6,hôtel,1069.64,pluie,business,2,météo,1,1,très mauvaise expérience.
+1155,senior,17299.17,dubaï,été,13,appartement,1568.32,nuageux,business,2,retard_vol,0,1,à éviter.
+1156,senior,9434.93,new york,hiver,10,appartement,1139.03,,culture,4,aucun,0,1,excellent séjour.
+1157,couple,2266.34,lisbonne,hiver,11,,1009.29,nuageux,gastronomie,2,bagages,0,0,de nombreux problèmes rencontrés.
+1158,senior,8060.9,rome,hiver,12,hôtel,,pluie,plage,2,aucun,0,1,très mauvaise expérience.
+1159,famille,1757.71,dubaï,printemps,28,,792.91,ensoleillé,gastronomie,5,météo,1,0,"parfait, rien à redire."
+1160,senior,11897.13,rome,automne,5,villa,1267.16,ensoleillé,plage,4,aucun,0,1,
+1161,business,3067.97,rome,hiver,3,hôtel,898.24,variable,culture,1,retard_vol,1,1,je ne recommande pas.
+1162,business,7223.5,tokyo,été,13,hôtel,1412.3,,plage,2,météo,1,1,déçu par l'organisation.
+1163,famille,3463.72,tokyo,automne,4,villa,,nuageux,,2,annulation,1,1,je ne recommande pas.
+1164,senior,4719.63,lisbonne,hiver,11,appartement,1152.1,,plage,5,météo,1,1,"parfait, rien à redire."
+1165,famille,12919.13,bali,hiver,12,hôtel,1426.26,nuageux,randonnée,5,retard_vol,1,1,très bon rapport qualité-prix.
+1166,couple,7341.35,sydney,automne,13,hôtel,541.2,variable,,4,météo,1,1,excellent séjour.
+1167,famille,4668.18,dubaï,automne,4,appartement,1658.9,variable,,3,aucun,0,0,séjour correct mais perfectible.
+1168,business,2304.15,new york,été,10,villa,1004.02,ensoleillé,culture,1,météo,0,0,déçu par l'organisation.
+1170,senior,1876.33,tokyo,hiver,18,villa,1271.15,nuageux,business,1,météo,1,0,à éviter.
+1171,business,7375.64,tokyo,printemps,15,appartement,1312.6,pluie,business,4,bagages,0,1,une expérience inoubliable.
+1172,famille,10878.26,rome,automne,12,,1191.4,nuageux,randonnée,1,retard_vol,1,1,à éviter.
+1173,famille,,bali,printemps,5,appartement,1385.3,,culture,4,bagages,0,1,très bon rapport qualité-prix.
+1174,famille,13259.57,lisbonne,automne,13,resort,1257.11,nuageux,gastronomie,5,météo,1,1,une expérience inoubliable.
+1175,business,4029.6,new york,été,9,resort,1589.92,pluie,plage,2,aucun,0,0,très mauvaise expérience.
+1176,business,5963.86,bali,automne,13,hôtel,1257.98,nuageux,gastronomie,4,retard_vol,1,1,"très satisfait, je recommande."
+1177,couple,2568.99,rome,été,7,resort,1644.52,nuageux,plage,4,retard_vol,1,0,très bon rapport qualité-prix.
+1178,senior,10920.73,new york,printemps,9,villa,1359.49,variable,business,3,bagages,0,1,séjour mitigé.
+1179,famille,,dubaï,printemps,11,hôtel,634.06,pluie,business,2,retard_vol,1,1,à éviter.
+1180,business,,bali,printemps,11,appartement,1817.78,,business,2,bagages,0,0,à éviter.
+1181,senior,,dubaï,automne,12,appartement,964.08,variable,,3,retard_vol,1,1,"quelques imprévus, globalement bien."
+1182,business,12026.12,new york,hiver,7,appartement,1518.81,variable,culture,5,aucun,0,1,excellent séjour.
+1185,famille,11851.42,new york,hiver,21,,933.49,ensoleillé,plage,3,bagages,0,1,dans l'ensemble satisfaisant.
+1186,couple,7239.58,rome,automne,12,hôtel,1285.7,pluie,culture,4,annulation,0,1,une expérience inoubliable.
+1187,famille,9143.76,bali,printemps,3,appartement,1050.14,ensoleillé,randonnée,1,aucun,0,1,de nombreux problèmes rencontrés.
+1188,solo,14027.48,dubaï,automne,6,appartement,1541.17,pluie,randonnée,4,aucun,0,1,"très satisfait, je recommande."
+1189,business,14783.95,new york,hiver,12,resort,1235.56,ensoleillé,plage,3,aucun,0,1,séjour mitigé.
+1190,business,6674.02,rome,été,35,hôtel,1368.83,nuageux,culture,2,météo,1,1,de nombreux problèmes rencontrés.
+1191,senior,4776.39,lisbonne,printemps,4,resort,538.03,variable,plage,3,aucun,0,1,"quelques imprévus, globalement bien."
+1192,couple,,paris,printemps,9,appartement,1095.07,nuageux,plage,2,retard_vol,1,1,de nombreux problèmes rencontrés.
+1193,business,10865.07,new york,automne,11,appartement,1228.03,variable,plage,4,retard_vol,0,1,une expérience inoubliable.
+1194,couple,1390.26,lisbonne,automne,14,hôtel,1177.93,variable,randonnée,2,annulation,0,0,déçu par l'organisation.
+1195,couple,5905.12,new york,automne,8,villa,1375.59,variable,business,2,aucun,1,1,déçu par l'organisation.
+1196,business,7338.25,sydney,hiver,3,villa,1019.94,ensoleillé,randonnée,1,retard_vol,1,1,
+1197,senior,,new york,printemps,13,hôtel,1131.07,variable,culture,5,aucun,0,1,une expérience inoubliable.
+1198,business,8052.79,sydney,été,16,villa,1434.57,ensoleillé,culture,5,bagages,0,1,excellent séjour.
+1199,famille,17269.25,new york,printemps,9,hôtel,507.31,nuageux,randonnée,3,aucun,0,1,peut mieux faire sur la logistique.
+1200,business,6433.47,dubaï,automne,12,villa,1275.95,variable,business,5,aucun,0,1,excellent séjour.
+1201,famille,5167.57,rome,été,8,villa,1028.52,pluie,culture,5,aucun,0,1,"parfait, rien à redire."
+1202,senior,11019.85,dubaï,été,6,hôtel,873.5,nuageux,,5,annulation,0,1,excellent séjour.
+1203,business,7890.48,rome,automne,15,,1208.19,nuageux,plage,5,aucun,0,1,excellent séjour.
+1204,couple,12730.28,lisbonne,été,12,villa,1446.96,variable,,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1205,famille,7588.35,rome,hiver,12,villa,1396.49,pluie,business,4,annulation,0,1,
+1206,couple,5921.86,rome,hiver,17,villa,1081.79,nuageux,culture,2,annulation,0,1,déçu par l'organisation.
+1210,business,8454.25,dubaï,printemps,7,appartement,932.25,pluie,culture,4,aucun,0,1,
+1211,solo,1428.69,rome,automne,14,appartement,947.76,variable,gastronomie,4,retard_vol,1,0,"très satisfait, je recommande."
+1212,famille,11989.0,rome,automne,9,appartement,1342.54,ensoleillé,culture,1,météo,1,1,à éviter.
+1213,senior,7046.01,new york,été,5,appartement,1106.7,ensoleillé,plage,5,météo,1,1,excellent séjour.
+1214,couple,5938.95,rome,printemps,10,hôtel,837.62,ensoleillé,randonnée,4,aucun,0,1,une expérience inoubliable.
+1215,business,3519.89,rome,printemps,11,villa,666.46,variable,culture,5,aucun,1,1,"parfait, rien à redire."
+1216,business,9434.19,paris,été,15,hôtel,1340.93,ensoleillé,culture,5,aucun,0,1,excellent séjour.
+1218,senior,2948.99,bali,été,12,villa,,variable,randonnée,5,aucun,0,0,une expérience inoubliable.
+1219,famille,,paris,été,12,appartement,1450.24,ensoleillé,randonnée,1,bagages,0,1,de nombreux problèmes rencontrés.
+1220,solo,8354.54,new york,hiver,9,appartement,767.21,pluie,business,2,retard_vol,1,1,déçu par l'organisation.
+1221,solo,5976.29,new york,hiver,6,resort,1105.9,nuageux,gastronomie,5,aucun,0,1,une expérience inoubliable.
+1222,solo,9511.54,paris,printemps,11,villa,1072.25,variable,gastronomie,5,aucun,0,1,"parfait, rien à redire."
+1223,famille,,bali,automne,8,villa,1219.77,nuageux,culture,1,météo,1,1,déçu par l'organisation.
+1224,famille,8469.08,lisbonne,été,18,appartement,1450.09,nuageux,gastronomie,2,aucun,0,1,à éviter.
+1225,couple,,new york,hiver,17,hôtel,761.71,ensoleillé,culture,1,météo,1,1,très mauvaise expérience.
+1226,couple,15275.99,tokyo,automne,13,resort,1270.71,pluie,gastronomie,2,bagages,0,1,je ne recommande pas.
+1227,solo,4585.81,tokyo,été,12,appartement,1394.45,,business,5,retard_vol,1,1,"très satisfait, je recommande."
+1228,business,13200.97,rome,été,9,villa,1068.05,ensoleillé,business,2,aucun,0,1,
+1229,business,6162.1,sydney,automne,4,,1081.16,nuageux,business,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1230,solo,10179.83,lisbonne,hiver,9,hôtel,1230.14,variable,culture,5,météo,1,1,excellent séjour.
+1231,solo,9885.86,lisbonne,printemps,10,villa,1210.41,ensoleillé,gastronomie,5,bagages,0,1,"très satisfait, je recommande."
+1232,couple,11550.4,rome,été,11,appartement,1274.07,ensoleillé,culture,2,aucun,0,1,de nombreux problèmes rencontrés.
+1234,couple,11263.11,rome,été,15,resort,854.83,nuageux,culture,2,annulation,0,1,déçu par l'organisation.
+1235,famille,14372.54,bali,printemps,6,appartement,1383.39,ensoleillé,culture,2,aucun,0,1,de nombreux problèmes rencontrés.
+1236,solo,5880.43,bali,hiver,6,villa,1430.7,nuageux,culture,3,aucun,0,1,"quelques imprévus, globalement bien."
+1237,solo,7064.0,new york,printemps,17,resort,1167.87,ensoleillé,culture,4,météo,1,1,"très satisfait, je recommande."
+1238,couple,4812.42,rome,printemps,14,villa,717.57,nuageux,culture,4,bagages,0,1,une expérience inoubliable.
+1239,solo,5526.48,lisbonne,hiver,8,villa,1087.25,pluie,plage,2,retard_vol,0,1,je ne recommande pas.
+1240,solo,13827.88,paris,hiver,9,hôtel,1170.1,pluie,gastronomie,4,retard_vol,1,1,excellent séjour.
+1241,business,2872.92,paris,automne,9,hôtel,811.25,ensoleillé,culture,3,annulation,1,1,dans l'ensemble satisfaisant.
+1242,business,3123.49,lisbonne,printemps,10,villa,1021.48,variable,,2,annulation,1,1,très mauvaise expérience.
+1244,couple,9443.43,bali,hiver,21,hôtel,1280.75,pluie,culture,4,retard_vol,1,1,excellent séjour.
+1245,business,15477.57,new york,printemps,11,appartement,1162.48,nuageux,plage,4,retard_vol,0,1,très bon rapport qualité-prix.
+1246,solo,5106.93,rome,printemps,13,villa,676.93,variable,business,1,météo,1,1,très mauvaise expérience.
+1247,solo,7433.42,rome,été,3,resort,1212.19,ensoleillé,culture,4,annulation,0,1,"parfait, rien à redire."
+1248,business,4258.83,new york,printemps,7,resort,1102.86,ensoleillé,culture,2,aucun,0,1,déçu par l'organisation.
+1249,solo,7502.08,bali,automne,16,villa,1256.4,nuageux,gastronomie,5,aucun,0,1,excellent séjour.
+1251,business,9687.11,rome,hiver,3,villa,903.2,ensoleillé,,4,météo,1,1,"très satisfait, je recommande."
+1252,senior,8228.89,new york,hiver,13,appartement,911.41,pluie,culture,4,aucun,0,1,"très satisfait, je recommande."
+1253,senior,6691.82,dubaï,hiver,19,villa,973.77,variable,plage,4,aucun,0,1,"parfait, rien à redire."
+1254,solo,5349.27,rome,été,3,appartement,1123.05,ensoleillé,culture,2,retard_vol,1,1,déçu par l'organisation.
+1255,solo,3314.56,paris,hiver,17,hôtel,1157.65,variable,culture,4,annulation,1,1,"très satisfait, je recommande."
+1256,business,9859.59,tokyo,automne,3,villa,1066.89,variable,culture,4,aucun,0,1,très bon rapport qualité-prix.
+1257,couple,2199.82,dubaï,automne,15,appartement,1004.55,variable,gastronomie,4,aucun,0,0,
+1258,senior,8988.99,new york,automne,10,hôtel,1023.82,pluie,culture,2,météo,1,1,déçu par l'organisation.
+1259,solo,15292.34,dubaï,été,3,hôtel,1790.07,pluie,culture,1,aucun,0,1,très mauvaise expérience.
+1260,famille,12916.59,tokyo,automne,12,villa,911.45,nuageux,randonnée,3,météo,1,1,dans l'ensemble satisfaisant.
+1263,famille,8624.13,rome,printemps,13,hôtel,1230.83,ensoleillé,business,2,météo,1,1,je ne recommande pas.
+1264,couple,6640.48,dubaï,automne,8,appartement,748.17,ensoleillé,business,4,aucun,1,1,"très satisfait, je recommande."
+1266,couple,8478.36,bali,automne,13,appartement,874.11,variable,culture,2,retard_vol,0,1,à éviter.
+1267,couple,6883.59,new york,hiver,19,resort,1361.63,nuageux,culture,4,météo,1,1,une expérience inoubliable.
+1268,business,14646.39,new york,automne,16,hôtel,1061.46,pluie,,3,annulation,1,1,peut mieux faire sur la logistique.
+1269,famille,5902.48,new york,été,3,appartement,1000.13,variable,culture,4,annulation,1,1,excellent séjour.
+1270,senior,11635.73,tokyo,été,3,appartement,35.0,variable,culture,2,annulation,1,1,à éviter.
+1271,senior,1812.57,lisbonne,automne,6,appartement,1269.8,ensoleillé,gastronomie,5,bagages,0,0,excellent séjour.
+1272,solo,2777.01,sydney,printemps,3,hôtel,1378.76,variable,business,2,météo,0,0,très mauvaise expérience.
+1273,couple,9835.18,lisbonne,printemps,10,hôtel,1234.56,,plage,2,annulation,1,1,de nombreux problèmes rencontrés.
+1274,business,11295.77,new york,été,12,resort,998.89,ensoleillé,gastronomie,2,annulation,1,1,de nombreux problèmes rencontrés.
+1275,famille,3061.88,new york,hiver,3,appartement,1281.84,pluie,gastronomie,3,aucun,0,0,séjour correct mais perfectible.
+1276,solo,7021.13,new york,printemps,14,appartement,1442.07,nuageux,,5,aucun,0,1,"très satisfait, je recommande."
+1277,senior,1350.71,tokyo,hiver,13,villa,1154.11,pluie,plage,4,météo,0,0,une expérience inoubliable.
+1278,senior,6192.96,bali,hiver,7,appartement,1600.84,nuageux,plage,1,annulation,1,1,
+1280,couple,5169.38,paris,été,3,appartement,1174.81,ensoleillé,gastronomie,3,retard_vol,0,1,"quelques imprévus, globalement bien."
+1281,business,,paris,printemps,8,hôtel,1185.4,ensoleillé,plage,3,aucun,0,1,séjour correct mais perfectible.
+1282,business,2366.41,lisbonne,printemps,10,appartement,1154.78,ensoleillé,plage,1,météo,1,0,je ne recommande pas.
+1283,solo,4308.52,paris,printemps,11,resort,782.67,pluie,gastronomie,3,retard_vol,1,1,dans l'ensemble satisfaisant.
+1284,business,14016.22,new york,été,12,appartement,1093.86,nuageux,plage,5,aucun,0,1,
+1285,famille,7218.18,new york,automne,11,hôtel,,ensoleillé,culture,3,aucun,0,1,dans l'ensemble satisfaisant.
+1286,couple,2880.69,rome,automne,9,villa,1006.49,pluie,culture,1,aucun,0,1,déçu par l'organisation.
+1287,solo,5654.21,lisbonne,printemps,11,villa,1208.5,pluie,plage,1,bagages,0,1,je ne recommande pas.
+1289,couple,2832.88,lisbonne,printemps,9,appartement,1325.35,variable,plage,3,bagages,0,0,peut mieux faire sur la logistique.
+1290,senior,12411.61,dubaï,été,11,villa,,nuageux,randonnée,4,retard_vol,0,1,"parfait, rien à redire."
+1291,senior,6349.23,rome,été,9,resort,1162.8,variable,business,2,aucun,0,1,très mauvaise expérience.
+1292,solo,14551.21,rome,été,7,villa,751.59,ensoleillé,culture,1,aucun,0,1,de nombreux problèmes rencontrés.
+1293,senior,6539.37,bali,été,13,appartement,1597.91,pluie,,3,aucun,0,1,séjour correct mais perfectible.
+1294,senior,6778.86,tokyo,printemps,7,villa,1079.97,variable,plage,4,retard_vol,0,1,"parfait, rien à redire."
+1295,famille,9509.37,rome,printemps,42,villa,1096.32,variable,randonnée,2,annulation,1,1,je ne recommande pas.
+1297,solo,7750.73,rome,hiver,8,appartement,,pluie,gastronomie,3,météo,1,1,séjour correct mais perfectible.
+1298,famille,6726.39,sydney,hiver,8,appartement,1531.81,nuageux,business,1,retard_vol,0,1,
+1299,business,12918.68,rome,été,7,hôtel,1489.46,pluie,plage,2,retard_vol,0,1,je ne recommande pas.
+1300,solo,10815.52,lisbonne,printemps,3,resort,1237.1,pluie,business,2,retard_vol,0,1,très mauvaise expérience.
+1301,solo,2350.69,rome,printemps,12,villa,1089.19,variable,business,2,météo,1,0,à éviter.
+1302,famille,11934.79,tokyo,été,11,hôtel,1283.92,nuageux,culture,3,retard_vol,1,1,"quelques imprévus, globalement bien."
+1303,couple,5865.82,new york,automne,14,appartement,1137.78,ensoleillé,randonnée,2,bagages,0,1,très mauvaise expérience.
+1304,senior,3275.44,rome,printemps,7,villa,1067.02,pluie,gastronomie,4,météo,1,1,excellent séjour.
+1305,famille,7719.11,sydney,automne,19,resort,1208.61,ensoleillé,randonnée,2,aucun,0,1,à éviter.
+1306,couple,6106.03,bali,automne,8,appartement,999.77,ensoleillé,culture,3,aucun,0,1,peut mieux faire sur la logistique.
+1307,couple,13130.17,new york,été,6,villa,,ensoleillé,gastronomie,4,retard_vol,0,1,une expérience inoubliable.
+1308,solo,8298.07,new york,été,5,appartement,1172.73,pluie,business,5,météo,0,1,une expérience inoubliable.
+1309,business,7753.63,new york,hiver,3,hôtel,1279.59,,culture,3,bagages,0,1,séjour mitigé.
+1310,solo,10557.21,paris,automne,18,hôtel,952.07,ensoleillé,gastronomie,1,retard_vol,1,1,de nombreux problèmes rencontrés.
+1311,famille,11332.64,rome,printemps,17,villa,1308.32,ensoleillé,culture,3,retard_vol,0,1,séjour mitigé.
+1312,couple,10085.06,rome,automne,13,resort,875.11,,gastronomie,1,annulation,1,1,je ne recommande pas.
+1313,senior,12650.12,bali,été,5,appartement,964.55,,business,3,météo,1,1,séjour mitigé.
+1314,business,9379.42,rome,hiver,19,hôtel,976.25,ensoleillé,plage,3,annulation,1,1,séjour mitigé.
+1315,business,7600.31,lisbonne,hiver,8,appartement,830.69,ensoleillé,business,5,aucun,0,1,"parfait, rien à redire."
+1316,business,11922.82,new york,été,9,,1390.2,pluie,culture,1,retard_vol,1,1,déçu par l'organisation.
+1317,business,6557.32,new york,été,17,appartement,858.29,ensoleillé,business,1,bagages,0,1,de nombreux problèmes rencontrés.
+1318,famille,7058.12,bali,hiver,13,villa,930.69,pluie,gastronomie,1,annulation,1,1,à éviter.
+1319,solo,13868.84,bali,automne,21,resort,1454.45,nuageux,business,1,annulation,1,1,je ne recommande pas.
+1320,solo,13466.84,new york,automne,11,appartement,965.08,,randonnée,3,météo,0,1,séjour mitigé.
+1321,couple,32000.0,bali,été,8,villa,1067.58,ensoleillé,culture,5,aucun,1,1,"très satisfait, je recommande."
+1322,senior,5094.37,bali,été,7,appartement,846.78,pluie,plage,2,retard_vol,0,1,très mauvaise expérience.
+1323,solo,12826.44,tokyo,hiver,3,resort,1341.23,ensoleillé,randonnée,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1324,business,10152.89,new york,automne,9,villa,1344.93,variable,gastronomie,3,aucun,0,1,"quelques imprévus, globalement bien."
+1325,senior,8197.05,lisbonne,printemps,16,appartement,1316.04,variable,randonnée,2,aucun,0,1,déçu par l'organisation.
+1326,solo,5625.57,rome,automne,13,appartement,1262.06,pluie,gastronomie,3,retard_vol,1,1,"quelques imprévus, globalement bien."
+1327,senior,8262.06,new york,printemps,10,villa,1137.72,nuageux,business,2,aucun,0,1,je ne recommande pas.
+1328,business,6836.43,rome,été,5,hôtel,977.47,ensoleillé,plage,2,annulation,1,1,de nombreux problèmes rencontrés.
+1329,senior,4244.06,bali,printemps,11,resort,899.59,variable,culture,4,annulation,1,1,"très satisfait, je recommande."
+1330,couple,7444.56,dubaï,hiver,15,hôtel,1463.69,pluie,plage,5,bagages,0,1,"très satisfait, je recommande."
+1331,solo,7994.72,rome,automne,12,appartement,1322.97,ensoleillé,culture,2,aucun,0,1,de nombreux problèmes rencontrés.
+1332,solo,5409.66,new york,été,11,hôtel,932.19,nuageux,culture,3,bagages,0,1,séjour mitigé.
+1333,famille,10570.03,tokyo,été,6,villa,1128.67,nuageux,gastronomie,5,aucun,0,1,"parfait, rien à redire."
+1334,solo,12123.15,paris,automne,14,hôtel,1037.57,variable,culture,3,météo,0,1,peut mieux faire sur la logistique.
+1335,senior,10836.57,lisbonne,automne,3,,815.64,pluie,business,1,annulation,1,1,déçu par l'organisation.
+1336,business,,tokyo,automne,12,resort,1165.61,pluie,culture,2,aucun,0,1,je ne recommande pas.
+1337,couple,9972.98,sydney,hiver,21,resort,1006.65,pluie,gastronomie,4,aucun,0,1,très bon rapport qualité-prix.
+1338,couple,7238.5,tokyo,été,3,resort,862.72,ensoleillé,gastronomie,4,aucun,0,1,une expérience inoubliable.
+1339,couple,1939.0,lisbonne,automne,9,villa,721.59,nuageux,culture,1,retard_vol,1,0,je ne recommande pas.
+1340,famille,9637.79,bali,printemps,10,appartement,698.9,ensoleillé,randonnée,1,annulation,1,1,de nombreux problèmes rencontrés.
+1341,senior,7513.5,tokyo,hiver,8,resort,1018.46,variable,culture,3,aucun,0,1,"quelques imprévus, globalement bien."
+1342,solo,17386.37,dubaï,automne,2,villa,1095.19,nuageux,randonnée,3,aucun,0,1,séjour correct mais perfectible.
+1343,couple,12802.63,bali,été,12,appartement,883.42,nuageux,culture,3,retard_vol,1,1,séjour correct mais perfectible.
+1344,business,9792.78,bali,été,11,hôtel,1292.4,ensoleillé,plage,5,aucun,1,1,une expérience inoubliable.
+1345,famille,7929.15,lisbonne,automne,14,villa,1100.43,ensoleillé,plage,1,retard_vol,1,1,à éviter.
+1346,couple,7584.46,new york,été,10,resort,1272.61,pluie,,4,bagages,0,1,très bon rapport qualité-prix.
+1347,business,2875.12,dubaï,printemps,21,hôtel,1068.98,ensoleillé,business,3,annulation,0,0,séjour mitigé.
+1349,senior,3404.1,sydney,printemps,11,hôtel,1148.58,pluie,business,4,retard_vol,0,1,"parfait, rien à redire."
+1350,business,6731.51,lisbonne,hiver,3,resort,779.6,nuageux,gastronomie,1,annulation,1,1,de nombreux problèmes rencontrés.
+1351,solo,,new york,automne,7,villa,1262.57,nuageux,randonnée,4,aucun,0,0,"très satisfait, je recommande."
+1352,business,4728.21,bali,automne,16,hôtel,,nuageux,plage,2,aucun,0,1,de nombreux problèmes rencontrés.
+1353,senior,5925.13,paris,printemps,3,villa,1364.09,variable,gastronomie,4,retard_vol,0,1,une expérience inoubliable.
+1354,business,6054.97,new york,printemps,3,villa,1027.29,ensoleillé,plage,3,aucun,0,1,séjour correct mais perfectible.
+1355,senior,4254.61,sydney,automne,10,,1402.76,pluie,business,1,bagages,0,1,à éviter.
+1356,business,5546.33,tokyo,hiver,17,villa,817.14,variable,plage,4,retard_vol,1,1,une expérience inoubliable.
+1357,senior,13878.19,rome,été,10,villa,936.36,pluie,plage,4,bagages,0,1,"très satisfait, je recommande."
+1358,famille,9595.09,bali,été,8,villa,1220.09,,plage,3,météo,1,1,séjour mitigé.
+1359,business,4663.75,new york,été,3,resort,1431.69,pluie,plage,2,météo,1,1,déçu par l'organisation.
+1360,solo,6648.29,sydney,hiver,12,hôtel,1564.65,nuageux,plage,1,annulation,1,1,je ne recommande pas.
+1361,solo,6809.78,rome,été,13,appartement,1129.09,nuageux,culture,5,météo,0,1,excellent séjour.
+1362,business,3826.07,new york,printemps,3,appartement,,nuageux,randonnée,1,retard_vol,0,0,déçu par l'organisation.
+1363,senior,3821.33,dubaï,été,16,hôtel,1040.37,ensoleillé,,5,retard_vol,1,1,excellent séjour.
+1364,senior,11000.45,lisbonne,hiver,14,appartement,1412.47,ensoleillé,business,3,bagages,0,1,séjour mitigé.
+1365,couple,5230.59,rome,été,16,hôtel,,nuageux,culture,4,annulation,1,1,une expérience inoubliable.
+1366,business,2507.99,lisbonne,été,13,villa,1230.61,ensoleillé,culture,5,aucun,0,0,très bon rapport qualité-prix.
+1367,business,6749.97,new york,printemps,13,resort,490.43,nuageux,randonnée,5,météo,0,1,très bon rapport qualité-prix.
+1368,couple,,dubaï,hiver,13,hôtel,817.41,pluie,plage,1,retard_vol,1,1,à éviter.
+1370,famille,6759.63,new york,printemps,3,resort,766.27,ensoleillé,business,1,météo,1,1,déçu par l'organisation.
+1371,business,10425.43,new york,hiver,3,resort,1232.42,pluie,,5,météo,0,1,une expérience inoubliable.
+1372,solo,8744.26,bali,automne,6,hôtel,1360.93,nuageux,randonnée,3,aucun,0,1,séjour mitigé.
+1373,senior,,tokyo,printemps,9,resort,983.65,ensoleillé,gastronomie,5,retard_vol,0,1,excellent séjour.
+1374,solo,,new york,automne,12,hôtel,,ensoleillé,business,1,aucun,0,1,déçu par l'organisation.
+1375,senior,,new york,automne,12,appartement,990.92,ensoleillé,culture,2,retard_vol,0,1,à éviter.
+1376,solo,18219.55,paris,hiver,15,appartement,859.16,ensoleillé,culture,4,aucun,0,1,très bon rapport qualité-prix.
+1377,business,9982.4,tokyo,été,16,resort,1090.87,ensoleillé,business,5,retard_vol,0,1,"très satisfait, je recommande."
+1378,famille,7581.83,rome,automne,6,,1145.36,nuageux,culture,1,aucun,0,1,déçu par l'organisation.
+1379,solo,10852.07,lisbonne,été,11,hôtel,,nuageux,culture,1,bagages,0,1,de nombreux problèmes rencontrés.
+1380,business,4668.04,lisbonne,printemps,6,hôtel,1566.73,ensoleillé,plage,5,aucun,0,1,excellent séjour.
+1381,senior,7358.41,bali,printemps,9,hôtel,925.2,ensoleillé,plage,1,retard_vol,1,1,très mauvaise expérience.
+1382,senior,4311.07,rome,hiver,12,villa,1490.9,ensoleillé,business,4,météo,1,1,"très satisfait, je recommande."
+1383,famille,8529.47,rome,été,3,villa,838.95,pluie,culture,1,météo,1,1,déçu par l'organisation.
+1384,solo,4294.2,new york,automne,21,villa,1137.5,ensoleillé,gastronomie,5,météo,1,1,très bon rapport qualité-prix.
+1386,famille,8591.95,new york,hiver,7,appartement,1421.2,ensoleillé,plage,5,bagages,0,1,très bon rapport qualité-prix.
+1387,business,6368.47,paris,été,20,resort,,ensoleillé,business,1,météo,1,1,à éviter.
+1390,senior,2295.93,lisbonne,hiver,7,villa,973.3,ensoleillé,culture,1,retard_vol,0,0,très mauvaise expérience.
+1391,business,3362.09,new york,automne,18,villa,1283.07,ensoleillé,randonnée,2,aucun,0,0,très mauvaise expérience.
+1392,business,8595.78,new york,automne,9,appartement,1617.15,variable,plage,2,annulation,0,1,de nombreux problèmes rencontrés.
+1393,famille,7807.2,bali,hiver,11,villa,1244.42,pluie,culture,4,retard_vol,0,1,"très satisfait, je recommande."
+1394,couple,11221.34,lisbonne,hiver,16,villa,1269.78,pluie,plage,4,retard_vol,0,1,très bon rapport qualité-prix.
+1395,business,9960.8,bali,automne,13,resort,1298.14,variable,plage,1,aucun,0,1,déçu par l'organisation.
+1396,senior,11248.06,sydney,hiver,10,villa,726.46,ensoleillé,culture,1,météo,1,1,très mauvaise expérience.
+1397,famille,9378.27,lisbonne,été,15,hôtel,1241.34,variable,randonnée,5,aucun,0,1,une expérience inoubliable.
+1398,solo,7769.85,new york,automne,21,villa,845.51,ensoleillé,gastronomie,2,annulation,0,1,très mauvaise expérience.
+1399,business,11358.78,lisbonne,été,11,villa,959.91,pluie,plage,5,aucun,0,1,"parfait, rien à redire."
+1400,famille,10632.91,bali,printemps,10,hôtel,1697.4,nuageux,business,2,annulation,1,1,très mauvaise expérience.
+1401,solo,8441.17,new york,printemps,11,appartement,,nuageux,randonnée,2,annulation,1,1,à éviter.
+1402,senior,12051.5,paris,hiver,16,hôtel,919.63,variable,plage,2,annulation,1,1,très mauvaise expérience.
+1404,couple,5752.27,rome,printemps,9,villa,864.02,variable,plage,4,météo,1,1,"très satisfait, je recommande."
+1405,senior,5690.44,paris,hiver,3,appartement,998.09,nuageux,randonnée,3,météo,1,1,"quelques imprévus, globalement bien."
+1407,senior,13263.01,bali,automne,7,hôtel,1129.46,variable,plage,1,bagages,0,1,de nombreux problèmes rencontrés.
+1408,couple,1073.98,new york,hiver,10,resort,699.49,ensoleillé,,3,météo,1,0,"quelques imprévus, globalement bien."
+1409,business,12616.65,tokyo,automne,19,appartement,1263.79,variable,business,3,bagages,0,1,séjour mitigé.
+1410,solo,2198.39,bali,été,13,hôtel,1011.75,pluie,plage,5,aucun,0,0,excellent séjour.
+1411,couple,2320.34,lisbonne,automne,5,appartement,1530.68,pluie,plage,3,météo,1,0,séjour mitigé.
+1412,senior,5978.89,lisbonne,automne,6,resort,955.54,ensoleillé,business,1,aucun,0,1,très mauvaise expérience.
+1413,couple,5640.36,rome,automne,17,appartement,1399.73,nuageux,business,4,annulation,1,1,très bon rapport qualité-prix.
+1415,couple,9545.61,new york,hiver,10,,889.95,nuageux,plage,5,météo,1,1,"très satisfait, je recommande."
+1416,business,9664.71,dubaï,automne,8,resort,1066.22,ensoleillé,gastronomie,1,annulation,1,1,à éviter.
+1417,senior,11176.0,bali,été,16,villa,1222.15,ensoleillé,plage,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1418,senior,5175.44,dubaï,été,5,appartement,888.23,variable,plage,4,aucun,0,1,"parfait, rien à redire."
+1419,couple,6764.32,rome,automne,12,resort,1190.44,ensoleillé,,3,aucun,0,1,séjour correct mais perfectible.
+1420,solo,6801.26,bali,automne,21,appartement,1057.72,,culture,2,retard_vol,0,1,très mauvaise expérience.
+1421,famille,13733.37,dubaï,été,11,appartement,1052.32,variable,randonnée,1,météo,1,1,de nombreux problèmes rencontrés.
+1423,senior,3063.69,sydney,printemps,12,appartement,1137.1,ensoleillé,randonnée,3,retard_vol,1,0,"quelques imprévus, globalement bien."
+1424,business,6946.35,paris,printemps,8,hôtel,1161.92,pluie,randonnée,5,météo,0,1,excellent séjour.
+1425,business,2544.81,rome,printemps,3,resort,957.51,ensoleillé,culture,4,retard_vol,1,0,"parfait, rien à redire."
+1426,solo,5881.94,paris,printemps,13,appartement,,pluie,business,2,météo,1,1,je ne recommande pas.
+1427,senior,6415.41,rome,hiver,15,appartement,1086.22,pluie,randonnée,2,aucun,0,1,je ne recommande pas.
+1428,solo,4270.89,paris,hiver,8,,1106.0,pluie,culture,3,aucun,0,1,dans l'ensemble satisfaisant.
+1430,solo,9457.95,new york,printemps,5,,1204.82,pluie,plage,5,aucun,0,1,"très satisfait, je recommande."
+1431,famille,5970.9,new york,automne,9,villa,631.64,pluie,culture,4,météo,1,1,une expérience inoubliable.
+1432,couple,5095.81,tokyo,été,7,villa,922.24,ensoleillé,plage,5,bagages,0,1,excellent séjour.
+1433,famille,6255.3,paris,hiver,5,villa,1042.98,pluie,gastronomie,2,annulation,0,1,à éviter.
+1434,solo,6894.0,new york,hiver,19,hôtel,888.56,variable,gastronomie,4,météo,0,1,"très satisfait, je recommande."
+1436,couple,8785.91,lisbonne,automne,13,hôtel,,nuageux,plage,5,retard_vol,1,1,excellent séjour.
+1437,solo,5104.66,paris,printemps,14,villa,1165.37,ensoleillé,randonnée,2,annulation,1,1,de nombreux problèmes rencontrés.
+1438,senior,12013.03,new york,été,14,appartement,,ensoleillé,,1,météo,1,1,je ne recommande pas.
+1439,business,9308.31,lisbonne,automne,8,resort,1113.77,ensoleillé,culture,2,aucun,1,1,très mauvaise expérience.
+1440,solo,11644.05,new york,automne,11,villa,792.31,,gastronomie,4,météo,1,1,très bon rapport qualité-prix.
+1441,couple,2845.61,new york,printemps,9,hôtel,1072.49,variable,,5,aucun,0,0,une expérience inoubliable.
+1442,senior,5425.83,dubaï,hiver,12,appartement,866.88,ensoleillé,,5,météo,1,1,"très satisfait, je recommande."
+1443,couple,1911.92,rome,hiver,12,villa,1043.66,variable,plage,1,bagages,0,0,à éviter.
+1444,couple,4079.26,dubaï,hiver,8,hôtel,431.94,ensoleillé,culture,3,bagages,0,1,séjour correct mais perfectible.
+1445,senior,11974.99,lisbonne,hiver,3,appartement,815.7,ensoleillé,culture,2,aucun,0,1,de nombreux problèmes rencontrés.
+1446,solo,12924.54,lisbonne,été,11,villa,1510.33,nuageux,gastronomie,2,météo,1,1,de nombreux problèmes rencontrés.
+1447,business,2292.43,tokyo,automne,9,hôtel,1340.55,ensoleillé,randonnée,5,météo,0,0,"parfait, rien à redire."
+1448,business,5075.31,bali,été,3,appartement,1471.5,variable,plage,5,météo,1,1,"très satisfait, je recommande."
+1449,business,6616.63,dubaï,été,12,resort,1489.91,variable,plage,1,retard_vol,1,1,à éviter.
+1450,couple,41000.0,new york,printemps,15,appartement,1298.36,variable,gastronomie,1,aucun,0,1,de nombreux problèmes rencontrés.
+1453,couple,,rome,automne,7,villa,1425.33,ensoleillé,culture,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1454,senior,500.0,tokyo,automne,4,hôtel,,variable,culture,4,retard_vol,1,0,"parfait, rien à redire."
+1455,couple,5121.62,rome,printemps,11,resort,1786.4,nuageux,plage,4,retard_vol,1,1,très bon rapport qualité-prix.
+1457,business,8600.8,paris,printemps,6,villa,1646.74,ensoleillé,randonnée,4,aucun,0,1,excellent séjour.
+1458,business,6352.31,lisbonne,printemps,9,appartement,1075.98,ensoleillé,culture,5,retard_vol,0,1,une expérience inoubliable.
+1459,solo,5448.54,paris,automne,3,hôtel,1476.06,ensoleillé,gastronomie,5,aucun,0,1,une expérience inoubliable.
+1460,solo,10331.0,paris,printemps,15,hôtel,1572.71,variable,culture,4,annulation,1,1,"très satisfait, je recommande."
+1461,senior,8074.52,tokyo,automne,6,villa,843.85,variable,business,3,météo,1,1,dans l'ensemble satisfaisant.
+1462,business,4313.93,rome,été,10,appartement,988.02,variable,culture,1,météo,1,1,de nombreux problèmes rencontrés.
+1463,senior,7076.17,lisbonne,hiver,3,villa,841.16,ensoleillé,business,5,aucun,1,1,excellent séjour.
+1464,senior,8469.7,lisbonne,printemps,7,appartement,,pluie,culture,5,bagages,0,1,excellent séjour.
+1465,business,13855.37,tokyo,été,9,villa,1296.77,ensoleillé,business,3,aucun,0,1,séjour mitigé.
+1466,couple,10096.03,tokyo,été,10,hôtel,1065.3,nuageux,business,4,aucun,0,1,"très satisfait, je recommande."
+1467,solo,,bali,printemps,12,hôtel,1132.03,ensoleillé,culture,3,aucun,0,1,peut mieux faire sur la logistique.
+1468,famille,4460.81,paris,printemps,17,villa,1267.07,ensoleillé,culture,3,retard_vol,1,1,séjour mitigé.
+1469,business,4809.45,bali,été,14,villa,620.22,pluie,business,4,bagages,0,1,très bon rapport qualité-prix.
+1470,senior,5974.48,rome,hiver,15,resort,1462.85,ensoleillé,gastronomie,2,météo,0,1,je ne recommande pas.
+1471,solo,6344.83,paris,automne,17,resort,1024.44,nuageux,,5,bagages,0,1,très bon rapport qualité-prix.
+1472,solo,2857.63,new york,hiver,13,appartement,1260.68,pluie,gastronomie,5,météo,1,0,"très satisfait, je recommande."
+1473,famille,12030.78,paris,hiver,10,,,ensoleillé,business,4,retard_vol,1,1,très bon rapport qualité-prix.
+1474,senior,10487.44,paris,été,15,hôtel,1485.37,variable,gastronomie,4,aucun,0,1,"très satisfait, je recommande."
+1475,famille,5690.9,new york,été,15,villa,1089.9,nuageux,business,1,météo,0,1,déçu par l'organisation.
+1476,famille,9512.66,tokyo,été,13,resort,548.87,variable,culture,4,retard_vol,1,1,une expérience inoubliable.
+1477,couple,7823.18,rome,printemps,3,,1133.31,pluie,business,1,aucun,0,1,très mauvaise expérience.
+1478,famille,9827.79,paris,automne,6,hôtel,1171.79,pluie,plage,1,météo,0,1,à éviter.
+1479,solo,1501.07,rome,été,9,hôtel,,pluie,culture,2,annulation,1,0,à éviter.
+1480,solo,6336.4,rome,été,14,appartement,1157.53,variable,culture,1,bagages,0,1,déçu par l'organisation.
+1481,couple,6689.87,sydney,printemps,10,resort,1021.25,pluie,business,4,météo,0,1,une expérience inoubliable.
+1482,famille,9439.77,lisbonne,hiver,16,appartement,758.14,ensoleillé,business,2,retard_vol,1,1,très mauvaise expérience.
+1483,famille,,tokyo,été,16,hôtel,1297.96,ensoleillé,culture,2,annulation,1,1,très mauvaise expérience.
+1485,famille,2560.42,dubaï,été,16,villa,1009.09,ensoleillé,plage,2,bagages,0,0,déçu par l'organisation.
+1486,business,6677.73,new york,hiver,5,villa,994.03,ensoleillé,business,4,météo,1,1,une expérience inoubliable.
+1487,couple,7181.71,rome,automne,12,hôtel,1449.11,ensoleillé,plage,3,annulation,0,1,dans l'ensemble satisfaisant.
+1488,couple,13716.24,paris,été,7,resort,1107.03,pluie,culture,2,aucun,0,1,déçu par l'organisation.
+1489,solo,9274.8,tokyo,automne,3,appartement,1139.2,ensoleillé,culture,1,aucun,1,1,déçu par l'organisation.
+1490,solo,7252.89,new york,été,8,appartement,999.91,pluie,gastronomie,3,retard_vol,1,1,peut mieux faire sur la logistique.
+1491,famille,6793.33,rome,hiver,17,resort,1242.05,variable,plage,3,retard_vol,0,1,"quelques imprévus, globalement bien."
+1492,famille,11378.28,bali,automne,12,hôtel,1479.62,variable,plage,1,annulation,0,1,à éviter.
+1493,senior,4543.49,bali,été,20,appartement,1291.63,ensoleillé,business,4,bagages,0,1,très bon rapport qualité-prix.
+1494,famille,6358.1,rome,automne,11,resort,1302.08,pluie,gastronomie,1,aucun,0,1,je ne recommande pas.
+1495,solo,2529.93,tokyo,printemps,21,,1280.47,pluie,plage,2,météo,1,0,à éviter.
+1497,couple,8507.34,new york,automne,10,resort,,pluie,plage,1,aucun,0,1,à éviter.
+1498,solo,4069.85,rome,été,4,appartement,1063.06,ensoleillé,business,2,météo,1,1,je ne recommande pas.
+1499,business,6462.29,paris,printemps,15,appartement,923.47,variable,randonnée,1,annulation,1,1,je ne recommande pas.
+1500,senior,8979.93,sydney,été,7,resort,832.7,ensoleillé,plage,1,annulation,1,1,déçu par l'organisation.

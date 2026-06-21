@@ -773,7 +773,7 @@ pip install -r requirements-nlp.txt
 python -m spacy download fr_core_news_sm
 ```
 
-Le modele `fr_core_news_sm` est retenu pour limiter la consommation memoire. Le modele `fr_core_news_lg` charge des vecteurs volumineux et peut provoquer un `MemoryError` sur une machine avec 4 Go de RAM.
+Le modele `fr_core_news_sm` est retenu pour garder une experience NLP plus legere et plus rapide. Le modele `fr_core_news_lg` charge des vecteurs volumineux ; il reste donc optionnel et n'est pas necessaire au pipeline principal pre-voyage.
 
 Le notebook applique six etapes NLP :
 

@@ -216,6 +216,146 @@ def render_csv_prediction(api_url: str) -> None:
             st.dataframe(pd.DataFrame(errors), use_container_width=True)
 
 
+def format_percentage(value: Any) -> str:
+    if value is None:
+        return "N/A"
+    try:
+        return f"{float(value):.1f} %"
+    except (TypeError, ValueError):
+        return "N/A"
+
+
+def format_decimal(value: Any) -> str:
+    if value is None:
+        return "N/A"
+    try:
+        return f"{float(value):.3f}"
+    except (TypeError, ValueError):
+        return "N/A"
+
+
+def render_business_dashboard(api_url: str) -> None:
+    st.header("Dashboard KPI métier")
+    st.write(
+        "Ce tableau de bord synthétise les résultats d'exploitation du modèle "
+        "pré-voyage à partir des prédictions journalisées."
+    )
+
+    if st.button("Actualiser le dashboard KPI", type="primary"):
+        st.session_state["refresh_dashboard_kpi"] = True
+
+    try:
+        summary = call_api("GET", "/monitoring/summary", api_url)
+        alerts = call_api("GET", "/monitoring/alerts", api_url)
+        drift = call_api("GET", "/monitoring/drift", api_url)
+    except Exception as error:
+        display_api_error(error)
+        return
+
+    nb_predictions = int(summary.get("nb_predictions", 0) or 0)
+    if nb_predictions == 0:
+        st.info(
+            "Aucune prédiction n'est encore journalisée. Lance quelques prédictions "
+            "depuis l'onglet unitaire ou CSV pour alimenter le dashboard."
+        )
+        return
+
+    distribution = summary.get("prediction_distribution", {}) or {}
+    insatisfait_count = distribution.get("insatisfait_1_2", 0)
+    taux_insatisfaction = (
+        insatisfait_count / nb_predictions * 100
+        if nb_predictions > 0
+        else None
+    )
+
+    latest_metrics = summary.get("latest_model_metrics", {}) or {}
+    alert_items = alerts.get("alerts", []) or []
+    critical_alerts = [
+        alert for alert in alert_items
+        if alert.get("level") == "critical"
+    ]
+    warning_alerts = [
+        alert for alert in alert_items
+        if alert.get("level") == "warning"
+    ]
+
+    col_1, col_2, col_3, col_4 = st.columns(4)
+    col_1.metric("Prédictions", nb_predictions)
+    col_2.metric("Taux insatisfait", format_percentage(taux_insatisfaction))
+    col_3.metric(
+        "Faible confiance",
+        format_percentage(summary.get("low_confidence_rate")),
+    )
+    col_4.metric(
+        "Confiance moyenne",
+        format_decimal(summary.get("average_confidence")),
+    )
+
+    col_5, col_6, col_7 = st.columns(3)
+    col_5.metric("Accuracy modèle", format_decimal(latest_metrics.get("accuracy")))
+    col_6.metric(
+        "Balanced accuracy",
+        format_decimal(latest_metrics.get("balanced_accuracy")),
+    )
+    col_7.metric("Macro F1", format_decimal(latest_metrics.get("macro_f1")))
+
+    st.subheader("Décision opérationnelle")
+    decision = alerts.get("decision", "non_disponible")
+    if critical_alerts:
+        st.error(f"Décision : `{decision}` — alerte critique détectée.")
+    elif warning_alerts:
+        st.warning(f"Décision : `{decision}` — revue humaine recommandée.")
+    else:
+        st.success(f"Décision : `{decision}` — pas d'alerte significative.")
+
+    recommendations = alerts.get("recommendations", []) or []
+    if recommendations:
+        st.write("Recommandations :")
+        for recommendation in recommendations:
+            st.write(f"- {recommendation}")
+
+    st.subheader("Distribution des classes prédites")
+    distribution_df = (
+        pd.DataFrame(
+            [
+                {"classe": label, "nombre": count}
+                for label, count in distribution.items()
+            ]
+        )
+        .sort_values("classe")
+        .reset_index(drop=True)
+    )
+    if not distribution_df.empty:
+        distribution_df["pourcentage"] = (
+            distribution_df["nombre"] / nb_predictions * 100
+        ).round(2)
+        st.bar_chart(
+            distribution_df.set_index("classe")["nombre"],
+            use_container_width=True,
+        )
+        st.dataframe(distribution_df, use_container_width=True)
+
+    st.subheader("Alertes et dérive")
+    if alert_items:
+        st.dataframe(pd.DataFrame(alert_items), use_container_width=True)
+    else:
+        st.write("Aucune alerte consolidée.")
+
+    drift_alerts = drift.get("alerts", []) or []
+    if drift_alerts:
+        st.write("Variables en dérive :")
+        st.dataframe(pd.DataFrame(drift_alerts), use_container_width=True)
+    else:
+        st.write("Aucune dérive significative détectée ou volume insuffisant.")
+
+    with st.expander("Détails techniques monitoring"):
+        st.json({
+            "summary": summary,
+            "alerts": alerts,
+            "drift": drift,
+        })
+
+
 def render_monitoring(api_url: str) -> None:
     st.header("Monitoring")
     endpoint = st.selectbox(
@@ -263,8 +403,8 @@ def main() -> None:
     api_url = st.sidebar.text_input("URL de l'API FastAPI", value=DEFAULT_API_URL)
     render_api_status(api_url)
 
-    tab_manual, tab_csv, tab_monitoring = st.tabs(
-        ["Prédiction unitaire", "Prédiction CSV", "Monitoring"],
+    tab_manual, tab_csv, tab_dashboard, tab_monitoring = st.tabs(
+        ["Prédiction unitaire", "Prédiction CSV", "Dashboard KPI", "Monitoring"],
     )
 
     with tab_manual:
@@ -272,6 +412,9 @@ def main() -> None:
 
     with tab_csv:
         render_csv_prediction(api_url)
+
+    with tab_dashboard:
+        render_business_dashboard(api_url)
 
     with tab_monitoring:
         render_monitoring(api_url)

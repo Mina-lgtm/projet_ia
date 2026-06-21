@@ -162,12 +162,13 @@ Cette separation permet de :
 
 ### Pourquoi stabiliser les versions ?
 
-La machine dispose de 4 Go de RAM. Des versions recentes de certaines
-bibliotheques peuvent etre plus lourdes en memoire. Les versions ont donc ete
-resserrees pour limiter les risques de crash pendant les imports.
+Les versions des bibliotheques sont stabilisees pour garantir la reproductibilite
+du projet sur un autre poste, dans Docker ou dans un environnement CI/CD. Cela
+evite les incompatibilites entre `numpy`, `pandas`, `scikit-learn`, `scipy` et
+les outils de notebook.
 
-Important : la reinstallation complete doit etre relancee apres liberation de
-memoire.
+Important : apres modification des dependances, il faut relancer une
+installation propre de l'environnement.
 
 ## 6. API FastAPI
 
@@ -330,10 +331,11 @@ L'API Docker a deja ete testee avec succes :
 - `POST http://localhost:8001/predict` retournait une prediction ;
 - l'image Docker contenait bien `numpy` et `pandas`.
 
-### Limite actuelle
+### Bonne pratique
 
-Avec 4 Go de RAM, Docker Desktop consomme une partie importante de la memoire.
-Il est donc conseille de l'arreter pendant le travail dans Jupyter.
+Docker permet de tester l'application dans un environnement isole. Pour eviter
+les conflits entre notebook, API et conteneur, il est preferable de ne lancer
+que les services necessaires pendant une phase de travail donnee.
 
 ## 9. Git et GitHub
 
@@ -537,10 +539,10 @@ Le notebook contient :
 
 ### Pourquoi alleger le notebook ?
 
-Le premier notebook contenait des imports et visualisations plus lourds. Avec 4
-Go de RAM, cela peut faire tomber le kernel Jupyter. Le notebook a donc ete
-adapte pour charger les bibliotheques progressivement et eviter les operations
-trop lourdes.
+Le notebook final doit rester lisible, maintenable et reproductible. Il a donc
+ete adapte pour charger les bibliotheques de facon structuree, limiter les
+operations inutiles et separer les experimentations lourdes dans des notebooks
+de brouillon.
 
 ### Commande pour lancer Jupyter
 
@@ -562,8 +564,8 @@ docs/etat_projet.md
 ### Pourquoi documenter maintenant ?
 
 Le projet avance par etapes : environnement, Docker, Git, dataset, notebook,
-diagnostic RAM. Sans documentation, il devient difficile de se souvenir des
-decisions prises et de leurs raisons.
+modelisation, industrialisation et monitoring. Sans documentation, il devient
+difficile de se souvenir des decisions prises et de leurs raisons.
 
 ### Objectif
 
@@ -575,67 +577,33 @@ Cette documentation sert a :
 - faciliter la reprise du projet ;
 - preparer une eventuelle presentation ou soutenance.
 
-## 13. Probleme RAM identifie
+## 13. Sobriete et maitrise des ressources
 
-La machine dispose de 4 Go de RAM installee.
+Le projet adopte une approche volontairement sobre : le modele industrialise est
+un pipeline tabulaire scikit-learn, plus simple a expliquer, tester et deployer
+qu'un modele lourd.
 
-### Erreur observee
+### Objectif des choix effectues
 
-Dans VS Code, le message etait :
+Les choix techniques visent a :
 
-```text
-The kernel '.venv (Python 3.12.0)' died
-```
-
-En execution hors VS Code, l'erreur reelle etait :
-
-```text
-MemoryError: Out of memory
-```
-
-### Pourquoi cette erreur arrive ?
-
-Les bibliotheques IA chargent beaucoup de code natif et de structures en
-memoire. Le cumul suivant peut saturer une machine de 4 Go :
-
-- Windows ;
-- VS Code ;
-- Jupyter ;
-- Docker Desktop ;
-- kernels Python restes ouverts ;
-- `numpy`, `pandas`, `scipy`, `scikit-learn`, `matplotlib`.
-
-### Objectif des corrections faites
-
-Les corrections ont vise a :
-
-- arreter Docker pendant le travail notebook ;
 - stabiliser les versions des bibliotheques ;
-- alleger le notebook ;
-- recommander une execution cellule par cellule ;
-- eviter de charger toutes les bibliotheques lourdes en meme temps.
+- garder un notebook final lisible ;
+- isoler les experimentations lourdes ;
+- limiter les traitements non indispensables ;
+- utiliser `n_jobs=1` pour obtenir des executions plus reproductibles ;
+- mesurer l'empreinte carbone avec CodeCarbon ;
+- conserver le NLP avance comme experience separee et non comme dependance du
+  modele principal pre-voyage.
 
-### Mesures temporaires recommandees
+### Bonnes pratiques recommandees
 
-```powershell
-docker compose stop
-Get-Process python -ErrorAction SilentlyContinue | Stop-Process -Force
-```
-
-Puis :
-
-- fermer Docker Desktop ;
-- fermer les notebooks inutiles ;
-- rouvrir VS Code ;
-- relancer uniquement le notebook necessaire.
-
-### Mesures durables
-
-Pour travailler confortablement sur ce type de projet :
-
-- 8 Go de RAM est un minimum raisonnable ;
-- 16 Go de RAM est recommande pour IA, notebooks, VS Code et Docker ;
-- Google Colab ou Kaggle Notebook peuvent servir de solution temporaire.
+- lancer uniquement les services utiles pendant une phase de travail ;
+- utiliser Docker pour verifier la portabilite ;
+- conserver les artefacts lourds hors Git ;
+- documenter les choix de simplification ;
+- privilegier des modeles interpretable et maintenables avant de tester des
+  architectures plus couteuses.
 
 ## 14. Etat actuel du projet
 
@@ -651,26 +619,23 @@ Pour travailler confortablement sur ce type de projet :
 - premier commit deja pousse ;
 - dataset CSV ajoute localement ;
 - notebook Jupyter cree ;
-- probleme RAM diagnostique ;
 - documentation descriptive ajoutee.
 
 ### A faire avant de continuer
 
-- liberer la RAM ;
-- relancer l'installation des dependances stabilisees ;
+- relancer l'installation des dependances stabilisees si elles changent ;
 - tester le notebook cellule par cellule ;
 - verifier si le dataset peut etre pousse sur GitHub ;
 - faire un commit des nouveaux changements si tout est valide.
 
 ## 15. Prochaines etapes recommandees
 
-1. Liberer la RAM et reinstaller les dependances stabilisees.
-2. Executer le notebook cellule par cellule.
-3. Confirmer la vraie variable cible du projet.
-4. Nettoyer et preparer le dataset.
-5. Entrainer plusieurs modeles baseline.
-6. Choisir une metrique d'evaluation.
-7. Sauvegarder le meilleur modele.
-8. Adapter l'API `/predict` au modele final.
-9. Tester l'API avec Docker.
-10. Commit et push des changements valides sur GitHub.
+1. Executer le notebook cellule par cellule.
+2. Confirmer la vraie variable cible du projet.
+3. Nettoyer et preparer le dataset.
+4. Entrainer plusieurs modeles baseline.
+5. Choisir une metrique d'evaluation.
+6. Sauvegarder le meilleur modele.
+7. Adapter l'API `/predict` au modele final.
+8. Tester l'API avec Docker.
+9. Commit et push des changements valides sur GitHub.

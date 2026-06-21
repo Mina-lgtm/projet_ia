@@ -57,6 +57,27 @@ Un réentraînement peut être envisagé lorsque les conditions suivantes sont r
 6. Valider le modèle avec le métier avant remplacement.
 7. Redémarrer l'API pour charger le nouvel artefact.
 
+## Évaluation continue et CI/CD
+
+Le projet intègre un contrôle qualité automatique dans GitHub Actions :
+
+1. les tests API et monitoring sont exécutés ;
+2. le modèle pré-voyage est réentraîné dans l'environnement CI ;
+3. les métriques exportées dans les métadonnées sont comparées aux seuils de `configs/model_quality_gate.json` ;
+4. la CI échoue si `macro_f1`, `balanced_accuracy` ou `accuracy` passent sous les seuils acceptés ;
+5. la CI échoue aussi si la baisse par rapport aux métriques de référence dépasse la tolérance définie.
+
+Ce contrôle limite le risque de dégradation silencieuse du modèle lors d'une modification du nettoyage, du feature engineering ou des hyperparamètres.
+
+## Périodicité de revue
+
+| Fréquence | Contrôle | Acteur responsable | Sortie attendue |
+| --- | --- | --- | --- |
+| À chaque push / pull request | Tests, entraînement CI, quality gate modèle | Équipe data / technique | Validation ou blocage de la CI |
+| Hebdomadaire en phase pilote | Lecture de `/monitoring/summary` et `/monitoring/alerts` | Data scientist + métier | Liste des cas peu confiants à revoir |
+| Mensuelle | Revue des seuils, dérives, distribution des prédictions | Commanditaire + data scientist | Maintien ou ajustement des indicateurs |
+| Trimestrielle ou après alerte critique | Analyse des nouvelles données annotées | Data scientist + métier + DPO si besoin | Décision de réentraînement ou conservation du modèle |
+
 ## Limites
 
 La dérive est indicative : elle compare les distributions des entrées API au profil d'entraînement, mais elle ne mesure pas directement la performance réelle. La performance réelle nécessite les retours clients après séjour et donc une cible `satisfaction_client` observée.

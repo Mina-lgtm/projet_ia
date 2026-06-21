@@ -1,0 +1,192 @@
+{
+  "created_at_utc": "2026-06-21T17:49:01.262400+00:00",
+  "source_dataset": "data/Examen_travel_planning_dataset.csv",
+  "versioning_strategy": "Git pour le dataset leger ; DVC/LakeFS recommandes si les donnees deviennent lourdes ou multi-sources.",
+  "cleaning_report_v1_2": [
+    {
+      "etape": "dataset_brut",
+      "nb_lignes": 1500,
+      "lignes_supprimees": 0
+    },
+    {
+      "etape": "cible_satisfaction_client_valide",
+      "nb_lignes": 1470,
+      "lignes_supprimees": 30
+    },
+    {
+      "etape": "coherence_initiale_prix_vol_budget_total",
+      "nb_lignes": 1418,
+      "lignes_supprimees": 52
+    },
+    {
+      "etape": "reorganisation_sans_imprevu_declare",
+      "nb_lignes": 1399,
+      "lignes_supprimees": 19
+    }
+  ],
+  "versions": [
+    {
+      "version": "v1.0",
+      "label": "dataset brut fourni",
+      "source_version": null,
+      "status": "created",
+      "path": "data/versions/v1_0_raw/travel_planning_dataset_v1_0.csv",
+      "transformations": [
+        "copie conforme du fichier fourni"
+      ],
+      "rows": 1500,
+      "columns": 15,
+      "column_names": [
+        "trip_id",
+        "client_type",
+        "budget_total",
+        "destination",
+        "saison",
+        "duree_jours",
+        "type_hebergement",
+        "prix_vol",
+        "meteo_prevue",
+        "activite_principale",
+        "satisfaction_client",
+        "imprevus",
+        "reorganisation_necessaire",
+        "respect_budget",
+        "retour_client"
+      ],
+      "sha256": "e3590628f042f8d1fc5c8ee8b127a415c59ece26aa0f3b59a2e3d9a64e6ece1f",
+      "size_bytes": 162756
+    },
+    {
+      "version": "v1.1",
+      "label": "nettoyage des colonnes, espaces et formats",
+      "source_version": "v1.0",
+      "status": "created",
+      "path": "data/versions/v1_1_cleaning/travel_planning_dataset_v1_1.csv",
+      "transformations": [
+        "normalisation des noms de colonnes",
+        "suppression des espaces en debut et fin de chaine",
+        "passage des valeurs texte en minuscules",
+        "conversion des colonnes numeriques attendues",
+        "conversion des chaines vides en valeurs manquantes"
+      ],
+      "rows": 1500,
+      "columns": 15,
+      "column_names": [
+        "trip_id",
+        "client_type",
+        "budget_total",
+        "destination",
+        "saison",
+        "duree_jours",
+        "type_hebergement",
+        "prix_vol",
+        "meteo_prevue",
+        "activite_principale",
+        "satisfaction_client",
+        "imprevus",
+        "reorganisation_necessaire",
+        "respect_budget",
+        "retour_client"
+      ],
+      "sha256": "2971029457d9367ca2c2898a3f393188857f852e097548291d461e1faa2d9bd8",
+      "size_bytes": 162759
+    },
+    {
+      "version": "v1.2",
+      "label": "suppression des incoherences critiques",
+      "source_version": "v1.1",
+      "status": "created",
+      "path": "data/versions/v1_2_incoherences/travel_planning_dataset_v1_2.csv",
+      "transformations": [
+        "suppression des lignes sans cible satisfaction_client valide entre 1 et 5",
+        "suppression des cas prix_vol > budget_total",
+        "suppression des cas reorganisation_necessaire = 1 avec imprevus = aucun",
+        "remplissage de imprevus manquant par aucun",
+        "remplissage de retour_client manquant par chaine vide"
+      ],
+      "rows": 1399,
+      "columns": 15,
+      "column_names": [
+        "trip_id",
+        "client_type",
+        "budget_total",
+        "destination",
+        "saison",
+        "duree_jours",
+        "type_hebergement",
+        "prix_vol",
+        "meteo_prevue",
+        "activite_principale",
+        "satisfaction_client",
+        "imprevus",
+        "reorganisation_necessaire",
+        "respect_budget",
+        "retour_client"
+      ],
+      "sha256": "389e78e1e05a76723b26af48b0407ffc373b5c2a455b02d2d8ea4f2367603329",
+      "size_bytes": 149361
+    },
+    {
+      "version": "v2.0",
+      "label": "feature engineering",
+      "source_version": "v1.2",
+      "status": "created",
+      "path": "data/versions/v2_0_feature_engineering/travel_planning_dataset_v2_0.csv",
+      "transformations": [
+        "creation des ratios budget_par_jour et part_vol_budget",
+        "creation des indicateurs sejour_long, meteo_risque, client_business et hebergement_luxe",
+        "enrichissement interne destination : region_destination, distance_vol_categorie, destination_luxe",
+        "creation des indicateurs post-voyage explicatifs pour analyse qualite"
+      ],
+      "rows": 1399,
+      "columns": 30,
+      "column_names": [
+        "trip_id",
+        "client_type",
+        "budget_total",
+        "destination",
+        "saison",
+        "duree_jours",
+        "type_hebergement",
+        "prix_vol",
+        "meteo_prevue",
+        "activite_principale",
+        "satisfaction_client",
+        "imprevus",
+        "reorganisation_necessaire",
+        "respect_budget",
+        "retour_client",
+        "budget_par_jour",
+        "part_vol_budget",
+        "sejour_long",
+        "meteo_risque",
+        "client_business",
+        "hebergement_luxe",
+        "region_destination",
+        "distance_vol_categorie",
+        "destination_luxe",
+        "imprevu_present",
+        "imprevu_transport",
+        "imprevu_meteo",
+        "budget_non_respecte",
+        "gravite_imprevu",
+        "budget_tendu"
+      ],
+      "sha256": "eed24da34a6f6b7708afc3f17a6abc36bbb277511ad40144b8901ee5b6e97ae5",
+      "size_bytes": 273763
+    },
+    {
+      "version": "v2.1",
+      "label": "enrichissement eventuel ou nouvelles donnees",
+      "source_version": "v2.0",
+      "status": "reserved",
+      "path": "data/versions/v2_1_enrichment/README.md",
+      "transformations": [
+        "version reservee aux enrichissements futurs valides par le metier",
+        "aucune source externe ajoutee a ce stade"
+      ],
+      "sha256": "53fd3dd3895b0f9d25151a90bc42243fec289b5a2c9f1bf5bc14f35263545851",
+      "size_bytes": 301
+    }
+  ]
+}

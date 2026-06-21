@@ -93,6 +93,7 @@ def build_monitoring_report(
             "low_confidence_rate": None,
             "average_confidence": None,
             "model_distribution": {},
+            "latest_model_metrics": {},
         }
 
     prediction_counter = Counter(
@@ -112,6 +113,14 @@ def build_monitoring_report(
         for record in records
         if record.get("confidence") is not None
     ]
+    latest_model_metrics = next(
+        (
+            record.get("model_metrics", {})
+            for record in reversed(records)
+            if record.get("model_metrics")
+        ),
+        {},
+    )
 
     nb_predictions = len(records)
 
@@ -131,6 +140,7 @@ def build_monitoring_report(
             if confidence_values else None
         ),
         "model_distribution": dict(model_counter),
+        "latest_model_metrics": latest_model_metrics,
         "low_confidence_threshold": LOW_CONFIDENCE_THRESHOLD,
         "interpretation": (
             "Un taux élevé de faible confiance indique que les prédictions doivent "

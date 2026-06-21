@@ -14,6 +14,7 @@ La phase d'industrialisation est reprise progressivement à partir du notebook f
 - Archive industrialisation : `docs/archive_industrialisation.md`
 - Stratégie de réentraînement : `docs/strategie_reentrainement.md`
 - Plan de documentation : `docs/plan_documentation.md`
+- Versioning des données : `docs/data_versioning.md`
 
 ## Environnement local
 
@@ -65,6 +66,7 @@ la main. Elle permet :
 - de saisir un voyage dans un formulaire ;
 - d'importer un CSV de voyages ;
 - d'afficher les probabilités de prédiction ;
+- de consulter un dashboard KPI métier ;
 - de consulter les endpoints de monitoring.
 
 Lancer d'abord l'API dans un terminal :
@@ -220,10 +222,14 @@ Un workflow GitHub Actions est défini dans `.github/workflows/ci-cd.yml`. À ch
 - valide la syntaxe Python ;
 - exécute les tests API ;
 - exécute les tests du pipeline de préparation et d'entraînement ;
+- entraîne le modèle pré-voyage dans l'environnement CI ;
+- vérifie les seuils qualité définis dans `configs/model_quality_gate.json` ;
 - vérifie la structure et la syntaxe des cellules code du notebook final ;
 - construit l'image Docker.
 
-Ce workflow met en place une livraison continue minimale : le projet est automatiquement vérifié et packagé sous forme d'image Docker. Le déploiement vers un environnement distant reste volontairement non activé tant que le notebook final et le pipeline modèle ne sont pas figés.
+Le contrôle qualité bloque la CI si les métriques du modèle passent sous les seuils acceptés ou si une baisse trop forte est observée par rapport aux métriques de référence.
+
+Ce workflow met en place une livraison continue minimale : le projet est automatiquement vérifié, le modèle est réévalué, puis le projet est packagé sous forme d'image Docker. Le déploiement vers un environnement distant reste volontairement non activé tant que le notebook final et le pipeline modèle ne sont pas figés.
 
 ## Tests
 

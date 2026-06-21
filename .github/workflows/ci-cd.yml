@@ -33,6 +33,14 @@ jobs:
         run: |
           pytest -q
 
+      - name: Train model for quality gate
+        run: |
+          python train.py --model-path models/model_pre_voyage_ci.pkl --metadata-path models/model_pre_voyage_ci_metadata.json
+
+      - name: Check model quality gate
+        run: |
+          python scripts/check_model_quality.py --metadata-path models/model_pre_voyage_ci_metadata.json --config-path configs/model_quality_gate.json
+
       - name: Validate final notebook structure
         run: |
           python - <<'PY'

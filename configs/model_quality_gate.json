@@ -1,0 +1,22 @@
+{
+  "metric_minimums": {
+    "accuracy": 0.3,
+    "balanced_accuracy": 0.3,
+    "macro_f1": 0.3
+  },
+  "reference_metrics": {
+    "accuracy": 0.3571,
+    "balanced_accuracy": 0.3554,
+    "macro_f1": 0.3491
+  },
+  "max_allowed_metric_drop": {
+    "accuracy": 0.06,
+    "balanced_accuracy": 0.06,
+    "macro_f1": 0.06
+  },
+  "row_count_minimums": {
+    "train_rows": 1000,
+    "test_rows": 200
+  },
+  "metadata_max_age_days": 30
+}
