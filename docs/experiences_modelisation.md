@@ -1,4 +1,4 @@
-﻿# Documentation des experiences de modelisation
+﻿# TravelMind - Documentation des experiences de modelisation
 
 Note : la version consolidee et executee pour passer a l'etape suivante se
 trouve dans `notebooks/00_notebook_final_pre_post_voyage.ipynb`. La synthese

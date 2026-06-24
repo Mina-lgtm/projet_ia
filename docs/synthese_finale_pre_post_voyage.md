@@ -1,4 +1,4 @@
-# Synthese finale - Modelisation pre-voyage et post-voyage
+# TravelMind - Synthese finale - Modelisation pre-voyage et post-voyage
 
 ## 1. Objectif du document
 

@@ -1,8 +1,8 @@
-# Examen IA
+# TravelMind
 
-Projet IA de planification de voyages.
+Solution IA de personnalisation de séjours et d'anticipation de la satisfaction client pour une agence de voyages haut de gamme.
 
-La phase d'industrialisation est reprise progressivement à partir du notebook final : architecture cible, entraînement reproductible, export du modèle, API, monitoring et réentraînement contrôlé.
+TravelMind couvre le cadrage métier, la préparation des données, la modélisation pré-voyage et post-voyage, puis l'industrialisation progressive : entraînement reproductible, export du modèle, API, interface web, monitoring et réentraînement contrôlé.
 
 ## Documents principaux
 
@@ -38,9 +38,9 @@ Notebook final recommandé :
 notebooks/00_notebook_final_pre_post_voyage.ipynb
 ```
 
-## API de prédiction
+## TravelMind API
 
-L'API FastAPI expose un endpoint de santé et un endpoint de prédiction pré-voyage.
+TravelMind API expose un endpoint de santé et un endpoint de prédiction pré-voyage.
 Avant d'appeler `/predict`, générer le modèle localement :
 
 ```powershell
@@ -58,9 +58,9 @@ http://localhost:8001/health
 http://localhost:8001/predict
 ```
 
-## Interface web Streamlit
+## TravelMind Dashboard
 
-Une interface web locale permet de tester le modèle sans écrire de requête API à
+TravelMind Dashboard permet de tester le modèle sans écrire de requête API à
 la main. Elle permet :
 
 - de saisir un voyage dans un formulaire ;

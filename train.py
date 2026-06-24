@@ -19,7 +19,7 @@ DEFAULT_METADATA_PATH = Path("models/model_pre_voyage_metadata.json")
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Entraîne et exporte le modèle pré-voyage industrialisable.",
+        description="Entraine et exporte le modele pre-voyage TravelMind.",
     )
     parser.add_argument(
         "--data-path",
@@ -65,13 +65,13 @@ def main() -> None:
         metadata_path=args.metadata_path,
     )
 
-    print("Entraînement pré-voyage terminé")
-    print(f"Modèle retenu : {result.model_name}")
+    print("Entrainement pre-voyage TravelMind termine")
+    print(f"Modele retenu : {result.model_name}")
     print(f"macro_f1 : {result.metrics['macro_f1']:.4f}")
     print(f"balanced_accuracy : {result.metrics['balanced_accuracy']:.4f}")
     print(f"accuracy : {result.metrics['accuracy']:.4f}")
-    print(f"Modèle exporté : {args.model_path}")
-    print(f"Métadonnées exportées : {args.metadata_path}")
+    print(f"Modele exporte : {args.model_path}")
+    print(f"Metadonnees exportees : {args.metadata_path}")
 
 
 if __name__ == "__main__":

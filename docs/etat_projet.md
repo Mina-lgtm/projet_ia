@@ -1,4 +1,4 @@
-# Documentation descriptive du projet IA
+# TravelMind - Documentation descriptive du projet IA
 
 Date de reference : 5 juin 2026.
 
@@ -170,9 +170,9 @@ les outils de notebook.
 Important : apres modification des dependances, il faut relancer une
 installation propre de l'environnement.
 
-## 6. API FastAPI
+## 6. TravelMind API
 
-Le fichier `app/main.py` contient une API FastAPI de demarrage.
+Le fichier `app/main.py` contient une TravelMind API de demarrage.
 
 ### Pourquoi creer une API ?
 
@@ -611,7 +611,7 @@ Les choix techniques visent a :
 
 - environnement virtuel cree ;
 - dependances IA et developpement ajoutees ;
-- API FastAPI de demarrage creee ;
+- TravelMind API de demarrage creee ;
 - Dockerfile et Compose ajoutes ;
 - port local passe de `8000` a `8001` ;
 - depot Git initialise ;

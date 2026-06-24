@@ -1,8 +1,8 @@
-# Versioning des donnees
+# TravelMind - Versioning des donnees
 
 ## Objectif
 
-Le versioning des donnees permet de garantir la reproductibilite du projet IA : un score de modele doit pouvoir etre rattache a une version precise du dataset, avec ses traitements et ses controles qualite.
+Le versioning des donnees permet de garantir la reproductibilite du projet TravelMind : un score de modele doit pouvoir etre rattache a une version precise du dataset, avec ses traitements et ses controles qualite.
 
 Dans ce projet, le dataset est leger et synthetique. La strategie retenue est donc volontairement simple :
 

@@ -1,4 +1,4 @@
-# Plan de documentation du projet IA
+# TravelMind - Plan de documentation du projet IA
 
 Ce plan est deduit de l'analyse du notebook exemple
 `NBE-E-Commerce-IA.ipynb` et adapte au projet de planification de voyages haut
@@ -355,7 +355,7 @@ Ordre recommande :
 | Choix du modele | Modele de satisfaction client |
 | Entrainement et evaluation | Baseline puis comparaison de modeles |
 | Performance et interpretation | Facteurs de satisfaction et limites |
-| Prototype Flask | API FastAPI + Docker |
+| Prototype Flask | TravelMind API + Docker |
 | Risques, biais, ethique | Biais client, RGPD, donnees synthetiques |
 | Amelioration continue | Sources externes, monitoring, retrain |
 | Conclusion | Bilan et passage a l'industrialisation |

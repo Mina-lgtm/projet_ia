@@ -389,14 +389,14 @@ def render_api_status(api_url: str) -> None:
 
 def main() -> None:
     st.set_page_config(
-        page_title="Projet IA Voyages",
+        page_title="TravelMind Dashboard",
         page_icon="✈️",
         layout="wide",
     )
 
-    st.title("Interface de test — modèle pré-voyage")
+    st.title("TravelMind Dashboard")
     st.write(
-        "Cette interface permet de tester l'API FastAPI, de saisir un voyage, "
+        "Cette interface permet de tester TravelMind API, de saisir un voyage, "
         "d'importer un CSV et de consulter le monitoring."
     )
 

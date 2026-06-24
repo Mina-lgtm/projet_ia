@@ -34,7 +34,7 @@ L'industrialisation mise en place couvre :
 | Entrainement | Fait | Script reproductible d'entrainement |
 | Validation | Fait | Train/test, metriques, tests automatises |
 | Export modele | Fait | Export du pipeline entraine avec `joblib` |
-| API | Fait | API FastAPI avec endpoint de prediction |
+| API | Fait | TravelMind API avec endpoint de prediction |
 | Docker | Fait | Execution conteneurisee via Docker Compose |
 | Monitoring | Fait | Logs de predictions et controle simple de derive |
 | Reentrainement continu | Partiel | Script pret, automatisation planifiee non mise en place |
@@ -87,7 +87,7 @@ Sorties :
 - `models/post_voyage_model.joblib` ;
 - `models/post_voyage_metrics.json`.
 
-### API FastAPI
+### TravelMind API
 
 ```text
 app/main.py

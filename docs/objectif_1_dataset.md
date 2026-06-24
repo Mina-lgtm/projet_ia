@@ -3,7 +3,7 @@
 ## 1. Objectif de l'etape
 
 L'objectif de cette etape est d'identifier et de justifier un jeu de donnees
-capable de repondre aux besoins metiers et aux cas d'usage du projet IA.
+capable de repondre aux besoins metiers et aux cas d'usage du projet TravelMind.
 
 Le contexte metier est celui d'une agence de voyages haut de gamme qui souhaite
 personnaliser la planification des sejours, anticiper les risques et ameliorer
@@ -22,7 +22,7 @@ satisfaction et respect du budget.
 ## 2. Datasheet du jeu de donnees
 
 Cette datasheet synthetise les informations essentielles sur le dataset afin de
-justifier son usage dans le projet IA.
+justifier son usage dans le projet TravelMind.
 
 ### Identification
 

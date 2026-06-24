@@ -28,6 +28,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 RANDOM_STATE = 42
+SOLUTION_NAME = "TravelMind"
 TARGET_COLUMN = "satisfaction_client"
 CLASS_LABELS = [0, 1, 2]
 CLASS_NAMES = ["insatisfait_1_2", "neutre_3", "satisfait_4_5"]
@@ -556,6 +557,8 @@ def save_training_artifacts(
     joblib.dump(result.pipeline, model_path)
 
     metadata = {
+        "solution_name": SOLUTION_NAME,
+        "display_model_name": "TravelMind Pre-Voyage Satisfaction Model",
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "objective": "pre_voyage_satisfaction_3_classes",
         "model_name": result.model_name,
