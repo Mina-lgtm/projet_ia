@@ -41,7 +41,7 @@ def test_prediction_logger_writes_jsonl_record(tmp_path) -> None:
             PredictionProbability(classe=1, libelle="neutre_3", probabilite=0.2588),
             PredictionProbability(classe=2, libelle="satisfait_4_5", probabilite=0.3537),
         ],
-        model_metrics={"macro_f1": 0.3491},
+        model_metrics={"macro_f1": 0.3462},
     )
 
     record = logger.log_prediction(request, response)
@@ -83,7 +83,7 @@ def test_build_monitoring_report_from_prediction_logs(tmp_path) -> None:
                     probabilite=probability,
                 )
             ],
-            model_metrics={"macro_f1": 0.3491},
+            model_metrics={"macro_f1": 0.3462},
         )
         logger.log_prediction(request, response)
 
@@ -142,9 +142,6 @@ def test_build_drift_report_from_prediction_logs_and_reference_profile(tmp_path)
         "meteo_risque",
         "client_business",
         "hebergement_luxe",
-        "region_destination",
-        "distance_vol_categorie",
-        "destination_luxe",
     ]
     reference_features = prepare_prediction_features(
         pd.DataFrame(reference_inputs),
@@ -185,7 +182,7 @@ def test_build_drift_report_from_prediction_logs_and_reference_profile(tmp_path)
         probabilities=[
             PredictionProbability(classe=0, libelle="insatisfait_1_2", probabilite=0.7)
         ],
-        model_metrics={"macro_f1": 0.3491},
+        model_metrics={"macro_f1": 0.3462},
     )
     logger.log_prediction(request, response)
 
@@ -222,7 +219,7 @@ def test_build_alert_report_requires_more_data_before_retraining(tmp_path) -> No
         probabilities=[
             PredictionProbability(classe=0, libelle="insatisfait_1_2", probabilite=0.4)
         ],
-        model_metrics={"macro_f1": 0.3491},
+        model_metrics={"macro_f1": 0.3462},
     )
     logger.log_prediction(request, response)
 
@@ -270,7 +267,7 @@ def test_build_alert_report_recommends_retraining_candidate_with_confirmed_drift
         probabilities=[
             PredictionProbability(classe=2, libelle="satisfait_4_5", probabilite=0.8)
         ],
-        model_metrics={"macro_f1": 0.3491},
+        model_metrics={"macro_f1": 0.3462},
     )
 
     for index in range(20):

@@ -12,7 +12,7 @@ import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin, clone
 from sklearn.compose import ColumnTransformer
 from sklearn.dummy import DummyClassifier
-from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
@@ -35,18 +35,18 @@ CLASS_NAMES = ["insatisfait_1_2", "neutre_3", "satisfait_4_5"]
 
 FEATURES_SUPPRIMEES_MODELISATION = [
     "budget_hors_vol",
-]
-
-FEATURES_POST_VOYAGE_EXPLICATIVES = [
-    "imprevus",
-    "reorganisation_necessaire",
-    "respect_budget",
-    "imprevu_present",
-    "imprevu_transport",
-    "imprevu_meteo",
+    "region_destination",
+    "distance_vol_categorie",
+    "destination_luxe",
     "budget_non_respecte",
     "budget_tendu",
     "gravite_imprevu",
+]
+
+FEATURES_POST_VOYAGE_EXPLICATIVES = [
+    "imprevu_present",
+    "imprevu_transport",
+    "imprevu_meteo",
 ]
 
 POST_TRIP_COLUMNS = [
@@ -54,7 +54,7 @@ POST_TRIP_COLUMNS = [
     "reorganisation_necessaire",
     "respect_budget",
     "retour_client",
-    *FEATURES_POST_VOYAGE_EXPLICATIVES[3:],
+    *FEATURES_POST_VOYAGE_EXPLICATIVES,
 ]
 
 PRE_VOYAGE_INPUT_COLUMNS = [
@@ -209,7 +209,6 @@ def add_base_features(df_source: pd.DataFrame) -> pd.DataFrame:
 
     df["budget_par_jour"] = df["budget_total"] / safe_duree
     df["part_vol_budget"] = df["prix_vol"] / safe_budget
-    df["budget_hors_vol"] = df["budget_total"] - df["prix_vol"]
     df["sejour_long"] = indicateur(df["duree_jours"] >= 14, df["duree_jours"].isna())
     df["meteo_risque"] = indicateur(
         df["meteo_prevue"].isin(["pluie", "variable"]),
@@ -224,46 +223,6 @@ def add_base_features(df_source: pd.DataFrame) -> pd.DataFrame:
         df["type_hebergement"].isna(),
     )
 
-    destination_enrichment = pd.DataFrame({
-        "destination": [
-            "paris",
-            "rome",
-            "lisbonne",
-            "new york",
-            "dubai",
-            "tokyo",
-            "bali",
-            "sydney",
-        ],
-        "region_destination": [
-            "europe",
-            "europe",
-            "europe",
-            "amerique du nord",
-            "moyen-orient",
-            "asie",
-            "asie",
-            "oceanie",
-        ],
-        "distance_vol_categorie": [
-            "court",
-            "court",
-            "court",
-            "long",
-            "moyen",
-            "long",
-            "long",
-            "long",
-        ],
-        "destination_luxe": [1, 1, 0, 1, 1, 1, 1, 1],
-    })
-
-    df = df.merge(destination_enrichment, on="destination", how="left", validate="many_to_one")
-
-    for column in ["region_destination", "distance_vol_categorie"]:
-        if df[column].isna().any():
-            df[column] = df[column].fillna("inconnu")
-
     df["imprevu_present"] = indicateur(df["imprevus"] != "aucun", df["imprevus"].isna())
     df["imprevu_transport"] = indicateur(
         df["imprevus"].isin(["retard_vol", "annulation", "bagages"]),
@@ -273,24 +232,7 @@ def add_base_features(df_source: pd.DataFrame) -> pd.DataFrame:
         df["imprevus"].isin(["météo", "meteo"]),
         df["imprevus"].isna(),
     )
-    df["budget_non_respecte"] = indicateur(
-        df["respect_budget"] == 0,
-        df["respect_budget"].isna(),
-    )
-    df["gravite_imprevu"] = df["imprevus"].map({
-        "aucun": 0,
-        "meteo": 1,
-        "météo": 1,
-        "bagages": 1,
-        "retard_vol": 2,
-        "annulation": 3,
-    })
-    df["budget_tendu"] = indicateur(
-        df["part_vol_budget"] >= 0.5,
-        df["part_vol_budget"].isna(),
-    )
-
-    for column in ["budget_par_jour", "part_vol_budget", "budget_hors_vol"]:
+    for column in ["budget_par_jour", "part_vol_budget"]:
         df[column] = df[column].replace([np.inf, -np.inf], np.nan)
 
     for column in df.select_dtypes(include=["object", "string"]).columns:
@@ -447,13 +389,6 @@ def candidate_models() -> dict[str, Any]:
             class_weight="balanced",
         ),
         "RandomForest_pre": RandomForestClassifier(
-            n_estimators=120,
-            max_depth=8,
-            random_state=RANDOM_STATE,
-            class_weight="balanced",
-            n_jobs=1,
-        ),
-        "ExtraTrees_pre": ExtraTreesClassifier(
             n_estimators=120,
             max_depth=8,
             random_state=RANDOM_STATE,

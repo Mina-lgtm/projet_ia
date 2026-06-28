@@ -9,7 +9,7 @@ TravelMind couvre le cadrage métier, la préparation des données, la modélisa
 - Documentation descriptive : `docs/etat_projet.md`
 - Objectif 1 - identification du dataset : `docs/objectif_1_dataset.md`
 - Synthèse finale pré/post-voyage : `docs/synthese_finale_pre_post_voyage.md`
-- Notebook final propre : `notebooks/00_notebook_final_pre_post_voyage.ipynb`
+- Notebook final propre : `notebooks/exam_ia.ipynb`
 - Expériences de modélisation : `docs/experiences_modelisation.md`
 - Archive industrialisation : `docs/archive_industrialisation.md`
 - Stratégie de réentraînement : `docs/strategie_reentrainement.md`
@@ -35,7 +35,7 @@ jupyter lab
 Notebook final recommandé :
 
 ```text
-notebooks/00_notebook_final_pre_post_voyage.ipynb
+notebooks/exam_ia.ipynb
 ```
 
 ## TravelMind API

@@ -35,6 +35,12 @@ def test_prepare_training_dataset_uses_only_pre_voyage_columns() -> None:
     assert "trip_id" not in x.columns
     assert "retour_client" not in x.columns
     assert "budget_hors_vol" not in x.columns
+    assert "region_destination" not in x.columns
+    assert "distance_vol_categorie" not in x.columns
+    assert "destination_luxe" not in x.columns
+    assert "budget_non_respecte" not in x.columns
+    assert "budget_tendu" not in x.columns
+    assert "gravite_imprevu" not in x.columns
     assert set(y.unique()).issubset(set(CLASS_LABELS))
     assert cleaning_report
 

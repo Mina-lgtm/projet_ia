@@ -5,9 +5,9 @@
     "macro_f1": 0.3
   },
   "reference_metrics": {
-    "accuracy": 0.3571,
-    "balanced_accuracy": 0.3554,
-    "macro_f1": 0.3491
+    "accuracy": 0.3536,
+    "balanced_accuracy": 0.3528,
+    "macro_f1": 0.3462
   },
   "max_allowed_metric_drop": {
     "accuracy": 0.06,
