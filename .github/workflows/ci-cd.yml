@@ -9,6 +9,8 @@ on:
 jobs:
   validate-and-package:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: ${{ github.workspace }}
 
     steps:
       - name: Checkout repository
@@ -31,7 +33,7 @@ jobs:
 
       - name: Run API tests
         run: |
-          pytest -q
+          python -m pytest -q
 
       - name: Train model for quality gate
         run: |
