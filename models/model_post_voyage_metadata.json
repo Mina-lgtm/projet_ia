@@ -1,0 +1,170 @@
+{
+  "created_at_utc": "2026-06-20T18:24:34.142016+00:00",
+  "objective": "post_voyage_satisfaction_3_classes",
+  "model_name": "LogisticRegression_3_classes",
+  "target": "satisfaction_client",
+  "class_labels": [
+    0,
+    1,
+    2
+  ],
+  "class_names": [
+    "insatisfait_1_2",
+    "neutre_3",
+    "satisfait_4_5"
+  ],
+  "metrics": {
+    "accuracy": 0.3964285714285714,
+    "balanced_accuracy": 0.37668110758810674,
+    "macro_f1": 0.3757633838810906,
+    "test_size": 0.2,
+    "train_rows": 1119,
+    "test_rows": 280
+  },
+  "feature_columns": [
+    "client_type",
+    "budget_total",
+    "destination",
+    "saison",
+    "duree_jours",
+    "type_hebergement",
+    "prix_vol",
+    "meteo_prevue",
+    "activite_principale",
+    "imprevus",
+    "reorganisation_necessaire",
+    "respect_budget",
+    "budget_par_jour",
+    "part_vol_budget",
+    "sejour_long",
+    "meteo_risque",
+    "client_business",
+    "hebergement_luxe",
+    "region_destination",
+    "distance_vol_categorie",
+    "destination_luxe",
+    "imprevu_present",
+    "imprevu_transport",
+    "imprevu_meteo",
+    "budget_non_respecte",
+    "gravite_imprevu",
+    "budget_tendu"
+  ],
+  "numeric_features": [
+    "budget_total",
+    "duree_jours",
+    "prix_vol",
+    "reorganisation_necessaire",
+    "respect_budget",
+    "budget_par_jour",
+    "part_vol_budget",
+    "sejour_long",
+    "meteo_risque",
+    "client_business",
+    "hebergement_luxe",
+    "destination_luxe",
+    "imprevu_present",
+    "imprevu_transport",
+    "imprevu_meteo",
+    "budget_non_respecte",
+    "gravite_imprevu",
+    "budget_tendu"
+  ],
+  "categorical_features": [
+    "client_type",
+    "destination",
+    "saison",
+    "type_hebergement",
+    "meteo_prevue",
+    "activite_principale",
+    "imprevus",
+    "region_destination",
+    "distance_vol_categorie"
+  ],
+  "post_voyage_features": [
+    "imprevus",
+    "reorganisation_necessaire",
+    "respect_budget",
+    "imprevu_present",
+    "imprevu_transport",
+    "imprevu_meteo",
+    "budget_non_respecte",
+    "budget_tendu",
+    "gravite_imprevu"
+  ],
+  "removed_features": [
+    "budget_hors_vol"
+  ],
+  "confusion_matrix": [
+    [
+      58,
+      46,
+      27
+    ],
+    [
+      28,
+      15,
+      24
+    ],
+    [
+      26,
+      18,
+      38
+    ]
+  ],
+  "classification_report": {
+    "insatisfait_1_2": {
+      "precision": 0.5178571428571429,
+      "recall": 0.44274809160305345,
+      "f1-score": 0.4773662551440329,
+      "support": 131.0
+    },
+    "neutre_3": {
+      "precision": 0.189873417721519,
+      "recall": 0.22388059701492538,
+      "f1-score": 0.2054794520547945,
+      "support": 67.0
+    },
+    "satisfait_4_5": {
+      "precision": 0.42696629213483145,
+      "recall": 0.4634146341463415,
+      "f1-score": 0.4444444444444444,
+      "support": 82.0
+    },
+    "accuracy": 0.3964285714285714,
+    "macro avg": {
+      "precision": 0.3782322842378311,
+      "recall": 0.37668110758810674,
+      "f1-score": 0.3757633838810906,
+      "support": 280.0
+    },
+    "weighted avg": {
+      "precision": 0.4127572880595845,
+      "recall": 0.3964285714285714,
+      "f1-score": 0.4026662398428,
+      "support": 280.0
+    }
+  },
+  "cleaning_report": [
+    {
+      "etape": "dataset_brut",
+      "nb_lignes": 1500,
+      "lignes_supprimees": 0
+    },
+    {
+      "etape": "cible_satisfaction_client_valide",
+      "nb_lignes": 1470,
+      "lignes_supprimees": 30
+    },
+    {
+      "etape": "coherence_initiale_prix_vol_budget_total",
+      "nb_lignes": 1418,
+      "lignes_supprimees": 52
+    },
+    {
+      "etape": "reorganisation_sans_imprevu_declare",
+      "nb_lignes": 1399,
+      "lignes_supprimees": 19
+    }
+  ]
+}
