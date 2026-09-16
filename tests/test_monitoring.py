@@ -9,47 +9,55 @@ from app.monitoring import (
     build_drift_report,
     build_monitoring_report,
 )
-from app.schemas import (
-    PredictionProbability,
-    TravelPredictionRequest,
-    TravelPredictionResponse,
-)
+from app.schemas import TravelPredictionRequest, TravelPredictionResponse
+
+
+def make_request(**overrides) -> TravelPredictionRequest:
+    values = {
+        "client_type": "couple",
+        "budget_total": 4200,
+        "destination": "rome",
+        "saison": "printemps",
+        "duree_jours": 7,
+        "type_hebergement": "hôtel",
+        "prix_vol": 650,
+        "meteo_prevue": "ensoleillé",
+        "activite_principale": "culture",
+    }
+    values.update(overrides)
+    return TravelPredictionRequest(**values)
+
+
+def make_response(
+    score: float = 3.2,
+    interpretation: str = "satisfaction_intermediaire",
+    zone_incertitude: bool = True,
+) -> TravelPredictionResponse:
+    return TravelPredictionResponse(
+        objective="pre_voyage_satisfaction_score_regression",
+        model_name="RidgeRegression_pre",
+        score_satisfaction_predit=score,
+        score_satisfaction_arrondi=round(score),
+        interpretation=interpretation,
+        zone_incertitude=zone_incertitude,
+        model_metrics={"mae": 1.0525, "rmse": 1.2533, "r2": 0.0038},
+    )
 
 
 def test_prediction_logger_writes_jsonl_record(tmp_path) -> None:
     log_path = tmp_path / "predictions.jsonl"
     logger = PredictionLogger(log_path=log_path)
 
-    request = TravelPredictionRequest(
-        client_type="couple",
-        budget_total=4200,
-        destination="rome",
-        saison="printemps",
-        duree_jours=7,
-        type_hebergement="hôtel",
-        prix_vol=650,
-        meteo_prevue="ensoleillé",
-        activite_principale="culture",
-    )
-    response = TravelPredictionResponse(
-        objective="pre_voyage_satisfaction_3_classes",
-        model_name="LogisticRegression_pre",
-        classe_predite=0,
-        libelle_prediction="insatisfait_1_2",
-        probabilities=[
-            PredictionProbability(classe=0, libelle="insatisfait_1_2", probabilite=0.3875),
-            PredictionProbability(classe=1, libelle="neutre_3", probabilite=0.2588),
-            PredictionProbability(classe=2, libelle="satisfait_4_5", probabilite=0.3537),
-        ],
-        model_metrics={"macro_f1": 0.3462},
-    )
+    request = make_request()
+    response = make_response(score=3.2)
 
     record = logger.log_prediction(request, response)
     written_record = json.loads(log_path.read_text(encoding="utf-8").strip())
 
-    assert record["model_name"] == "LogisticRegression_pre"
-    assert written_record["libelle_prediction"] == "insatisfait_1_2"
-    assert written_record["confidence"] == 0.3875
+    assert record["model_name"] == "RidgeRegression_pre"
+    assert written_record["score_satisfaction_predit"] == 3.2
+    assert written_record["score_satisfaction_arrondi"] == 3
+    assert written_record["interpretation"] == "satisfaction_intermediaire"
     assert written_record["low_confidence"] is True
     assert written_record["input"]["destination"] == "rome"
 
@@ -57,44 +65,27 @@ def test_prediction_logger_writes_jsonl_record(tmp_path) -> None:
 def test_build_monitoring_report_from_prediction_logs(tmp_path) -> None:
     log_path = tmp_path / "predictions.jsonl"
     logger = PredictionLogger(log_path=log_path)
+    request = make_request()
 
-    request = TravelPredictionRequest(
-        client_type="couple",
-        budget_total=4200,
-        destination="rome",
-        saison="printemps",
-        duree_jours=7,
-        type_hebergement="hôtel",
-        prix_vol=650,
-        meteo_prevue="ensoleillé",
-        activite_principale="culture",
+    logger.log_prediction(
+        request,
+        make_response(score=2.2, interpretation="risque_insatisfaction", zone_incertitude=False),
     )
-
-    for probability in [0.4, 0.8]:
-        response = TravelPredictionResponse(
-            objective="pre_voyage_satisfaction_3_classes",
-            model_name="LogisticRegression_pre",
-            classe_predite=2,
-            libelle_prediction="satisfait_4_5",
-            probabilities=[
-                PredictionProbability(
-                    classe=2,
-                    libelle="satisfait_4_5",
-                    probabilite=probability,
-                )
-            ],
-            model_metrics={"macro_f1": 0.3462},
-        )
-        logger.log_prediction(request, response)
+    logger.log_prediction(
+        request,
+        make_response(score=3.1, interpretation="satisfaction_intermediaire", zone_incertitude=True),
+    )
 
     report = build_monitoring_report(log_path=log_path)
 
     assert report["nb_predictions"] == 2
-    assert report["prediction_distribution"] == {"satisfait_4_5": 2}
-    assert report["prediction_distribution_pct"] == {"satisfait_4_5": 100.0}
+    assert report["prediction_distribution"] == {
+        "risque_insatisfaction": 1,
+        "satisfaction_intermediaire": 1,
+    }
     assert report["low_confidence_count"] == 1
     assert report["low_confidence_rate"] == 50.0
-    assert report["average_confidence"] == 0.6
+    assert report["average_predicted_score"] == 2.65
 
 
 def test_build_drift_report_from_prediction_logs_and_reference_profile(tmp_path) -> None:
@@ -163,28 +154,20 @@ def test_build_drift_report_from_prediction_logs_and_reference_profile(tmp_path)
         encoding="utf-8",
     )
 
-    request = TravelPredictionRequest(
-        client_type="business",
-        budget_total=20000,
-        destination="tokyo",
-        saison="hiver",
-        duree_jours=30,
-        type_hebergement="villa",
-        prix_vol=3500,
-        meteo_prevue="pluie",
-        activite_principale="business",
+    logger.log_prediction(
+        make_request(
+            client_type="business",
+            budget_total=20000,
+            destination="tokyo",
+            saison="hiver",
+            duree_jours=30,
+            type_hebergement="villa",
+            prix_vol=3500,
+            meteo_prevue="pluie",
+            activite_principale="business",
+        ),
+        make_response(score=2.1, interpretation="risque_insatisfaction", zone_incertitude=False),
     )
-    response = TravelPredictionResponse(
-        objective="pre_voyage_satisfaction_3_classes",
-        model_name="LogisticRegression_pre",
-        classe_predite=0,
-        libelle_prediction="insatisfait_1_2",
-        probabilities=[
-            PredictionProbability(classe=0, libelle="insatisfait_1_2", probabilite=0.7)
-        ],
-        model_metrics={"macro_f1": 0.3462},
-    )
-    logger.log_prediction(request, response)
 
     report = build_drift_report(log_path=log_path, metadata_path=metadata_path)
 
@@ -200,28 +183,7 @@ def test_build_alert_report_requires_more_data_before_retraining(tmp_path) -> No
     log_path = tmp_path / "predictions.jsonl"
     logger = PredictionLogger(log_path=log_path)
 
-    request = TravelPredictionRequest(
-        client_type="couple",
-        budget_total=4200,
-        destination="rome",
-        saison="printemps",
-        duree_jours=7,
-        type_hebergement="hôtel",
-        prix_vol=650,
-        meteo_prevue="ensoleillé",
-        activite_principale="culture",
-    )
-    response = TravelPredictionResponse(
-        objective="pre_voyage_satisfaction_3_classes",
-        model_name="LogisticRegression_pre",
-        classe_predite=0,
-        libelle_prediction="insatisfait_1_2",
-        probabilities=[
-            PredictionProbability(classe=0, libelle="insatisfait_1_2", probabilite=0.4)
-        ],
-        model_metrics={"macro_f1": 0.3462},
-    )
-    logger.log_prediction(request, response)
+    logger.log_prediction(make_request(), make_response(score=3.1, zone_incertitude=True))
 
     report = build_alert_report(log_path=log_path, metadata_path=tmp_path / "missing.json")
 
@@ -259,28 +221,16 @@ def test_build_alert_report_recommends_retraining_candidate_with_confirmed_drift
         encoding="utf-8",
     )
 
-    response = TravelPredictionResponse(
-        objective="pre_voyage_satisfaction_3_classes",
-        model_name="LogisticRegression_pre",
-        classe_predite=2,
-        libelle_prediction="satisfait_4_5",
-        probabilities=[
-            PredictionProbability(classe=2, libelle="satisfait_4_5", probabilite=0.8)
-        ],
-        model_metrics={"macro_f1": 0.3462},
+    response = make_response(
+        score=4.0,
+        interpretation="satisfaction_probable",
+        zone_incertitude=False,
     )
 
     for index in range(20):
-        request = TravelPredictionRequest(
-            client_type="couple",
+        request = make_request(
             budget_total=4200 + index,
             destination="tokyo",
-            saison="printemps",
-            duree_jours=7,
-            type_hebergement="hôtel",
-            prix_vol=650,
-            meteo_prevue="ensoleillé",
-            activite_principale="culture",
         )
         logger.log_prediction(request, response)
 

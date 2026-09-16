@@ -1,0 +1,108 @@
+{
+  "created_at_utc": "2026-09-11T20:40:13.197389+00:00",
+  "base_dataset": "data/versions/v2_0_feature_engineering/travel_planning_dataset_v2_0.csv",
+  "output_dataset": "data/versions/v2_1_enrichment/travel_planning_dataset_v2_1.csv",
+  "rows": 1378,
+  "columns": 40,
+  "sources": [
+    {
+      "source": "hotel_quality",
+      "file": "data/external/hotel_quality.csv",
+      "join_keys": [
+        "destination",
+        "type_hebergement"
+      ],
+      "status": "missing_file",
+      "rows_source": 0,
+      "rows_matched": 0,
+      "columns_added": [],
+      "message": "Fichier externe absent, enrichissement ignoré."
+    },
+    {
+      "source": "weather_history",
+      "file": "data/external/weather_history.csv",
+      "join_keys": [
+        "destination",
+        "saison"
+      ],
+      "status": "loaded",
+      "rows_source": 32,
+      "rows_matched": 1378,
+      "columns_added": [
+        "jours_pluie_moyen",
+        "latitude",
+        "longitude",
+        "nb_jours_observes",
+        "periode_reference",
+        "pluie_moyenne_mm",
+        "source",
+        "temperature_moyenne_saison",
+        "vent_max_moyen_kmh"
+      ],
+      "message": "Source enrichie avec succès."
+    },
+    {
+      "source": "air_quality_history",
+      "file": "data/external/air_quality_history.csv",
+      "join_keys": [
+        "destination",
+        "saison"
+      ],
+      "status": "loaded",
+      "rows_source": 32,
+      "rows_matched": 1378,
+      "columns_added": [
+        "european_aqi_moyen",
+        "heures_observees_air",
+        "periode_reference_air_quality",
+        "pm10_moyen",
+        "pm2_5_moyen",
+        "source_air_quality",
+        "uv_index_moyen"
+      ],
+      "message": "Source enrichie avec succès."
+    },
+    {
+      "source": "destination_reviews",
+      "file": "data/external/destination_reviews.csv",
+      "join_keys": [
+        "destination"
+      ],
+      "status": "missing_file",
+      "rows_source": 0,
+      "rows_matched": 0,
+      "columns_added": [],
+      "message": "Fichier externe absent, enrichissement ignoré."
+    },
+    {
+      "source": "customer_history",
+      "file": "data/external/customer_history.csv",
+      "join_keys": [
+        "client_id"
+      ],
+      "status": "skipped",
+      "rows_source": 0,
+      "rows_matched": 0,
+      "columns_added": [],
+      "message": "Clés absentes du dataset de base: ['client_id']"
+    },
+    {
+      "source": "tariff_market_context",
+      "file": "data/external/tariff_market_context.csv",
+      "join_keys": [
+        "destination"
+      ],
+      "status": "missing_file",
+      "rows_source": 0,
+      "rows_matched": 0,
+      "columns_added": [],
+      "message": "Fichier externe absent, enrichissement ignoré."
+    }
+  ],
+  "policy": {
+    "use_only_before_departure_data": true,
+    "no_fake_external_data": true,
+    "requires_source_documentation": true,
+    "requires_rgpd_validation_if_personal_data": true
+  }
+}

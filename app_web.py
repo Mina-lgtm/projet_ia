@@ -119,17 +119,15 @@ def build_manual_payload() -> dict[str, Any]:
 
 def display_prediction(result: dict[str, Any]) -> None:
     st.subheader("Résultat de prédiction")
-    st.metric("Classe prédite", result.get("libelle_prediction", "inconnu"))
+    st.metric(
+        "Score satisfaction prédit",
+        format_decimal(result.get("score_satisfaction_predit")),
+    )
+    st.metric("Score arrondi", result.get("score_satisfaction_arrondi", "N/A"))
+    st.write(f"Interprétation : `{result.get('interpretation', 'inconnu')}`")
+    if result.get("zone_incertitude"):
+        st.warning("Score en zone d'incertitude : revue humaine recommandée.")
     st.write(f"Modèle utilisé : `{result.get('model_name', 'inconnu')}`")
-
-    probabilities = result.get("probabilities") or []
-    if probabilities:
-        proba_df = pd.DataFrame(probabilities)
-        st.bar_chart(
-            proba_df.set_index("libelle")["probabilite"],
-            use_container_width=True,
-        )
-        st.dataframe(proba_df, use_container_width=True)
 
     metrics = result.get("model_metrics") or {}
     if metrics:
@@ -186,15 +184,10 @@ def render_csv_prediction(api_url: str) -> None:
                 rows.append({
                     "ligne": int(index),
                     **payload,
-                    "classe_predite": result.get("classe_predite"),
-                    "libelle_prediction": result.get("libelle_prediction"),
-                    "confidence": max(
-                        [
-                            probability.get("probabilite", 0)
-                            for probability in result.get("probabilities", [])
-                        ],
-                        default=None,
-                    ),
+                    "score_satisfaction_predit": result.get("score_satisfaction_predit"),
+                    "score_satisfaction_arrondi": result.get("score_satisfaction_arrondi"),
+                    "interpretation": result.get("interpretation"),
+                    "zone_incertitude": result.get("zone_incertitude"),
                 })
             progress.progress((index + 1) / len(df))
 
@@ -261,7 +254,7 @@ def render_business_dashboard(api_url: str) -> None:
         return
 
     distribution = summary.get("prediction_distribution", {}) or {}
-    insatisfait_count = distribution.get("insatisfait_1_2", 0)
+    insatisfait_count = distribution.get("risque_insatisfaction", 0)
     taux_insatisfaction = (
         insatisfait_count / nb_predictions * 100
         if nb_predictions > 0
@@ -283,21 +276,18 @@ def render_business_dashboard(api_url: str) -> None:
     col_1.metric("Prédictions", nb_predictions)
     col_2.metric("Taux insatisfait", format_percentage(taux_insatisfaction))
     col_3.metric(
-        "Faible confiance",
+        "Zone incertitude",
         format_percentage(summary.get("low_confidence_rate")),
     )
     col_4.metric(
-        "Confiance moyenne",
-        format_decimal(summary.get("average_confidence")),
+        "Score moyen prédit",
+        format_decimal(summary.get("average_predicted_score")),
     )
 
     col_5, col_6, col_7 = st.columns(3)
-    col_5.metric("Accuracy modèle", format_decimal(latest_metrics.get("accuracy")))
-    col_6.metric(
-        "Balanced accuracy",
-        format_decimal(latest_metrics.get("balanced_accuracy")),
-    )
-    col_7.metric("Macro F1", format_decimal(latest_metrics.get("macro_f1")))
+    col_5.metric("MAE modèle", format_decimal(latest_metrics.get("mae")))
+    col_6.metric("RMSE", format_decimal(latest_metrics.get("rmse")))
+    col_7.metric("R²", format_decimal(latest_metrics.get("r2")))
 
     st.subheader("Décision opérationnelle")
     decision = alerts.get("decision", "non_disponible")
@@ -314,7 +304,7 @@ def render_business_dashboard(api_url: str) -> None:
         for recommendation in recommendations:
             st.write(f"- {recommendation}")
 
-    st.subheader("Distribution des classes prédites")
+    st.subheader("Distribution des interprétations prédites")
     distribution_df = (
         pd.DataFrame(
             [

@@ -10,9 +10,11 @@ from typing import Any
 
 DEFAULT_CONFIG = {
     "metric_minimums": {
-        "accuracy": 0.30,
-        "balanced_accuracy": 0.30,
-        "macro_f1": 0.30,
+        "r2": -0.05,
+    },
+    "metric_maximums": {
+        "mae": 1.20,
+        "rmse": 1.40,
     },
     "reference_metrics": {},
     "max_allowed_metric_drop": {},
@@ -83,6 +85,23 @@ def check_metric_minimums(
     return failures
 
 
+def check_metric_maximums(
+    metrics: dict[str, Any],
+    thresholds: dict[str, float],
+) -> list[str]:
+    failures = []
+    for metric_name, maximum_value in thresholds.items():
+        if metric_name not in metrics:
+            failures.append(f"{metric_name} absent des métriques")
+            continue
+        actual_value = float(metrics.get(metric_name, float("nan")))
+        if actual_value > float(maximum_value):
+            failures.append(
+                f"{metric_name}={actual_value:.4f} > seuil maximal {maximum_value:.4f}"
+            )
+    return failures
+
+
 def check_metric_variation(
     metrics: dict[str, Any],
     reference_metrics: dict[str, float],
@@ -147,6 +166,9 @@ def main() -> int:
     failures = []
     failures.extend(
         check_metric_minimums(metrics, config.get("metric_minimums", {}))
+    )
+    failures.extend(
+        check_metric_maximums(metrics, config.get("metric_maximums", {}))
     )
     failures.extend(
         check_metric_variation(

@@ -1,0 +1,101 @@
+{
+  "created_at_utc": "2026-09-11T20:03:21.478870+00:00",
+  "source": "Open-Meteo Historical Weather API",
+  "geocoding_source": "Open-Meteo Geocoding API",
+  "archive_url": "https://archive-api.open-meteo.com/v1/archive",
+  "geocoding_url": "https://geocoding-api.open-meteo.com/v1/search",
+  "rows": 32,
+  "destinations": {
+    "paris": {
+      "destination": "paris",
+      "query": "Paris",
+      "country_code": "FR",
+      "city_name": "Paris",
+      "latitude": 48.85341,
+      "longitude": 2.3488,
+      "timezone": "Europe/Paris"
+    },
+    "rome": {
+      "destination": "rome",
+      "query": "Rome",
+      "country_code": "IT",
+      "city_name": "Rome",
+      "latitude": 41.89193,
+      "longitude": 12.51133,
+      "timezone": "Europe/Rome"
+    },
+    "lisbonne": {
+      "destination": "lisbonne",
+      "query": "Lisbon",
+      "country_code": "PT",
+      "city_name": "Lisbonne",
+      "latitude": 38.72509,
+      "longitude": -9.1498,
+      "timezone": "Europe/Lisbon"
+    },
+    "new york": {
+      "destination": "new york",
+      "query": "New York",
+      "country_code": "US",
+      "city_name": "New York",
+      "latitude": 40.71427,
+      "longitude": -74.00597,
+      "timezone": "America/New_York"
+    },
+    "tokyo": {
+      "destination": "tokyo",
+      "query": "Tokyo",
+      "country_code": "JP",
+      "city_name": "Tokyo",
+      "latitude": 35.6895,
+      "longitude": 139.69171,
+      "timezone": "Asia/Tokyo"
+    },
+    "sydney": {
+      "destination": "sydney",
+      "query": "Sydney",
+      "country_code": "AU",
+      "city_name": "Sydney",
+      "latitude": -33.86785,
+      "longitude": 151.20732,
+      "timezone": "Australia/Sydney"
+    },
+    "dubaï": {
+      "destination": "dubaï",
+      "query": "Dubai",
+      "country_code": "AE",
+      "city_name": "Dubaï",
+      "latitude": 25.07725,
+      "longitude": 55.30927,
+      "timezone": "Asia/Dubai"
+    },
+    "bali": {
+      "destination": "bali",
+      "query": "Denpasar",
+      "country_code": "ID",
+      "city_name": "Denpasar",
+      "latitude": -8.65,
+      "longitude": 115.21667,
+      "timezone": "Asia/Makassar"
+    }
+  },
+  "season_periods": {
+    "hiver": [
+      "2024-12-01",
+      "2025-02-28"
+    ],
+    "printemps": [
+      "2025-03-01",
+      "2025-05-31"
+    ],
+    "été": [
+      "2025-06-01",
+      "2025-08-31"
+    ],
+    "automne": [
+      "2025-09-01",
+      "2025-11-30"
+    ]
+  },
+  "usage": "Données météo historiques disponibles avant modélisation, agrégées par destination et saison."
+}

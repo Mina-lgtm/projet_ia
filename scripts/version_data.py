@@ -125,11 +125,17 @@ def main() -> None:
     v21_dir.mkdir(parents=True, exist_ok=True)
     v21_readme = v21_dir / "README.md"
     v21_readme.write_text(
-        "# v2.1 - Enrichissement eventuel\n\n"
-        "Cette version est reservee aux enrichissements futurs : API meteo, donnees tarifaires, "
-        "duree de vol, avis clients complementaires ou nouvelles donnees metier.\n\n"
-        "Aucun fichier CSV v2.1 n'est genere tant qu'une source d'enrichissement validee "
-        "n'est pas disponible.\n",
+        "# v2.1 - Enrichissement des donnees\n\n"
+        "Cette version est reservee a l'ajout de donnees externes ou internes reelles, "
+        "disponibles avant le voyage.\n\n"
+        "Les sources attendues sont documentees dans `data/external/README.md` et "
+        "`configs/enrichment_sources.json`.\n\n"
+        "Pour generer la version enrichie :\n\n"
+        "```powershell\n"
+        "python scripts/enrich_dataset.py\n"
+        "```\n\n"
+        "Si aucune source reelle n'est fournie, le script reste non bloquant et indique "
+        "les sources absentes dans `enrichment_report.json`.\n",
         encoding="utf-8",
     )
 
@@ -169,9 +175,11 @@ def main() -> None:
                 path=v12_path,
                 source_version="v1.1",
                 transformations=[
+                    "suppression des doublons sur trip_id si presents",
                     "suppression des lignes sans cible satisfaction_client valide entre 1 et 5",
+                    "suppression des valeurs hors bornes metier configurees",
                     "suppression des cas prix_vol > budget_total",
-                    "suppression des cas reorganisation_necessaire = 1 avec imprevus = aucun",
+                    "suppression des cas reorganisation_necessaire = 1 avec imprevus absent ou aucun",
                     "remplissage de imprevus manquant par aucun",
                     "remplissage de retour_client manquant par chaine vide",
                 ],
@@ -186,7 +194,6 @@ def main() -> None:
                 transformations=[
                     "creation des ratios budget_par_jour et part_vol_budget",
                     "creation des indicateurs sejour_long, meteo_risque, client_business et hebergement_luxe",
-                    "enrichissement interne destination : region_destination, distance_vol_categorie, destination_luxe",
                     "creation des indicateurs post-voyage explicatifs pour analyse qualite",
                 ],
                 status="created",

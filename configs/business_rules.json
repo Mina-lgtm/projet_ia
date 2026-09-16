@@ -1,0 +1,72 @@
+{
+  "api_constraints": {
+    "duree_jours": {
+      "min": 1,
+      "max": 90
+    },
+    "budget_total": {
+      "min": 500,
+      "max": 50000
+    },
+    "prix_vol": {
+      "min": 0,
+      "max": 15000
+    }
+  },
+  "allowed_categories": {
+    "client_type": [
+      "famille",
+      "couple",
+      "solo",
+      "business",
+      "senior"
+    ],
+    "saison": [
+      "hiver",
+      "printemps",
+      "été",
+      "automne"
+    ],
+    "type_hebergement": [
+      "hôtel",
+      "resort",
+      "appartement",
+      "villa"
+    ],
+    "meteo_prevue": [
+      "ensoleillé",
+      "nuageux",
+      "pluie",
+      "variable"
+    ],
+    "activite_principale": [
+      "plage",
+      "randonnée",
+      "gastronomie",
+      "culture",
+      "business"
+    ]
+  },
+  "feature_engineering": {
+    "sejour_long_min_days": 14,
+    "meteo_risque_values": [
+      "pluie",
+      "variable"
+    ],
+    "client_business_value": "business",
+    "hebergement_luxe_values": [
+      "resort",
+      "villa"
+    ]
+  },
+  "monitoring": {
+    "low_confidence_threshold": 0.5,
+    "min_predictions_before_drift": 20,
+    "numeric_warning_threshold": 1.0,
+    "numeric_critical_threshold": 2.0,
+    "categorical_warning_threshold": 0.2,
+    "categorical_critical_threshold": 0.35,
+    "low_confidence_warning_rate": 40.0,
+    "low_confidence_critical_rate": 60.0
+  }
+}

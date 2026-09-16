@@ -7,11 +7,11 @@ from pathlib import Path
 from typing import Any
 
 import joblib
+import numpy as np
 import pandas as pd
 
-from app.modeling import prepare_prediction_features
+from app.modeling import SATISFACTION_MAX, SATISFACTION_MIN, prepare_prediction_features
 from app.schemas import (
-    PredictionProbability,
     TravelPredictionRequest,
     TravelPredictionResponse,
 )
@@ -47,8 +47,10 @@ class PredictionService:
             metadata_path.read_text(encoding="utf-8")
         )
         self.feature_columns = self.metadata["feature_columns"]
-        self.class_names = self.metadata.get("class_names", [])
-        self.objective = self.metadata.get("objective", "pre_voyage_satisfaction_3_classes")
+        self.objective = self.metadata.get(
+            "objective",
+            "pre_voyage_satisfaction_score_regression",
+        )
         self.model_name = self.metadata.get("model_name", model_path.stem)
         self.model_metrics = self.metadata.get("metrics", {})
 
@@ -56,15 +58,17 @@ class PredictionService:
         input_df = pd.DataFrame([request.model_dump()])
         x = prepare_prediction_features(input_df, self.feature_columns)
 
-        prediction = int(self.model.predict(x)[0])
-        probabilities = self._predict_probabilities(x)
+        raw_prediction = float(self.model.predict(x)[0])
+        score = float(np.clip(raw_prediction, SATISFACTION_MIN, SATISFACTION_MAX))
+        rounded_score = int(round(score))
 
         return TravelPredictionResponse(
             objective=self.objective,
             model_name=self.model_name,
-            classe_predite=prediction,
-            libelle_prediction=self._label_for_class(prediction),
-            probabilities=probabilities,
+            score_satisfaction_predit=round(score, 4),
+            score_satisfaction_arrondi=rounded_score,
+            interpretation=self._interpret_score(score),
+            zone_incertitude=self._is_uncertain(score),
             model_metrics={
                 key: float(value)
                 for key, value in self.model_metrics.items()
@@ -72,26 +76,17 @@ class PredictionService:
             },
         )
 
-    def _predict_probabilities(self, x: pd.DataFrame) -> list[PredictionProbability] | None:
-        if not hasattr(self.model, "predict_proba"):
-            return None
+    @staticmethod
+    def _interpret_score(score: float) -> str:
+        if score < 2.5:
+            return "risque_insatisfaction"
+        if score < 3.5:
+            return "satisfaction_intermediaire"
+        return "satisfaction_probable"
 
-        probabilities = self.model.predict_proba(x)[0]
-        classes = getattr(self.model, "classes_", range(len(probabilities)))
-
-        return [
-            PredictionProbability(
-                classe=int(classe),
-                libelle=self._label_for_class(int(classe)),
-                probabilite=round(float(probability), 4),
-            )
-            for classe, probability in zip(classes, probabilities, strict=False)
-        ]
-
-    def _label_for_class(self, classe: int) -> str:
-        if 0 <= classe < len(self.class_names):
-            return str(self.class_names[classe])
-        return str(classe)
+    @staticmethod
+    def _is_uncertain(score: float) -> bool:
+        return 2.5 <= score < 3.5
 
 
 @lru_cache(maxsize=1)
@@ -99,4 +94,3 @@ def get_prediction_service() -> PredictionService:
     model_path = Path(os.getenv("MODEL_PATH", str(DEFAULT_MODEL_PATH)))
     metadata_path = Path(os.getenv("MODEL_METADATA_PATH", str(DEFAULT_METADATA_PATH)))
     return PredictionService(model_path=model_path, metadata_path=metadata_path)
-

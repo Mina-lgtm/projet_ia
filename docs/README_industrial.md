@@ -13,7 +13,7 @@ Ce document décrit les contrôles de monitoring mis en place pour le modèle pr
 Le monitoring sert à :
 
 - suivre les prédictions réalisées par l'API ;
-- mesurer le niveau de confiance du modèle ;
+- mesurer les zones d'incertitude du score prédit ;
 - détecter si les nouvelles données saisies s'éloignent du jeu d'entraînement ;
 - déclencher une revue humaine ou préparer un réentraînement si nécessaire.
 
@@ -24,6 +24,7 @@ Le monitoring sert à :
 | Module de monitoring | `app/monitoring.py` | Calcule les indicateurs, la dérive et les alertes. |
 | Logs de prédiction | `logs/predictions/predictions.jsonl` | Stocke chaque appel à `/predict` au format JSONL. |
 | Métadonnées modèle | `models/model_pre_voyage_metadata.json` | Contient le profil statistique du jeu d'entraînement. |
+| Règles métier | `configs/business_rules.json` | Centralise les bornes API, catégories autorisées, règles de feature engineering et seuils de monitoring. |
 | API | `app/main.py` | Expose les endpoints de monitoring. |
 
 ## Endpoints disponibles
@@ -36,6 +37,17 @@ Le monitoring sert à :
 
 ## Contrôles mis en place
 
+### Configuration centralisée
+
+Les règles métier et les seuils de monitoring ne sont plus codés directement dans le notebook. Ils sont lus depuis `configs/business_rules.json`.
+
+Ce fichier permet de modifier sans toucher au notebook :
+
+- les bornes API : `duree_jours`, `budget_total`, `prix_vol` ;
+- les catégories fermées : `client_type`, `saison`, `type_hebergement`, `meteo_prevue`, `activite_principale` ;
+- les règles de feature engineering : séjour long, météo risquée, hébergement luxe ;
+- les seuils de drift, d'incertitude et de volume minimum.
+
 ### Journalisation des prédictions
 
 Chaque appel à `/predict` est enregistré dans `logs/predictions/predictions.jsonl`.
@@ -46,54 +58,41 @@ Le log contient notamment :
 - l'objectif du modèle ;
 - le nom du modèle ;
 - les données saisies ;
-- la classe prédite ;
-- les probabilités par classe ;
-- le niveau de confiance ;
+- le score de satisfaction prédit ;
+- le score arrondi ;
+- l'interprétation métier ;
+- l'indicateur de zone d'incertitude ;
 - les métriques du modèle.
 
 ### Distribution des prédictions
 
-Le monitoring calcule la répartition des classes prédites :
+Le monitoring calcule la répartition des interprétations prédites :
 
-- `insatisfait_1_2` ;
-- `neutre_3` ;
-- `satisfait_4_5`.
+- `risque_insatisfaction` ;
+- `satisfaction_intermediaire` ;
+- `satisfaction_probable`.
 
-Cela permet de vérifier si le modèle prédit toujours les classes de manière cohérente ou s'il se met à prédire presque toujours la même classe.
+Cela permet de vérifier si le modèle produit toujours des interprétations cohérentes ou s'il se met à concentrer les scores dans une seule zone.
 
-### Niveau de confiance
+### Zone d'incertitude
 
-Le niveau de confiance correspond à la probabilité maximale retournée par le modèle.
-
-Exemple :
-
-```json
-[
-  {"classe": 0, "probabilite": 0.38},
-  {"classe": 1, "probabilite": 0.26},
-  {"classe": 2, "probabilite": 0.36}
-]
-```
-
-Ici, la confiance est `0.38`.
-
-Une prédiction est considérée comme peu fiable si :
+Le modèle de régression ne retourne pas de probabilité par classe. Une zone d'incertitude est donc définie lorsque le score prédit est intermédiaire :
 
 ```text
-confidence < 0.50
+2.5 <= score_satisfaction_predit < 3.5
 ```
 
-### Alertes de faible confiance
+### Alertes d'incertitude
 
 | Indicateur | Seuil | Interprétation |
 | --- | ---: | --- |
-| Faible confiance par prédiction | `< 0.50` | La prédiction doit être relue avec prudence. |
-| Taux de faible confiance warning | `>= 40 %` | Beaucoup de prédictions sont incertaines. |
-| Taux de faible confiance critique | `>= 60 %` | Le modèle doit faire l'objet d'une revue prioritaire. |
+| Zone d'incertitude par prédiction | score entre `2.5` et `3.5` | La prédiction doit être relue avec prudence. |
+| Taux d'incertitude warning | `>= 40 %` | Beaucoup de prédictions sont intermédiaires. |
+| Taux d'incertitude critique | `>= 60 %` | Le modèle doit faire l'objet d'une revue prioritaire. |
 
 ### Volume minimum de monitoring
 
-Le projet utilise un seuil minimal de :
+Le seuil minimal est configuré dans `configs/business_rules.json`. La valeur actuelle est :
 
 ```text
 20 prédictions
@@ -148,7 +147,7 @@ Exemple : si une nouvelle destination est saisie dans l'API alors qu'elle n'exis
 | --- | --- | --- |
 | Aucune donnée | `collect_predictions` | Collecter des appels `/predict`. |
 | Volume faible | `monitor_and_review` | Attendre plus de prédictions avant de conclure. |
-| Faible confiance warning | `monitor_and_review` | Renforcer la revue humaine. |
+| Taux d'incertitude warning | `monitor_and_review` | Renforcer la revue humaine. |
 | Drift warning | `monitor_and_review` | Surveiller les variables concernées. |
 | Drift critique avec volume suffisant | `review_and_prepare_retraining` | Préparer un réentraînement après validation métier et technique. |
 | Aucun signal significatif | `no_action` | Continuer le suivi périodique. |

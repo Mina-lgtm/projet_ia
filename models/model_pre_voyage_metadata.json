@@ -1,27 +1,25 @@
 {
   "solution_name": "TravelMind",
   "display_model_name": "TravelMind Pre-Voyage Satisfaction Model",
-  "created_at_utc": "2026-07-02T15:10:36.783397+00:00",
-  "objective": "pre_voyage_satisfaction_3_classes",
-  "model_name": "LogisticRegression_pre",
+  "created_at_utc": "2026-09-09T12:39:52.112776+00:00",
+  "objective": "pre_voyage_satisfaction_score_regression",
+  "model_name": "Dummy_mean_regression",
   "target": "satisfaction_client",
-  "class_labels": [
-    0,
-    1,
-    2
-  ],
-  "class_names": [
-    "insatisfait_1_2",
-    "neutre_3",
-    "satisfait_4_5"
-  ],
+  "target_type": "regression",
+  "prediction_scale": {
+    "min": 1.0,
+    "max": 5.0,
+    "unit": "score_satisfaction_1_5"
+  },
   "metrics": {
-    "accuracy": 0.3535714285714286,
-    "balanced_accuracy": 0.35281699860407517,
-    "macro_f1": 0.34623015873015867,
+    "mae": 1.0636129303769168,
+    "rmse": 1.2521944335757698,
+    "r2": -6.928252729121454e-05,
+    "baseline_mae": 1.0636129303769168,
+    "mae_gain_vs_baseline": 0.0,
     "test_size": 0.2,
-    "train_rows": 1119,
-    "test_rows": 280
+    "train_rows": 1102,
+    "test_rows": 276
   },
   "feature_columns": [
     "client_type",
@@ -88,59 +86,54 @@
     "budget_tendu",
     "gravite_imprevu"
   ],
-  "confusion_matrix": [
-    [
-      47,
-      45,
-      39
-    ],
-    [
-      24,
-      24,
-      19
-    ],
-    [
-      22,
-      32,
-      28
-    ]
-  ],
-  "classification_report": {
-    "insatisfait_1_2": {
-      "precision": 0.5053763440860215,
-      "recall": 0.35877862595419846,
-      "f1-score": 0.41964285714285715,
-      "support": 131.0
+  "evaluation_results": [
+    {
+      "modele": "Dummy_mean_regression",
+      "mae": 1.0636129303769168,
+      "rmse": 1.2521944335757698,
+      "r2": -6.928252729121454e-05,
+      "prediction_min": 2.746823956442831,
+      "prediction_max": 2.746823956442831
     },
-    "neutre_3": {
-      "precision": 0.2376237623762376,
-      "recall": 0.3582089552238806,
-      "f1-score": 0.2857142857142857,
-      "support": 67.0
+    {
+      "modele": "RandomForestRegressor_pre",
+      "mae": 1.068645286379419,
+      "rmse": 1.2636007700196603,
+      "r2": -0.018371681257756567,
+      "prediction_min": 2.2876349690891433,
+      "prediction_max": 3.7285848100771513
     },
-    "satisfait_4_5": {
-      "precision": 0.32558139534883723,
-      "recall": 0.34146341463414637,
-      "f1-score": 0.3333333333333333,
-      "support": 82.0
+    {
+      "modele": "RidgeRegression_pre",
+      "mae": 1.0742419174891042,
+      "rmse": 1.274260116036316,
+      "r2": -0.035625487744897155,
+      "prediction_min": 2.106380345843594,
+      "prediction_max": 3.3953385882862284
     },
-    "accuracy": 0.3535714285714286,
-    "macro avg": {
-      "precision": 0.3561938339370321,
-      "recall": 0.35281699860407517,
-      "f1-score": 0.34623015873015867,
-      "support": 280.0
-    },
-    "weighted avg": {
-      "precision": 0.3886527413324335,
-      "recall": 0.3535714285714286,
-      "f1-score": 0.3623193027210884,
-      "support": 280.0
+    {
+      "modele": "LinearRegression_pre",
+      "mae": 1.07443045787231,
+      "rmse": 1.2746794417059548,
+      "r2": -0.03630719440462293,
+      "prediction_min": 2.10430660434356,
+      "prediction_max": 3.398021121898831
     }
+  ],
+  "residual_summary": {
+    "residual_mean": 0.010422420368763006,
+    "residual_std": 1.252151058232113,
+    "residual_min": -1.7468239564428312,
+    "residual_max": 2.253176043557169
   },
   "cleaning_report": [
     {
       "etape": "dataset_brut",
+      "nb_lignes": 1500,
+      "lignes_supprimees": 0
+    },
+    {
+      "etape": "unicite_trip_id",
       "nb_lignes": 1500,
       "lignes_supprimees": 0
     },
@@ -150,34 +143,39 @@
       "lignes_supprimees": 30
     },
     {
+      "etape": "contraintes_metier_config",
+      "nb_lignes": 1467,
+      "lignes_supprimees": 3
+    },
+    {
       "etape": "coherence_initiale_prix_vol_budget_total",
       "nb_lignes": 1418,
-      "lignes_supprimees": 52
+      "lignes_supprimees": 49
     },
     {
       "etape": "reorganisation_sans_imprevu_declare",
-      "nb_lignes": 1399,
-      "lignes_supprimees": 19
+      "nb_lignes": 1378,
+      "lignes_supprimees": 40
     }
   ],
   "training_reference_profile": {
     "created_from": "train_split",
-    "n_rows": 1119,
+    "n_rows": 1102,
     "numeric_features": {
       "budget_total": {
-        "count": 1092,
-        "mean": 7433.552756410256,
-        "std": 4496.0045114911645,
+        "count": 1068,
+        "mean": 7419.207846441948,
+        "std": 4373.109314221747,
         "min": 500.0,
-        "p25": 4304.76,
-        "median": 6687.895,
-        "p75": 10004.085,
+        "p25": 4255.2875,
+        "median": 6703.285,
+        "p75": 9975.335,
         "max": 41000.0
       },
       "duree_jours": {
-        "count": 1119,
-        "mean": 10.481680071492404,
-        "std": 4.977103467773568,
+        "count": 1102,
+        "mean": 10.484573502722323,
+        "std": 4.877188442622597,
         "min": 2.0,
         "p25": 7.0,
         "median": 10.0,
@@ -185,39 +183,39 @@
         "max": 42.0
       },
       "prix_vol": {
-        "count": 1076,
-        "mean": 1115.4043680297398,
-        "std": 285.912690988492,
+        "count": 1062,
+        "mean": 1114.8714783427492,
+        "std": 291.4787663577858,
         "min": 35.0,
-        "p25": 936.465,
-        "median": 1108.525,
-        "p75": 1293.765,
+        "p25": 932.205,
+        "median": 1113.81,
+        "p75": 1297.675,
         "max": 3800.0
       },
       "budget_par_jour": {
-        "count": 1092,
-        "mean": 842.5834304138424,
-        "std": 819.8384990228803,
+        "count": 1068,
+        "mean": 823.4671087818641,
+        "std": 761.9389356443758,
         "min": 35.714285714285715,
-        "p25": 482.1646428571429,
+        "p25": 483.5021205357143,
         "median": 656.096590909091,
-        "p75": 940.8914448051949,
+        "p75": 925.3071875,
         "max": 13666.666666666666
       },
       "part_vol_budget": {
-        "count": 1049,
-        "mean": 0.21460312250005498,
-        "std": 0.15813221483096285,
+        "count": 1029,
+        "mean": 0.21399398522200888,
+        "std": 0.15563799460965835,
         "min": 0.0028719786784302914,
-        "p25": 0.11198098256735341,
-        "median": 0.16275502963096364,
-        "p75": 0.26407612210418663,
+        "p25": 0.11155908879893209,
+        "median": 0.16440134426718894,
+        "p75": 0.2676009372267383,
         "max": 0.9362205755772613
       },
       "sejour_long": {
-        "count": 1119,
-        "mean": 0.2734584450402145,
-        "std": 0.4457341403531959,
+        "count": 1102,
+        "mean": 0.2731397459165154,
+        "std": 0.4455720201237695,
         "min": 0.0,
         "p25": 0.0,
         "median": 0.0,
@@ -225,9 +223,9 @@
         "max": 1.0
       },
       "meteo_risque": {
-        "count": 1094,
-        "mean": 0.4616087751371115,
-        "std": 0.49852393508589643,
+        "count": 1080,
+        "mean": 0.4601851851851852,
+        "std": 0.49841225960168956,
         "min": 0.0,
         "p25": 0.0,
         "median": 0.0,
@@ -235,9 +233,9 @@
         "max": 1.0
       },
       "client_business": {
-        "count": 1119,
-        "mean": 0.23949955317247543,
-        "std": 0.4267780655125801,
+        "count": 1102,
+        "mean": 0.23411978221415608,
+        "std": 0.42344741089083565,
         "min": 0.0,
         "p25": 0.0,
         "median": 0.0,
@@ -245,9 +243,9 @@
         "max": 1.0
       },
       "hebergement_luxe": {
-        "count": 1094,
-        "mean": 0.489945155393053,
-        "std": 0.49989888987667314,
+        "count": 1078,
+        "mean": 0.4842300556586271,
+        "std": 0.49975124697740375,
         "min": 0.0,
         "p25": 0.0,
         "median": 0.0,
@@ -257,63 +255,63 @@
     },
     "categorical_features": {
       "client_type": {
-        "count": 1119,
+        "count": 1102,
         "distribution": {
-          "business": 0.23949955317247543,
-          "couple": 0.18588025022341376,
-          "famille": 0.16532618409294011,
-          "senior": 0.1966041108132261,
-          "solo": 0.2126899016979446
+          "business": 0.23411978221415608,
+          "couple": 0.1896551724137931,
+          "famille": 0.16787658802177857,
+          "senior": 0.1896551724137931,
+          "solo": 0.21869328493647913
         }
       },
       "destination": {
-        "count": 1119,
+        "count": 1102,
         "distribution": {
-          "bali": 0.11796246648793565,
-          "dubaï": 0.09651474530831099,
-          "lisbonne": 0.15013404825737264,
-          "new york": 0.20911528150134048,
-          "paris": 0.10902591599642537,
-          "rome": 0.15907059874888294,
-          "sydney": 0.050044682752457555,
-          "tokyo": 0.10813226094727435
+          "bali": 0.12341197822141561,
+          "dubaï": 0.10254083484573502,
+          "lisbonne": 0.14609800362976408,
+          "new york": 0.20961887477313976,
+          "paris": 0.11070780399274047,
+          "rome": 0.1588021778584392,
+          "sydney": 0.050816696914700546,
+          "tokyo": 0.09800362976406533
         }
       },
       "saison": {
-        "count": 1119,
+        "count": 1102,
         "distribution": {
-          "automne": 0.26273458445040215,
-          "hiver": 0.19928507596067918,
-          "printemps": 0.26720285969615726,
-          "été": 0.2707774798927614
+          "automne": 0.26860254083484575,
+          "hiver": 0.20326678765880218,
+          "printemps": 0.2749546279491833,
+          "été": 0.2531760435571688
         }
       },
       "type_hebergement": {
-        "count": 1094,
+        "count": 1078,
         "distribution": {
-          "appartement": 0.2970749542961609,
-          "hôtel": 0.2129798903107861,
-          "resort": 0.15722120658135283,
-          "villa": 0.3327239488117002
+          "appartement": 0.29035250463821893,
+          "hôtel": 0.22541743970315398,
+          "resort": 0.15120593692022263,
+          "villa": 0.33302411873840443
         }
       },
       "meteo_prevue": {
-        "count": 1094,
+        "count": 1080,
         "distribution": {
-          "ensoleillé": 0.3235831809872029,
-          "nuageux": 0.21480804387568556,
-          "pluie": 0.2413162705667276,
-          "variable": 0.2202925045703839
+          "ensoleillé": 0.3212962962962963,
+          "nuageux": 0.21851851851851853,
+          "pluie": 0.24351851851851852,
+          "variable": 0.21666666666666667
         }
       },
       "activite_principale": {
-        "count": 1087,
+        "count": 1068,
         "distribution": {
-          "business": 0.17939282428702852,
-          "culture": 0.29254829806807725,
-          "gastronomie": 0.15363385464581417,
-          "plage": 0.2612695492180313,
-          "randonnée": 0.11315547378104876
+          "business": 0.17696629213483145,
+          "culture": 0.28745318352059923,
+          "gastronomie": 0.15262172284644196,
+          "plage": 0.2687265917602996,
+          "randonnée": 0.11423220973782772
         }
       }
     }

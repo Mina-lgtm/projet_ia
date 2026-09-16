@@ -1,0 +1,25 @@
+{
+  "created_at_utc": "2026-09-11T20:35:51.025255+00:00",
+  "source": "Open-Meteo Air Quality API",
+  "air_quality_url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+  "rows": 32,
+  "season_periods": {
+    "hiver": [
+      "2024-12-01",
+      "2025-02-28"
+    ],
+    "printemps": [
+      "2025-03-01",
+      "2025-05-31"
+    ],
+    "été": [
+      "2025-06-01",
+      "2025-08-31"
+    ],
+    "automne": [
+      "2025-09-01",
+      "2025-11-30"
+    ]
+  },
+  "usage": "Données réelles de qualité de l'air disponibles avant modélisation, agrégées par destination et saison."
+}

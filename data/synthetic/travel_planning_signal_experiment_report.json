@@ -1,0 +1,108 @@
+{
+  "dataset": "data\\synthetic\\travel_planning_signal_dataset.csv",
+  "rows_generated": 3000,
+  "rows_after_cleaning": 2999,
+  "target_distribution": {
+    "1": 39,
+    "2": 526,
+    "3": 1542,
+    "4": 837,
+    "5": 56
+  },
+  "positive_binary_rate_satisfaction_4_5": 0.2977,
+  "signal_design": [
+    "budget_par_jour élevé augmente la satisfaction",
+    "part_vol_budget élevée diminue la satisfaction",
+    "adéquation client_type / activite_principale augmente la satisfaction",
+    "météo risquée diminue la satisfaction",
+    "hébergement luxe augmente la satisfaction si le budget suit",
+    "qualité de l'air et météo historique réelle influencent légèrement la satisfaction"
+  ],
+  "cleaning_report": [
+    {
+      "etape": "dataset_brut",
+      "nb_lignes": 3000,
+      "lignes_supprimees": 0
+    },
+    {
+      "etape": "unicite_trip_id",
+      "nb_lignes": 3000,
+      "lignes_supprimees": 0
+    },
+    {
+      "etape": "cible_satisfaction_client_valide",
+      "nb_lignes": 3000,
+      "lignes_supprimees": 0
+    },
+    {
+      "etape": "contraintes_metier_config",
+      "nb_lignes": 3000,
+      "lignes_supprimees": 0
+    },
+    {
+      "etape": "coherence_initiale_prix_vol_budget_total",
+      "nb_lignes": 2999,
+      "lignes_supprimees": 1
+    },
+    {
+      "etape": "reorganisation_sans_imprevu_declare",
+      "nb_lignes": 2999,
+      "lignes_supprimees": 0
+    }
+  ],
+  "regression_results": [
+    {
+      "modele": "RidgeRegression_pre",
+      "mae": 0.4629,
+      "rmse": 0.5821,
+      "r2": 0.4025
+    },
+    {
+      "modele": "LinearRegression_pre",
+      "mae": 0.4632,
+      "rmse": 0.5826,
+      "r2": 0.4016
+    },
+    {
+      "modele": "RandomForestRegressor_pre",
+      "mae": 0.4669,
+      "rmse": 0.5787,
+      "r2": 0.4095
+    },
+    {
+      "modele": "Dummy_mean_regression",
+      "mae": 0.564,
+      "rmse": 0.7531,
+      "r2": -0.0
+    }
+  ],
+  "binary_classification_results": [
+    {
+      "modele": "LogisticRegression_balanced",
+      "accuracy": 0.745,
+      "balanced_accuracy": 0.746,
+      "precision_1": 0.5537,
+      "recall_1": 0.7486,
+      "f1_1": 0.6366,
+      "roc_auc": 0.8363
+    },
+    {
+      "modele": "RandomForest_balanced",
+      "accuracy": 0.7383,
+      "balanced_accuracy": 0.7429,
+      "precision_1": 0.5444,
+      "recall_1": 0.7542,
+      "f1_1": 0.6323,
+      "roc_auc": 0.8191
+    },
+    {
+      "modele": "Dummy_majority_binary",
+      "accuracy": 0.7017,
+      "balanced_accuracy": 0.5,
+      "precision_1": 0.0,
+      "recall_1": 0.0,
+      "f1_1": 0.0,
+      "roc_auc": 0.5
+    }
+  ]
+}

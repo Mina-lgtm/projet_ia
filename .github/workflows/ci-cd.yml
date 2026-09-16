@@ -5,6 +5,7 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   validate-and-package:
@@ -15,42 +16,103 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed areas
+        id: changes
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            changed_files="$(git ls-files)"
+          elif [[ "$EVENT_NAME" == "pull_request" ]]; then
+            changed_files="$(git diff --name-only "$BASE_SHA"...HEAD)"
+          elif [[ -z "${BEFORE_SHA:-}" || "$BEFORE_SHA" =~ ^0+$ ]]; then
+            changed_files="$(git ls-files)"
+          else
+            changed_files="$(git diff --name-only "$BEFORE_SHA" HEAD)"
+          fi
+
+          echo "Changed files:"
+          echo "$changed_files"
+
+          has_changes() {
+            echo "$changed_files" | grep -E "$1" >/dev/null && echo "true" || echo "false"
+          }
+
+          force_all="$(has_changes '^(\.github/workflows/ci-cd\.yml|requirements.*\.txt)$')"
+          python_changed="$(has_changes '^(app/|tests/|scripts/|train\.py|configs/|requirements.*\.txt)$')"
+          model_changed="$(has_changes '^(app/modeling\.py|app/config\.py|train\.py|data/|configs/|requirements.*\.txt)$')"
+          notebook_changed="$(has_changes '^(notebooks/exam_ia_rattrapage\.ipynb)$')"
+          docker_changed="$(has_changes '^(Dockerfile|docker-compose\.yml|app/|configs/|requirements\.txt|models/)$')"
+
+          if [[ "$force_all" == "true" || "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            python_changed="true"
+            model_changed="true"
+            notebook_changed="true"
+            docker_changed="true"
+          fi
+
+          {
+            echo "python_changed=$python_changed"
+            echo "model_changed=$model_changed"
+            echo "notebook_changed=$notebook_changed"
+            echo "docker_changed=$docker_changed"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Set up Python
+        if: |
+          steps.changes.outputs.python_changed == 'true' ||
+          steps.changes.outputs.model_changed == 'true' ||
+          steps.changes.outputs.notebook_changed == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: "pip"
 
       - name: Install dependencies
+        if: |
+          steps.changes.outputs.python_changed == 'true' ||
+          steps.changes.outputs.model_changed == 'true'
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
 
       - name: Validate Python package
+        if: steps.changes.outputs.python_changed == 'true'
         run: |
           python -m compileall app tests train.py
 
       - name: Run API tests
+        if: steps.changes.outputs.python_changed == 'true'
         run: |
           python -m pytest -q
 
       - name: Train model for quality gate
+        if: steps.changes.outputs.model_changed == 'true'
         run: |
           python train.py --model-path models/model_pre_voyage_ci.pkl --metadata-path models/model_pre_voyage_ci_metadata.json
 
       - name: Check model quality gate
+        if: steps.changes.outputs.model_changed == 'true'
         run: |
           python scripts/check_model_quality.py --metadata-path models/model_pre_voyage_ci_metadata.json --config-path configs/model_quality_gate.json
 
-      - name: Validate final notebook structure
+      - name: Validate rattrapage notebook structure
+        if: steps.changes.outputs.notebook_changed == 'true'
         run: |
           python - <<'PY'
           import ast
           import json
           from pathlib import Path
 
-          notebook_path = Path("notebooks/exam_ia.ipynb")
+          notebook_path = Path("notebooks/exam_ia_rattrapage.ipynb")
           notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
 
           assert notebook["cells"], "Notebook has no cells"
@@ -65,5 +127,15 @@ jobs:
           PY
 
       - name: Build Docker image
+        if: steps.changes.outputs.docker_changed == 'true'
         run: |
           docker build -t examen-ia:${{ github.sha }} .
+
+      - name: No relevant validation needed
+        if: |
+          steps.changes.outputs.python_changed != 'true' &&
+          steps.changes.outputs.model_changed != 'true' &&
+          steps.changes.outputs.notebook_changed != 'true' &&
+          steps.changes.outputs.docker_changed != 'true'
+        run: |
+          echo "Only documentation or unrelated files changed; heavy CI steps skipped."

@@ -1,0 +1,142 @@
+{
+  "dataset": "data\\versions\\v2_2_signal_enrichment\\dataset_final.csv",
+  "rows": 3000,
+  "columns": 24,
+  "kept_columns": [
+    "trip_id",
+    "client_type",
+    "budget_total",
+    "destination",
+    "saison",
+    "duree_jours",
+    "type_hebergement",
+    "prix_vol",
+    "meteo_prevue",
+    "activite_principale",
+    "satisfaction_client",
+    "imprevus",
+    "reorganisation_necessaire",
+    "respect_budget",
+    "retour_client",
+    "reste_budget_apres_vol",
+    "budget_apres_vol_par_jour",
+    "score_budget_destination",
+    "score_prix_vol_coherent",
+    "score_adequation_activite_profil",
+    "score_meteo_prevue",
+    "score_contexte_destination",
+    "score_potentiel_satisfaction",
+    "niveau_risque_satisfaction"
+  ],
+  "removed_columns_from_light": [
+    "budget_par_jour",
+    "part_vol_budget",
+    "sejour_long",
+    "meteo_risque",
+    "client_business",
+    "hebergement_luxe",
+    "temperature_moyenne_saison",
+    "pluie_moyenne_mm",
+    "jours_pluie_moyen",
+    "vent_max_moyen_kmh",
+    "pm10_moyen",
+    "pm2_5_moyen",
+    "european_aqi_moyen",
+    "uv_index_moyen",
+    "score_adequation_hebergement_profil",
+    "score_confort_temperature",
+    "score_risque_pluie_reel",
+    "score_qualite_air"
+  ],
+  "regression_minimal": [
+    {
+      "modele": "RidgeRegression_pre",
+      "mae": 0.7808,
+      "rmse": 0.9832,
+      "r2": 0.3192
+    },
+    {
+      "modele": "LinearRegression_pre",
+      "mae": 0.7808,
+      "rmse": 0.9833,
+      "r2": 0.3191
+    },
+    {
+      "modele": "RandomForestRegressor_pre",
+      "mae": 0.8144,
+      "rmse": 1.0242,
+      "r2": 0.2613
+    },
+    {
+      "modele": "Dummy_mean_regression",
+      "mae": 0.9994,
+      "rmse": 1.1916,
+      "r2": -0.0
+    }
+  ],
+  "binary_minimal": [
+    {
+      "modele": "LogisticRegression_balanced",
+      "accuracy": 0.7167,
+      "balanced_accuracy": 0.704,
+      "precision_1": 0.5385,
+      "recall_1": 0.6702,
+      "f1_1": 0.5972,
+      "roc_auc": 0.7303
+    },
+    {
+      "modele": "RandomForest_balanced",
+      "accuracy": 0.7183,
+      "balanced_accuracy": 0.6937,
+      "precision_1": 0.5438,
+      "recall_1": 0.6277,
+      "f1_1": 0.5827,
+      "roc_auc": 0.7353
+    },
+    {
+      "modele": "Dummy_majority_binary",
+      "accuracy": 0.6867,
+      "balanced_accuracy": 0.5,
+      "precision_1": 0.0,
+      "recall_1": 0.0,
+      "f1_1": 0.0,
+      "roc_auc": 0.5
+    }
+  ],
+  "best_regression_light": {
+    "modele": "LinearRegression_pre",
+    "mae": 0.7773,
+    "rmse": 0.9798,
+    "r2": 0.324
+  },
+  "best_regression_minimal": {
+    "modele": "RidgeRegression_pre",
+    "mae": 0.7808,
+    "rmse": 0.9832,
+    "r2": 0.3192
+  },
+  "best_binary_light": {
+    "modele": "LogisticRegression_balanced",
+    "accuracy": 0.7133,
+    "balanced_accuracy": 0.7002,
+    "precision_1": 0.5342,
+    "recall_1": 0.6649,
+    "f1_1": 0.5924,
+    "roc_auc": 0.728
+  },
+  "best_binary_minimal": {
+    "modele": "LogisticRegression_balanced",
+    "accuracy": 0.7167,
+    "balanced_accuracy": 0.704,
+    "precision_1": 0.5385,
+    "recall_1": 0.6702,
+    "f1_1": 0.5972,
+    "roc_auc": 0.7303
+  },
+  "comparison": {
+    "mae_difference_minimal_minus_light": 0.0035,
+    "r2_difference_minimal_minus_light": -0.0048,
+    "f1_difference_minimal_minus_light": 0.0048,
+    "roc_auc_difference_minimal_minus_light": 0.0023
+  }
+}

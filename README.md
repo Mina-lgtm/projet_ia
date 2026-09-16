@@ -9,7 +9,8 @@ TravelMind couvre le cadrage métier, la préparation des données, la modélisa
 - Documentation descriptive : `docs/etat_projet.md`
 - Objectif 1 - identification du dataset : `docs/objectif_1_dataset.md`
 - Synthèse finale pré/post-voyage : `docs/synthese_finale_pre_post_voyage.md`
-- Notebook final propre : `notebooks/exam_ia.ipynb`
+- Notebook rattrapage industrialisé : `notebooks/exam_ia_rattrapage.ipynb`
+- Ancienne version conservée : `notebooks/exam_ia.ipynb`
 - Expériences de modélisation : `docs/experiences_modelisation.md`
 - Archive industrialisation : `docs/archive_industrialisation.md`
 - Stratégie de réentraînement : `docs/strategie_reentrainement.md`
@@ -32,11 +33,13 @@ pip install -r requirements-dev.txt
 jupyter lab
 ```
 
-Notebook final recommandé :
+Notebook recommandé pour la version rattrapage :
 
 ```text
-notebooks/exam_ia.ipynb
+notebooks/exam_ia_rattrapage.ipynb
 ```
+
+L'ancien notebook `notebooks/exam_ia.ipynb` est conservé comme archive de la version précédente.
 
 ## TravelMind API
 
@@ -58,6 +61,20 @@ http://localhost:8001/health
 http://localhost:8001/predict
 ```
 
+Contraintes principales de l'API :
+
+- `duree_jours` doit être compris entre `1` et `90` jours ;
+- `prix_vol` ne peut pas dépasser `budget_total` ;
+- `client_type`, `saison`, `type_hebergement`, `meteo_prevue` et `activite_principale` doivent correspondre aux catégories métier connues du dataset ;
+- `destination` reste ouverte afin de permettre la saisie de nouvelles destinations, avec une fiabilité à surveiller via le monitoring.
+
+Ces règles sont centralisées dans `configs/business_rules.json`. Pour ajuster une borne, ajouter une catégorie ou modifier un seuil de monitoring, il faut modifier ce fichier puis relancer :
+
+```powershell
+python train.py
+python -m pytest -q
+```
+
 ## TravelMind Dashboard
 
 TravelMind Dashboard permet de tester le modèle sans écrire de requête API à
@@ -65,7 +82,7 @@ la main. Elle permet :
 
 - de saisir un voyage dans un formulaire ;
 - d'importer un CSV de voyages ;
-- d'afficher les probabilités de prédiction ;
+- d'afficher le score de satisfaction prédit entre 1 et 5 ;
 - de consulter un dashboard KPI métier ;
 - de consulter les endpoints de monitoring.
 
@@ -108,7 +125,7 @@ Invoke-RestMethod -Method Post `
 
 ## Entraînement reproductible
 
-Le script `train.py` entraîne le modèle pré-voyage 3 classes à partir du dataset brut, applique les règles de nettoyage métier, exclut les variables connues uniquement après le séjour, construit le pipeline scikit-learn et exporte les artefacts dans `models/`.
+Le script `train.py` entraîne le modèle pré-voyage de régression à partir du dataset brut, applique les règles de nettoyage métier, exclut les variables connues uniquement après le séjour, construit le pipeline scikit-learn et exporte les artefacts dans `models/`.
 
 ```powershell
 python train.py
@@ -131,8 +148,8 @@ Chaque appel réussi à `/predict` est enregistré dans un fichier JSONL local :
 logs/predictions/predictions.jsonl
 ```
 
-Chaque ligne contient la date UTC, les entrées pré-voyage, la classe prédite,
-les probabilités, la confiance maximale, un indicateur `low_confidence` et les
+Chaque ligne contient la date UTC, les entrées pré-voyage, le score de satisfaction prédit,
+le score arrondi, l'interprétation métier, un indicateur de zone d'incertitude et les
 métriques globales du modèle.
 
 Lire les derniers logs :
@@ -150,10 +167,10 @@ http://localhost:8001/monitoring/summary
 Il retourne notamment :
 
 - `nb_predictions` : nombre d'appels `/predict` journalisés ;
-- `prediction_distribution` : nombre de prédictions par classe ;
-- `prediction_distribution_pct` : pourcentage par classe prédite ;
-- `low_confidence_rate` : part des prédictions avec confiance `< 50 %` ;
-- `average_confidence` : confiance moyenne des prédictions ;
+- `prediction_distribution` : nombre de prédictions par interprétation métier ;
+- `prediction_distribution_pct` : pourcentage par interprétation prédite ;
+- `low_confidence_rate` : part des prédictions en zone d'incertitude ;
+- `average_predicted_score` : score moyen prédit ;
 - `model_distribution` : modèles utilisés dans les logs.
 
 Un contrôle simple de dérive des données est disponible via :
@@ -216,20 +233,17 @@ http://localhost:8001/monitoring/alerts
 
 Le projet utilise Git et GitHub pour versionner le code, la documentation, le dataset synthétique et les notebooks.
 
-Un workflow GitHub Actions est défini dans `.github/workflows/ci-cd.yml`. À chaque push ou pull request vers `main`, il :
+Un workflow GitHub Actions est défini dans `.github/workflows/ci-cd.yml`. Il détecte les fichiers modifiés et lance uniquement les contrôles utiles :
 
-- installe les dépendances ;
-- valide la syntaxe Python ;
-- exécute les tests API ;
-- exécute les tests du pipeline de préparation et d'entraînement ;
-- entraîne le modèle pré-voyage dans l'environnement CI ;
-- vérifie les seuils qualité définis dans `configs/model_quality_gate.json` ;
-- vérifie la structure et la syntaxe des cellules code du notebook final ;
-- construit l'image Docker.
+- changements `app/`, `tests/`, `scripts/`, `train.py` ou `configs/` : compilation Python et tests `pytest` ;
+- changements modèle, données ou configuration : entraînement CI et quality gate ;
+- changement `notebooks/exam_ia_rattrapage.ipynb` : validation de la structure et de la syntaxe des cellules code ;
+- changements `Dockerfile`, `docker-compose.yml`, `app/`, `configs/`, `requirements.txt` ou `models/` : build Docker ;
+- changement purement documentaire : étapes lourdes ignorées.
 
-Le contrôle qualité bloque la CI si les métriques du modèle passent sous les seuils acceptés ou si une baisse trop forte est observée par rapport aux métriques de référence.
+Le contrôle qualité bloque la CI si les métriques du modèle ne respectent pas les seuils de régression : `MAE` et `RMSE` maximums, `R2` minimum, volume train/test minimal.
 
-Ce workflow met en place une livraison continue minimale : le projet est automatiquement vérifié, le modèle est réévalué, puis le projet est packagé sous forme d'image Docker. Le déploiement vers un environnement distant reste volontairement non activé tant que le notebook final et le pipeline modèle ne sont pas figés.
+Ce workflow met en place une livraison continue minimale et optimisée : le projet est automatiquement vérifié, mais le modèle n'est réévalué et l'image Docker n'est reconstruite que lorsque les changements le justifient. Le déploiement vers un environnement distant reste volontairement non activé tant que le notebook rattrapage et le pipeline modèle ne sont pas figés.
 
 ## Tests
 

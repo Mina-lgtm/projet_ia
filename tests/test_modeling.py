@@ -3,7 +3,6 @@ from pathlib import Path
 import pandas as pd
 
 from app.modeling import (
-    CLASS_LABELS,
     POST_TRIP_COLUMNS,
     PRE_VOYAGE_INPUT_COLUMNS,
     TARGET_COLUMN,
@@ -41,7 +40,7 @@ def test_prepare_training_dataset_uses_only_pre_voyage_columns() -> None:
     assert "budget_non_respecte" not in x.columns
     assert "budget_tendu" not in x.columns
     assert "gravite_imprevu" not in x.columns
-    assert set(y.unique()).issubset(set(CLASS_LABELS))
+    assert y.between(1, 5).all()
     assert cleaning_report
 
     for column in POST_TRIP_COLUMNS:
@@ -58,10 +57,13 @@ def test_train_and_select_model_returns_fitted_pipeline() -> None:
     result = train_and_select_model(x, y, cleaning_report, test_size=0.2)
 
     assert result.model_name
-    assert result.metrics["macro_f1"] >= 0
+    assert result.metrics["mae"] >= 0
+    assert result.metrics["rmse"] >= 0
+    assert "r2" in result.metrics
     assert result.feature_columns == x.columns.tolist()
     assert hasattr(result.pipeline, "predict")
-    assert len(result.confusion_matrix) == len(CLASS_LABELS)
+    assert result.evaluation_results
+    assert "residual_mean" in result.residual_summary
     assert result.reference_profile["n_rows"] > 0
 
 

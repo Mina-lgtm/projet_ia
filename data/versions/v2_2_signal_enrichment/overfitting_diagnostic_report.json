@@ -1,0 +1,78 @@
+{
+  "created_at_utc": "2026-09-14T20:36:23.300746+00:00",
+  "experiment_version": "dataset_final_balanced_hyperopt_overfitting_diagnostic",
+  "dataset": "data/versions/v2_2_signal_enrichment/dataset_final.csv",
+  "rows": 3000,
+  "columns": 24,
+  "model": "LogisticRegression_balanced_optimized",
+  "hyperparameters": {
+    "C": 0.1653693718282443,
+    "penalty": "l2",
+    "solver": "lbfgs",
+    "class_weight": "balanced",
+    "max_iter": 2000
+  },
+  "holdout_metrics": [
+    {
+      "jeu": "train",
+      "accuracy": 0.7262,
+      "balanced_accuracy": 0.7246,
+      "precision_1": 0.549,
+      "recall_1": 0.7202,
+      "f1_1": 0.6231,
+      "roc_auc": 0.7822
+    },
+    {
+      "jeu": "test",
+      "accuracy": 0.715,
+      "balanced_accuracy": 0.7057,
+      "precision_1": 0.5356,
+      "recall_1": 0.6809,
+      "f1_1": 0.5995,
+      "roc_auc": 0.732
+    }
+  ],
+  "cross_validation_summary": {
+    "test_f1": {
+      "mean": 0.5971,
+      "std": 0.0161
+    },
+    "train_f1": {
+      "mean": 0.615,
+      "std": 0.0042
+    },
+    "test_balanced_accuracy": {
+      "mean": 0.7029,
+      "std": 0.0133
+    },
+    "train_balanced_accuracy": {
+      "mean": 0.718,
+      "std": 0.0035
+    },
+    "test_roc_auc": {
+      "mean": 0.757,
+      "std": 0.0129
+    },
+    "train_roc_auc": {
+      "mean": 0.7745,
+      "std": 0.0035
+    },
+    "test_accuracy": {
+      "mean": 0.7077,
+      "std": 0.0122
+    },
+    "train_accuracy": {
+      "mean": 0.7207,
+      "std": 0.0022
+    }
+  },
+  "gaps": {
+    "f1_train_test_gap": 0.0236,
+    "balanced_accuracy_train_test_gap": 0.0189,
+    "roc_auc_train_test_gap": 0.0502,
+    "cv_f1_train_test_gap": 0.0179,
+    "cv_balanced_accuracy_train_test_gap": 0.0151,
+    "cv_roc_auc_train_test_gap": 0.0175
+  },
+  "conclusion": "Pas de signe fort d overfitting : les performances train et test restent proches."
+}

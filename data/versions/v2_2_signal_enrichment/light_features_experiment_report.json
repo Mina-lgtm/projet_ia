@@ -1,0 +1,114 @@
+{
+  "dataset": "data\\versions\\v2_2_signal_enrichment\\travel_planning_dataset_v2_2_light.csv",
+  "rows": 3000,
+  "columns": 42,
+  "removed_columns": [
+    "imprevu_present",
+    "imprevu_transport",
+    "imprevu_meteo",
+    "nb_jours_observes",
+    "latitude",
+    "longitude",
+    "source",
+    "periode_reference",
+    "heures_observees_air",
+    "source_air_quality",
+    "periode_reference_air_quality",
+    "budget_reference_destination",
+    "prix_vol_reference_destination",
+    "complexite_transport_destination",
+    "ratio_budget_reference_destination",
+    "ratio_prix_vol_reference_destination"
+  ],
+  "regression_light": [
+    {
+      "modele": "LinearRegression_pre",
+      "mae": 0.7773,
+      "rmse": 0.9798,
+      "r2": 0.324
+    },
+    {
+      "modele": "RidgeRegression_pre",
+      "mae": 0.7784,
+      "rmse": 0.9811,
+      "r2": 0.3222
+    },
+    {
+      "modele": "RandomForestRegressor_pre",
+      "mae": 0.8065,
+      "rmse": 1.0213,
+      "r2": 0.2655
+    },
+    {
+      "modele": "Dummy_mean_regression",
+      "mae": 0.9994,
+      "rmse": 1.1916,
+      "r2": -0.0
+    }
+  ],
+  "binary_light": [
+    {
+      "modele": "LogisticRegression_balanced",
+      "accuracy": 0.7133,
+      "balanced_accuracy": 0.7002,
+      "precision_1": 0.5342,
+      "recall_1": 0.6649,
+      "f1_1": 0.5924,
+      "roc_auc": 0.728
+    },
+    {
+      "modele": "RandomForest_balanced",
+      "accuracy": 0.7167,
+      "balanced_accuracy": 0.6867,
+      "precision_1": 0.5429,
+      "recall_1": 0.6064,
+      "f1_1": 0.5729,
+      "roc_auc": 0.7294
+    },
+    {
+      "modele": "Dummy_majority_binary",
+      "accuracy": 0.6867,
+      "balanced_accuracy": 0.5,
+      "precision_1": 0.0,
+      "recall_1": 0.0,
+      "f1_1": 0.0,
+      "roc_auc": 0.5
+    }
+  ],
+  "best_regression_full": {
+    "modele": "LinearRegression_pre",
+    "mae": 0.778,
+    "rmse": 0.9805,
+    "r2": 0.323
+  },
+  "best_regression_light": {
+    "modele": "LinearRegression_pre",
+    "mae": 0.7773,
+    "rmse": 0.9798,
+    "r2": 0.324
+  },
+  "best_binary_full": {
+    "modele": "LogisticRegression_balanced",
+    "accuracy": 0.7133,
+    "balanced_accuracy": 0.6987,
+    "precision_1": 0.5345,
+    "recall_1": 0.6596,
+    "f1_1": 0.5905,
+    "roc_auc": 0.7282
+  },
+  "best_binary_light": {
+    "modele": "LogisticRegression_balanced",
+    "accuracy": 0.7133,
+    "balanced_accuracy": 0.7002,
+    "precision_1": 0.5342,
+    "recall_1": 0.6649,
+    "f1_1": 0.5924,
+    "roc_auc": 0.728
+  },
+  "comparison": {
+    "mae_difference_light_minus_full": -0.0007,
+    "r2_difference_light_minus_full": 0.001,
+    "f1_difference_light_minus_full": 0.0019,
+    "roc_auc_difference_light_minus_full": -0.0002
+  }
+}

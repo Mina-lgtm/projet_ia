@@ -11,27 +11,27 @@ import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin, clone
 from sklearn.compose import ColumnTransformer
-from sklearn.dummy import DummyClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.dummy import DummyRegressor
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.impute import SimpleImputer
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.metrics import (
-    accuracy_score,
-    balanced_accuracy_score,
-    classification_report,
-    confusion_matrix,
-    f1_score,
+    mean_absolute_error,
+    mean_squared_error,
+    r2_score,
 )
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+from app.config import get_api_constraints, get_feature_engineering_rules
+
 
 RANDOM_STATE = 42
 SOLUTION_NAME = "TravelMind"
 TARGET_COLUMN = "satisfaction_client"
-CLASS_LABELS = [0, 1, 2]
-CLASS_NAMES = ["insatisfait_1_2", "neutre_3", "satisfait_4_5"]
+SATISFACTION_MIN = 1.0
+SATISFACTION_MAX = 5.0
 
 FEATURES_SUPPRIMEES_MODELISATION = [
     "budget_hors_vol",
@@ -41,6 +41,12 @@ FEATURES_SUPPRIMEES_MODELISATION = [
     "budget_non_respecte",
     "budget_tendu",
     "gravite_imprevu",
+    "source",
+    "periode_reference",
+    "source_air_quality",
+    "periode_reference_air_quality",
+    "source_tarifaire",
+    "periode_reference_tarifaire",
 ]
 
 FEATURES_POST_VOYAGE_EXPLICATIVES = [
@@ -78,8 +84,8 @@ class TrainingResult:
     feature_columns: list[str]
     numeric_features: list[str]
     categorical_features: list[str]
-    confusion_matrix: list[list[int]]
-    classification_report: dict[str, Any]
+    evaluation_results: list[dict[str, Any]]
+    residual_summary: dict[str, float]
     cleaning_report: list[dict[str, Any]]
     reference_profile: dict[str, Any]
 
@@ -136,9 +142,31 @@ def clean_dataset(df_source: pd.DataFrame) -> tuple[pd.DataFrame, list[dict[str,
     for column in numeric_source_columns:
         df[column] = pd.to_numeric(df[column], errors="coerce")
 
+    if "trip_id" in df.columns:
+        df = df.drop_duplicates(subset=["trip_id"], keep="first").copy()
+    nb_after_trip_id = len(df)
+
     df = df[df[TARGET_COLUMN].between(1, 5)].copy()
     nb_after_target = len(df)
     df[TARGET_COLUMN] = df[TARGET_COLUMN].astype(int)
+
+    business_constraints_mask = pd.Series(True, index=df.index)
+    for column, constraints in get_api_constraints().items():
+        if column not in df.columns:
+            continue
+        min_value = constraints.get("min")
+        max_value = constraints.get("max")
+        column_values = pd.to_numeric(df[column], errors="coerce")
+        non_missing_valid_mask = pd.Series(True, index=df.index)
+        if min_value is not None:
+            non_missing_valid_mask &= column_values >= min_value
+        if max_value is not None:
+            non_missing_valid_mask &= column_values <= max_value
+        column_mask = column_values.isna() | non_missing_valid_mask
+        business_constraints_mask &= column_mask
+
+    df = df[business_constraints_mask].copy()
+    nb_after_business_constraints = len(df)
 
     budget_valid_mask = (
         df["prix_vol"].isna()
@@ -148,7 +176,14 @@ def clean_dataset(df_source: pd.DataFrame) -> tuple[pd.DataFrame, list[dict[str,
     df = df[budget_valid_mask].copy()
     nb_after_budget = len(df)
 
-    imprevus_norm = df["imprevus"].fillna("").astype("string").str.strip().str.lower()
+    imprevus_norm = (
+        df["imprevus"]
+        .fillna("aucun")
+        .astype("string")
+        .str.strip()
+        .str.lower()
+        .replace({"": "aucun", "nan": "aucun"})
+    )
     aucun_imprevu_mais_reorganisation_mask = (
         (imprevus_norm == "aucun")
         & (df["reorganisation_necessaire"] == 1)
@@ -166,14 +201,24 @@ def clean_dataset(df_source: pd.DataFrame) -> tuple[pd.DataFrame, list[dict[str,
             "lignes_supprimees": 0,
         },
         {
+            "etape": "unicite_trip_id",
+            "nb_lignes": nb_after_trip_id,
+            "lignes_supprimees": nb_initial - nb_after_trip_id,
+        },
+        {
             "etape": "cible_satisfaction_client_valide",
             "nb_lignes": nb_after_target,
-            "lignes_supprimees": nb_initial - nb_after_target,
+            "lignes_supprimees": nb_after_trip_id - nb_after_target,
+        },
+        {
+            "etape": "contraintes_metier_config",
+            "nb_lignes": nb_after_business_constraints,
+            "lignes_supprimees": nb_after_target - nb_after_business_constraints,
         },
         {
             "etape": "coherence_initiale_prix_vol_budget_total",
             "nb_lignes": nb_after_budget,
-            "lignes_supprimees": nb_after_target - nb_after_budget,
+            "lignes_supprimees": nb_after_business_constraints - nb_after_budget,
         },
         {
             "etape": "reorganisation_sans_imprevu_declare",
@@ -187,6 +232,13 @@ def clean_dataset(df_source: pd.DataFrame) -> tuple[pd.DataFrame, list[dict[str,
 
 def add_base_features(df_source: pd.DataFrame) -> pd.DataFrame:
     df = df_source.copy()
+    feature_rules = get_feature_engineering_rules()
+    sejour_long_min_days = int(feature_rules.get("sejour_long_min_days", 14))
+    meteo_risque_values = set(feature_rules.get("meteo_risque_values", ["pluie", "variable"]))
+    client_business_value = str(feature_rules.get("client_business_value", "business"))
+    hebergement_luxe_values = set(
+        feature_rules.get("hebergement_luxe_values", ["resort", "villa"])
+    )
 
     for column in [
         *PRE_VOYAGE_INPUT_COLUMNS,
@@ -209,17 +261,20 @@ def add_base_features(df_source: pd.DataFrame) -> pd.DataFrame:
 
     df["budget_par_jour"] = df["budget_total"] / safe_duree
     df["part_vol_budget"] = df["prix_vol"] / safe_budget
-    df["sejour_long"] = indicateur(df["duree_jours"] >= 14, df["duree_jours"].isna())
+    df["sejour_long"] = indicateur(
+        df["duree_jours"] >= sejour_long_min_days,
+        df["duree_jours"].isna(),
+    )
     df["meteo_risque"] = indicateur(
-        df["meteo_prevue"].isin(["pluie", "variable"]),
+        df["meteo_prevue"].isin(meteo_risque_values),
         df["meteo_prevue"].isna(),
     )
     df["client_business"] = indicateur(
-        df["client_type"] == "business",
+        df["client_type"] == client_business_value,
         df["client_type"].isna(),
     )
     df["hebergement_luxe"] = indicateur(
-        df["type_hebergement"].isin(["resort", "villa"]),
+        df["type_hebergement"].isin(hebergement_luxe_values),
         df["type_hebergement"].isna(),
     )
 
@@ -249,6 +304,10 @@ def satisfaction_to_3_classes(value: int) -> int:
     return 2
 
 
+def clip_satisfaction_score(values: Any) -> np.ndarray:
+    return np.clip(np.asarray(values, dtype=float), SATISFACTION_MIN, SATISFACTION_MAX)
+
+
 def prepare_training_dataset(
     df_source: pd.DataFrame,
 ) -> tuple[pd.DataFrame, pd.Series, list[dict[str, Any]]]:
@@ -267,7 +326,7 @@ def prepare_training_dataset(
     ]
 
     x = df_model[feature_columns].copy()
-    y = df_model[TARGET_COLUMN].apply(satisfaction_to_3_classes).astype(int)
+    y = df_model[TARGET_COLUMN].astype(float)
 
     return x, y, cleaning_report
 
@@ -383,16 +442,13 @@ def build_preprocessor(x_train: pd.DataFrame) -> tuple[ColumnTransformer, list[s
 
 def candidate_models() -> dict[str, Any]:
     return {
-        "Dummy_majority_pre": DummyClassifier(strategy="most_frequent"),
-        "LogisticRegression_pre": LogisticRegression(
-            max_iter=500,
-            class_weight="balanced",
-        ),
-        "RandomForest_pre": RandomForestClassifier(
+        "Dummy_mean_regression": DummyRegressor(strategy="mean"),
+        "LinearRegression_pre": LinearRegression(),
+        "RidgeRegression_pre": Ridge(alpha=1.0),
+        "RandomForestRegressor_pre": RandomForestRegressor(
             n_estimators=120,
             max_depth=8,
             random_state=RANDOM_STATE,
-            class_weight="balanced",
             n_jobs=1,
         ),
     }
@@ -409,7 +465,7 @@ def train_and_select_model(
         y,
         test_size=test_size,
         random_state=RANDOM_STATE,
-        stratify=y,
+        stratify=y.astype(int),
     )
 
     preprocess, numeric_features, categorical_features = build_preprocessor(x_train)
@@ -422,31 +478,37 @@ def train_and_select_model(
             ("model", model),
         ])
         pipeline.fit(x_train, y_train)
-        predictions = pipeline.predict(x_test)
+        predictions = clip_satisfaction_score(pipeline.predict(x_test))
 
         rows.append({
             "modele": model_name,
-            "accuracy": accuracy_score(y_test, predictions),
-            "balanced_accuracy": balanced_accuracy_score(y_test, predictions),
-            "macro_f1": f1_score(y_test, predictions, average="macro"),
+            "mae": mean_absolute_error(y_test, predictions),
+            "rmse": float(np.sqrt(mean_squared_error(y_test, predictions))),
+            "r2": r2_score(y_test, predictions),
+            "prediction_min": float(np.min(predictions)),
+            "prediction_max": float(np.max(predictions)),
         })
         fitted[model_name] = pipeline
 
     results = (
         pd.DataFrame(rows)
-        .sort_values("macro_f1", ascending=False)
+        .sort_values(["mae", "rmse"], ascending=[True, True])
         .reset_index(drop=True)
     )
 
     best_model_name = str(results.iloc[0]["modele"])
     best_pipeline = fitted[best_model_name]
-    best_predictions = best_pipeline.predict(x_test)
+    best_predictions = clip_satisfaction_score(best_pipeline.predict(x_test))
     best_row = results.iloc[0]
+    residuals = np.asarray(y_test, dtype=float) - best_predictions
+    baseline_row = results[results["modele"] == "Dummy_mean_regression"].iloc[0]
 
     metrics = {
-        "accuracy": float(best_row["accuracy"]),
-        "balanced_accuracy": float(best_row["balanced_accuracy"]),
-        "macro_f1": float(best_row["macro_f1"]),
+        "mae": float(best_row["mae"]),
+        "rmse": float(best_row["rmse"]),
+        "r2": float(best_row["r2"]),
+        "baseline_mae": float(baseline_row["mae"]),
+        "mae_gain_vs_baseline": float(baseline_row["mae"] - best_row["mae"]),
         "test_size": float(test_size),
         "train_rows": int(len(x_train)),
         "test_rows": int(len(x_test)),
@@ -459,19 +521,13 @@ def train_and_select_model(
         feature_columns=x.columns.tolist(),
         numeric_features=numeric_features,
         categorical_features=categorical_features,
-        confusion_matrix=confusion_matrix(
-            y_test,
-            best_predictions,
-            labels=CLASS_LABELS,
-        ).tolist(),
-        classification_report=classification_report(
-            y_test,
-            best_predictions,
-            labels=CLASS_LABELS,
-            target_names=CLASS_NAMES,
-            output_dict=True,
-            zero_division=0,
-        ),
+        evaluation_results=results.to_dict(orient="records"),
+        residual_summary={
+            "residual_mean": float(np.mean(residuals)),
+            "residual_std": float(np.std(residuals)),
+            "residual_min": float(np.min(residuals)),
+            "residual_max": float(np.max(residuals)),
+        },
         cleaning_report=cleaning_report,
         reference_profile=build_reference_profile(
             x_train,
@@ -495,11 +551,15 @@ def save_training_artifacts(
         "solution_name": SOLUTION_NAME,
         "display_model_name": "TravelMind Pre-Voyage Satisfaction Model",
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
-        "objective": "pre_voyage_satisfaction_3_classes",
+        "objective": "pre_voyage_satisfaction_score_regression",
         "model_name": result.model_name,
         "target": TARGET_COLUMN,
-        "class_labels": CLASS_LABELS,
-        "class_names": CLASS_NAMES,
+        "target_type": "regression",
+        "prediction_scale": {
+            "min": SATISFACTION_MIN,
+            "max": SATISFACTION_MAX,
+            "unit": "score_satisfaction_1_5",
+        },
         "metrics": result.metrics,
         "feature_columns": result.feature_columns,
         "numeric_features": result.numeric_features,
@@ -507,8 +567,8 @@ def save_training_artifacts(
         "pre_voyage_input_columns": PRE_VOYAGE_INPUT_COLUMNS,
         "post_voyage_features_excluded": POST_TRIP_COLUMNS,
         "removed_features": FEATURES_SUPPRIMEES_MODELISATION,
-        "confusion_matrix": result.confusion_matrix,
-        "classification_report": result.classification_report,
+        "evaluation_results": result.evaluation_results,
+        "residual_summary": result.residual_summary,
         "cleaning_report": result.cleaning_report,
         "training_reference_profile": result.reference_profile,
     }

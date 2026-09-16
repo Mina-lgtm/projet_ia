@@ -1,0 +1,129 @@
+{
+  "created_at_utc": "2026-09-14T20:01:00.947851+00:00",
+  "experiment_version": "dataset_final_balanced",
+  "dataset": "data/versions/v2_2_signal_enrichment/dataset_final.csv",
+  "rows": 3000,
+  "columns": 24,
+  "target": "satisfaction_binaire_4_5",
+  "target_definition": "0 = satisfaction 1, 2 ou 3 ; 1 = satisfaction 4 ou 5",
+  "balancing_method": "class_weight=\"balanced\" pendant l entrainement ; aucune modification du dataset.",
+  "class_distribution_count": {
+    "0": {
+      "global": 2058,
+      "train": 1646,
+      "test": 412
+    },
+    "1": {
+      "global": 942,
+      "train": 754,
+      "test": 188
+    }
+  },
+  "class_distribution_percentage": {
+    "0": {
+      "global": 68.6,
+      "train": 68.58,
+      "test": 68.67
+    },
+    "1": {
+      "global": 31.4,
+      "train": 31.42,
+      "test": 31.33
+    }
+  },
+  "results": [
+    {
+      "modele": "LogisticRegression_balanced",
+      "class_weight": "balanced",
+      "accuracy": 0.7167,
+      "balanced_accuracy": 0.704,
+      "precision_1": 0.5385,
+      "recall_1": 0.6702,
+      "f1_1": 0.5972,
+      "roc_auc": 0.7303
+    },
+    {
+      "modele": "RandomForest_balanced",
+      "class_weight": "balanced",
+      "accuracy": 0.7183,
+      "balanced_accuracy": 0.6937,
+      "precision_1": 0.5438,
+      "recall_1": 0.6277,
+      "f1_1": 0.5827,
+      "roc_auc": 0.7353
+    },
+    {
+      "modele": "RandomForest_unbalanced",
+      "class_weight": "None",
+      "accuracy": 0.7233,
+      "balanced_accuracy": 0.638,
+      "precision_1": 0.5833,
+      "recall_1": 0.4096,
+      "f1_1": 0.4813,
+      "roc_auc": 0.738
+    },
+    {
+      "modele": "LogisticRegression_unbalanced",
+      "class_weight": "None",
+      "accuracy": 0.7183,
+      "balanced_accuracy": 0.6286,
+      "precision_1": 0.5748,
+      "recall_1": 0.3883,
+      "f1_1": 0.4635,
+      "roc_auc": 0.73
+    },
+    {
+      "modele": "Dummy_majority_binary",
+      "class_weight": "None",
+      "accuracy": 0.6867,
+      "balanced_accuracy": 0.5,
+      "precision_1": 0.0,
+      "recall_1": 0.0,
+      "f1_1": 0.0,
+      "roc_auc": 0.5
+    }
+  ],
+  "confusion_matrices": {
+    "Dummy_majority_binary": {
+      "tn": 412,
+      "fp": 0,
+      "fn": 188,
+      "tp": 0
+    },
+    "LogisticRegression_unbalanced": {
+      "tn": 358,
+      "fp": 54,
+      "fn": 115,
+      "tp": 73
+    },
+    "LogisticRegression_balanced": {
+      "tn": 304,
+      "fp": 108,
+      "fn": 62,
+      "tp": 126
+    },
+    "RandomForest_unbalanced": {
+      "tn": 357,
+      "fp": 55,
+      "fn": 111,
+      "tp": 77
+    },
+    "RandomForest_balanced": {
+      "tn": 313,
+      "fp": 99,
+      "fn": 70,
+      "tp": 118
+    }
+  },
+  "best_model": {
+    "modele": "LogisticRegression_balanced",
+    "class_weight": "balanced",
+    "accuracy": 0.7167,
+    "balanced_accuracy": 0.704,
+    "precision_1": 0.5385,
+    "recall_1": 0.6702,
+    "f1_1": 0.5972,
+    "roc_auc": 0.7303
+  },
+  "interpretation": "La pond?ration des classes compense le d?s?quilibre sans g?n?rer de nouvelles lignes. On privil?gie le F1 et le recall de la classe satisfaite plut?t que la seule accuracy, car la classe positive est moins repr?sent?e."
+}

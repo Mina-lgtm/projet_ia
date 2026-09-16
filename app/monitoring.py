@@ -10,20 +10,21 @@ from typing import Any
 
 import pandas as pd
 
+from app.config import get_monitoring_rules
 from app.modeling import prepare_prediction_features
 from app.schemas import TravelPredictionRequest, TravelPredictionResponse
 
 
 DEFAULT_PREDICTION_LOG_PATH = Path("logs/predictions/predictions.jsonl")
 DEFAULT_MODEL_METADATA_PATH = Path("models/model_pre_voyage_metadata.json")
-LOW_CONFIDENCE_THRESHOLD = 0.50
-NUMERIC_DRIFT_WARNING_THRESHOLD = 1.0
-NUMERIC_DRIFT_CRITICAL_THRESHOLD = 2.0
-CATEGORICAL_DRIFT_WARNING_THRESHOLD = 0.20
-CATEGORICAL_DRIFT_CRITICAL_THRESHOLD = 0.35
-MIN_MONITORING_SAMPLE_SIZE = 20
-LOW_CONFIDENCE_WARNING_RATE = 40.0
-LOW_CONFIDENCE_CRITICAL_RATE = 60.0
+
+
+def _monitoring_float(name: str, default_value: float) -> float:
+    return float(get_monitoring_rules().get(name, default_value))
+
+
+def _monitoring_int(name: str, default_value: int) -> int:
+    return int(get_monitoring_rules().get(name, default_value))
 
 
 class PredictionLogger:
@@ -35,28 +36,17 @@ class PredictionLogger:
         request: TravelPredictionRequest,
         response: TravelPredictionResponse,
     ) -> dict[str, Any]:
-        probabilities = [
-            probability.model_dump()
-            for probability in (response.probabilities or [])
-        ]
-        confidence = max(
-            (probability["probabilite"] for probability in probabilities),
-            default=None,
-        )
-
         record = {
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),
             "objective": response.objective,
             "model_name": response.model_name,
             "input": request.model_dump(),
-            "classe_predite": response.classe_predite,
-            "libelle_prediction": response.libelle_prediction,
-            "probabilities": probabilities,
-            "confidence": confidence,
-            "low_confidence": (
-                confidence is not None
-                and confidence < LOW_CONFIDENCE_THRESHOLD
-            ),
+            "score_satisfaction_predit": response.score_satisfaction_predit,
+            "score_satisfaction_arrondi": response.score_satisfaction_arrondi,
+            "interpretation": response.interpretation,
+            "zone_incertitude": response.zone_incertitude,
+            "confidence": None,
+            "low_confidence": response.zone_incertitude,
             "model_metrics": response.model_metrics,
         }
 
@@ -97,7 +87,9 @@ def build_monitoring_report(
         }
 
     prediction_counter = Counter(
-        record.get("libelle_prediction", "inconnu")
+        record.get("interpretation")
+        or record.get("libelle_prediction")
+        or "inconnu"
         for record in records
     )
     model_counter = Counter(
@@ -107,6 +99,7 @@ def build_monitoring_report(
     low_confidence_count = sum(
         1 for record in records
         if record.get("low_confidence") is True
+        or record.get("zone_incertitude") is True
     )
     confidence_values = [
         float(record["confidence"])
@@ -123,6 +116,11 @@ def build_monitoring_report(
     )
 
     nb_predictions = len(records)
+    predicted_scores = [
+        float(record["score_satisfaction_predit"])
+        for record in records
+        if record.get("score_satisfaction_predit") is not None
+    ]
 
     return {
         "nb_predictions": nb_predictions,
@@ -139,12 +137,16 @@ def build_monitoring_report(
             round(sum(confidence_values) / len(confidence_values), 4)
             if confidence_values else None
         ),
+        "average_predicted_score": (
+            round(sum(predicted_scores) / len(predicted_scores), 4)
+            if predicted_scores else None
+        ),
         "model_distribution": dict(model_counter),
         "latest_model_metrics": latest_model_metrics,
-        "low_confidence_threshold": LOW_CONFIDENCE_THRESHOLD,
+        "low_confidence_threshold": _monitoring_float("low_confidence_threshold", 0.5),
         "interpretation": (
-            "Un taux élevé de faible confiance indique que les prédictions doivent "
-            "être relues par un humain et que le modèle pré-voyage reste indicatif."
+            "Un taux élevé de zone d'incertitude indique que les prédictions doivent "
+            "être relues par un humain. Le score de satisfaction pré-voyage reste indicatif."
         ),
     }
 
@@ -173,6 +175,12 @@ def build_drift_report(
     metadata_path: Path = DEFAULT_MODEL_METADATA_PATH,
 ) -> dict[str, Any]:
     records = load_prediction_logs(log_path)
+    min_monitoring_sample_size = _monitoring_int("min_predictions_before_drift", 20)
+    numeric_warning_threshold = _monitoring_float("numeric_warning_threshold", 1.0)
+    numeric_critical_threshold = _monitoring_float("numeric_critical_threshold", 2.0)
+    categorical_warning_threshold = _monitoring_float("categorical_warning_threshold", 0.2)
+    categorical_critical_threshold = _monitoring_float("categorical_critical_threshold", 0.35)
+
     if not records:
         return {
             "status": "no_predictions",
@@ -221,8 +229,8 @@ def build_drift_report(
         )
         level = _drift_level(
             normalized_mean_shift,
-            NUMERIC_DRIFT_WARNING_THRESHOLD,
-            NUMERIC_DRIFT_CRITICAL_THRESHOLD,
+            numeric_warning_threshold,
+            numeric_critical_threshold,
         )
 
         numeric_drift.append({
@@ -247,8 +255,8 @@ def build_drift_report(
         distance = _total_variation_distance(reference_distribution, current_distribution)
         level = _drift_level(
             distance,
-            CATEGORICAL_DRIFT_WARNING_THRESHOLD,
-            CATEGORICAL_DRIFT_CRITICAL_THRESHOLD,
+            categorical_warning_threshold,
+            categorical_critical_threshold,
         )
         unknown_categories = sorted(
             set(current_distribution) - set(reference_distribution)
@@ -274,17 +282,17 @@ def build_drift_report(
     return {
         "status": "ok",
         "nb_predictions_analyzed": nb_predictions,
-        "minimum_recommended_sample_size": MIN_MONITORING_SAMPLE_SIZE,
-        "sample_size_warning": nb_predictions < MIN_MONITORING_SAMPLE_SIZE,
+        "minimum_recommended_sample_size": min_monitoring_sample_size,
+        "sample_size_warning": nb_predictions < min_monitoring_sample_size,
         "numeric_drift": numeric_drift,
         "categorical_drift": categorical_drift,
         "alerts_count": len(alerts),
         "alerts": alerts,
         "thresholds": {
-            "numeric_warning_normalized_shift": NUMERIC_DRIFT_WARNING_THRESHOLD,
-            "numeric_critical_normalized_shift": NUMERIC_DRIFT_CRITICAL_THRESHOLD,
-            "categorical_warning_tvd": CATEGORICAL_DRIFT_WARNING_THRESHOLD,
-            "categorical_critical_tvd": CATEGORICAL_DRIFT_CRITICAL_THRESHOLD,
+            "numeric_warning_normalized_shift": numeric_warning_threshold,
+            "numeric_critical_normalized_shift": numeric_critical_threshold,
+            "categorical_warning_tvd": categorical_warning_threshold,
+            "categorical_critical_tvd": categorical_critical_threshold,
         },
         "interpretation": (
             "La dérive est indicative tant que le volume de prédictions est faible. "
@@ -302,6 +310,9 @@ def build_alert_report(
     drift_report = build_drift_report(log_path=log_path, metadata_path=metadata_path)
 
     nb_predictions = int(monitoring_report.get("nb_predictions", 0) or 0)
+    min_monitoring_sample_size = _monitoring_int("min_predictions_before_drift", 20)
+    low_confidence_warning_rate = _monitoring_float("low_confidence_warning_rate", 40.0)
+    low_confidence_critical_rate = _monitoring_float("low_confidence_critical_rate", 60.0)
     alerts: list[dict[str, Any]] = []
     recommendations: list[str] = []
 
@@ -318,13 +329,13 @@ def build_alert_report(
             "drift_summary": drift_report,
         }
 
-    if nb_predictions < MIN_MONITORING_SAMPLE_SIZE:
+    if nb_predictions < min_monitoring_sample_size:
         alerts.append({
             "type": "sample_size",
             "level": "warning",
             "message": (
                 f"Seulement {nb_predictions} prédiction(s) journalisée(s). "
-                f"Minimum recommandé : {MIN_MONITORING_SAMPLE_SIZE}."
+                f"Minimum recommandé : {min_monitoring_sample_size}."
             ),
         })
         recommendations.append(
@@ -333,7 +344,7 @@ def build_alert_report(
 
     low_confidence_rate = monitoring_report.get("low_confidence_rate")
     if low_confidence_rate is not None:
-        if low_confidence_rate >= LOW_CONFIDENCE_CRITICAL_RATE:
+        if low_confidence_rate >= low_confidence_critical_rate:
             alerts.append({
                 "type": "confidence",
                 "level": "critical",
@@ -344,7 +355,7 @@ def build_alert_report(
             recommendations.append(
                 "Renforcer la revue humaine et analyser les cas peu confiants avant automatisation."
             )
-        elif low_confidence_rate >= LOW_CONFIDENCE_WARNING_RATE:
+        elif low_confidence_rate >= low_confidence_warning_rate:
             alerts.append({
                 "type": "confidence",
                 "level": "warning",
@@ -402,7 +413,7 @@ def build_alert_report(
 
     has_critical_alert = any(alert["level"] == "critical" for alert in alerts)
     has_warning_alert = any(alert["level"] == "warning" for alert in alerts)
-    enough_data = nb_predictions >= MIN_MONITORING_SAMPLE_SIZE
+    enough_data = nb_predictions >= min_monitoring_sample_size
     retraining_recommended = has_critical_alert and enough_data
 
     if retraining_recommended:
@@ -426,9 +437,9 @@ def build_alert_report(
         "alerts": alerts,
         "recommendations": list(dict.fromkeys(recommendations)),
         "thresholds": {
-            "minimum_sample_size": MIN_MONITORING_SAMPLE_SIZE,
-            "low_confidence_warning_rate": LOW_CONFIDENCE_WARNING_RATE,
-            "low_confidence_critical_rate": LOW_CONFIDENCE_CRITICAL_RATE,
+            "minimum_sample_size": min_monitoring_sample_size,
+            "low_confidence_warning_rate": low_confidence_warning_rate,
+            "low_confidence_critical_rate": low_confidence_critical_rate,
         },
         "monitoring_summary": monitoring_report,
         "drift_summary": drift_report,

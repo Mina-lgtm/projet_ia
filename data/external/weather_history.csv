@@ -1,0 +1,33 @@
+﻿destination,saison,temperature_moyenne_saison,pluie_moyenne_mm,jours_pluie_moyen,vent_max_moyen_kmh,nb_jours_observes,latitude,longitude,source,periode_reference
+paris,hiver,4.95,2.61,35,15.72,90,48.85341,2.3488,Open-Meteo Historical Weather API,2024-12-01/2025-02-28
+paris,printemps,12.44,1.18,26,14.07,92,48.85341,2.3488,Open-Meteo Historical Weather API,2025-03-01/2025-05-31
+paris,été,21.05,2.58,30,14.41,92,48.85341,2.3488,Open-Meteo Historical Weather API,2025-06-01/2025-08-31
+paris,automne,12.33,2.12,33,16.01,91,48.85341,2.3488,Open-Meteo Historical Weather API,2025-09-01/2025-11-30
+rome,hiver,9.23,2.57,28,13.79,90,41.89193,12.51133,Open-Meteo Historical Weather API,2024-12-01/2025-02-28
+rome,printemps,15.22,3.55,32,13.85,92,41.89193,12.51133,Open-Meteo Historical Weather API,2025-03-01/2025-05-31
+rome,été,27.22,1.32,16,14.95,92,41.89193,12.51133,Open-Meteo Historical Weather API,2025-06-01/2025-08-31
+rome,automne,17.21,4.01,24,12.75,91,41.89193,12.51133,Open-Meteo Historical Weather API,2025-09-01/2025-11-30
+lisbonne,hiver,12.63,2.92,26,17.53,90,38.72509,-9.1498,Open-Meteo Historical Weather API,2024-12-01/2025-02-28
+lisbonne,printemps,15.64,3.53,41,19.08,92,38.72509,-9.1498,Open-Meteo Historical Weather API,2025-03-01/2025-05-31
+lisbonne,été,23.39,0.06,1,17.22,92,38.72509,-9.1498,Open-Meteo Historical Weather API,2025-06-01/2025-08-31
+lisbonne,automne,18.72,2.83,21,17.54,91,38.72509,-9.1498,Open-Meteo Historical Weather API,2025-09-01/2025-11-30
+new york,hiver,-0.0,2.34,32,16.49,90,40.71427,-74.00597,Open-Meteo Historical Weather API,2024-12-01/2025-02-28
+new york,printemps,12.04,4.75,36,17.46,92,40.71427,-74.00597,Open-Meteo Historical Weather API,2025-03-01/2025-05-31
+new york,été,24.52,2.28,32,14.21,92,40.71427,-74.00597,Open-Meteo Historical Weather API,2025-06-01/2025-08-31
+new york,automne,13.97,3.07,25,15.38,91,40.71427,-74.00597,Open-Meteo Historical Weather API,2025-09-01/2025-11-30
+tokyo,hiver,6.08,0.56,8,14.28,90,35.6895,139.69171,Open-Meteo Historical Weather API,2024-12-01/2025-02-28
+tokyo,printemps,14.52,6.04,44,15.33,92,35.6895,139.69171,Open-Meteo Historical Weather API,2025-03-01/2025-05-31
+tokyo,été,27.71,2.91,31,13.49,92,35.6895,139.69171,Open-Meteo Historical Weather API,2025-06-01/2025-08-31
+tokyo,automne,18.79,4.52,34,12.27,91,35.6895,139.69171,Open-Meteo Historical Weather API,2025-09-01/2025-11-30
+sydney,hiver,22.44,3.42,39,20.67,90,-33.86785,151.20732,Open-Meteo Historical Weather API,2024-12-01/2025-02-28
+sydney,printemps,19.13,4.44,49,17.74,92,-33.86785,151.20732,Open-Meteo Historical Weather API,2025-03-01/2025-05-31
+sydney,été,12.22,4.06,27,18.74,92,-33.86785,151.20732,Open-Meteo Historical Weather API,2025-06-01/2025-08-31
+sydney,automne,19.17,1.74,22,21.07,91,-33.86785,151.20732,Open-Meteo Historical Weather API,2025-09-01/2025-11-30
+dubaï,hiver,20.21,0.09,2,19.57,90,25.07725,55.30927,Open-Meteo Historical Weather API,2024-12-01/2025-02-28
+dubaï,printemps,28.3,0.01,0,22.56,92,25.07725,55.30927,Open-Meteo Historical Weather API,2025-03-01/2025-05-31
+dubaï,été,35.27,0.0,0,22.79,92,25.07725,55.30927,Open-Meteo Historical Weather API,2025-06-01/2025-08-31
+dubaï,automne,29.44,0.0,0,20.09,91,25.07725,55.30927,Open-Meteo Historical Weather API,2025-09-01/2025-11-30
+bali,hiver,26.28,11.89,84,14.7,90,-8.65,115.21667,Open-Meteo Historical Weather API,2024-12-01/2025-02-28
+bali,printemps,26.99,6.49,65,13.72,92,-8.65,115.21667,Open-Meteo Historical Weather API,2025-03-01/2025-05-31
+bali,été,25.53,3.21,49,18.92,92,-8.65,115.21667,Open-Meteo Historical Weather API,2025-06-01/2025-08-31
+bali,automne,26.3,6.82,61,14.71,91,-8.65,115.21667,Open-Meteo Historical Weather API,2025-09-01/2025-11-30

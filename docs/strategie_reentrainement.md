@@ -14,8 +14,8 @@ Le modèle industrialisé est le modèle pré-voyage. Il sert à produire un sco
 
 | Source | Chemin / endpoint | Rôle |
 | --- | --- | --- |
-| Logs de prédiction | `logs/predictions/predictions.jsonl` | Tracer les entrées, prédictions, probabilités et faibles confiances |
-| Résumé monitoring | `/monitoring/summary` | Suivre volume, distribution des prédictions et confiance moyenne |
+| Logs de prédiction | `logs/predictions/predictions.jsonl` | Tracer les entrées, scores prédits et zones d'incertitude |
+| Résumé monitoring | `/monitoring/summary` | Suivre volume, distribution des interprétations et score moyen prédit |
 | Dérive données | `/monitoring/drift` | Comparer les entrées API au profil d'entraînement |
 | Alertes consolidées | `/monitoring/alerts` | Transformer les métriques en décision opérationnelle |
 
@@ -24,7 +24,7 @@ Le modèle industrialisé est le modèle pré-voyage. Il sert à produire un sco
 | Indicateur | Warning | Critical | Action |
 | --- | ---: | ---: | --- |
 | Volume minimal | `< 20` prédictions | Non applicable | Ne pas conclure, collecter davantage de logs |
-| Faible confiance | `>= 40 %` | `>= 60 %` | Revue humaine des prédictions |
+| Zone d'incertitude | `>= 40 %` | `>= 60 %` | Revue humaine des prédictions intermédiaires |
 | Dérive numérique | écart moyen normalisé `>= 1.0` | `>= 2.0` | Analyse des variables concernées |
 | Dérive catégorielle | distance de distribution `>= 0.20` | `>= 0.35` | Analyse des segments surreprésentés |
 
@@ -42,7 +42,7 @@ Le modèle industrialisé est le modèle pré-voyage. Il sert à produire un sco
 Un réentraînement peut être envisagé lorsque les conditions suivantes sont réunies :
 
 - au moins `20` prédictions sont journalisées ;
-- une dérive critique ou un taux critique de faible confiance est observé ;
+- une dérive critique ou un taux critique de zone d'incertitude est observé ;
 - les cas concernés sont validés par le métier ;
 - de nouvelles données annotées avec `satisfaction_client` sont disponibles ;
 - les contraintes RGPD, éthiques et qualité sont vérifiées.
@@ -59,13 +59,13 @@ Un réentraînement peut être envisagé lorsque les conditions suivantes sont r
 
 ## Évaluation continue et CI/CD
 
-Le projet intègre un contrôle qualité automatique dans GitHub Actions :
+Le projet intègre un contrôle qualité automatique et conditionnel dans GitHub Actions :
 
-1. les tests API et monitoring sont exécutés ;
-2. le modèle pré-voyage est réentraîné dans l'environnement CI ;
-3. les métriques exportées dans les métadonnées sont comparées aux seuils de `configs/model_quality_gate.json` ;
-4. la CI échoue si `macro_f1`, `balanced_accuracy` ou `accuracy` passent sous les seuils acceptés ;
-5. la CI échoue aussi si la baisse par rapport aux métriques de référence dépasse la tolérance définie.
+1. les fichiers modifiés sont détectés ;
+2. les tests API, modèle et monitoring sont exécutés si le code ou la configuration change ;
+3. le modèle pré-voyage est réentraîné en CI si les données, le pipeline ou les règles métier changent ;
+4. les métriques exportées dans les métadonnées sont comparées aux seuils de `configs/model_quality_gate.json` ;
+5. la CI échoue si `MAE` ou `RMSE` dépassent les seuils acceptés, si `R2` passe sous le seuil minimal ou si le volume train/test devient insuffisant.
 
 Ce contrôle limite le risque de dégradation silencieuse du modèle lors d'une modification du nettoyage, du feature engineering ou des hyperparamètres.
 
@@ -73,7 +73,7 @@ Ce contrôle limite le risque de dégradation silencieuse du modèle lors d'une 
 
 | Fréquence | Contrôle | Acteur responsable | Sortie attendue |
 | --- | --- | --- | --- |
-| À chaque push / pull request | Tests, entraînement CI, quality gate modèle | Équipe data / technique | Validation ou blocage de la CI |
+| À chaque push / pull request | Contrôles CI/CD adaptés aux fichiers modifiés | Équipe data / technique | Validation, blocage ou saut des étapes lourdes |
 | Hebdomadaire en phase pilote | Lecture de `/monitoring/summary` et `/monitoring/alerts` | Data scientist + métier | Liste des cas peu confiants à revoir |
 | Mensuelle | Revue des seuils, dérives, distribution des prédictions | Commanditaire + data scientist | Maintien ou ajustement des indicateurs |
 | Trimestrielle ou après alerte critique | Analyse des nouvelles données annotées | Data scientist + métier + DPO si besoin | Décision de réentraînement ou conservation du modèle |

@@ -65,11 +65,12 @@ def main() -> None:
         metadata_path=args.metadata_path,
     )
 
-    print("Entrainement pre-voyage TravelMind termine")
+    print("Entrainement regression pre-voyage TravelMind termine")
     print(f"Modele retenu : {result.model_name}")
-    print(f"macro_f1 : {result.metrics['macro_f1']:.4f}")
-    print(f"balanced_accuracy : {result.metrics['balanced_accuracy']:.4f}")
-    print(f"accuracy : {result.metrics['accuracy']:.4f}")
+    print(f"MAE : {result.metrics['mae']:.4f}")
+    print(f"RMSE : {result.metrics['rmse']:.4f}")
+    print(f"R2 : {result.metrics['r2']:.4f}")
+    print(f"Gain MAE vs baseline : {result.metrics['mae_gain_vs_baseline']:.4f}")
     print(f"Modele exporte : {args.model_path}")
     print(f"Metadonnees exportees : {args.metadata_path}")
 

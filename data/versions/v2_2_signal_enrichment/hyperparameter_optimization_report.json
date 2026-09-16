@@ -1,0 +1,288 @@
+{
+  "created_at_utc": "2026-09-14T20:25:38.618759+00:00",
+  "experiment_version": "dataset_final_balanced_hyperopt",
+  "dataset": "data/versions/v2_2_signal_enrichment/dataset_final.csv",
+  "rows": 3000,
+  "columns": 24,
+  "target": "satisfaction_binaire_4_5",
+  "target_definition": "0 = satisfaction 1, 2 ou 3 ; 1 = satisfaction 4 ou 5",
+  "method": "RandomizedSearchCV avec validation croisee stratifiee 5 folds, scoring=f1.",
+  "search_space": {
+    "LogisticRegression": {
+      "C": "loguniform(0.01, 100)",
+      "penalty": [
+        "l1",
+        "l2"
+      ],
+      "solver": [
+        "liblinear",
+        "lbfgs",
+        "saga"
+      ],
+      "class_weight": "balanced",
+      "n_iter": 25
+    },
+    "RandomForest": {
+      "n_estimators": [
+        100,
+        200,
+        300,
+        500
+      ],
+      "max_depth": [
+        3,
+        5,
+        8,
+        10,
+        12,
+        null
+      ],
+      "min_samples_leaf": "randint(2, 21)",
+      "min_samples_split": "randint(2, 31)",
+      "max_features": [
+        "sqrt",
+        "log2",
+        null
+      ],
+      "class_weight": [
+        "balanced",
+        "balanced_subsample"
+      ],
+      "n_iter": 30
+    }
+  },
+  "initial_results": [
+    {
+      "modele": "Dummy_majority_binary",
+      "accuracy": 0.6867,
+      "balanced_accuracy": 0.5,
+      "precision_1": 0.0,
+      "recall_1": 0.0,
+      "f1_1": 0.0,
+      "roc_auc": 0.5,
+      "confusion_matrix": {
+        "tn": 412,
+        "fp": 0,
+        "fn": 188,
+        "tp": 0
+      }
+    },
+    {
+      "modele": "LogisticRegression_balanced_initial",
+      "accuracy": 0.7167,
+      "balanced_accuracy": 0.704,
+      "precision_1": 0.5385,
+      "recall_1": 0.6702,
+      "f1_1": 0.5972,
+      "roc_auc": 0.7303,
+      "confusion_matrix": {
+        "tn": 304,
+        "fp": 108,
+        "fn": 62,
+        "tp": 126
+      }
+    },
+    {
+      "modele": "RandomForest_balanced_initial",
+      "accuracy": 0.7183,
+      "balanced_accuracy": 0.6937,
+      "precision_1": 0.5438,
+      "recall_1": 0.6277,
+      "f1_1": 0.5827,
+      "roc_auc": 0.7353,
+      "confusion_matrix": {
+        "tn": 313,
+        "fp": 99,
+        "fn": 70,
+        "tp": 118
+      }
+    }
+  ],
+  "optimized_results": [
+    {
+      "modele": "LogisticRegression_balanced_optimized",
+      "accuracy": 0.715,
+      "balanced_accuracy": 0.7057,
+      "precision_1": 0.5356,
+      "recall_1": 0.6809,
+      "f1_1": 0.5995,
+      "roc_auc": 0.732,
+      "confusion_matrix": {
+        "tn": 301,
+        "fp": 111,
+        "fn": 60,
+        "tp": 128
+      },
+      "cv_best_f1": 0.6147,
+      "best_params": {
+        "model__C": 0.1653693718282443,
+        "model__penalty": "l2",
+        "model__solver": "lbfgs"
+      }
+    },
+    {
+      "modele": "RandomForest_balanced_optimized",
+      "accuracy": 0.7133,
+      "balanced_accuracy": 0.69,
+      "precision_1": 0.5364,
+      "recall_1": 0.6277,
+      "f1_1": 0.5784,
+      "roc_auc": 0.7357,
+      "confusion_matrix": {
+        "tn": 310,
+        "fp": 102,
+        "fn": 70,
+        "tp": 118
+      },
+      "cv_best_f1": 0.6122,
+      "best_params": {
+        "model__class_weight": "balanced_subsample",
+        "model__max_depth": null,
+        "model__max_features": "sqrt",
+        "model__min_samples_leaf": 19,
+        "model__min_samples_split": 27,
+        "model__n_estimators": 500
+      }
+    }
+  ],
+  "all_results_sorted": [
+    {
+      "modele": "LogisticRegression_balanced_optimized",
+      "accuracy": 0.715,
+      "balanced_accuracy": 0.7057,
+      "precision_1": 0.5356,
+      "recall_1": 0.6809,
+      "f1_1": 0.5995,
+      "roc_auc": 0.732,
+      "confusion_matrix": {
+        "tn": 301,
+        "fp": 111,
+        "fn": 60,
+        "tp": 128
+      },
+      "cv_best_f1": 0.6147,
+      "best_params": {
+        "model__C": 0.1653693718282443,
+        "model__penalty": "l2",
+        "model__solver": "lbfgs"
+      }
+    },
+    {
+      "modele": "LogisticRegression_balanced_initial",
+      "accuracy": 0.7167,
+      "balanced_accuracy": 0.704,
+      "precision_1": 0.5385,
+      "recall_1": 0.6702,
+      "f1_1": 0.5972,
+      "roc_auc": 0.7303,
+      "confusion_matrix": {
+        "tn": 304,
+        "fp": 108,
+        "fn": 62,
+        "tp": 126
+      },
+      "cv_best_f1": NaN,
+      "best_params": NaN
+    },
+    {
+      "modele": "RandomForest_balanced_initial",
+      "accuracy": 0.7183,
+      "balanced_accuracy": 0.6937,
+      "precision_1": 0.5438,
+      "recall_1": 0.6277,
+      "f1_1": 0.5827,
+      "roc_auc": 0.7353,
+      "confusion_matrix": {
+        "tn": 313,
+        "fp": 99,
+        "fn": 70,
+        "tp": 118
+      },
+      "cv_best_f1": NaN,
+      "best_params": NaN
+    },
+    {
+      "modele": "RandomForest_balanced_optimized",
+      "accuracy": 0.7133,
+      "balanced_accuracy": 0.69,
+      "precision_1": 0.5364,
+      "recall_1": 0.6277,
+      "f1_1": 0.5784,
+      "roc_auc": 0.7357,
+      "confusion_matrix": {
+        "tn": 310,
+        "fp": 102,
+        "fn": 70,
+        "tp": 118
+      },
+      "cv_best_f1": 0.6122,
+      "best_params": {
+        "model__class_weight": "balanced_subsample",
+        "model__max_depth": null,
+        "model__max_features": "sqrt",
+        "model__min_samples_leaf": 19,
+        "model__min_samples_split": 27,
+        "model__n_estimators": 500
+      }
+    },
+    {
+      "modele": "Dummy_majority_binary",
+      "accuracy": 0.6867,
+      "balanced_accuracy": 0.5,
+      "precision_1": 0.0,
+      "recall_1": 0.0,
+      "f1_1": 0.0,
+      "roc_auc": 0.5,
+      "confusion_matrix": {
+        "tn": 412,
+        "fp": 0,
+        "fn": 188,
+        "tp": 0
+      },
+      "cv_best_f1": NaN,
+      "best_params": NaN
+    }
+  ],
+  "best_initial_model": {
+    "modele": "LogisticRegression_balanced_initial",
+    "accuracy": 0.7167,
+    "balanced_accuracy": 0.704,
+    "precision_1": 0.5385,
+    "recall_1": 0.6702,
+    "f1_1": 0.5972,
+    "roc_auc": 0.7303,
+    "confusion_matrix": {
+      "tn": 304,
+      "fp": 108,
+      "fn": 62,
+      "tp": 126
+    }
+  },
+  "best_model_after_optimization": {
+    "modele": "LogisticRegression_balanced_optimized",
+    "accuracy": 0.715,
+    "balanced_accuracy": 0.7057,
+    "precision_1": 0.5356,
+    "recall_1": 0.6809,
+    "f1_1": 0.5995,
+    "roc_auc": 0.732,
+    "confusion_matrix": {
+      "tn": 301,
+      "fp": 111,
+      "fn": 60,
+      "tp": 128
+    },
+    "cv_best_f1": 0.6147,
+    "best_params": {
+      "model__C": 0.1653693718282443,
+      "model__penalty": "l2",
+      "model__solver": "lbfgs"
+    }
+  },
+  "gains_vs_best_initial": {
+    "f1_gain": 0.0023,
+    "roc_auc_gain": 0.0017,
+    "balanced_accuracy_gain": 0.0017
+  },
+  "interpretation": "L optimisation teste plusieurs hyperparametres tout en gardant le pretraitement dans un pipeline. Le modele optimise est retenu uniquement si le gain sur F1 et balanced accuracy est significatif et coherent."
+}
