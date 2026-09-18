@@ -11,3 +11,14 @@ logs/
 notebooks/
 docs/
 README.md
+data/
+mlruns/
+mlartifacts/
+mlflow.db
+tests/
+scripts/
+requirements-dev.txt
+requirements-nlp.txt
+.pytest_cache/
+.vscode/
+.notebook/
