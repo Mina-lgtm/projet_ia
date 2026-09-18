@@ -16,13 +16,17 @@ def test_health_endpoint_returns_ok() -> None:
 class FakePredictor:
     def predict(self, payload) -> TravelPredictionResponse:
         return TravelPredictionResponse(
-            objective="pre_voyage_satisfaction_score_regression",
+            objective="travelmind_satisfaction_binaire",
             model_name="fake_model",
-            score_satisfaction_predit=3.6,
-            score_satisfaction_arrondi=4,
-            interpretation="satisfaction_probable",
-            zone_incertitude=False,
-            model_metrics={"mae": 1.05, "rmse": 1.25, "r2": 0.004},
+            classe_predite=1,
+            libelle_prediction="satisfait_4_5",
+            probabilities=[
+                {"classe": 0, "libelle": "non_satisfait_1_2_3", "probabilite": 0.32},
+                {"classe": 1, "libelle": "satisfait_4_5", "probabilite": 0.68},
+            ],
+            confidence=0.68,
+            low_confidence=False,
+            model_metrics={"accuracy": 0.70, "macro_f1": 0.68, "roc_auc": 0.73},
         )
 
 
@@ -59,11 +63,12 @@ def test_predict_endpoint_returns_prediction() -> None:
 
     assert response.status_code == 200
     body = response.json()
-    assert body["objective"] == "pre_voyage_satisfaction_score_regression"
+    assert body["objective"] == "travelmind_satisfaction_binaire"
     assert body["model_name"] == "fake_model"
-    assert body["score_satisfaction_predit"] == 3.6
-    assert body["score_satisfaction_arrondi"] == 4
-    assert body["interpretation"] == "satisfaction_probable"
+    assert body["classe_predite"] == 1
+    assert body["libelle_prediction"] == "satisfait_4_5"
+    assert body["confidence"] == 0.68
+    assert body["probabilities"][1]["libelle"] == "satisfait_4_5"
 
 
 def test_predict_endpoint_rejects_incoherent_budget() -> None:

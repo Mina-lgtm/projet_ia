@@ -41,12 +41,11 @@ class PredictionLogger:
             "objective": response.objective,
             "model_name": response.model_name,
             "input": request.model_dump(),
-            "score_satisfaction_predit": response.score_satisfaction_predit,
-            "score_satisfaction_arrondi": response.score_satisfaction_arrondi,
-            "interpretation": response.interpretation,
-            "zone_incertitude": response.zone_incertitude,
-            "confidence": None,
-            "low_confidence": response.zone_incertitude,
+            "classe_predite": response.classe_predite,
+            "libelle_prediction": response.libelle_prediction,
+            "probabilities": [probability.model_dump() for probability in response.probabilities],
+            "confidence": response.confidence,
+            "low_confidence": response.low_confidence,
             "model_metrics": response.model_metrics,
         }
 
@@ -116,12 +115,6 @@ def build_monitoring_report(
     )
 
     nb_predictions = len(records)
-    predicted_scores = [
-        float(record["score_satisfaction_predit"])
-        for record in records
-        if record.get("score_satisfaction_predit") is not None
-    ]
-
     return {
         "nb_predictions": nb_predictions,
         "first_prediction_utc": records[0].get("timestamp_utc"),
@@ -137,16 +130,12 @@ def build_monitoring_report(
             round(sum(confidence_values) / len(confidence_values), 4)
             if confidence_values else None
         ),
-        "average_predicted_score": (
-            round(sum(predicted_scores) / len(predicted_scores), 4)
-            if predicted_scores else None
-        ),
         "model_distribution": dict(model_counter),
         "latest_model_metrics": latest_model_metrics,
         "low_confidence_threshold": _monitoring_float("low_confidence_threshold", 0.5),
         "interpretation": (
-            "Un taux élevé de zone d'incertitude indique que les prédictions doivent "
-            "être relues par un humain. Le score de satisfaction pré-voyage reste indicatif."
+            "Un taux ?lev? de faible confiance indique que les pr?dictions doivent "
+            "?tre relues par un humain. La classe pr?dite reste indicative."
         ),
     }
 

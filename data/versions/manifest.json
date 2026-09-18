@@ -564,7 +564,7 @@
         "score_potentiel_satisfaction",
         "niveau_risque_satisfaction"
       ],
-      "sha256": "113a2f7e6bfd030e567b72b7686c95afa95eab3501b2818127598c9b17ac9e56",
+      "sha256": "67ed1404540ea6bab56785ef34464eef93492cff1776eabacfbae6a0bb8958bb",
       "size_bytes": 587334,
       "report": "data/versions/v2_2_signal_enrichment/signal_enrichment_report.json"
     }

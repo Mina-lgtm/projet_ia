@@ -8,20 +8,20 @@ from app.modeling import (
     TARGET_COLUMN,
     build_reference_profile,
     prepare_training_dataset,
-    satisfaction_to_3_classes,
+    satisfaction_to_binary,
     train_and_select_model,
 )
 
 
-DATA_PATH = Path("data/Examen_travel_planning_dataset.csv")
+DATA_PATH = Path("data/versions/v2_2_signal_enrichment/dataset_final.csv")
 
 
-def test_satisfaction_to_3_classes() -> None:
-    assert satisfaction_to_3_classes(1) == 0
-    assert satisfaction_to_3_classes(2) == 0
-    assert satisfaction_to_3_classes(3) == 1
-    assert satisfaction_to_3_classes(4) == 2
-    assert satisfaction_to_3_classes(5) == 2
+def test_satisfaction_to_binary() -> None:
+    assert satisfaction_to_binary(1) == 0
+    assert satisfaction_to_binary(2) == 0
+    assert satisfaction_to_binary(3) == 0
+    assert satisfaction_to_binary(4) == 1
+    assert satisfaction_to_binary(5) == 1
 
 
 def test_prepare_training_dataset_uses_only_pre_voyage_columns() -> None:
@@ -40,7 +40,7 @@ def test_prepare_training_dataset_uses_only_pre_voyage_columns() -> None:
     assert "budget_non_respecte" not in x.columns
     assert "budget_tendu" not in x.columns
     assert "gravite_imprevu" not in x.columns
-    assert y.between(1, 5).all()
+    assert set(y.unique()).issubset({0, 1})
     assert cleaning_report
 
     for column in POST_TRIP_COLUMNS:
@@ -56,14 +56,15 @@ def test_train_and_select_model_returns_fitted_pipeline() -> None:
 
     result = train_and_select_model(x, y, cleaning_report, test_size=0.2)
 
-    assert result.model_name
-    assert result.metrics["mae"] >= 0
-    assert result.metrics["rmse"] >= 0
-    assert "r2" in result.metrics
+    assert result.model_name == "LogisticRegression"
+    assert result.metrics["accuracy"] >= 0
+    assert result.metrics["macro_f1"] >= 0
+    assert "roc_auc" in result.metrics
     assert result.feature_columns == x.columns.tolist()
     assert hasattr(result.pipeline, "predict")
+    assert hasattr(result.pipeline, "predict_proba")
     assert result.evaluation_results
-    assert "residual_mean" in result.residual_summary
+    assert result.confusion_matrix
     assert result.reference_profile["n_rows"] > 0
 
 

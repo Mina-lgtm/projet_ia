@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import argparse
 from pathlib import Path
@@ -12,38 +12,38 @@ from app.modeling import (
 )
 
 
-DEFAULT_DATA_PATH = Path("data/Examen_travel_planning_dataset.csv")
+DEFAULT_DATA_PATH = Path("data/versions/v2_2_signal_enrichment/dataset_final.csv")
 DEFAULT_MODEL_PATH = Path("models/model_pre_voyage.pkl")
 DEFAULT_METADATA_PATH = Path("models/model_pre_voyage_metadata.json")
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Entraine et exporte le modele pre-voyage TravelMind.",
+        description="Entraine et exporte le modele TravelMind LogisticRegression binaire.",
     )
     parser.add_argument(
         "--data-path",
         type=Path,
         default=DEFAULT_DATA_PATH,
-        help=f"Chemin du dataset CSV. Défaut: {DEFAULT_DATA_PATH}",
+        help=f"Chemin du dataset CSV. Defaut: {DEFAULT_DATA_PATH}",
     )
     parser.add_argument(
         "--model-path",
         type=Path,
         default=DEFAULT_MODEL_PATH,
-        help=f"Chemin de sortie du modèle. Défaut: {DEFAULT_MODEL_PATH}",
+        help=f"Chemin de sortie du modele. Defaut: {DEFAULT_MODEL_PATH}",
     )
     parser.add_argument(
         "--metadata-path",
         type=Path,
         default=DEFAULT_METADATA_PATH,
-        help=f"Chemin de sortie des métadonnées. Défaut: {DEFAULT_METADATA_PATH}",
+        help=f"Chemin de sortie des metadonnees. Defaut: {DEFAULT_METADATA_PATH}",
     )
     parser.add_argument(
         "--test-size",
         type=float,
         default=0.2,
-        help="Part du dataset utilisée pour le test stratifié.",
+        help="Part du dataset utilisee pour le test stratifie.",
     )
     return parser.parse_args()
 
@@ -65,12 +65,14 @@ def main() -> None:
         metadata_path=args.metadata_path,
     )
 
-    print("Entrainement regression pre-voyage TravelMind termine")
+    print("Entrainement classification binaire TravelMind termine")
+    print(f"Dataset : {args.data_path}")
     print(f"Modele retenu : {result.model_name}")
-    print(f"MAE : {result.metrics['mae']:.4f}")
-    print(f"RMSE : {result.metrics['rmse']:.4f}")
-    print(f"R2 : {result.metrics['r2']:.4f}")
-    print(f"Gain MAE vs baseline : {result.metrics['mae_gain_vs_baseline']:.4f}")
+    print(f"Accuracy : {result.metrics['accuracy']:.4f}")
+    print(f"Balanced accuracy : {result.metrics['balanced_accuracy']:.4f}")
+    print(f"Macro F1 : {result.metrics['macro_f1']:.4f}")
+    print(f"Recall satisfait : {result.metrics['recall_satisfait']:.4f}")
+    print(f"ROC AUC : {result.metrics.get('roc_auc', float('nan')):.4f}")
     print(f"Modele exporte : {args.model_path}")
     print(f"Metadonnees exportees : {args.metadata_path}")
 

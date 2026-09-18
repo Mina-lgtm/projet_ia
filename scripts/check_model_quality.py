@@ -10,17 +10,17 @@ from typing import Any
 
 DEFAULT_CONFIG = {
     "metric_minimums": {
-        "r2": -0.05,
+        "accuracy": 0.60,
+        "balanced_accuracy": 0.60,
+        "macro_f1": 0.60,
+        "roc_auc": 0.65,
     },
-    "metric_maximums": {
-        "mae": 1.20,
-        "rmse": 1.40,
-    },
+    "metric_maximums": {},
     "reference_metrics": {},
     "max_allowed_metric_drop": {},
     "row_count_minimums": {
-        "train_rows": 1000,
-        "test_rows": 200,
+        "train_rows": 2000,
+        "test_rows": 500,
     },
     "metadata_max_age_days": 30,
 }

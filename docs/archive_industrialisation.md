@@ -2,7 +2,7 @@
 
 ## Objectif
 
-Ce document synth?tise l'industrialisation active du projet TravelMind. La version industrialis?e correspond au notebook rattrapage `notebooks/exam_ia_rattrapage.ipynb`. L'ancien notebook `notebooks/exam_ia.ipynb` est conserv? comme archive de travail.
+Ce document synth?tise l'industrialisation active du projet TravelMind. La version industrialis?e correspond au notebook final `notebooks/exam_ia_final.ipynb`. L'ancien notebook `notebooks/exam_ia.ipynb` est conserv? comme archive de travail.
 
 Apr?s nettoyage strict du dataset, le meilleur r?sultat statistique est obtenu par la baseline `Dummy_mean_regression`. Cette situation est document?e comme une limite forte : le pipeline est industrialisable techniquement, mais le mod?le ne doit pas ?tre utilis? comme aide ? la d?cision en production sans enrichissement de donn?es r?elles pr?-voyage.
 
@@ -40,7 +40,7 @@ Apr?s nettoyage strict du dataset, le meilleur r?sultat statistique est obtenu p
 | `train_rows` | 1102 |
 | `test_rows` | 276 |
 
-Ces r?sultats correspondent au notebook rattrapage `notebooks/exam_ia_rattrapage.ipynb` et au fichier `models/model_pre_voyage_metadata.json` r?g?n?r?.
+Ces r?sultats correspondent au notebook final `notebooks/exam_ia_final.ipynb` et au fichier `models/model_pre_voyage_metadata.json` r?g?n?r?.
 
 ## Commandes utiles
 

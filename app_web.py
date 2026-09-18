@@ -119,23 +119,21 @@ def build_manual_payload() -> dict[str, Any]:
 
 def display_prediction(result: dict[str, Any]) -> None:
     st.subheader("Résultat de prédiction")
-    st.metric(
-        "Score satisfaction prédit",
-        format_decimal(result.get("score_satisfaction_predit")),
-    )
-    st.metric("Score arrondi", result.get("score_satisfaction_arrondi", "N/A"))
-    st.write(f"Interprétation : `{result.get('interpretation', 'inconnu')}`")
-    if result.get("zone_incertitude"):
-        st.warning("Score en zone d'incertitude : revue humaine recommandée.")
+    st.metric("Classe prédite", result.get("libelle_prediction", "N/A"))
+    st.metric("Confiance", format_decimal(result.get("confidence")))
+    if result.get("low_confidence"):
+        st.warning("Prédiction peu confiante : revue humaine recommandée.")
     st.write(f"Modèle utilisé : `{result.get('model_name', 'inconnu')}`")
+
+    probabilities = result.get("probabilities") or []
+    if probabilities:
+        st.subheader("Probabilités par classe")
+        st.dataframe(pd.DataFrame(probabilities), use_container_width=True)
 
     metrics = result.get("model_metrics") or {}
     if metrics:
         st.subheader("Métriques globales du modèle")
-        st.dataframe(
-            pd.DataFrame([metrics]).round(4),
-            use_container_width=True,
-        )
+        st.dataframe(pd.DataFrame([metrics]).round(4), use_container_width=True)
 
 
 def render_manual_prediction(api_url: str) -> None:
@@ -184,10 +182,10 @@ def render_csv_prediction(api_url: str) -> None:
                 rows.append({
                     "ligne": int(index),
                     **payload,
-                    "score_satisfaction_predit": result.get("score_satisfaction_predit"),
-                    "score_satisfaction_arrondi": result.get("score_satisfaction_arrondi"),
-                    "interpretation": result.get("interpretation"),
-                    "zone_incertitude": result.get("zone_incertitude"),
+                    "classe_predite": result.get("classe_predite"),
+                    "libelle_prediction": result.get("libelle_prediction"),
+                    "confidence": result.get("confidence"),
+                    "low_confidence": result.get("low_confidence"),
                 })
             progress.progress((index + 1) / len(df))
 
@@ -254,12 +252,10 @@ def render_business_dashboard(api_url: str) -> None:
         return
 
     distribution = summary.get("prediction_distribution", {}) or {}
-    insatisfait_count = distribution.get("risque_insatisfaction", 0)
-    taux_insatisfaction = (
-        insatisfait_count / nb_predictions * 100
-        if nb_predictions > 0
-        else None
-    )
+    insatisfait_count = distribution.get("non_satisfait_1_2_3", 0)
+    satisfait_count = distribution.get("satisfait_4_5", 0)
+    taux_insatisfaction = insatisfait_count / nb_predictions * 100 if nb_predictions > 0 else None
+    taux_satisfaction = satisfait_count / nb_predictions * 100 if nb_predictions > 0 else None
 
     latest_metrics = summary.get("latest_model_metrics", {}) or {}
     alert_items = alerts.get("alerts", []) or []
@@ -275,19 +271,13 @@ def render_business_dashboard(api_url: str) -> None:
     col_1, col_2, col_3, col_4 = st.columns(4)
     col_1.metric("Prédictions", nb_predictions)
     col_2.metric("Taux insatisfait", format_percentage(taux_insatisfaction))
-    col_3.metric(
-        "Zone incertitude",
-        format_percentage(summary.get("low_confidence_rate")),
-    )
-    col_4.metric(
-        "Score moyen prédit",
-        format_decimal(summary.get("average_predicted_score")),
-    )
+    col_3.metric("Taux satisfait", format_percentage(taux_satisfaction))
+    col_4.metric("Faible confiance", format_percentage(summary.get("low_confidence_rate")))
 
     col_5, col_6, col_7 = st.columns(3)
-    col_5.metric("MAE modèle", format_decimal(latest_metrics.get("mae")))
-    col_6.metric("RMSE", format_decimal(latest_metrics.get("rmse")))
-    col_7.metric("R²", format_decimal(latest_metrics.get("r2")))
+    col_5.metric("Accuracy", format_decimal(latest_metrics.get("accuracy")))
+    col_6.metric("Macro F1", format_decimal(latest_metrics.get("macro_f1")))
+    col_7.metric("ROC AUC", format_decimal(latest_metrics.get("roc_auc")))
 
     st.subheader("Décision opérationnelle")
     decision = alerts.get("decision", "non_disponible")

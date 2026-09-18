@@ -29,18 +29,25 @@ def make_request(**overrides) -> TravelPredictionRequest:
 
 
 def make_response(
-    score: float = 3.2,
-    interpretation: str = "satisfaction_intermediaire",
-    zone_incertitude: bool = True,
+    confidence: float = 0.52,
+    libelle_prediction: str = "non_satisfait_1_2_3",
+    low_confidence: bool = True,
 ) -> TravelPredictionResponse:
+    classe_predite = 1 if libelle_prediction == "satisfait_4_5" else 0
+    probability_positive = confidence if classe_predite == 1 else 1 - confidence
+    probability_negative = 1 - probability_positive
     return TravelPredictionResponse(
-        objective="pre_voyage_satisfaction_score_regression",
-        model_name="RidgeRegression_pre",
-        score_satisfaction_predit=score,
-        score_satisfaction_arrondi=round(score),
-        interpretation=interpretation,
-        zone_incertitude=zone_incertitude,
-        model_metrics={"mae": 1.0525, "rmse": 1.2533, "r2": 0.0038},
+        objective="travelmind_satisfaction_binaire",
+        model_name="LogisticRegression",
+        classe_predite=classe_predite,
+        libelle_prediction=libelle_prediction,
+        probabilities=[
+            {"classe": 0, "libelle": "non_satisfait_1_2_3", "probabilite": round(probability_negative, 4)},
+            {"classe": 1, "libelle": "satisfait_4_5", "probabilite": round(probability_positive, 4)},
+        ],
+        confidence=confidence,
+        low_confidence=low_confidence,
+        model_metrics={"accuracy": 0.7033, "macro_f1": 0.6768, "roc_auc": 0.7318},
     )
 
 
@@ -49,15 +56,15 @@ def test_prediction_logger_writes_jsonl_record(tmp_path) -> None:
     logger = PredictionLogger(log_path=log_path)
 
     request = make_request()
-    response = make_response(score=3.2)
+    response = make_response(confidence=0.52)
 
     record = logger.log_prediction(request, response)
     written_record = json.loads(log_path.read_text(encoding="utf-8").strip())
 
-    assert record["model_name"] == "RidgeRegression_pre"
-    assert written_record["score_satisfaction_predit"] == 3.2
-    assert written_record["score_satisfaction_arrondi"] == 3
-    assert written_record["interpretation"] == "satisfaction_intermediaire"
+    assert record["model_name"] == "LogisticRegression"
+    assert written_record["classe_predite"] == 0
+    assert written_record["libelle_prediction"] == "non_satisfait_1_2_3"
+    assert written_record["confidence"] == 0.52
     assert written_record["low_confidence"] is True
     assert written_record["input"]["destination"] == "rome"
 
@@ -69,23 +76,23 @@ def test_build_monitoring_report_from_prediction_logs(tmp_path) -> None:
 
     logger.log_prediction(
         request,
-        make_response(score=2.2, interpretation="risque_insatisfaction", zone_incertitude=False),
+        make_response(confidence=0.72, libelle_prediction="non_satisfait_1_2_3", low_confidence=False),
     )
     logger.log_prediction(
         request,
-        make_response(score=3.1, interpretation="satisfaction_intermediaire", zone_incertitude=True),
+        make_response(confidence=0.51, libelle_prediction="satisfait_4_5", low_confidence=True),
     )
 
     report = build_monitoring_report(log_path=log_path)
 
     assert report["nb_predictions"] == 2
     assert report["prediction_distribution"] == {
-        "risque_insatisfaction": 1,
-        "satisfaction_intermediaire": 1,
+        "non_satisfait_1_2_3": 1,
+        "satisfait_4_5": 1,
     }
     assert report["low_confidence_count"] == 1
     assert report["low_confidence_rate"] == 50.0
-    assert report["average_predicted_score"] == 2.65
+    assert report["average_confidence"] == 0.615
 
 
 def test_build_drift_report_from_prediction_logs_and_reference_profile(tmp_path) -> None:
@@ -166,7 +173,7 @@ def test_build_drift_report_from_prediction_logs_and_reference_profile(tmp_path)
             meteo_prevue="pluie",
             activite_principale="business",
         ),
-        make_response(score=2.1, interpretation="risque_insatisfaction", zone_incertitude=False),
+        make_response(confidence=0.79, libelle_prediction="non_satisfait_1_2_3", low_confidence=False),
     )
 
     report = build_drift_report(log_path=log_path, metadata_path=metadata_path)
@@ -183,7 +190,7 @@ def test_build_alert_report_requires_more_data_before_retraining(tmp_path) -> No
     log_path = tmp_path / "predictions.jsonl"
     logger = PredictionLogger(log_path=log_path)
 
-    logger.log_prediction(make_request(), make_response(score=3.1, zone_incertitude=True))
+    logger.log_prediction(make_request(), make_response(confidence=0.51, low_confidence=True))
 
     report = build_alert_report(log_path=log_path, metadata_path=tmp_path / "missing.json")
 
@@ -222,9 +229,9 @@ def test_build_alert_report_recommends_retraining_candidate_with_confirmed_drift
     )
 
     response = make_response(
-        score=4.0,
-        interpretation="satisfaction_probable",
-        zone_incertitude=False,
+        confidence=0.80,
+        libelle_prediction="satisfait_4_5",
+        low_confidence=False,
     )
 
     for index in range(20):

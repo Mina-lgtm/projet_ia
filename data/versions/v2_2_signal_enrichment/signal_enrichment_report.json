@@ -1,25 +1,22 @@
 {
-  "created_at_utc": "2026-09-15T20:54:04.010185+00:00",
+  "created_at_utc": "2026-09-17T10:48:31.967971+00:00",
   "source_dataset": "data\\versions\\v2_1_enrichment\\travel_planning_dataset_v2_1.csv",
-  "output_dataset": "data\\versions\\v2_2_signal_enrichment\\travel_planning_dataset_v2_2.csv",
+  "output_dataset_final": "data\\versions\\v2_2_signal_enrichment\\dataset_final.csv",
+  "direct_dataset_final_only": true,
   "rows": 3000,
+  "dataset_final_rows": 3000,
   "original_rows": 1378,
   "synthetic_rows_added": 1622,
   "columns_before": 40,
-  "columns_after": 55,
+  "columns_after": 24,
+  "dataset_final_columns": 24,
   "added_columns": [
     "reste_budget_apres_vol",
     "budget_apres_vol_par_jour",
-    "ratio_budget_reference_destination",
-    "ratio_prix_vol_reference_destination",
     "score_budget_destination",
     "score_prix_vol_coherent",
     "score_adequation_activite_profil",
-    "score_adequation_hebergement_profil",
     "score_meteo_prevue",
-    "score_confort_temperature",
-    "score_risque_pluie_reel",
-    "score_qualite_air",
     "score_contexte_destination",
     "score_potentiel_satisfaction",
     "niveau_risque_satisfaction"
@@ -31,8 +28,5 @@
     "4": 675,
     "5": 267
   },
-  "note": "Generation autonome depuis le notebook final, sans dependance au script Python externe.",
-  "output_dataset_final": "data\\versions\\v2_2_signal_enrichment\\dataset_final.csv",
-  "dataset_final_rows": 3000,
-  "dataset_final_columns": 24
+  "note": "Generation directe du dataset final a 24 colonnes depuis le notebook, sans export intermediaire a 55 colonnes."
 }

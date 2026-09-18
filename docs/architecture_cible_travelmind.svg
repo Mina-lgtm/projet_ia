@@ -36,7 +36,7 @@
 
   <rect x="55" y="295" width="240" height="110" class="box data" />
   <text x="175" y="325" text-anchor="middle" class="box-title">Notebook final</text>
-  <text x="75" y="353" class="box-text">- notebooks/exam_ia_rattrapage.ipynb</text>
+  <text x="75" y="353" class="box-text">- notebooks/exam_ia_final.ipynb</text>
   <text x="75" y="373" class="box-text">- cadrage et documentation</text>
   <text x="75" y="393" class="box-text">- analyses et r&#233;sultats</text>
 

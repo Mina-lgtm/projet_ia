@@ -49,7 +49,7 @@ jobs:
           force_all="$(has_changes '^(\.github/workflows/ci-cd\.yml|requirements.*\.txt)$')"
           python_changed="$(has_changes '^(app/|tests/|scripts/|train\.py|configs/|requirements.*\.txt)$')"
           model_changed="$(has_changes '^(app/modeling\.py|app/config\.py|train\.py|data/|configs/|requirements.*\.txt)$')"
-          notebook_changed="$(has_changes '^(notebooks/exam_ia_rattrapage\.ipynb)$')"
+          notebook_changed="$(has_changes '^(notebooks/exam_ia_final\.ipynb)$')"
           docker_changed="$(has_changes '^(Dockerfile|docker-compose\.yml|app/|configs/|requirements\.txt|models/)$')"
 
           if [[ "$force_all" == "true" || "$EVENT_NAME" == "workflow_dispatch" ]]; then
@@ -104,7 +104,7 @@ jobs:
         run: |
           python scripts/check_model_quality.py --metadata-path models/model_pre_voyage_ci_metadata.json --config-path configs/model_quality_gate.json
 
-      - name: Validate rattrapage notebook structure
+      - name: Validate final notebook structure
         if: steps.changes.outputs.notebook_changed == 'true'
         run: |
           python - <<'PY'
@@ -112,7 +112,7 @@ jobs:
           import json
           from pathlib import Path
 
-          notebook_path = Path("notebooks/exam_ia_rattrapage.ipynb")
+          notebook_path = Path("notebooks/exam_ia_final.ipynb")
           notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
 
           assert notebook["cells"], "Notebook has no cells"

@@ -17,8 +17,8 @@ from app.schemas import TravelPredictionRequest, TravelPredictionResponse
 
 app = FastAPI(
     title="TravelMind API",
-    description="API de prediction pre-voyage pour la solution IA TravelMind.",
-    version="0.2.0",
+    description="API de classification binaire de satisfaction pour la solution IA TravelMind.",
+    version="0.3.0",
 )
 
 

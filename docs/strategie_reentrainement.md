@@ -4,80 +4,84 @@ tags: []
 
 ---
 
-# Stratégie de monitoring et de réentraînement
+# Strat?gie de monitoring et de r?entra?nement
 
 ## Objectif
 
-Le modèle industrialisé est le modèle pré-voyage. Il sert à produire un score indicatif de satisfaction probable avant le départ. Le réentraînement ne doit pas être automatique : il doit être déclenché uniquement après analyse des alertes, validation métier et disponibilité de nouvelles données annotées.
+Le mod?le industrialis? est `LogisticRegression`. Il pr?dit avant le d?part si un s?jour a une probabilit? d'?tre satisfaisant (`satisfait_4_5`) ou non satisfaisant/interm?diaire (`non_satisfait_1_2_3`).
+
+Le r?entra?nement ne doit pas ?tre automatique : il doit ?tre d?clench? uniquement apr?s analyse des alertes, validation m?tier et disponibilit? de nouvelles donn?es annot?es.
 
 ## Sources de monitoring
 
-| Source | Chemin / endpoint | Rôle |
+| Source | Chemin / endpoint | R?le |
 | --- | --- | --- |
-| Logs de prédiction | `logs/predictions/predictions.jsonl` | Tracer les entrées, scores prédits et zones d'incertitude |
-| Résumé monitoring | `/monitoring/summary` | Suivre volume, distribution des interprétations et score moyen prédit |
-| Dérive données | `/monitoring/drift` | Comparer les entrées API au profil d'entraînement |
-| Alertes consolidées | `/monitoring/alerts` | Transformer les métriques en décision opérationnelle |
+| Logs de pr?diction | `logs/predictions/predictions.jsonl` | Tracer les entr?es, classes pr?dites, probabilit?s et confiance |
+| R?sum? monitoring | `/monitoring/summary` | Suivre volume, distribution des pr?dictions et confiance moyenne |
+| D?rive donn?es | `/monitoring/drift` | Comparer les entr?es API au profil d'entra?nement |
+| Alertes consolid?es | `/monitoring/alerts` | Transformer les m?triques en d?cision op?rationnelle |
 
 ## Seuils retenus
 
 | Indicateur | Warning | Critical | Action |
 | --- | ---: | ---: | --- |
-| Volume minimal | `< 20` prédictions | Non applicable | Ne pas conclure, collecter davantage de logs |
-| Zone d'incertitude | `>= 40 %` | `>= 60 %` | Revue humaine des prédictions intermédiaires |
-| Dérive numérique | écart moyen normalisé `>= 1.0` | `>= 2.0` | Analyse des variables concernées |
-| Dérive catégorielle | distance de distribution `>= 0.20` | `>= 0.35` | Analyse des segments surreprésentés |
+| Volume minimal | `< 20` pr?dictions | Non applicable | Ne pas conclure, collecter davantage de logs |
+| Faible confiance | `>= 40 %` | `>= 60 %` | Revue humaine des pr?dictions peu s?res |
+| D?rive num?rique | ?cart moyen normalis? `>= 1.0` | `>= 2.0` | Analyse des variables concern?es |
+| D?rive cat?gorielle | distance de distribution `>= 0.20` | `>= 0.35` | Analyse des segments surrepr?sent?s |
+| Quality gate mod?le | seuils dans `configs/model_quality_gate.json` | CI en erreur | Corriger le pipeline ou justifier la d?gradation |
 
-## Décisions possibles
+## D?cisions possibles
 
-| Décision API | Signification | Action recommandée |
+| D?cision API | Signification | Action recommand?e |
 | --- | --- | --- |
-| `collect_predictions` | Aucun log disponible | Générer des appels `/predict` avant analyse |
-| `monitor_and_review` | Alerte ou volume insuffisant | Continuer la collecte et faire une revue humaine |
-| `review_and_prepare_retraining` | Alerte critique avec volume suffisant | Préparer un réentraînement après validation métier |
-| `no_action` | Pas d'alerte significative | Continuer le suivi périodique |
+| `collect_predictions` | Aucun log disponible ou volume insuffisant | G?n?rer des appels `/predict` avant analyse |
+| `monitor_and_review` | Alerte warning ou confiance faible ?lev?e | Continuer la collecte et faire une revue humaine |
+| `review_and_prepare_retraining` | Alerte critique avec volume suffisant | Pr?parer un r?entra?nement apr?s validation m?tier |
+| `no_action` | Pas d'alerte significative | Continuer le suivi p?riodique |
 
-## Conditions de réentraînement
+## Conditions de r?entra?nement
 
-Un réentraînement peut être envisagé lorsque les conditions suivantes sont réunies :
+Un r?entra?nement peut ?tre envisag? lorsque les conditions suivantes sont r?unies :
 
-- au moins `20` prédictions sont journalisées ;
-- une dérive critique ou un taux critique de zone d'incertitude est observé ;
-- les cas concernés sont validés par le métier ;
-- de nouvelles données annotées avec `satisfaction_client` sont disponibles ;
-- les contraintes RGPD, éthiques et qualité sont vérifiées.
+- au moins `20` pr?dictions sont journalis?es ;
+- une d?rive critique ou un taux critique de faible confiance est observ? ;
+- les cas concern?s sont valid?s par le m?tier ;
+- de nouvelles donn?es annot?es avec `satisfaction_client` sont disponibles ;
+- les contraintes RGPD, ?thiques et qualit? sont v?rifi?es.
 
-## Processus recommandé
+## Processus recommand?
 
 1. Consulter `/monitoring/alerts`.
-2. Si la décision est `review_and_prepare_retraining`, analyser les variables en alerte.
-3. Vérifier que les nouvelles données sont fiables, cohérentes et annotées.
-4. Relancer `python train.py` sur le dataset mis à jour.
-5. Comparer les métriques avec le modèle précédent.
-6. Valider le modèle avec le métier avant remplacement.
-7. Redémarrer l'API pour charger le nouvel artefact.
+2. Si la d?cision est `review_and_prepare_retraining`, analyser les variables en alerte.
+3. V?rifier que les nouvelles donn?es sont fiables, coh?rentes et annot?es.
+4. Relancer `python train.py` sur le dataset mis ? jour.
+5. Comparer les m?triques avec le mod?le pr?c?dent : `accuracy`, `balanced_accuracy`, `macro_f1`, `roc_auc`, `precision_satisfait`, `recall_satisfait`.
+6. V?rifier la quality gate `configs/model_quality_gate.json`.
+7. Valider le mod?le avec le m?tier avant remplacement.
+8. Red?marrer l'API pour charger le nouvel artefact.
 
-## Évaluation continue et CI/CD
+## ?valuation continue et CI/CD
 
-Le projet intègre un contrôle qualité automatique et conditionnel dans GitHub Actions :
+Le projet int?gre un contr?le qualit? automatique et conditionnel dans GitHub Actions :
 
-1. les fichiers modifiés sont détectés ;
-2. les tests API, modèle et monitoring sont exécutés si le code ou la configuration change ;
-3. le modèle pré-voyage est réentraîné en CI si les données, le pipeline ou les règles métier changent ;
-4. les métriques exportées dans les métadonnées sont comparées aux seuils de `configs/model_quality_gate.json` ;
-5. la CI échoue si `MAE` ou `RMSE` dépassent les seuils acceptés, si `R2` passe sous le seuil minimal ou si le volume train/test devient insuffisant.
+1. les fichiers modifi?s sont d?tect?s ;
+2. les tests API, mod?le et monitoring sont ex?cut?s si le code ou la configuration change ;
+3. le mod?le est r?entra?n? en CI si les donn?es, le pipeline ou les r?gles m?tier changent ;
+4. les m?triques export?es dans les m?tadonn?es sont compar?es aux seuils de `configs/model_quality_gate.json` ;
+5. la CI ?choue si les m?triques minimales ou le volume train/test ne sont pas respect?s.
 
-Ce contrôle limite le risque de dégradation silencieuse du modèle lors d'une modification du nettoyage, du feature engineering ou des hyperparamètres.
+Ce contr?le limite le risque de d?gradation silencieuse du mod?le lors d'une modification du nettoyage, du feature engineering ou des hyperparam?tres.
 
-## Périodicité de revue
+## P?riodicit? de revue
 
-| Fréquence | Contrôle | Acteur responsable | Sortie attendue |
+| Fr?quence | Contr?le | Acteur responsable | Sortie attendue |
 | --- | --- | --- | --- |
-| À chaque push / pull request | Contrôles CI/CD adaptés aux fichiers modifiés | Équipe data / technique | Validation, blocage ou saut des étapes lourdes |
-| Hebdomadaire en phase pilote | Lecture de `/monitoring/summary` et `/monitoring/alerts` | Data scientist + métier | Liste des cas peu confiants à revoir |
-| Mensuelle | Revue des seuils, dérives, distribution des prédictions | Commanditaire + data scientist | Maintien ou ajustement des indicateurs |
-| Trimestrielle ou après alerte critique | Analyse des nouvelles données annotées | Data scientist + métier + DPO si besoin | Décision de réentraînement ou conservation du modèle |
+| ? chaque push / pull request | Contr?les CI/CD adapt?s aux fichiers modifi?s | ?quipe data / technique | Validation, blocage ou saut des ?tapes lourdes |
+| Hebdomadaire en phase pilote | Lecture de `/monitoring/summary` et `/monitoring/alerts` | Data scientist + m?tier | Liste des cas peu confiants ? revoir |
+| Mensuelle | Revue des seuils, d?rives, distribution des pr?dictions | Commanditaire + data scientist | Maintien ou ajustement des indicateurs |
+| Trimestrielle ou apr?s alerte critique | Analyse des nouvelles donn?es annot?es | Data scientist + m?tier + DPO si besoin | D?cision de r?entra?nement ou conservation du mod?le |
 
 ## Limites
 
-La dérive est indicative : elle compare les distributions des entrées API au profil d'entraînement, mais elle ne mesure pas directement la performance réelle. La performance réelle nécessite les retours clients après séjour et donc une cible `satisfaction_client` observée.
+La d?rive est indicative : elle compare les distributions des entr?es API au profil d'entra?nement, mais elle ne mesure pas directement la performance r?elle. La performance r?elle n?cessite les retours clients apr?s s?jour et donc une cible `satisfaction_client` observ?e.

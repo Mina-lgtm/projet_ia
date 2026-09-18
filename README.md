@@ -9,7 +9,7 @@ TravelMind couvre le cadrage métier, la préparation des données, la modélisa
 - Documentation descriptive : `docs/etat_projet.md`
 - Objectif 1 - identification du dataset : `docs/objectif_1_dataset.md`
 - Synthèse finale pré/post-voyage : `docs/synthese_finale_pre_post_voyage.md`
-- Notebook rattrapage industrialisé : `notebooks/exam_ia_rattrapage.ipynb`
+- Notebook final industrialisé : `notebooks/exam_ia_final.ipynb`
 - Ancienne version conservée : `notebooks/exam_ia.ipynb`
 - Expériences de modélisation : `docs/experiences_modelisation.md`
 - Archive industrialisation : `docs/archive_industrialisation.md`
@@ -33,10 +33,10 @@ pip install -r requirements-dev.txt
 jupyter lab
 ```
 
-Notebook recommandé pour la version rattrapage :
+Notebook recommandé pour la version finale :
 
 ```text
-notebooks/exam_ia_rattrapage.ipynb
+notebooks/exam_ia_final.ipynb
 ```
 
 L'ancien notebook `notebooks/exam_ia.ipynb` est conservé comme archive de la version précédente.
@@ -123,34 +123,37 @@ Invoke-RestMethod -Method Post `
   }'
 ```
 
-## Entraînement reproductible
+## Entra?nement reproductible
 
-Le script `train.py` entraîne le modèle pré-voyage de régression à partir du dataset brut, applique les règles de nettoyage métier, exclut les variables connues uniquement après le séjour, construit le pipeline scikit-learn et exporte les artefacts dans `models/`.
+Le script `train.py` entra?ne le mod?le industrialis? `LogisticRegression` sur le dataset enrichi final `data/versions/v2_2_signal_enrichment/dataset_final.csv`. La cible est binaire :
+
+- `0` = `non_satisfait_1_2_3` ;
+- `1` = `satisfait_4_5`.
+
+Le script applique le nettoyage m?tier, le feature engineering pr?-voyage, le pipeline scikit-learn et exporte les artefacts dans `models/`.
 
 ```powershell
 python train.py
 ```
 
-Artefacts générés :
+Artefacts g?n?r?s :
 
 ```text
 models/model_pre_voyage.pkl
 models/model_pre_voyage_metadata.json
 ```
 
-Le dossier `models/` est ignoré par Git afin d'éviter de versionner des artefacts locaux lourds.
+Le dossier `models/` est ignor? par Git afin d'?viter de versionner des artefacts locaux lourds.
 
 ## Monitoring initial
 
-Chaque appel réussi à `/predict` est enregistré dans un fichier JSONL local :
+Chaque appel r?ussi ? `/predict` est enregistr? dans un fichier JSONL local :
 
 ```text
 logs/predictions/predictions.jsonl
 ```
 
-Chaque ligne contient la date UTC, les entrées pré-voyage, le score de satisfaction prédit,
-le score arrondi, l'interprétation métier, un indicateur de zone d'incertitude et les
-métriques globales du modèle.
+Chaque ligne contient la date UTC, les entr?es pr?-voyage, la classe pr?dite, les probabilit?s par classe, la confiance, l'indicateur `low_confidence` et les m?triques globales du mod?le.
 
 Lire les derniers logs :
 
@@ -158,7 +161,7 @@ Lire les derniers logs :
 Get-Content -Encoding UTF8 logs/predictions/predictions.jsonl -Tail 5
 ```
 
-Un résumé de monitoring est aussi disponible via l'API :
+Un r?sum? de monitoring est disponible via l'API :
 
 ```text
 http://localhost:8001/monitoring/summary
@@ -166,46 +169,43 @@ http://localhost:8001/monitoring/summary
 
 Il retourne notamment :
 
-- `nb_predictions` : nombre d'appels `/predict` journalisés ;
-- `prediction_distribution` : nombre de prédictions par interprétation métier ;
-- `prediction_distribution_pct` : pourcentage par interprétation prédite ;
-- `low_confidence_rate` : part des prédictions en zone d'incertitude ;
-- `average_predicted_score` : score moyen prédit ;
-- `model_distribution` : modèles utilisés dans les logs.
+- `nb_predictions` : nombre d'appels `/predict` journalis?s ;
+- `prediction_distribution` : nombre de pr?dictions par classe m?tier ;
+- `prediction_distribution_pct` : pourcentage par classe pr?dite ;
+- `low_confidence_rate` : part des pr?dictions ? faible confiance ;
+- `average_confidence` : confiance moyenne des pr?dictions ;
+- `model_distribution` : mod?les utilis?s dans les logs.
 
-Un contrôle simple de dérive des données est disponible via :
+Un contr?le simple de d?rive des donn?es est disponible via :
 
 ```text
 http://localhost:8001/monitoring/drift
 ```
 
-Ce contrôle compare les entrées API journalisées avec le profil statistique du
-jeu d'entraînement stocké dans `models/model_pre_voyage_metadata.json`.
-Il retourne :
+Ce contr?le compare les entr?es API journalis?es avec le profil statistique du jeu d'entra?nement stock? dans `models/model_pre_voyage_metadata.json`. Il retourne :
 
-- `numeric_drift` : écart moyen normalisé des variables numériques ;
-- `categorical_drift` : écart de distribution des variables catégorielles ;
+- `numeric_drift` : ?cart moyen normalis? des variables num?riques ;
+- `categorical_drift` : ?cart de distribution des variables cat?gorielles ;
 - `alerts` : variables en niveau `warning` ou `critical` ;
-- `sample_size_warning` : vrai si le volume de prédictions est encore trop faible.
+- `sample_size_warning` : vrai si le volume de pr?dictions est encore trop faible.
 
-Après une modification de `train.py` ou du pipeline, régénérer le modèle pour
-mettre à jour le profil de référence :
+Apr?s une modification de `train.py`, du dataset ou du pipeline, r?g?n?rer le mod?le pour mettre ? jour le profil de r?f?rence :
 
 ```powershell
 python train.py
 ```
 
-Un endpoint d'alertes consolide le monitoring et la dérive :
+Un endpoint d'alertes consolide le monitoring et la d?rive :
 
 ```text
 http://localhost:8001/monitoring/alerts
 ```
 
-Il retourne une décision opérationnelle :
+Il retourne une d?cision op?rationnelle :
 
 - `collect_predictions` : volume insuffisant ou aucun log ;
-- `monitor_and_review` : surveillance et revue humaine nécessaires ;
-- `review_and_prepare_retraining` : préparer un réentraînement après validation métier ;
+- `monitor_and_review` : surveillance et revue humaine n?cessaires ;
+- `review_and_prepare_retraining` : pr?parer un r?entra?nement apr?s validation m?tier ;
 - `no_action` : pas d'alerte significative.
 
 ## Docker
@@ -231,19 +231,19 @@ http://localhost:8001/monitoring/alerts
 
 ## CI/CD et versioning
 
-Le projet utilise Git et GitHub pour versionner le code, la documentation, le dataset synthétique et les notebooks.
+Le projet utilise Git et GitHub pour versionner le code, la documentation, le dataset synth?tique, les notebooks et les fichiers de configuration.
 
-Un workflow GitHub Actions est défini dans `.github/workflows/ci-cd.yml`. Il détecte les fichiers modifiés et lance uniquement les contrôles utiles :
+Un workflow GitHub Actions est d?fini dans `.github/workflows/ci-cd.yml`. Il d?tecte les fichiers modifi?s et lance uniquement les contr?les utiles :
 
 - changements `app/`, `tests/`, `scripts/`, `train.py` ou `configs/` : compilation Python et tests `pytest` ;
-- changements modèle, données ou configuration : entraînement CI et quality gate ;
-- changement `notebooks/exam_ia_rattrapage.ipynb` : validation de la structure et de la syntaxe des cellules code ;
+- changements mod?le, donn?es ou configuration : entra?nement CI et quality gate ;
+- changement `notebooks/exam_ia_final.ipynb` : validation de la structure et de la syntaxe des cellules code ;
 - changements `Dockerfile`, `docker-compose.yml`, `app/`, `configs/`, `requirements.txt` ou `models/` : build Docker ;
-- changement purement documentaire : étapes lourdes ignorées.
+- changement purement documentaire : ?tapes lourdes ignor?es.
 
-Le contrôle qualité bloque la CI si les métriques du modèle ne respectent pas les seuils de régression : `MAE` et `RMSE` maximums, `R2` minimum, volume train/test minimal.
+Le contr?le qualit? bloque la CI si les m?triques du mod?le binaire ne respectent pas les seuils d?finis dans `configs/model_quality_gate.json` : `accuracy`, `balanced_accuracy`, `macro_f1`, `roc_auc`, `precision_satisfait`, `recall_satisfait` et volume minimal train/test.
 
-Ce workflow met en place une livraison continue minimale et optimisée : le projet est automatiquement vérifié, mais le modèle n'est réévalué et l'image Docker n'est reconstruite que lorsque les changements le justifient. Le déploiement vers un environnement distant reste volontairement non activé tant que le notebook rattrapage et le pipeline modèle ne sont pas figés.
+Ce workflow met en place une livraison continue minimale et optimis?e : le projet est automatiquement v?rifi?, mais le mod?le n'est r??valu? et l'image Docker n'est reconstruite que lorsque les changements le justifient. Le d?ploiement vers un environnement distant reste volontairement non activ? tant que le prototype n'est pas valid? m?tier.
 
 ## Tests
 

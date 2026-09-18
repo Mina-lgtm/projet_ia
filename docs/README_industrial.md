@@ -8,176 +8,157 @@ tags: []
 
 ## Objectif
 
-Ce document décrit les contrôles de monitoring mis en place pour le modèle pré-voyage TravelMind industrialisé dans l'API.
+Ce document d?crit les contr?les de monitoring mis en place pour le mod?le TravelMind industrialis? dans l'API.
 
-Le monitoring sert à :
+Le mod?le servi est `LogisticRegression` et pr?dit une cible binaire :
 
-- suivre les prédictions réalisées par l'API ;
-- mesurer les zones d'incertitude du score prédit ;
-- détecter si les nouvelles données saisies s'éloignent du jeu d'entraînement ;
-- déclencher une revue humaine ou préparer un réentraînement si nécessaire.
+- `non_satisfait_1_2_3` ;
+- `satisfait_4_5`.
 
-## Fichiers concernés
+Le monitoring sert ? :
 
-| Élément | Chemin | Rôle |
+- suivre les pr?dictions r?alis?es par l'API ;
+- mesurer le niveau de confiance des pr?dictions ;
+- d?tecter si les nouvelles donn?es saisies s'?loignent du jeu d'entra?nement ;
+- d?clencher une revue humaine ou pr?parer un r?entra?nement si n?cessaire.
+
+## Fichiers concern?s
+
+| ?l?ment | Chemin | R?le |
 | --- | --- | --- |
-| Module de monitoring | `app/monitoring.py` | Calcule les indicateurs, la dérive et les alertes. |
-| Logs de prédiction | `logs/predictions/predictions.jsonl` | Stocke chaque appel à `/predict` au format JSONL. |
-| Métadonnées modèle | `models/model_pre_voyage_metadata.json` | Contient le profil statistique du jeu d'entraînement. |
-| Règles métier | `configs/business_rules.json` | Centralise les bornes API, catégories autorisées, règles de feature engineering et seuils de monitoring. |
-| API | `app/main.py` | Expose les endpoints de monitoring. |
+| Module de monitoring | `app/monitoring.py` | Calcule les indicateurs, la d?rive et les alertes. |
+| Logs de pr?diction | `logs/predictions/predictions.jsonl` | Stocke chaque appel ? `/predict` au format JSONL. |
+| M?tadonn?es mod?le | `models/model_pre_voyage_metadata.json` | Contient les m?triques et le profil statistique du jeu d'entra?nement. |
+| R?gles m?tier | `configs/business_rules.json` | Centralise les bornes API, cat?gories autoris?es, r?gles de feature engineering et seuils de monitoring. |
+| Seuils qualit? mod?le | `configs/model_quality_gate.json` | D?finit les seuils minimaux attendus en CI/CD. |
+| API | `app/main.py` | Expose les endpoints de pr?diction et monitoring. |
 
 ## Endpoints disponibles
 
-| Endpoint | Rôle |
+| Endpoint | R?le |
 | --- | --- |
-| `GET /monitoring/summary` | Résume les prédictions journalisées. |
-| `GET /monitoring/drift` | Compare les entrées API au profil d'entraînement. |
-| `GET /monitoring/alerts` | Synthétise les alertes et propose une action. |
+| `GET /monitoring/summary` | R?sume les pr?dictions journalis?es. |
+| `GET /monitoring/drift` | Compare les entr?es API au profil d'entra?nement. |
+| `GET /monitoring/alerts` | Synth?tise les alertes et propose une action. |
 
-## Contrôles mis en place
+## Contr?les mis en place
 
-### Configuration centralisée
+### Configuration centralis?e
 
-Les règles métier et les seuils de monitoring ne sont plus codés directement dans le notebook. Ils sont lus depuis `configs/business_rules.json`.
+Les r?gles m?tier et les seuils de monitoring sont lus depuis `configs/business_rules.json`.
 
 Ce fichier permet de modifier sans toucher au notebook :
 
 - les bornes API : `duree_jours`, `budget_total`, `prix_vol` ;
-- les catégories fermées : `client_type`, `saison`, `type_hebergement`, `meteo_prevue`, `activite_principale` ;
-- les règles de feature engineering : séjour long, météo risquée, hébergement luxe ;
-- les seuils de drift, d'incertitude et de volume minimum.
+- les cat?gories ferm?es : `client_type`, `destination`, `saison`, `type_hebergement`, `meteo_prevue`, `activite_principale` ;
+- les r?gles de feature engineering : s?jour long, m?t?o risqu?e, h?bergement luxe ;
+- les seuils de drift, de confiance et de volume minimum.
 
-### Journalisation des prédictions
+### Journalisation des pr?dictions
 
-Chaque appel à `/predict` est enregistré dans `logs/predictions/predictions.jsonl`.
+Chaque appel ? `/predict` est enregistr? dans `logs/predictions/predictions.jsonl`.
 
 Le log contient notamment :
 
-- la date de prédiction ;
-- l'objectif du modèle ;
-- le nom du modèle ;
-- les données saisies ;
-- le score de satisfaction prédit ;
-- le score arrondi ;
-- l'interprétation métier ;
-- l'indicateur de zone d'incertitude ;
-- les métriques du modèle.
+- la date de pr?diction ;
+- l'objectif du mod?le ;
+- le nom du mod?le ;
+- les donn?es saisies ;
+- la classe pr?dite ;
+- le libell? m?tier de la classe ;
+- les probabilit?s par classe ;
+- la confiance, c'est-?-dire la probabilit? maximale ;
+- l'indicateur `low_confidence` ;
+- les m?triques du mod?le.
 
-### Distribution des prédictions
+### Distribution des pr?dictions
 
-Le monitoring calcule la répartition des interprétations prédites :
+Le monitoring calcule la r?partition des classes pr?dites :
 
-- `risque_insatisfaction` ;
-- `satisfaction_intermediaire` ;
-- `satisfaction_probable`.
+- `non_satisfait_1_2_3` ;
+- `satisfait_4_5`.
 
-Cela permet de vérifier si le modèle produit toujours des interprétations cohérentes ou s'il se met à concentrer les scores dans une seule zone.
+Cela permet de v?rifier si le mod?le reste ?quilibr? dans ses pr?dictions ou s'il se met ? concentrer toutes les pr?dictions dans une seule classe.
 
-### Zone d'incertitude
+### Faible confiance
 
-Le modèle de régression ne retourne pas de probabilité par classe. Une zone d'incertitude est donc définie lorsque le score prédit est intermédiaire :
+Le mod?le binaire retourne une probabilit? pour chaque classe. La confiance correspond ? la probabilit? maximale.
 
-```text
-2.5 <= score_satisfaction_predit < 3.5
-```
+Une pr?diction est marqu?e `low_confidence = true` lorsque cette confiance est inf?rieure au seuil configur? dans `configs/business_rules.json`.
 
-### Alertes d'incertitude
-
-| Indicateur | Seuil | Interprétation |
+| Indicateur | Seuil actuel | Interpr?tation |
 | --- | ---: | --- |
-| Zone d'incertitude par prédiction | score entre `2.5` et `3.5` | La prédiction doit être relue avec prudence. |
-| Taux d'incertitude warning | `>= 40 %` | Beaucoup de prédictions sont intermédiaires. |
-| Taux d'incertitude critique | `>= 60 %` | Le modèle doit faire l'objet d'une revue prioritaire. |
+| Faible confiance par pr?diction | `< 0.50` | La pr?diction doit ?tre relue avec prudence. |
+| Taux faible confiance warning | `>= 40 %` | Beaucoup de pr?dictions sont peu s?res. |
+| Taux faible confiance critique | `>= 60 %` | Le mod?le doit faire l'objet d'une revue prioritaire. |
 
 ### Volume minimum de monitoring
 
-Le seuil minimal est configuré dans `configs/business_rules.json`. La valeur actuelle est :
+Le seuil minimal est configur? dans `configs/business_rules.json`. La valeur actuelle est :
 
 ```text
-20 prédictions
+20 pr?dictions
 ```
 
-Avant ce volume, les conclusions sur la dérive restent fragiles. Le système renvoie donc un `sample_size_warning`.
+Avant ce volume, les conclusions sur la d?rive restent fragiles. Le syst?me renvoie donc un `sample_size_warning`.
 
-## Définition du drift
+## D?finition du drift
 
-Dans ce projet, un drift signifie que les données reçues par l'API ne ressemblent plus aux données utilisées pour entraîner le modèle.
+Dans ce projet, un drift signifie que les donn?es re?ues par l'API ne ressemblent plus aux donn?es utilis?es pour entra?ner le mod?le.
 
-Il s'agit ici d'un **data drift** : on compare les distributions des entrées API avec le profil du jeu d'entraînement.
+Il s'agit ici d'un **data drift** : on compare les distributions des entr?es API avec le profil du jeu d'entra?nement.
 
-Le projet ne mesure pas encore directement le **performance drift**, car cela nécessiterait de récupérer plus tard la vraie satisfaction client après le séjour.
+Le projet ne mesure pas encore directement le **performance drift**, car cela n?cessiterait de r?cup?rer plus tard la vraie satisfaction client apr?s le s?jour.
 
-## Drift numérique
+## Drift num?rique
 
-Pour les variables numériques, le drift est calculé avec un écart de moyenne normalisé :
+Pour les variables num?riques, le drift est calcul? avec un ?cart de moyenne normalis? :
 
 ```text
 abs(moyenne_actuelle - moyenne_train) / std_train
 ```
 
-| Niveau | Seuil | Interprétation |
+| Niveau | Seuil | Interpr?tation |
 | --- | ---: | --- |
-| OK | `< 1.0` | Les valeurs restent proches du profil d'entraînement. |
-| Warning | `>= 1.0` | La moyenne actuelle commence à s'éloigner du train. |
-| Critique | `>= 2.0` | La variable est fortement différente du train. |
+| OK | `< 1.0` | Les valeurs restent proches du profil d'entra?nement. |
+| Warning | `>= 1.0` | La moyenne actuelle commence ? s'?loigner du train. |
+| Critique | `>= 2.0` | La variable est fortement diff?rente du train. |
 
-Exemple : si les budgets saisis dans l'API deviennent beaucoup plus élevés que ceux observés à l'entraînement, `budget_total` peut passer en drift.
+## Drift cat?goriel
 
-## Drift catégoriel
+Pour les variables cat?gorielles, le drift est calcul? avec la distance de variation totale entre deux distributions :
 
-Pour les variables catégorielles, le drift est calculé avec la distance de variation totale entre deux distributions :
+```text
+0.5 * somme(abs(proportion_actuelle - proportion_train))
+```
 
-- distribution observée pendant l'entraînement ;
-- distribution observée dans les appels API.
-
-| Niveau | Seuil | Interprétation |
+| Niveau | Seuil | Interpr?tation |
 | --- | ---: | --- |
 | OK | `< 0.20` | La distribution reste proche du train. |
-| Warning | `>= 0.20` | La répartition des catégories change. |
-| Critique | `>= 0.35` | La distribution est fortement différente du train. |
+| Warning | `>= 0.20` | La r?partition des cat?gories change. |
+| Critique | `>= 0.35` | La distribution est fortement diff?rente du train. |
 
-Le monitoring identifie aussi les catégories inconnues qui n'étaient pas présentes dans le jeu d'entraînement.
+Le monitoring identifie aussi les cat?gories inconnues qui n'?taient pas pr?sentes dans le jeu d'entra?nement.
 
-Exemple : si une nouvelle destination est saisie dans l'API alors qu'elle n'existe pas dans le dataset d'origine, elle apparaîtra comme catégorie inconnue.
+## D?cisions d?clench?es
 
-## Décisions déclenchées
-
-| Situation | Décision API | Action recommandée |
+| D?cision | Quand ? | Action recommand?e |
 | --- | --- | --- |
-| Aucune donnée | `collect_predictions` | Collecter des appels `/predict`. |
-| Volume faible | `monitor_and_review` | Attendre plus de prédictions avant de conclure. |
-| Taux d'incertitude warning | `monitor_and_review` | Renforcer la revue humaine. |
-| Drift warning | `monitor_and_review` | Surveiller les variables concernées. |
-| Drift critique avec volume suffisant | `review_and_prepare_retraining` | Préparer un réentraînement après validation métier et technique. |
-| Aucun signal significatif | `no_action` | Continuer le suivi périodique. |
+| `collect_predictions` | Aucun log ou volume insuffisant | Collecter davantage de pr?dictions avant de conclure. |
+| `monitor_and_review` | Alerte warning ou faible confiance ?lev?e | Revue humaine des cas concern?s. |
+| `review_and_prepare_retraining` | Alerte critique avec volume suffisant | Pr?parer un r?entra?nement apr?s validation m?tier. |
+| `no_action` | Pas d'alerte significative | Continuer le suivi p?riodique. |
 
 ## Limites du monitoring actuel
 
-- Les logs sont stockés localement en fichier JSONL.
-- Le monitoring ne mesure pas encore la satisfaction réelle après séjour.
-- Le drift est indicatif si le volume de prédictions est faible.
-- Le réentraînement n'est pas automatique.
-- Toute décision de réentraînement doit être validée par les parties prenantes métier et techniques.
+- La d?rive mesure les entr?es, pas encore la satisfaction r?elle observ?e apr?s voyage.
+- Les d?cisions de r?entra?nement doivent rester valid?es par le m?tier et l'?quipe technique.
+- Le mod?le reste un prototype supervis? : il ne doit pas d?clencher automatiquement une d?cision commerciale sans contr?le humain.
 
 ## Commandes utiles
 
-Lancer l'API :
-
 ```powershell
-uvicorn app.main:app --reload --port 8001
-```
-
-Consulter les endpoints :
-
-```text
-http://localhost:8001/monitoring/summary
-http://localhost:8001/monitoring/drift
-http://localhost:8001/monitoring/alerts
-```
-
-Lire les derniers logs :
-
-```powershell
-Get-Content logs/predictions/predictions.jsonl -Tail 5
+python train.py
+python -m pytest -q
+python -m uvicorn app.main:app --reload --port 8001
 ```
